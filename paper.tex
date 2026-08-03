@@ -26,6 +26,8 @@
 \usepackage{enumitem}
 \usepackage{titlesec}
 \usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
 \usepackage[numbers,sort&compress]{natbib}
 \usepackage[hidelinks]{hyperref}
 \usepackage[mathlines]{lineno}
@@ -853,14 +855,94 @@ Outcome and time point & Intervention & Control & Effect (95\% CI) & $p$\\
 \end{tabularx}
 \end{table}
 
-\begin{figure}[ht]
+\begin{figure}[p]
 \centering
-\fbox{\parbox{0.9\textwidth}{\centering\vspace{3.2cm}
-CONSORT flow diagram for cluster randomised trials (shell): practices
-screened, randomised and analysed in the upper tier; participants screened,
-recruited, followed up and analysed in the lower tier, within practices.
-\open{draw}\vspace{3.2cm}}}
-\caption{Flow of practices and participants through the trial.}
+\begin{tikzpicture}[
+  font=\scriptsize,
+  bx/.style={draw, rectangle, align=left, inner sep=4pt, text width=#1},
+  arr/.style={-{Latex[length=1.8mm]}, semithick}
+]
+
+% ---- trunk: practices --------------------------------------------------
+\node[bx=50mm, anchor=north] (elig) at (0,0)
+  {\textbf{Practices assessed for eligibility}\\ ($n=$ xx)};
+\node[bx=50mm, anchor=north] (exc) at ([xshift=57mm]elig.north)
+  {Practices excluded ($n=$ xx)\\
+   \quad Not eligible ($n=$ xx)\\
+   \quad Declined ($n=$ xx)\\
+   \quad Other ($n=$ xx)};
+\node[bx=50mm, anchor=north] (rand) at ([yshift=-14mm]elig.south)
+  {\textbf{Practices randomised} ($n=$ xx)};
+
+\draw[arr] (elig.south) -- (rand.north);
+\draw[arr] ($(elig.south)!0.5!(rand.north)$) -- ++(0,0) -| ($(exc.south)+(0,0)$);
+
+% ---- allocation --------------------------------------------------------
+\node[bx=64mm, anchor=north] (allocI) at ([xshift=-35mm,yshift=-12mm]rand.south)
+  {\textbf{Allocated to RESOLVE}\\
+   Practices ($n=$ xx), therapists trained ($n=$ xx)\\
+   Participants screened ($n=$ xx)\\
+   \quad Not eligible ($n=$ xx), declined ($n=$ xx)\\
+   \textbf{Participants enrolled} ($n=$ xx)};
+\node[bx=64mm, anchor=north] (allocC) at ([xshift=35mm,yshift=-12mm]rand.south)
+  {\textbf{Allocated to usual physiotherapy}\\
+   Practices ($n=$ xx), therapists ($n=$ xx)\\
+   Participants screened ($n=$ xx)\\
+   \quad Not eligible ($n=$ xx), declined ($n=$ xx)\\
+   \textbf{Participants enrolled} ($n=$ xx)};
+
+\draw[arr] (rand.south) -- ++(0,-6mm) -| (allocI.north);
+\draw[arr] (rand.south) -- ++(0,-6mm) -| (allocC.north);
+
+% ---- 18 weeks ----------------------------------------------------------
+\node[bx=64mm, anchor=north] (fuI) at ([yshift=-8mm]allocI.south)
+  {\textbf{18 weeks --- primary endpoint}\\
+   Practices withdrawn ($n=$ xx)\\
+   Participants assessed ($n=$ xx)\\
+   \quad Lost to follow-up ($n=$ xx)\\
+   \quad Withdrew consent ($n=$ xx), other ($n=$ xx)};
+\node[bx=64mm, anchor=north] (fuC) at ([yshift=-8mm]allocC.south)
+  {\textbf{18 weeks --- primary endpoint}\\
+   Practices withdrawn ($n=$ xx)\\
+   Participants assessed ($n=$ xx)\\
+   \quad Lost to follow-up ($n=$ xx)\\
+   \quad Withdrew consent ($n=$ xx), other ($n=$ xx)};
+
+\draw[arr] (allocI.south) -- (fuI.north);
+\draw[arr] (allocC.south) -- (fuC.north);
+
+% ---- 26 and 52 weeks ---------------------------------------------------
+\node[bx=64mm, anchor=north] (lateI) at ([yshift=-8mm]fuI.south)
+  {\textbf{26 and 52 weeks}\\
+   Assessed at 26 weeks ($n=$ xx)\\
+   Assessed at 52 weeks ($n=$ xx)};
+\node[bx=64mm, anchor=north] (lateC) at ([yshift=-8mm]fuC.south)
+  {\textbf{26 and 52 weeks}\\
+   Assessed at 26 weeks ($n=$ xx)\\
+   Assessed at 52 weeks ($n=$ xx)};
+
+\draw[arr] (fuI.south) -- (lateI.north);
+\draw[arr] (fuC.south) -- (lateC.north);
+
+% ---- analysis ----------------------------------------------------------
+\node[bx=64mm, anchor=north] (anaI) at ([yshift=-8mm]lateI.south)
+  {\textbf{Analysed (intention to treat)}\\
+   Practices ($n=$ xx), participants ($n=$ xx)\\
+   Excluded ($n=$ xx), reasons: xx};
+\node[bx=64mm, anchor=north] (anaC) at ([yshift=-8mm]lateC.south)
+  {\textbf{Analysed (intention to treat)}\\
+   Practices ($n=$ xx), participants ($n=$ xx)\\
+   Excluded ($n=$ xx), reasons: xx};
+
+\draw[arr] (lateI.south) -- (anaI.north);
+\draw[arr] (lateC.south) -- (anaC.north);
+
+\end{tikzpicture}
+\caption{Flow of practices and participants through the trial (shell). Both
+practices and participants are counted at every stage, as the CONSORT extension
+for cluster randomised trials requires. The screening counts in the allocation
+tier are what allow recruitment bias to be judged, since practices know their
+allocation before they approach patients.}
 \label{fig:flow}
 \end{figure}
 

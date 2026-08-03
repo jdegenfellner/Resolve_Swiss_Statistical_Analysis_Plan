@@ -9,7 +9,7 @@ Protocol* — the same slot in the same journal where the Australian RESOLVE SAP
 | File | What it is |
 |---|---|
 | `paper.tex` | the manuscript (LaTeX master) |
-| `paper.pdf` | current build, 25 pages |
+| `paper.pdf` | current build, 26 pages |
 | `references.bib` | 46 entries, every DOI verified against Crossref on 2026-08-03 |
 | `stuff/` | study protocol v2.0 — **gitignored**, see below |
 | `R/sample_size.R` | produces every number in the *Sample size* section; base R only |
