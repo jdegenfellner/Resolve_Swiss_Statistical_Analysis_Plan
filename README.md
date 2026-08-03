@@ -9,8 +9,9 @@ Protocol* — the same slot in the same journal where the Australian RESOLVE SAP
 | File | What it is |
 |---|---|
 | `paper.tex` | the manuscript (LaTeX master) |
-| `paper.pdf` | current build, 23 pages |
-| `references.bib` | 45 entries, every DOI verified against Crossref on 2026-08-03 |
+| `paper.pdf` | current build, 25 pages |
+| `references.bib` | 46 entries, every DOI verified against Crossref on 2026-08-03 |
+| `stuff/` | study protocol v2.0 — **gitignored**, see below |
 | `R/sample_size.R` | produces every number in the *Sample size* section; base R only |
 
 Build with `pdflatex → bibtex → pdflatex → pdflatex` (plain `latexmk` trips over a stale
@@ -72,22 +73,73 @@ Two findings worth taking to the project meeting:
    rule of thumb, adding two to three clusters per arm to any normal-approximation
    sample size. This agrees with the July 2026 interim note in the project folder.
 
+## The protocol conflict that needs a decision
+
+Protocol v2.0 states the primary hypothesis as **superiority by a margin**: H₀ is that
+the intervention does *not* exceed usual physiotherapy by more than 2 RMDQ points,
+tested **one-sided** at α = 0.05, with 110 per arm giving 80 % power.
+
+Under that framing what drives power is how far the true effect exceeds 2 points, not
+the effect itself. The 110/arm figure was obtained with an assumed true effect of ≈ 2.4
+and an SD of ≈ 0.9 — and that 0.9 is the spread of the pooled effect estimates from
+Wälti and RESOLVE AUS, i.e. uncertainty about the effect, not the between-participant SD
+of the RMDQ (≈ 5.2). Recomputed with 5.2, a margin-based design powered for a 0.4-point
+excess over a 2-point null needs **several thousand participants per arm**. The trial as
+resourced cannot deliver it.
+
+Read as a conventional superiority trial targeting a 2-point difference, 110/arm is
+close to right. The manuscript therefore does that and says so explicitly in a section
+"Hypothesis framing: a clarification of the protocol". **This needs the sponsor's
+agreement**, and if the registered protocol wording is to change, a protocol amendment.
+The alternative is to keep the margin formulation and state openly that the trial is
+underpowered for it. That is a decision for Thomas Benz as sponsor-investigator, not one
+the statistician should make alone.
+
+Related and smaller: the protocol specifies a **one-sided** test for the primary outcome.
+The manuscript prespecifies two-sided throughout (more conservative, and what reviewers
+expect); also flagged for confirmation.
+
+## Two further gaps in the protocol's statistical section
+
+1. The protocol's model — arm, time, arm × time, time as ordered categorical — **does not
+   mention a random effect for the practice**. Without it, patients in the same practice
+   are treated as independent and the standard error is too small. Every model in the SAP
+   carries a practice random intercept.
+2. The protocol does not specify any **small-sample correction**, which with 14 clusters
+   is not optional.
+
+## Answered by protocol v2.0
+
+Follow-up: physical outcomes at baseline and 18 weeks; all self-reported questionnaires,
+including the RMDQ, also at **26 and 52 weeks**. Eligibility at both levels, the full
+secondary outcome list, the intervention (12 sessions over 16 weeks), the randomisation
+procedure (1:1, central coordinator at ZHAW, concealed, **no stratification mentioned**),
+blinding (participants no, physical assessors yes via video), adherence (≥ 75 % for the
+IV analysis), contamination control (training and materials withheld from control
+therapists), and data capture (REDCap) are now all in the manuscript.
+
 ## Open questions for the trial team
 
-1. Co-author list, affiliations, CRediT contributions.
-2. Trial registration number and registry; ethics committee and approval number.
-3. Full follow-up schedule — is 18 weeks the only follow-up, or are there 26/52-week
-   time points as in Australia?
-4. Complete list of secondary outcomes with instruments and time points.
-5. Participant and **practice-level** eligibility criteria (a cluster trial needs both).
-6. How were the 14 practices actually allocated? Simple, stratified, or
-   covariate-constrained? This determines both the model adjustment and which
-   allocations the randomisation test may enumerate.
-7. Were practices recruited in waves, and is any wave confounded with arm?
-8. Who is blinded, and will the statistician be blinded to arm labels until the primary
-   analysis is locked?
-9. How is contamination in control practices measured?
-10. Adherence threshold for the "sufficient dose" definition.
-11. Where will the analysis code live (repository URL for the data availability
-    statement)?
-12. Whether the Bayesian interim analysis goes into this paper or a companion one.
+1. Co-author list, affiliations, CRediT contributions, funder and grant number.
+2. Registration numbers (ClinicalTrials.gov and SNCTP) once issued; ethics committee,
+   approval number and date.
+3. **Confirm the current split is 5 intervention vs 9 control** — the protocol plans 20
+   practices at 1:1, so this is a reportable deviation either way.
+4. **Confirm allocation was simple**, i.e. not stratified or covariate-constrained. If it
+   was constrained, those variables must enter the model and the randomisation test may
+   only enumerate the allocations satisfying the constraints.
+5. Were practices recruited in waves, and is any wave confounded with arm?
+6. Will the statistician be blinded to arm labels until the primary analysis is locked?
+7. Data-cleaning and query workflow; who locks the database.
+8. Is the health-economic analysis (QALYs, ICERs) out of scope for this paper?
+9. Repository URL for the data availability statement.
+10. Whether the Bayesian interim analysis goes into this paper or a companion one.
+
+## A note on the protocol document
+
+`stuff/250912_RESOLVE Swiss_study-protocol-V2_clean version.docx` carries a
+confidentiality statement restricting transmission to the ethics committees and
+regulatory authorities without the sponsor's written authorisation. It is therefore in
+`.gitignore` and has **not** been pushed to GitHub, private repo or not. If the team
+wants it version-controlled alongside the manuscript, that needs the sponsor's sign-off
+first.

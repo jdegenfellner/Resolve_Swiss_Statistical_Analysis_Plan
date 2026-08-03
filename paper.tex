@@ -134,37 +134,63 @@ in a companion paper; see section~\ref{sec:interim}}
 
 \subsection{Trial design}
 
-RESOLVE Swiss is a two-arm, parallel-group, cluster randomised controlled
-trial with 1:1 intended allocation at the level of the physiotherapy practice.
-Practices are the clusters; patients treated within a practice are the units of
-observation and of analysis. Outcome data are collected at baseline and at
-18 weeks after randomisation \open{confirm the full follow-up schedule; the
-Australian trial also collected 26 and 52 weeks}.
+RESOLVE Swiss is a two-arm, parallel-group, cluster randomised, investigator
+blinded, multicentre trial with 1:1 intended allocation at the level of the
+physiotherapy practice \citep{protocol2025}. Practices and institutions are the
+clusters; patients treated within a practice are the units of observation and of
+analysis. Physical outcomes are assessed at baseline and at 18 weeks; all
+self-reported questionnaires, including the primary outcome, are additionally
+collected at 26 and 52 weeks after the baseline measurement.
 
-At the time of writing, \open{confirm} 5 practices are allocated to the
-intervention arm and 9 to the control arm. The consequences of that split, and
-of any change to it, are quantified in section~\ref{sec:samplesize}.
+The protocol plans 20 physiotherapy institutions across Switzerland. At the time
+of writing \open{confirm} 5 practices are allocated to the intervention arm and
+9 to the control arm, a deviation from the planned number and from the 1:1
+ratio. The consequences of that split, and of any change to it, are quantified
+in section~\ref{sec:samplesize}; it is a deviation that has to be reported under
+the CONSORT cluster extension \citep{campbell2012} whether or not it is
+corrected.
 
-Ethical approval was granted by \open{ethics committee and approval number}.
+The trial is a Category A study under the Swiss Ordinance on Clinical Trials
+(ClinO Art.~61). Ethical approval was granted by \open{ethics committee and
+approval number}; the trial will be registered at ClinicalTrials.gov and in the
+Swiss National Clinical Trial Portal \open{registration numbers once issued}.
 
 \subsection{Eligibility}
 
 A cluster randomised trial has two eligibility layers, and both are reported
 here because selection can operate at either \citep{campbell2012}.
 
-\emph{Practices.} \open{practice-level inclusion criteria: e.g. minimum patient
-volume, number of therapists, willingness to be randomised to either arm,
-completion of the intervention training}
+\emph{Practices.} Swiss outpatient physiotherapy practices and institutions
+willing to be allocated to either arm. Therapists in practices allocated to the
+intervention must complete a five-day RESOLVE training course and have their
+skills assessed before delivering any study treatment
+\open{confirm any further practice-level criteria, e.g. minimum patient volume}.
 
-\emph{Participants.} \open{participant-level criteria; from the sample size
-work the trial requires a baseline RMDQ of at least 7 points, please confirm
-and complete the remaining criteria}
+\emph{Participants.} Adults aged 18 to 75 referred to physiotherapy for low
+back pain, with non-specific low back pain persisting for at least three
+months, a baseline RMDQ of at least 7 points, sufficient German to follow the
+study procedures and complete the questionnaires, internet access and
+willingness to use a private device, and a person available to assist with home
+training. Participants are excluded for evidence of specific spinal pathology
+(malignancy, fracture, infection, inflammatory joint or bone disease),
+radiculopathy, pregnancy or being less than six months postpartum, a coexisting
+major medical disease contraindicating general exercise, spinal surgery within
+the preceding 12 months, an intra-articular or perineural lumbar steroid
+injection within the preceding three months, inability to follow the study
+procedures, or an open legal dispute with an insurer relating to back pain.
+
+An fMRI substudy enrols 40 of the 220 participants; its analysis is exploratory
+and is not covered by this plan.
 
 \subsection{Interventions}
 
-\open{brief description of the intervention and of usual physiotherapy as the
-comparator, with a reference to the protocol; note the number of sessions and
-the training the intervention therapists received}
+Participants in both arms receive 12 one-to-one sessions with a qualified
+physiotherapist over 16 weeks; the first two sessions may last an hour and the
+remaining ten about 30 minutes, weekly at first and then fortnightly. The
+intervention is the RESOLVE programme --- pain science education, graded sensory
+retraining, and graded motor relearning and loading --- delivered by therapists
+who have completed the five-day training. The comparator is usual
+physiotherapy, delivered by therapists who have not.
 
 Usual physiotherapy is expected to be heterogeneous between practices. What
 control practices actually deliver will be recorded and described, because in a
@@ -172,21 +198,29 @@ pragmatic trial the comparator is part of the finding rather than a nuisance.
 
 \subsection{Randomisation and allocation}
 
-\open{describe how the practices were allocated, who generated the sequence,
-and whether allocation was simple, stratified, or covariate-constrained}
+Practices are allocated 1:1 by the central trial coordinator at ZHAW, before
+the intervention therapists are trained. The allocation sequence is concealed
+from everyone involved in recruitment and enrolment, and the randomisation
+table is password protected. The protocol specifies neither stratification nor
+covariate-constrained allocation \open{confirm that allocation was simple}.
 
-Two points matter for the analysis. First, any variable used to stratify or
-constrain the allocation must be adjusted for in the analysis, otherwise the
-standard errors are wrong \citep{kahan2012}. Second, if practices were recruited
-in waves and later waves were allocated non-randomly, wave and treatment arm
-would be confounded; recruitment wave will therefore be recorded for every
-practice and, if practices entered in distinct waves, carried in the model as a
-covariate.
+Two points follow for the analysis. First, if any variable was in fact used to
+stratify or constrain the allocation, it must be adjusted for in the analysis,
+otherwise the standard errors are wrong \citep{kahan2012, hemming2023}; if
+allocation was simple, no such adjustment is required and the randomisation
+test of section~\ref{sec:smallk} may enumerate all allocations. Second, if
+practices were recruited in waves and later waves were allocated non-randomly,
+wave and treatment arm would be confounded; recruitment wave will therefore be
+recorded for every practice and, if practices entered in distinct waves,
+carried in the model as a covariate.
 
-Participants cannot be blinded to the treatment they receive. Outcome
-questionnaires are self-reported. \open{state who is blinded --- data manager,
-statistician --- and confirm that the statistician will be blinded to arm
-labels until the primary analysis is complete}
+Participants cannot be blinded, since the intervention includes a substantial
+home training component. The three physical assessments --- two-point
+discrimination, the point-to-point test and lumbar movement control --- are
+video-recorded and rated by a blinded assessor. The remaining outcomes are
+self-reported and completed at home through REDCap, which removes interviewer
+influence. \open{confirm that the statistician will be blinded to arm labels
+until the primary analysis is complete}
 
 \subsection{Recruitment of participants after cluster allocation}
 
@@ -209,7 +243,11 @@ screening counts rather than by significance testing
 
 The target difference is 2 points on the Roland--Morris Disability
 Questionnaire (RMDQ, range 0--24), the smallest between-group difference the
-investigators consider clinically worthwhile in this population. The between
+investigators consider clinically worthwhile in this population
+\citep{protocol2025}. The calculation below is a rederivation of the protocol's
+sample size under the hypothesis framing set out in
+section~\ref{sec:hypothesis}; it lands on essentially the number the protocol
+already commits to, by a route that a reader can reproduce. The between
 participant standard deviation of the RMDQ at 18 weeks is taken from the
 Australian trial (intervention 3.6, SD 4.6; control 6.4, SD 5.8
 \citep{bagg2022}), giving a pooled SD of 5.2 points. With a two-sided
@@ -291,8 +329,10 @@ All sample size and power computations are reproducible from the script
 
 \subsection{Data integrity and missing data}
 
-\open{describe the data capture system (REDCap), double entry or electronic
-capture, and the data-cleaning steps}
+Patient-reported outcomes are captured electronically in REDCap, completed by
+participants at home through a personalised link; the eCRF holds eligibility,
+demographic, medical-history and physical-assessment data. \open{confirm the
+data-cleaning and query workflow, and who locks the database}
 
 Data will be inspected for implausible values, range violations and duplicate
 records before the analysis begins, and the cleaned data set will be locked
@@ -300,6 +340,48 @@ before any comparison between arms is made. We will report the amount and the
 pattern of missing outcome data by arm and by practice, since in a cluster
 trial an entire practice can be lost, which is a different problem from
 individual dropout.
+
+\subsection{Hypothesis framing: a clarification of the protocol}
+\label{sec:hypothesis}
+
+The protocol states the primary hypothesis as a superiority-by-a-margin test:
+the null hypothesis is that the intervention does \emph{not} exceed usual
+physiotherapy by more than 2 RMDQ points, tested one-sided at
+$\alpha = 0.05$ \citep{protocol2025}. This plan instead tests the conventional
+null of no difference, with 2 points as the \emph{target} difference the trial
+is powered to detect. The change is deliberate and is recorded here rather than
+made silently.
+
+The reason is that the two framings imply very different trials. Under the
+margin formulation the quantity that drives power is the amount by which the
+true effect exceeds 2 points, not the effect itself. The sample size of 110 per
+arm was obtained under that formulation with an assumed true effect of about
+2.4 points and a standard deviation of about 0.9 --- but that 0.9 is the
+precision-weighted spread of the pooled treatment-effect estimates from the two
+previous studies \citep{waelti2015, bagg2022}, that is, uncertainty about the
+true effect, whereas the quantity the formula requires is the between-participant
+standard deviation of the RMDQ, which is about 5.2 points. Recomputed with 5.2,
+a margin-based design powered to detect an excess of 0.4 points over a 2-point
+null would require several thousand participants per arm. It is not attainable
+and was never what the trial was resourced for.
+
+Read as a conventional superiority trial targeting a 2-point difference, by
+contrast, 110 participants per arm is close to right
+(section~\ref{sec:samplesize}). We therefore interpret the protocol's intent ---
+detecting a clinically meaningful difference of at least 2 points --- in the
+conventional way, and treat the margin wording as an infelicity rather than a
+design choice. \open{this requires the sponsor's agreement and, if the wording
+in the registered protocol is to change, a protocol amendment; the alternative
+is to keep the margin formulation and state openly that the trial is
+underpowered for it}
+
+The protocol also specifies a one-sided test for the primary outcome and
+two-sided tests for the secondary outcomes. A one-sided test at $\alpha = 0.05$
+is equivalent to a two-sided test at 0.10 in the direction of interest and is
+generally discouraged in trial reports. We prespecify two-sided tests
+throughout and report the estimate with its two-sided 95\% confidence interval,
+which is the more conservative choice and does not affect the direction of any
+conclusion. \open{sponsor to confirm}
 
 \subsection{Analytic principles}
 
@@ -333,9 +415,29 @@ Roland--Morris Disability Questionnaire, a 24-item instrument scored from 0
 
 \subsubsection{Secondary outcomes}
 
-\open{list secondary outcomes and their instruments and time points, e.g. pain
-intensity (NRS), quality of life (EQ-5D-5L), global perceived effect, adverse
-events, credibility/expectancy, and any process measures}
+The protocol specifies a large number of secondary endpoints, which we group
+here by the analysis they receive.
+
+\emph{Patient-reported, continuous, at 18, 26 and 52 weeks.} Pain intensity
+(numeric rating scale); Patient Specific Functional Scale; Work Productivity and
+Activity Impairment; Neurophysiology of Pain Questionnaire; Back Pain Attitudes
+Questionnaire; Pain Self-Efficacy Questionnaire; Depression Anxiety and Stress
+Scale; Tampa Scale of Kinesiophobia; EQ-5D-5L; Insomnia Severity Index;
+Fremantle Back Awareness Questionnaire; Goal Attainment Scale; the
+epistemic-beliefs questionnaire; and the treatment expectation, perceived
+improvement and satisfaction items.
+
+\emph{Physical, continuous, at 18 weeks only.} Two-point discrimination and the
+point-to-point test of tactile acuity, and lumbar movement control, each rated
+from video by a blinded assessor.
+
+\emph{Counts and other.} Medication intake, treatment adherence, and adverse
+events.
+
+Cost-effectiveness (quality-adjusted life years and incremental
+cost-effectiveness ratios) and the fMRI substudy are reported separately and
+are not covered by this plan. \open{confirm that the health-economic analysis
+is out of scope here}
 
 % ============================================================
 \section{Analysis}
@@ -487,15 +589,26 @@ and is what makes the next trial in this field easier to design
 
 \subsection{Supportive analysis over both time points}
 
-To keep the results comparable with the Australian trial \citep{bagg2021}, we
-will additionally fit a mixed model for repeated measures using all
-measurement occasions, with fixed effects for arm, time, and their interaction,
-a random intercept for practice and a random intercept for participant nested
-within practice. The treatment effect at 18 weeks is the corresponding
-arm-by-time contrast. This analysis is supportive; \eqref{eq:primary} remains
-the primary one. Mixed models for repeated measures behave acceptably in
-cluster randomised trials with continuous outcomes missing at random
-\citep{bell2020}.
+The protocol specifies a linear mixed model with arm, time and their
+interaction, time entered as an ordered categorical variable
+\citep{protocol2025}. We fit that model as a supportive analysis, using all
+four occasions on which the RMDQ is collected --- baseline, 18, 26 and 52
+weeks --- with a random intercept for practice and a random intercept for
+participant nested within practice. The treatment effect at 18 weeks is the
+corresponding arm-by-time contrast, and the model additionally provides the
+effects at 26 and 52 weeks, which are secondary.
+
+Two differences from the protocol's wording are worth recording. The protocol's
+model statement does not mention a random effect for the practice; omitting it
+would treat patients from the same practice as independent and understate the
+standard error, so a practice random effect is carried in every model in this
+plan. And with the RMDQ measured before as well as after randomisation, the
+baseline-adjusted model \eqref{eq:primary} is the more precise estimator of the
+18-week effect than the arm-by-time contrast, which is why it, and not the
+repeated-measures model, is the primary analysis \citep{hooper2018,
+vickers2001}. Mixed models for repeated measures do behave acceptably in cluster
+randomised trials with continuous outcomes missing at random, including in
+simulations with as few as five clusters per arm \citep{bell2020}.
 
 \subsection{Secondary outcomes}
 
@@ -544,18 +657,21 @@ reported separately and not imputed.
 
 \subsection{Non-adherence and contamination}
 
-Adherence will be summarised as the number of intervention sessions attended
-and as the proportion of participants attending at least \open{threshold} of
-them. If non-adherence is substantial, we will estimate the complier-average
-causal effect using allocation as an instrument. With 14 clusters this analysis
-is imprecise, and it is prespecified as exploratory.
+Adherence will be summarised as the number of the 12 sessions attended and as
+the proportion of participants attending at least 75\% of the intervention,
+which is the definition the protocol uses. Following the protocol, the mean
+effect in the principal stratum of participants who would adhere regardless of
+allocation will be estimated by instrumental variable regression with
+allocation as the instrument. With 14 clusters this analysis is imprecise, and
+it is prespecified as exploratory.
 
-Contamination --- control practices adopting elements of the intervention --- is
-a real possibility in a trial where practices know each other. \open{describe
-how contamination is measured, e.g. a therapist questionnaire at the end of the
-trial}. Any contamination detected will be described and its likely direction
-of effect discussed; it biases the estimated effect towards the null
-\citep{hemming2021}.
+Contamination is limited by design rather than only measured: the five-day
+RESOLVE training is unavailable to control therapists, and the German-language
+RESOLVE materials exist only inside a secured web application accessible to
+intervention therapists and participants. Treatment fidelity is monitored
+through documentation of every treatment session. We will nonetheless describe
+any contamination that comes to light and discuss its likely direction, since
+it biases the estimated effect towards the null \citep{hemming2021}.
 
 \subsection{Interim analysis}
 \label{sec:interim}
@@ -674,10 +790,14 @@ Urban setting, n (\%) & xx (xx) & xx (xx) & xx (xx)\\
 Number of participants & xx & xx & xx\\
 Age, mean (SD) & xx (xx) & xx (xx) & xx (xx)\\
 Female, n (\%) & xx (xx) & xx (xx) & xx (xx)\\
-Duration of current episode & xx (xx) & xx (xx) & xx (xx)\\
+Duration of current episode, median (IQR) & xx (xx to xx) & xx (xx to xx) & xx (xx to xx)\\
 RMDQ, mean (SD) & xx (xx) & xx (xx) & xx (xx)\\
-Pain intensity, mean (SD) & xx (xx) & xx (xx) & xx (xx)\\
-\open{complete} & & &\\
+Pain intensity (NRS), mean (SD) & xx (xx) & xx (xx) & xx (xx)\\
+EQ-5D-5L index, mean (SD) & xx (xx) & xx (xx) & xx (xx)\\
+Pain Self-Efficacy Questionnaire, mean (SD) & xx (xx) & xx (xx) & xx (xx)\\
+Tampa Scale of Kinesiophobia, mean (SD) & xx (xx) & xx (xx) & xx (xx)\\
+In paid work, n (\%) & xx (xx) & xx (xx) & xx (xx)\\
+Highest education level, n (\%) & xx (xx) & xx (xx) & xx (xx)\\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -708,9 +828,27 @@ Intra-cluster correlation (95\% CI) & \multicolumn{4}{l}{xx (xx to xx)}\\
 \label{tab:sec}
 \begin{tabularx}{\textwidth}{Xcccc}
 \toprule
-Outcome & Intervention & Control & Effect (95\% CI) & $p$\\
+Outcome and time point & Intervention & Control & Effect (95\% CI) & $p$\\
+& mean (SD) & mean (SD) & &\\
 \midrule
-\open{list} & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
+\multicolumn{5}{l}{\emph{Pain intensity (NRS)}}\\
+\quad 18 / 26 / 52 weeks & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
+\multicolumn{5}{l}{\emph{Patient Specific Functional Scale}}\\
+\quad 18 / 26 / 52 weeks & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
+\multicolumn{5}{l}{\emph{Tactile acuity: two-point discrimination, point-to-point}}\\
+\quad 18 weeks & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
+\multicolumn{5}{l}{\emph{Lumbar movement control}}\\
+\quad 18 weeks & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
+\multicolumn{5}{l}{\emph{Quality of life (EQ-5D-5L)}}\\
+\quad 18 / 26 / 52 weeks & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
+\multicolumn{5}{l}{\emph{Pain knowledge and attitudes (NPQ, Back-PAQ, PSEQ)}}\\
+\quad 18 / 26 / 52 weeks & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
+\multicolumn{5}{l}{\emph{Psychological measures (DASS, TSK)}}\\
+\quad 18 / 26 / 52 weeks & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
+\multicolumn{5}{l}{\emph{Sleep (ISI), body awareness (FreBAQ), goal attainment (GAS)}}\\
+\quad 18 / 26 / 52 weeks & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
+\multicolumn{5}{l}{\emph{Work absence (WPAI), medication intake, adverse events}}\\
+\quad 18 / 26 / 52 weeks & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
 \bottomrule
 \end{tabularx}
 \end{table}
