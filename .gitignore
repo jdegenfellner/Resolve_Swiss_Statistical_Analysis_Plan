@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+
+# LaTeX build artefacts
+*.aux
+*.log
+*.out
+*.blg
+*.bbl
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# R
+.Rhistory
+.RData
+.Rproj.user/
+
+# Confidential trial documents — not for distribution
+stuff/
