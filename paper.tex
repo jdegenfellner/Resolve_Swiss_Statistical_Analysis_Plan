@@ -69,16 +69,15 @@ evaluates graded sensorimotor retraining combined with pain neuroscience
 education against usual physiotherapy for people with chronic low back pain.
 
 \textbf{Design and analysis.} RESOLVE Swiss is a two-arm parallel-group
-\emph{cluster} randomised controlled trial in Swiss physiotherapy practices;
-the practice is the unit of randomisation and the patient is the unit of
+\emph{cluster} randomised controlled trial in Swiss physiotherapy practices.
+The practice is the unit of randomisation and the patient is the unit of
 analysis. The primary outcome is back-specific disability, measured with the
 Roland--Morris Disability Questionnaire at 18 weeks after randomisation. The
 primary analysis is a linear mixed model with a random intercept for practice
 and adjustment for the baseline value of the outcome, estimating the
 participant-average difference between arms with Kenward--Roger degrees of
 freedom. Because the trial randomises a small number of practices, and because
-mixed models are known to produce anti-conservative inference in that setting,
-we prespecify two further analyses of the primary outcome: a cluster-level
+mixed-model inference is anti-conservative in that setting, we prespecify two further analyses of the primary outcome: a cluster-level
 (two-stage) analysis and an exact randomisation test over the finite set of
 possible allocations. We report the intra-cluster correlation with its
 uncertainty, the analyses of secondary outcomes, the handling of missing data,
@@ -103,15 +102,15 @@ Chronic low back pain is among the largest contributors to years lived with
 disability worldwide, and the effects of the treatments physiotherapists
 currently offer are, on average, modest. The Australian RESOLVE trial tested
 whether a treatment aimed at the central nervous system representation of the
-back --- graded sensorimotor precision training preceded by pain neuroscience
-education --- reduces pain more than a sham intervention, and reported a small
+back (graded sensorimotor precision training preceded by pain neuroscience
+education) reduces pain more than a sham intervention, and reported a small
 but consistent benefit at 18 weeks \citep{bagg2022}. An earlier and much
 smaller Swiss pilot compared a related programme with usual physiotherapy and
 pointed in the same direction without being able to resolve the question
 \citep{waelti2015}.
 
 Two things are unresolved. First, RESOLVE compared the intervention with a
-sham; the clinically relevant comparison for Swiss practice is against usual
+sham. The clinically relevant comparison for Swiss practice is against usual
 physiotherapy as it is actually delivered. Second, the intervention has so far
 been delivered in a trial setting by trial therapists. RESOLVE Swiss therefore
 delivers it in ordinary physiotherapy practices, by the therapists who work
@@ -139,8 +138,8 @@ in a companion paper; see section~\ref{sec:interim}}
 RESOLVE Swiss is a two-arm, parallel-group, cluster randomised, investigator
 blinded, multicentre trial with 1:1 intended allocation at the level of the
 physiotherapy practice \citep{protocol2025}. Practices and institutions are the
-clusters; patients treated within a practice are the units of observation and of
-analysis. Physical outcomes are assessed at baseline and at 18 weeks; all
+clusters. Patients treated within a practice are the units of observation and of
+analysis. Physical outcomes are assessed at baseline and at 18 weeks. All
 self-reported questionnaires, including the primary outcome, are additionally
 collected at 26 and 52 weeks after the baseline measurement.
 
@@ -148,13 +147,13 @@ The protocol plans 20 physiotherapy institutions across Switzerland. At the time
 of writing \open{confirm} 5 practices are allocated to the intervention arm and
 9 to the control arm, a deviation from the planned number and from the 1:1
 ratio. The consequences of that split, and of any change to it, are quantified
-in section~\ref{sec:samplesize}; it is a deviation that has to be reported under
+in section~\ref{sec:samplesize}. The deviation has to be reported under
 the CONSORT cluster extension \citep{campbell2012} whether or not it is
 corrected.
 
 The trial is a Category A study under the Swiss Ordinance on Clinical Trials
 (ClinO Art.~61). Ethical approval was granted by \open{ethics committee and
-approval number}; the trial will be registered at ClinicalTrials.gov and in the
+approval number}. The trial will be registered at ClinicalTrials.gov and in the
 Swiss National Clinical Trial Portal \open{registration numbers once issued}.
 
 \subsection{Eligibility}
@@ -181,16 +180,16 @@ the preceding 12 months, an intra-articular or perineural lumbar steroid
 injection within the preceding three months, inability to follow the study
 procedures, or an open legal dispute with an insurer relating to back pain.
 
-An fMRI substudy enrols 40 of the 220 participants; its analysis is exploratory
+An fMRI substudy enrols 40 of the 220 participants. Its analysis is exploratory
 and is not covered by this plan.
 
 \subsection{Interventions}
 
 Participants in both arms receive 12 one-to-one sessions with a qualified
-physiotherapist over 16 weeks; the first two sessions may last an hour and the
+physiotherapist over 16 weeks. The first two sessions may last an hour and the
 remaining ten about 30 minutes, weekly at first and then fortnightly. The
-intervention is the RESOLVE programme --- pain science education, graded sensory
-retraining, and graded motor relearning and loading --- delivered by therapists
+intervention is the RESOLVE programme (pain science education, graded sensory
+retraining, and graded motor relearning and loading), delivered by therapists
 who have completed the five-day training. The comparator is usual
 physiotherapy, delivered by therapists who have not.
 
@@ -208,17 +207,17 @@ covariate-constrained allocation \open{confirm that allocation was simple}.
 
 Two points follow for the analysis. First, if any variable was in fact used to
 stratify or constrain the allocation, it must be adjusted for in the analysis,
-otherwise the standard errors are wrong \citep{kahan2012, hemming2023}; if
+otherwise the standard errors are wrong \citep{kahan2012, hemming2023}. If
 allocation was simple, no such adjustment is required and the randomisation
 test of section~\ref{sec:smallk} may enumerate all allocations. Second, if
 practices were recruited in waves and later waves were allocated non-randomly,
-wave and treatment arm would be confounded; recruitment wave will therefore be
+wave and treatment arm would be confounded. Recruitment wave will therefore be
 recorded for every practice and, if practices entered in distinct waves,
 carried in the model as a covariate.
 
 Participants cannot be blinded, since the intervention includes a substantial
-home training component. The three physical assessments --- two-point
-discrimination, the point-to-point test and lumbar movement control --- are
+home training component. The three physical assessments (two-point
+discrimination, the point-to-point test and lumbar movement control) are
 video-recorded and rated by a blinded assessor. The remaining outcomes are
 self-reported and completed at home through REDCap, which removes interviewer
 influence. \open{confirm that the statistician will be blinded to arm labels
@@ -235,7 +234,7 @@ therefore report, by arm and by practice, the number of patients screened,
 found eligible, approached, and consenting, and we will compare baseline
 characteristics between arms with this threat explicitly in mind. Baseline
 imbalance in a cluster randomised trial with few clusters is expected by chance
-and is not by itself evidence of bias; it is, however, the main signal that
+and is not by itself evidence of bias. It is, however, the main signal that
 recruitment differed between arms, and it will be interpreted alongside the
 screening counts rather than by significance testing
 \citep{campbell2012, senn1994}.
@@ -248,13 +247,13 @@ Questionnaire (RMDQ, range 0--24), the smallest between-group difference the
 investigators consider clinically worthwhile in this population
 \citep{protocol2025}. The calculation below is a rederivation of the protocol's
 sample size under the hypothesis framing set out in
-section~\ref{sec:hypothesis}; it lands on essentially the number the protocol
+section~\ref{sec:hypothesis}. It lands on essentially the number the protocol
 already commits to, by a route that a reader can reproduce. The between
 participant standard deviation of the RMDQ at 18 weeks is taken from the
 Australian trial (intervention 3.6, SD 4.6; control 6.4, SD 5.8
 \citep{bagg2022}), giving a pooled SD of 5.2 points. With a two-sided
 $\alpha = 0.05$ and 80\% power, an individually randomised trial would need
-108 participants per arm; adjusting the 18-week score for its baseline value,
+108 participants per arm. Adjusting the 18-week score for its baseline value,
 with an assumed baseline-to-follow-up correlation of 0.6, reduces this to 69
 per arm.
 
@@ -270,30 +269,30 @@ coefficient of variation of practice size. Intra-cluster correlations reported
 for primary care outcomes are usually small, with a median near 0.01
 \citep{adams2004}. Unequal cluster size can be ignored when $\mathrm{cv} < 0.23$,
 but for trials randomising general practices $\mathrm{cv}$ is typically around
-0.65 \citep{eldridge2006}; physiotherapy practices are the closest analogue we
+0.65 \citep{eldridge2006}. Physiotherapy practices are the closest analogue we
 have, so we plan on $\mathrm{cv} = 0.65$ and report the more optimistic 0.4 as
 well. With $\bar m = 14$, $k = 14$ and $\mathrm{cv} = 0.65$, the design effect
 is 1.19 at $\rho = 0.01$, 1.56 at $\rho = 0.03$ and 1.93 at $\rho = 0.05$, so
 the requirement is 82, 107 and 133 participants per arm respectively. The trial
 therefore aims for 100 analysed participants per arm, which corresponds to 110
-recruited per arm allowing 10\% loss to follow-up (Table~\ref{tab:ss}); this
+recruited per arm allowing 10\% loss to follow-up (Table~\ref{tab:ss}). This
 covers an intra-cluster correlation up to about 0.03.
 
 Two approximations in this calculation should be named. The variance reduction
 from baseline adjustment is applied as the individual-level factor $1-r^2$ and
-the clustering inflation as \eqref{eq:de}; a formula that handles baseline
+the clustering inflation as \eqref{eq:de}. A formula that handles baseline
 adjustment inside a cluster randomised design, using the individual-level and
 the cluster-level baseline correlations separately, is available and gives a
 slightly smaller requirement when the cluster-level correlation is high
 \citep{teerenstra2012}. Our version is therefore mildly conservative. Second,
-the intra-cluster correlation is assumed, not known; the calculation is
+the intra-cluster correlation is assumed, not known. The calculation is
 reported across a range of values rather than at a single one, which is what
 sensitivity to this assumption requires \citep{hemming2023}.
 
-Three features of the design as it currently stands should be stated plainly
+Three features of the current design should be stated plainly
 rather than buried. First, with 14 practices the between-cluster component of
 the variance rests on 14 numbers, and the relevant reference distribution has
-roughly 12 degrees of freedom; power is correspondingly lower than the design
+roughly 12 degrees of freedom. Power is correspondingly lower than the design
 effect alone suggests. Holding the analysed sample at 200 participants and
 using a $t$ reference distribution on $k_1 + k_2 - 2$ degrees of freedom, the
 power to detect a 2-point difference is 77\% at $\rho = 0.01$, 65\% at
@@ -304,11 +303,11 @@ recovers only about 3 percentage points of power at every intra-cluster
 correlation considered, because the total analysed sample is what it is. Equal
 allocation of clusters is the efficient choice when the intra-cluster
 correlation and the total variance are the same in both arms, and a deliberate
-imbalance is justified only when they are not \citep{copas2021}; we have no
+imbalance is justified only when they are not \citep{copas2021}. We have no
 reason to expect them to differ here, so 7 versus 7 is preferable, but the
 efficiency argument for changing the split is weak.
 
-Third --- and this is the binding constraint --- \emph{the number of practices
+Third, and this is the binding constraint: \emph{the number of practices
 is too small}. Five clusters in one arm sits at the bottom of the range in
 which the recommended analyses have been evaluated \citep{leyrat2018}, and a
 minimum of about ten clusters per arm has been recommended for cluster
@@ -318,7 +317,7 @@ clusters per arm to any sample size derived from a normal approximation
 imbalance on practice characteristics and reduce the number of analyses
 available \citep{taljaard2016}. Adding practices while holding practice size at
 14 participants raises power from 62\% with 5 per arm to 80\% with 7 per arm
-and 90\% with 9 per arm at $\rho = 0.01$ (Table~\ref{tab:power}) --- a much
+and 90\% with 9 per arm at $\rho = 0.01$ (Table~\ref{tab:power}). That is a much
 better return than adding patients to the practices already enrolled, because
 increasing cluster size at a fixed number of clusters has strongly diminishing
 returns \citep{hemming2017}. If additional practices are recruited, they must
@@ -332,7 +331,7 @@ All sample size and power computations are reproducible from the script
 \subsection{Data integrity and missing data}
 
 Patient-reported outcomes are captured electronically in REDCap, completed by
-participants at home through a personalised link; the eCRF holds eligibility,
+participants at home through a personalised link. The eCRF holds eligibility,
 demographic, medical-history and physical-assessment data. \open{confirm the
 data-cleaning and query workflow, and who locks the database}
 
@@ -358,10 +357,10 @@ The reason is that the two framings imply very different trials. Under the
 margin formulation the quantity that drives power is the amount by which the
 true effect exceeds 2 points, not the effect itself. The sample size of 110 per
 arm was obtained under that formulation with an assumed true effect of about
-2.4 points and a standard deviation of about 0.9 --- but that 0.9 is the
+2.4 points and a standard deviation of about 0.9. That 0.9, however, is the
 precision-weighted spread of the pooled treatment-effect estimates from the two
-previous studies \citep{waelti2015, bagg2022}, that is, uncertainty about the
-true effect, whereas the quantity the formula requires is the between-participant
+previous studies \citep{waelti2015, bagg2022}. It measures uncertainty about the
+true effect. The quantity the formula requires is the between-participant
 standard deviation of the RMDQ, which is about 5.2 points. Recomputed with 5.2,
 a margin-based design powered to detect an excess of 0.4 points over a 2-point
 null would require several thousand participants per arm. It is not attainable
@@ -369,8 +368,8 @@ and was never what the trial was resourced for.
 
 Read as a conventional superiority trial targeting a 2-point difference, by
 contrast, 110 participants per arm is close to right
-(section~\ref{sec:samplesize}). We therefore interpret the protocol's intent ---
-detecting a clinically meaningful difference of at least 2 points --- in the
+(section~\ref{sec:samplesize}). We therefore interpret the protocol's intent,
+detecting a clinically meaningful difference of at least 2 points, in the
 conventional way, and treat the margin wording as an infelicity rather than a
 design choice. \open{this requires the sponsor's agreement and, if the wording
 in the registered protocol is to change, a protocol amendment; the alternative
@@ -396,7 +395,7 @@ the primary and secondary analyses, but the interpretation will rest on the
 estimate and its interval rather than on whether a threshold was crossed
 \citep{wasserstein2019, amrhein2019}.
 \item Confidence intervals and $p$ values will not be adjusted for
-multiplicity. There is one primary outcome at one time point; secondary
+multiplicity. There is one primary outcome at one time point. Secondary
 outcomes are explicitly labelled as secondary and will be interpreted as such
 \citep{gamble2017}.
 \item Every analysis accounts for clustering by practice. No analysis will
@@ -477,8 +476,8 @@ it.
 One consequence deserves stating, because it constrains how the primary model
 below may be read. A mixed model with a random intercept weights clusters by
 their inverse variance, which is neither participant-average nor cluster-average
-weighting; when cluster size is informative --- that is, when outcomes or
-treatment effects vary systematically with practice size --- such a model
+weighting. When cluster size is informative (that is, when outcomes or
+treatment effects vary systematically with practice size), such a model
 targets neither estimand cleanly \citep{kahan2023}. The cluster-level analyses
 specified in section~\ref{sec:smallk} recover each estimand explicitly through
 their weighting, which is a second reason to report them rather than treating
@@ -501,7 +500,7 @@ effect. Analysis of covariance on the follow-up score is preferred to analysing
 change scores: it is unbiased under randomisation, it is more precise whenever
 baseline and follow-up are positively correlated, and it does not inherit the
 regression-to-the-mean behaviour of change scores \citep{vickers2001,
-twisk2018}; for cluster randomised trials specifically, analysis of covariance
+twisk2018}. For cluster randomised trials specifically, analysis of covariance
 and the equivalent constrained-baseline longitudinal formulation are the
 recommended ways to use a pre-randomisation measurement of the outcome
 \citep{hooper2018}. The mixed-model analysis of covariance estimator is
@@ -516,8 +515,8 @@ covariate costs a degree of freedom, so that the degrees of freedom available
 for the treatment effect are approximately the number of practices minus two
 minus the number of cluster-level covariates \citep{hemming2025}. With 14
 practices the budget is 12, and we therefore adjust for the individual baseline
-score --- an individual-level covariate, which does not consume cluster-level
-degrees of freedom --- and for nothing else except the variables used to
+score, an individual-level covariate that consumes no cluster-level
+degrees of freedom, and for nothing else except the variables used to
 stratify or constrain the randomisation, which must be adjusted for or the type
 I error rate is not maintained \citep{kahan2012, hemming2023}.
 
@@ -594,14 +593,14 @@ and is what makes the next trial in this field easier to design
 The protocol specifies a linear mixed model with arm, time and their
 interaction, time entered as an ordered categorical variable
 \citep{protocol2025}. We fit that model as a supportive analysis, using all
-four occasions on which the RMDQ is collected --- baseline, 18, 26 and 52
-weeks --- with a random intercept for practice and a random intercept for
+four occasions on which the RMDQ is collected (baseline, 18, 26 and 52
+weeks), with a random intercept for practice and a random intercept for
 participant nested within practice. The treatment effect at 18 weeks is the
 corresponding arm-by-time contrast, and the model additionally provides the
 effects at 26 and 52 weeks, which are secondary.
 
 Two differences from the protocol's wording are worth recording. The protocol's
-model statement does not mention a random effect for the practice; omitting it
+model statement does not mention a random effect for the practice. Omitting it
 would treat patients from the same practice as independent and understate the
 standard error, so a practice random effect is carried in every model in this
 plan. And with the RMDQ measured before as well as after randomisation, the
@@ -691,12 +690,12 @@ randomised trials \citep{hopewell2025, campbell2012}, including a flow diagram
 that tracks both practices and participants (Figure~\ref{fig:flow}). Two items
 of the cluster extension have shaped this plan directly: items 7a and 17a
 require the intra-cluster correlation to be reported, with an indication of its
-uncertainty, at the design stage and for each primary outcome; item 13a requires
+uncertainty, at the design stage and for each primary outcome. Item 13a requires
 the flow diagram to give the number of clusters as well as the number of
 individuals at every stage \citep{campbell2012}.
 
 The guideline for the content of statistical analysis plans that this document
-follows \citep{gamble2017} contains no items specific to clustering; an
+follows \citep{gamble2017} contains no items specific to clustering. An
 extension for cluster randomised trials is under development but not yet
 published \citep{hemming2025sap}. We have therefore added the cluster-specific
 items ourselves: the estimand and its weighting, the small-sample correction,
@@ -782,13 +781,13 @@ panel B the participants.}
 \toprule
 Characteristic & Intervention & Control & All\\
 \midrule
-\multicolumn{4}{l}{\emph{Panel A --- practices}}\\
+\multicolumn{4}{l}{\emph{Panel A: practices}}\\
 Number of practices & xx & xx & xx\\
 Therapists per practice, median (IQR) & xx (xx to xx) & xx (xx to xx) & xx (xx to xx)\\
 Participants per practice, median (IQR) & xx (xx to xx) & xx (xx to xx) & xx (xx to xx)\\
 Urban setting, n (\%) & xx (xx) & xx (xx) & xx (xx)\\
 \midrule
-\multicolumn{4}{l}{\emph{Panel B --- participants}}\\
+\multicolumn{4}{l}{\emph{Panel B: participants}}\\
 Number of participants & xx & xx & xx\\
 Age, mean (SD) & xx (xx) & xx (xx) & xx (xx)\\
 Female, n (\%) & xx (xx) & xx (xx) & xx (xx)\\
@@ -896,13 +895,13 @@ Outcome and time point & Intervention & Control & Effect (95\% CI) & $p$\\
 
 % ---- 18 weeks ----------------------------------------------------------
 \node[bx=64mm, anchor=north] (fuI) at ([yshift=-8mm]allocI.south)
-  {\textbf{18 weeks --- primary endpoint}\\
+  {\textbf{18 weeks (primary endpoint)}\\
    Practices withdrawn ($n=$ xx)\\
    Participants assessed ($n=$ xx)\\
    \quad Lost to follow-up ($n=$ xx)\\
    \quad Withdrew consent ($n=$ xx), other ($n=$ xx)};
 \node[bx=64mm, anchor=north] (fuC) at ([yshift=-8mm]allocC.south)
-  {\textbf{18 weeks --- primary endpoint}\\
+  {\textbf{18 weeks (primary endpoint)}\\
    Practices withdrawn ($n=$ xx)\\
    Participants assessed ($n=$ xx)\\
    \quad Lost to follow-up ($n=$ xx)\\
