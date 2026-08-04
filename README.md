@@ -13,9 +13,13 @@ Protocol* — the same slot in the same journal where the Australian RESOLVE SAP
 | `references.bib` | 46 entries, every DOI verified against Crossref on 2026-08-03 |
 | `stuff/` | study protocol v2.0 — **gitignored**, see below |
 | `R/sample_size.R` | produces every number in the *Sample size* section; base R only |
+| `paper_for_annotation.docx` | Word version for co-author comments, built by `./build_docx.sh` |
 
 Build with `pdflatex → bibtex → pdflatex → pdflatex` (plain `latexmk` trips over a stale
-`.aux` if you delete build artefacts by hand — delete them all or none).
+`.aux` if you delete build artefacts by hand — delete them all or none). After every PDF
+build, run `./build_docx.sh` to regenerate `paper_for_annotation.docx` (needs pandoc and
+poppler). The script renders the TikZ flow diagram from the PDF and splices it in as an
+image, since pandoc cannot convert TikZ.
 
 Open items that need input from the trial team are marked `\open{...}` in the source and
 render in **red** in the PDF, so nothing can be submitted while one is still there.
