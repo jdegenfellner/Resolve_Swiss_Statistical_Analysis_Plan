@@ -169,7 +169,7 @@ corrected.
 The trial is a Category A study under the Swiss Ordinance on Clinical Trials
 (ClinO Art.~61). Ethical approval was granted by the Cantonal Ethics
 Committee of Zurich as lead committee (BASEC 2025-00784, decision of 20
-January 2026, conditions confirmed fulfilled on 10 April 2026). The trial is
+January 2026, fulfilment of conditions confirmed on 10 April 2026). The trial is
 registered in the German Clinical Trials Register (DRKS00039237) and with
 Human Research Switzerland (HumRes67737).
 
@@ -516,14 +516,14 @@ intercept $w_{ij} \sim N(0,\nu^2)$ for participant within practice, and
 residual $\varepsilon_{ijt} \sim N(0,\sigma^2)$. The treatment effect at 18
 weeks is $\beta_2$. The model deliberately contains no main effect of
 treatment. Keeping an interaction while dropping its main effect usually
-violates the variable inclusion principle, under which the interaction
-coefficient stops measuring what it should, because the omission imposes a
-constraint that is in general false \citep{westfall2020}. Here the omitted
+violates the variable inclusion principle. The interaction coefficient then
+stops measuring what it should, because the omission imposes a constraint
+that is in general false \citep{westfall2020}. Here the omitted
 term is the between-arm difference at baseline. The baseline is measured
 before allocation, so that difference is zero by design, the constraint is
 true rather than assumed, and $\beta_2$ still estimates exactly the 18-week
-treatment effect. Imposing the constraint is what lets the model use the
-baseline information. This constrained longitudinal formulation
+treatment effect. Imposing the constraint is how the baseline information
+enters the analysis. This constrained longitudinal formulation
 \citep{liang2000} matches the precision of adjusting the 18-week score for
 its baseline value, and one of the two is the recommended way to use a
 pre-randomisation measurement of the outcome in a cluster randomised trial
@@ -644,10 +644,9 @@ The primary model \eqref{eq:primary} will also be fitted in a Bayesian
 formulation with the same structure. The prior for the treatment effect will
 be built from the individual participant data of the Australian trial, which
 the investigators hold under a data sharing agreement. The analogue of the
-primary model will be fitted to those data, and the resulting posterior for
-the treatment effect, downweighted to acknowledge that the Australian
-comparator was a sham rather than usual physiotherapy, will serve as the
-informative prior. The RMDQ at 18 weeks piles up near zero rather than
+primary model will be fitted to those data. The resulting posterior for the
+treatment effect, downweighted because the Australian comparator was a sham
+rather than usual physiotherapy, will serve as the informative prior. The RMDQ at 18 weeks piles up near zero rather than
 spreading symmetrically, and access to the raw data allows the outcome
 distribution to be modelled directly instead of assumed normal. A sceptical
 prior centred at zero will be reported alongside the informative one.
@@ -657,10 +656,8 @@ sensitive to its prior, which is the known weakness of Bayesian analysis of
 cluster randomised trials with few clusters \citep{spiegelhalter2001}. We
 will therefore report a sensitivity analysis over the between-practice
 variance prior and, for the treatment effect, the posterior probabilities
-that the benefit exceeds 0 and 2 RMDQ points under each prior. The machinery
-matches the Bayesian interim analysis that the protocol specifies
-(section~\ref{sec:interim}), so the interim and final analyses are
-consistent. The Bayesian analysis is supplementary. No claim of efficacy will
+that the benefit exceeds 0 and 2 RMDQ points under each prior. The Bayesian
+analysis is supplementary. No claim of efficacy will
 rest on it alone, and the Australian data will not be redistributed with this
 plan.
 
@@ -770,8 +767,8 @@ the intra-cluster correlation, and the two-level description of the sample.
 \textbf{Conflicts of interest.} \open{to be completed by all authors}
 
 \textbf{Ethics.} Cantonal Ethics Committee of Zurich, lead committee, BASEC
-2025-00784. Approval with conditions on 20 January 2026, conditions confirmed
-fulfilled on 10 April 2026.
+2025-00784. Approval with conditions on 20 January 2026, fulfilment of
+conditions confirmed on 10 April 2026.
 
 \textbf{Data and code availability.} The code that reproduces the sample size
 and power calculations reported here accompanies this paper. Analysis code for
