@@ -26,9 +26,20 @@ render in **red** in the PDF, so nothing can be submitted while one is still the
 
 ## Scope of this version
 
-Frequentist analysis only. The Bayesian interim analysis is deliberately excluded for
-now; there is a placeholder section and a decision to make (own section vs. companion
-paper).
+Primary analysis is the **constrained longitudinal mixed model** (baseline in the
+outcome vector, time and time-by-treatment fixed effects, no treatment main effect,
+random intercepts for practice and participant). This matches the study protocol's
+LMM structure; the constraint (equal baseline means, true by randomisation) recovers
+the precision of baseline adjustment — demonstrated empirically in
+`R/equivalence_constrained_vs_ancova.R`. A **supplementary Bayesian analysis** is
+prespecified, with the informative prior built from the individual participant data
+of the Australian trial; the Bayesian interim analysis follows protocol V3 and is
+summarised in its own section.
+
+**Data policy:** the Australian IPD live outside this repo
+(`4_Projekte/Statistics_Resolve_Swiss/DATA_Resolve_AUS/`) and are only ever *read*
+from there. `.gitignore` blocks `DATA*/`, `*.xlsx`, `*.csv`, `*.rds` as a guard —
+trial data must never be committed or pushed.
 
 ## The one substantive change to the existing sample size work
 

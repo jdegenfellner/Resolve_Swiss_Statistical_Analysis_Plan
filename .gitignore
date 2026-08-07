@@ -19,3 +19,11 @@
 
 # Confidential trial documents — not for distribution
 stuff/
+
+# Trial data (AUS IPD und alles Aehnliche) — niemals committen
+DATA*/
+*.xlsx
+*.csv
+*.rds
+*.sav
+*.dta

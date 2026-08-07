@@ -73,10 +73,14 @@ education against usual physiotherapy for people with chronic low back pain.
 The practice is the unit of randomisation and the patient is the unit of
 analysis. The primary outcome is back-specific disability, measured with the
 Roland--Morris Disability Questionnaire at 18 weeks after randomisation. The
-primary analysis is a linear mixed model with a random intercept for practice
-and adjustment for the baseline value of the outcome, estimating the
-participant-average difference between arms with Kenward--Roger degrees of
-freedom. Because the trial randomises a small number of practices, and because
+primary analysis is a linear mixed model over the baseline and 18-week
+measurements with fixed effects for time and the treatment-by-time
+interaction, no main effect of treatment, and random intercepts for practice
+and participant. The arms share a common baseline mean by design, which is
+what lets the model use the baseline information, and the treatment effect is
+estimated with Kenward--Roger degrees of freedom. A supplementary Bayesian
+analysis with prespecified priors, informed by the individual participant
+data of the Australian trial, accompanies the frequentist results. Because the trial randomises a small number of practices, and because
 mixed-model inference is anti-conservative in that setting, we prespecify two further analyses of the primary outcome: a cluster-level
 (two-stage) analysis and an exact randomisation test over the finite set of
 possible allocations. We report the intra-cluster correlation with its
@@ -126,9 +130,9 @@ small. This analysis plan is written before the analysis of outcome data and
 follows the recommendations for the content of statistical analysis plans in
 clinical trials \citep{gamble2017}, together with the CONSORT extension for
 cluster randomised trials \citep{campbell2012}. It reports the planned
-frequentist analysis of the primary and secondary outcomes.
-\open{decide whether the Bayesian interim analysis is reported in this paper or
-in a companion paper; see section~\ref{sec:interim}}
+frequentist analysis of the primary and secondary outcomes, a supplementary
+Bayesian analysis of the primary outcome, and a summary of the Bayesian
+interim analysis that the protocol specifies.
 
 % ============================================================
 \section{Methods}
@@ -253,9 +257,8 @@ participant standard deviation of the RMDQ at 18 weeks is taken from the
 Australian trial (intervention 3.6, SD 4.6; control 6.4, SD 5.8
 \citep{bagg2022}), giving a pooled SD of 5.2 points. With a two-sided
 $\alpha = 0.05$ and 80\% power, an individually randomised trial would need
-108 participants per arm. Adjusting the 18-week score for its baseline value,
-with an assumed baseline-to-follow-up correlation of 0.6, reduces this to 69
-per arm.
+108 participants per arm. Using the baseline measurement, with an assumed
+baseline-to-follow-up correlation of 0.6, reduces this to 69 per arm.
 
 Clustering inflates this requirement by the design effect. Allowing for unequal
 practice sizes \citep{eldridge2006},
@@ -279,7 +282,7 @@ recruited per arm allowing 10\% loss to follow-up (Table~\ref{tab:ss}). This
 covers an intra-cluster correlation up to about 0.03.
 
 Two approximations in this calculation should be named. The variance reduction
-from baseline adjustment is applied as the individual-level factor $1-r^2$ and
+from the baseline measurement is applied as the individual-level factor $1-r^2$ and
 the clustering inflation as \eqref{eq:de}. A formula that handles baseline
 adjustment inside a cluster randomised design, using the individual-level and
 the cluster-level baseline correlations separately, is available and gives a
@@ -486,42 +489,47 @@ sizes so that readers can judge how much this matters here.
 
 \subsubsection{Primary model}
 
-Let $y_{ij}$ denote the 18-week RMDQ score of participant $i$ in practice $j$,
-$y_{ij}^{0}$ the same participant's baseline score, and $x_j = 1$ if practice
+Let $y_{ijt}$ denote the RMDQ score of participant $i$ in practice $j$ at
+occasion $t$, where $t$ indexes the baseline and 18-week measurements, let
+$s_t$ equal 0 at baseline and 1 at 18 weeks, and let $x_j = 1$ if practice
 $j$ was allocated to the intervention and $0$ otherwise. The primary analysis
 is the linear mixed model
 \begin{equation}
 \label{eq:primary}
-y_{ij} = \beta_0 + \beta_1 x_j + \beta_2\, y_{ij}^{0} + u_j + \varepsilon_{ij},
-\qquad u_j \sim N(0,\tau^2), \quad \varepsilon_{ij} \sim N(0,\sigma^2),
+y_{ijt} = \beta_0 + \beta_1 s_t + \beta_2\, s_t x_j + u_j + w_{ij} + \varepsilon_{ijt},
 \end{equation}
-where $u_j$ is a random intercept for practice and $\beta_1$ is the treatment
-effect. Analysis of covariance on the follow-up score is preferred to analysing
-change scores: it is unbiased under randomisation, it is more precise whenever
-baseline and follow-up are positively correlated, and it does not inherit the
-regression-to-the-mean behaviour of change scores \citep{vickers2001,
-twisk2018}. For cluster randomised trials specifically, analysis of covariance
-and the equivalent constrained-baseline longitudinal formulation are the
-recommended ways to use a pre-randomisation measurement of the outcome
-\citep{hooper2018}. The mixed-model analysis of covariance estimator is
-also consistent under misspecification of the working model, and with few
-clusters the main-effects form used here is preferable to one carrying
-treatment-by-covariate interactions, which spends degrees of freedom and
-requires a robust variance estimator \citep{wang2026}.
+with a random intercept $u_j \sim N(0,\tau^2)$ for practice, a random
+intercept $w_{ij} \sim N(0,\nu^2)$ for participant within practice, and
+residual $\varepsilon_{ijt} \sim N(0,\sigma^2)$. The treatment effect at 18
+weeks is $\beta_2$. The model deliberately contains no main effect of
+treatment. The baseline is measured before allocation, so the arms share a
+common baseline mean by design, and imposing that constraint is what lets the
+model use the baseline information. This constrained longitudinal formulation
+\citep{liang2000} matches the precision of adjusting the 18-week score for
+its baseline value, and one of the two is the recommended way to use a
+pre-randomisation measurement of the outcome in a cluster randomised trial
+\citep{hooper2018}. The script \texttt{R/equivalence\_constrained\_vs\_ancova.R}
+demonstrates the equivalence empirically. Both formulations beat analysing
+change scores, which are less precise whenever baseline and follow-up are
+positively correlated and inherit regression to the mean \citep{vickers2001,
+twisk2018}. With few clusters the main-effects form used here is also
+preferable to models carrying treatment-by-covariate interactions, which
+spend degrees of freedom and require a robust variance estimator
+\citep{wang2026}.
 
 Covariate adjustment in a cluster randomised trial is not automatically
 beneficial, unlike in an individually randomised one: each cluster-level
 covariate costs a degree of freedom, so that the degrees of freedom available
 for the treatment effect are approximately the number of practices minus two
 minus the number of cluster-level covariates \citep{hemming2025}. With 14
-practices the budget is 12, and we therefore adjust for the individual baseline
-score, an individual-level covariate that consumes no cluster-level
-degrees of freedom, and for nothing else except the variables used to
-stratify or constrain the randomisation, which must be adjusted for or the type
-I error rate is not maintained \citep{kahan2012, hemming2023}.
+practices the budget is 12. The baseline enters the model through the outcome
+vector and consumes no cluster-level degrees of freedom, and no further
+covariates are carried except the variables used to stratify or constrain the
+randomisation, which must be adjusted for or the type I error rate is not
+maintained \citep{kahan2012, hemming2023}.
 
 The model will be fitted by restricted maximum likelihood. Confidence intervals
-and $p$ values for $\beta_1$ will use the Kenward--Roger approximation to the
+and $p$ values for $\beta_2$ will use the Kenward--Roger approximation to the
 degrees of freedom and the associated small-sample adjustment to the covariance
 matrix of the fixed effects \citep{kenward1997}, which is the standard remedy
 for the anti-conservatism of naive mixed-model inference when the number of
@@ -588,28 +596,54 @@ observed intra-cluster correlation is a CONSORT requirement for cluster trials
 and is what makes the next trial in this field easier to design
 \citep{campbell2012, adams2004}.
 
-\subsection{Supportive analysis over both time points}
+\subsection{The later time points}
 
-The protocol specifies a linear mixed model with arm, time and their
-interaction, time entered as an ordered categorical variable
-\citep{protocol2025}. We fit that model as a supportive analysis, using all
-four occasions on which the RMDQ is collected (baseline, 18, 26 and 52
-weeks), with a random intercept for practice and a random intercept for
-participant nested within practice. The treatment effect at 18 weeks is the
-corresponding arm-by-time contrast, and the model also provides the
-effects at 26 and 52 weeks, which are secondary.
+The primary model \eqref{eq:primary} extends naturally to all four occasions
+on which the RMDQ is collected (baseline, 18, 26 and 52 weeks), with time as
+a categorical variable, the same random intercepts, and again no main effect
+of treatment. We fit this four-occasion model to obtain the effects at 26 and
+52 weeks, which are secondary. Its arm-by-time contrast at 18 weeks also
+serves as a check on the primary result.
 
-Two differences from the protocol's wording are worth recording. The protocol's
-model statement does not mention a random effect for the practice. Omitting it
-would treat patients from the same practice as independent and understate the
-standard error, so a practice random effect is carried in every model in this
-plan. And with the RMDQ measured before as well as after randomisation, the
-baseline-adjusted model \eqref{eq:primary} is the more precise estimator of the
-18-week effect than the arm-by-time contrast, which is why it, and not the
-repeated-measures model, is the primary analysis \citep{hooper2018,
-vickers2001}. Mixed models for repeated measures do behave acceptably in cluster
-randomised trials with continuous outcomes missing at random, including in
-simulations with as few as five clusters per arm \citep{bell2020}.
+Two differences from the protocol's model statement \citep{protocol2025} are
+worth recording, and both are deliberate. The protocol carries a main effect
+of treatment alongside the interaction, which frees the baseline means of the
+two arms. We constrain them to be equal, which is true by design and recovers
+the precision that the sample size calculation assumes \citep{hooper2018,
+liang2000}. And the protocol's statement does not mention a random effect for
+the practice. Omitting it would treat patients from the same practice as
+independent and understate the standard error, so a practice random effect is
+carried in every model in this plan. Mixed models for repeated measures
+behave acceptably in cluster randomised trials with continuous outcomes
+missing at random, including in simulations with as few as five clusters per
+arm \citep{bell2020}.
+
+\subsection{Supplementary Bayesian analysis}
+\label{sec:bayes}
+
+The primary model \eqref{eq:primary} will also be fitted in a Bayesian
+formulation with the same structure. The prior for the treatment effect will
+be built from the individual participant data of the Australian trial, which
+the investigators hold under a data sharing agreement. The analogue of the
+primary model will be fitted to those data, and the resulting posterior for
+the treatment effect, downweighted to acknowledge that the Australian
+comparator was a sham rather than usual physiotherapy, will serve as the
+informative prior. The RMDQ at 18 weeks piles up near zero rather than
+spreading symmetrically, and access to the raw data allows the outcome
+distribution to be modelled directly instead of assumed normal. A sceptical
+prior centred at zero will be reported alongside the informative one.
+
+With 14 practices the posterior for the between-practice variance is
+sensitive to its prior, which is the known weakness of Bayesian analysis of
+cluster randomised trials with few clusters \citep{spiegelhalter2001}. We
+will therefore report a sensitivity analysis over the between-practice
+variance prior and, for the treatment effect, the posterior probabilities
+that the benefit exceeds 0 and 2 RMDQ points under each prior. The machinery
+matches the Bayesian interim analysis that the protocol specifies
+(section~\ref{sec:interim}), so the interim and final analyses are
+consistent. The Bayesian analysis is supplementary. No claim of efficacy will
+rest on it alone, and the Australian data will not be redistributed with this
+plan.
 
 \subsection{Secondary outcomes}
 
@@ -634,8 +668,9 @@ does.
 This is the more faithful description of the data hierarchy, but variance
 components at three levels are poorly identified with 14 practices, so it is a
 sensitivity analysis rather than the primary model.
-\item \textbf{Unadjusted analysis.} Model \eqref{eq:primary} without the
-baseline covariate, to show what the baseline adjustment contributes.
+\item \textbf{Unconstrained model.} Model \eqref{eq:primary} with a main
+effect of treatment added, which frees the baseline means and shows what the
+constraint contributes.
 \item \textbf{Cluster-mean baseline.} Model \eqref{eq:primary} with the
 practice mean baseline score added as a further fixed effect, which separates
 the within-practice from the between-practice association with baseline
@@ -646,9 +681,9 @@ primary model with wave as a fixed effect.
 
 \subsection{Missing data}
 
-The primary analysis uses all participants with a recorded 18-week outcome and
-is valid under a missing-at-random assumption conditional on the baseline score
-and the covariates in the model. We will report the number and proportion of
+The primary analysis uses all participants with a baseline measurement,
+whether or not the 18-week outcome was recorded, and is valid under a
+missing-at-random assumption conditional on the observed measurements. We will report the number and proportion of
 missing outcomes by arm and by practice, and compare the baseline
 characteristics of participants with and without an 18-week outcome. As a
 sensitivity analysis we will use multiple imputation by chained equations with
@@ -679,10 +714,15 @@ it biases the estimated effect towards the null \citep{hemming2021}.
 \subsection{Interim analysis}
 \label{sec:interim}
 
-An interim analysis is planned and was specified in Bayesian terms for the
-ethics submission. It is not described in this paper.
-\open{decide: brief pointer here plus a companion paper, or a full section
-added before submission}
+The protocol specifies a single Bayesian interim analysis for futility after
+100 participants have been recruited \citep{protocol2025}. The trial is
+declared futile if the posterior probability that the between-group
+difference is smaller than 1 RMDQ point reaches 95\%, with the prior for the
+treatment effect built by precision-weighting the between-group differences
+of the previous trials. No sample size adjustment follows from the interim
+result. The supplementary Bayesian analysis of section~\ref{sec:bayes} uses
+the same machinery and the same data sources, so the interim and final
+analyses are consistent.
 
 % ============================================================
 \section{Reporting}
