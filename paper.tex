@@ -502,9 +502,15 @@ with a random intercept $u_j \sim N(0,\tau^2)$ for practice, a random
 intercept $w_{ij} \sim N(0,\nu^2)$ for participant within practice, and
 residual $\varepsilon_{ijt} \sim N(0,\sigma^2)$. The treatment effect at 18
 weeks is $\beta_2$. The model deliberately contains no main effect of
-treatment. The baseline is measured before allocation, so the arms share a
-common baseline mean by design, and imposing that constraint is what lets the
-model use the baseline information. This constrained longitudinal formulation
+treatment. Keeping an interaction while dropping its main effect usually
+violates the variable inclusion principle, under which the interaction
+coefficient stops measuring what it should, because the omission imposes a
+constraint that is in general false \citep{westfall2020}. Here the omitted
+term is the between-arm difference at baseline. The baseline is measured
+before allocation, so that difference is zero by design, the constraint is
+true rather than assumed, and $\beta_2$ still estimates exactly the 18-week
+treatment effect. Imposing the constraint is what lets the model use the
+baseline information. This constrained longitudinal formulation
 \citep{liang2000} matches the precision of adjusting the 18-week score for
 its baseline value, and one of the two is the recommended way to use a
 pre-randomisation measurement of the outcome in a cluster randomised trial
