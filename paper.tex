@@ -81,13 +81,14 @@ education against usual physiotherapy for people with chronic low back pain.
 \emph{cluster} randomised controlled trial in Swiss physiotherapy practices.
 The practice is the unit of randomisation and the patient is the unit of
 analysis. The primary outcome is back-specific disability, measured with the
-Roland--Morris Disability Questionnaire at 18 weeks after randomisation. The
+Roland--Morris Disability Questionnaire at 18 weeks after the baseline
+measurement. The
 primary analysis is a linear mixed model over the baseline and 18-week
 measurements with fixed effects for time and the treatment-by-time
 interaction, no main effect of treatment, and random intercepts for practice
-and participant. The arms share a common baseline mean by design, which is
-what lets the model use the baseline information, and the treatment effect is
-estimated with Kenward--Roger degrees of freedom. A supplementary Bayesian
+and participant. The model constrains the two arms to a common baseline
+mean, which is how the baseline information enters, and the treatment effect
+is estimated with Kenward--Roger degrees of freedom. A supplementary Bayesian
 analysis with prespecified priors, informed by the individual participant
 data of the Australian trial, accompanies the frequentist results. Because the trial randomises a small number of practices, and because
 mixed-model inference is anti-conservative in that setting, we prespecify two further analyses of the primary outcome: a cluster-level
@@ -426,7 +427,8 @@ Analysis code will be published with the results.
 
 \subsubsection{Primary outcome}
 
-Back-specific disability at 18 weeks after randomisation, measured with the
+Back-specific disability at 18 weeks after the baseline measurement, measured
+with the
 Roland--Morris Disability Questionnaire, a 24-item instrument scored from 0
 (no disability) to 24 \citep{roland1983, chiarotto2016}.
 
@@ -520,13 +522,18 @@ violates the variable inclusion principle. The interaction coefficient then
 stops measuring what it should, because the omission imposes a constraint
 that is in general false \citep{westfall2020}. Here the omitted
 term is the between-arm difference at baseline. The baseline is measured
-before allocation, so that difference is zero by design, the constraint is
-true rather than assumed, and $\beta_2$ still estimates exactly the 18-week
-treatment effect. Imposing the constraint is how the baseline information
-enters the analysis. This constrained longitudinal formulation
+before any study treatment, and randomisation gives both arms the same
+expected baseline mean, so the constraint reflects the design rather than a
+claim about the observed data. One qualification belongs to a cluster
+randomised trial: patients enter after their practice has been allocated, so
+differential recruitment could shift the observed baseline means. The
+unconstrained model among the sensitivity analyses is prespecified for that
+case. Under the design as intended, $\beta_2$ estimates exactly the 18-week
+treatment effect, and imposing the constraint is how the baseline
+information enters the analysis. This constrained longitudinal formulation
 \citep{liang2000} matches the precision of adjusting the 18-week score for
 its baseline value, and one of the two is the recommended way to use a
-pre-randomisation measurement of the outcome in a cluster randomised trial
+baseline measurement of the outcome in a cluster randomised trial
 \citep{hooper2018}. The script \texttt{R/equivalence\_constrained\_vs\_ancova.R}
 demonstrates the equivalence empirically. Both formulations beat analysing
 change scores, which are less precise whenever baseline and follow-up are
@@ -627,7 +634,8 @@ serves as a check on the primary result.
 Two differences from the protocol's model statement \citep{protocol2025} are
 worth recording, and both are deliberate. The protocol carries a main effect
 of treatment alongside the interaction, which frees the baseline means of the
-two arms. We constrain them to be equal, which is true by design and recovers
+two arms. We constrain them to be equal, which holds in expectation under
+randomisation and recovers
 the precision that the sample size calculation assumes \citep{hooper2018,
 liang2000}. And the protocol's statement does not mention a random effect for
 the practice. Omitting it would treat patients from the same practice as

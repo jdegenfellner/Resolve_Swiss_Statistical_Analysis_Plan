@@ -14,7 +14,7 @@ out <- function(...) cat(..., "\n", sep = "")
 # 1. Design inputs
 # ---------------------------------------------------------------------
 # Primary outcome: Roland-Morris Disability Questionnaire (RMDQ, 0-24)
-# at 18 weeks post randomisation.
+# at 18 weeks after the baseline measurement.
 #
 # sigma  : between-participant SD of RMDQ at 18 weeks. Taken from the
 #          Australian RESOLVE trial (Bagg et al. 2022, Table 2):
