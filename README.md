@@ -1,8 +1,12 @@
 # RESOLVE Swiss — statistical analysis plan (manuscript)
 
-Target journal: **Brazilian Journal of Physical Therapy**, article type *Clinical Trial
-Protocol* — the same slot in the same journal where the Australian RESOLVE SAP appeared
-(Bagg et al., Braz J Phys Ther 2021;25(1):103–111, doi 10.1016/j.bjpt.2020.06.002).
+Target journal: **Trials (BMC)**, article type *Update* (standalone statistical analysis
+plan, to be submitted before data lock). Trials publishes SAPs explicitly, imposes no
+strict word limit, and requires the Gamble 2017 (JAMA) checklist as an additional file
+plus a reference to a **published** study protocol — so the team's protocol paper
+(BMC Musculoskeletal Disorders, in preparation) must be out first. The original target,
+Braz J Phys Ther (where the Australian SAP appeared as Bagg et al. 2021), no longer
+accepts protocols or SAPs of any kind.
 
 ## Files
 
