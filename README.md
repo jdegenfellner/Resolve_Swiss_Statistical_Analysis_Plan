@@ -142,13 +142,15 @@ therapists), and data capture (REDCap) are now all in the manuscript.
 ## Open questions for the trial team
 
 1. Co-author list, affiliations, CRediT contributions, funder and grant number.
-2. Registration numbers (ClinicalTrials.gov and SNCTP) once issued; ethics committee,
-   approval number and date.
-3. **Confirm the current split is 5 intervention vs 9 control** — the protocol plans 20
-   practices at 1:1, so this is a reportable deviation either way.
-4. **Confirm allocation was simple**, i.e. not stratified or covariate-constrained. If it
-   was constrained, those variables must enter the model and the randomisation test may
-   only enumerate the allocations satisfying the constraints.
+2. ~~Registration and ethics~~ — done: DRKS00039237, HumRes67737, BASEC 2025-00784,
+   KEK Zurich decision 20 Jan 2026, conditions fulfilled 10 Apr 2026.
+3. ~~Current split~~ — 4 intervention vs 9 control as of July 2026, in the manuscript;
+   still marked `\open{confirm}` pending the team's formal confirmation.
+4. ~~Allocation simple~~ — confirmed: live public draw of two-coloured balls from a bag,
+   whole allocation fixed at once. Note: the companion analyses (cluster-level t test,
+   exact randomisation test) were removed on 10 Aug 2026 at JD's request; the single
+   prespecified analysis is the Kenward--Roger mixed model, with practice-level
+   summaries reported descriptively for the two estimands.
 5. Were practices recruited in waves, and is any wave confounded with arm?
 6. Will the statistician be blinded to arm labels until the primary analysis is locked?
 7. Data-cleaning and query workflow; who locks the database.

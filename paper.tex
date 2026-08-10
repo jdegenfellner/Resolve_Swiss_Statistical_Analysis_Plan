@@ -92,12 +92,11 @@ measurements with fixed effects for time and the treatment-by-time
 interaction, no main effect of treatment, and random intercepts for practice
 and participant. The model constrains the two arms to a common baseline
 mean, which is how the baseline information enters, and the treatment effect
-is estimated with Kenward--Roger degrees of freedom. A supplementary Bayesian
-analysis with prespecified priors, informed by the individual participant
-data of the Australian trial, accompanies the frequentist results. Because the trial randomises a small number of practices, and because
-mixed-model inference is anti-conservative in that setting, we prespecify two further analyses of the primary outcome: a cluster-level
-(two-stage) analysis and an exact randomisation test over the finite set of
-possible allocations. We report the intra-cluster correlation with its
+is estimated with Kenward--Roger degrees of freedom, the small-sample
+correction that guards against anti-conservative mixed-model inference when
+the number of practices is small. A supplementary Bayesian analysis with
+prespecified priors, informed by the individual participant data of the
+Australian trial, accompanies the frequentist results. We report the intra-cluster correlation with its
 uncertainty, the analyses of secondary outcomes, the handling of missing data,
 non-adherence and contamination, and the planned reporting.
 
@@ -235,8 +234,7 @@ risk sits at patient recruitment (section~\ref{sec:recruitment}).
 
 Two points follow for the analysis. First, the allocation used neither
 stratification nor covariate constraints, so no design variables need to be
-carried in the model \citep{kahan2012, hemming2023}, and the randomisation
-test of section~\ref{sec:smallk} may enumerate all allocations. Second, if
+carried in the model \citep{kahan2012, hemming2023}. Second, if
 practices were recruited in waves and later waves were allocated non-randomly,
 wave and treatment arm would be confounded. Recruitment wave will therefore be
 recorded for every practice and, if practices entered in distinct waves,
@@ -509,7 +507,7 @@ below may be read. A mixed model with a random intercept weights clusters by
 their inverse variance, which is neither participant-average nor cluster-average
 weighting. When cluster size is informative (that is, when outcomes or
 treatment effects vary systematically with practice size), such a model
-targets neither estimand cleanly \citep{kahan2023}. The cluster-level analyses
+targets neither estimand cleanly \citep{kahan2023}. The practice-level summaries
 specified in section~\ref{sec:smallk} recover each estimand explicitly through
 their weighting, which is a second reason to report them and not to file them
 as a mere robustness check. We will report the distribution of practice
@@ -584,46 +582,19 @@ a large share of trials with few or moderately many clusters had used methods
 that do not maintain the nominal error rate \citep{kahan2016, taljaard2016}. In
 a simulation across designs with 4 to 40 clusters, Leyrat and colleagues found
 that for continuous outcomes the Satterthwaite and Kenward--Roger corrections
-to a mixed model, and variance-weighted cluster-level analysis, did maintain
-the nominal rate, whereas uncorrected approaches did not \citep{leyrat2018}.
-Model \eqref{eq:primary} with Kenward--Roger degrees of freedom is therefore a
-defensible primary analysis for the RMDQ, and it is what the current guidance
-for cluster trials with fewer than about 40 clusters recommends
-\citep{hemming2023, billot2024}. It is nonetheless an asymptotic argument
-resting on 13 numbers, so we prespecify two further analyses of the primary
-outcome, reported alongside the model-based result, not instead of it.
-Cluster-level analyses, by contrast, need no such correction at all, which is
-why they are the natural companion when the number of clusters is very small
-\citep{billot2024}.
+to a mixed model maintained the nominal rate, whereas uncorrected approaches
+did not \citep{leyrat2018}. Model \eqref{eq:primary} with Kenward--Roger
+degrees of freedom is therefore the single prespecified analysis of the
+primary outcome, in line with current guidance for cluster trials with fewer
+than about 40 clusters \citep{hemming2023, billot2024}. The Australian trial
+likewise rested its primary conclusion on one mixed model and its confidence
+interval \citep{bagg2021}. The small-sample correction is the adaptation that
+cluster randomisation adds.
 
-\emph{Cluster-level analysis.} We will regress $y_{ij}$ on $y_{ij}^{0}$ within
-practices, take the practice-level mean residual as a single summary per
-practice, and compare the 13 summaries between arms with a two-sample $t$ test
-on $k_1 + k_2 - 2 = 11$ degrees of freedom, weighting practices by their
-analysed size for the participant-average estimand and unweighted for the
-cluster-average estimand \citep{hayes2017, kahan2023}. This two-stage analysis
-gives up some efficiency but its type I error rate is correct by construction
-with any number of clusters.
-
-\emph{Exact randomisation test.} Because randomisation acts on practices, the
-set of allocations that could have occurred is finite and small: with 4 of 13
-practices allocated to the intervention there are exactly
-$\binom{13}{4} = 715$ of them, and with a 6 versus 7 split, 1716. We will
-therefore enumerate the full set, recompute the cluster-level test statistic
-under each allocation, and take the proportion of allocations giving a
-statistic at least as extreme as the observed one as an exact $p$ value. This
-test makes no distributional assumption and is valid however few clusters there
-are \citep{gail1996, leyrat2018}. Its resolution is limited by the design: the
-smallest attainable two-sided $p$ value with a 4 versus 9 split is
-$2/715 \approx 0.003$. If randomisation was covariate-constrained, the
-enumeration will be restricted to the allocations that satisfy the same
-constraints, since only those could have been selected \citep{li2016}.
-
-If the three analyses agree, the model-based estimate is reported as the
-primary result. If they disagree, the disagreement itself will be reported and
-the randomisation test treated as the arbiter of the significance claim, since
-it is the only one of the three whose validity does not depend on the number of
-clusters.
+Practice-level summaries, weighted by analysed practice size for the
+participant-average estimand and unweighted for the cluster-average estimand,
+will be reported as descriptive estimates alongside the model result
+\citep{hayes2017, kahan2023}. No hypothesis test is attached to them.
 
 \subsubsection{Intra-cluster correlation}
 
@@ -886,8 +857,10 @@ Highest education level, n (\%) & xx (xx) & xx (xx) & xx (xx)\\
 
 \begin{table}[ht]
 \centering\small
-\caption{Analysis of the primary outcome (shell). All three analyses estimate
-the participant-average difference in RMDQ at 18 weeks.}
+\caption{Analysis of the primary outcome (shell). The mixed model provides the
+estimate and the hypothesis test. Practice-level summaries are descriptive,
+size-weighted for the participant-average and unweighted for the
+cluster-average effect.}
 \label{tab:prim}
 \begin{tabularx}{\textwidth}{Xcccc}
 \toprule
@@ -895,9 +868,8 @@ Analysis & Intervention & Control & Difference (95\% CI) & $p$\\
 & mean (SD) & mean (SD) & &\\
 \midrule
 Mixed model, Kenward--Roger (primary) & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
-Cluster-level, size-weighted & --- & --- & xx (xx to xx) & .xx\\
-Exact randomisation test & --- & --- & xx (xx to xx) & .xx\\
-Cluster-average effect (unweighted) & --- & --- & xx (xx to xx) & .xx\\
+Practice-level summary, size-weighted & --- & --- & xx (xx to xx) & ---\\
+Cluster-average effect (unweighted) & --- & --- & xx (xx to xx) & ---\\
 \midrule
 Intra-cluster correlation (95\% CI) & \multicolumn{4}{l}{xx (xx to xx)}\\
 \bottomrule
