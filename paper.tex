@@ -217,7 +217,7 @@ physiotherapy, delivered by therapists who have not.
 
 Usual physiotherapy is expected to be heterogeneous between practices. What
 control practices actually deliver will be recorded and described, because in a
-pragmatic trial the comparator is part of the finding rather than a nuisance.
+pragmatic trial the comparator is itself part of the finding.
 
 \subsection{Randomisation and allocation}
 
@@ -258,7 +258,7 @@ characteristics between arms with this threat explicitly in mind. Baseline
 imbalance in a cluster randomised trial with few clusters is expected by chance
 and is not by itself evidence of bias. It is, however, the main signal that
 recruitment differed between arms, and it will be interpreted alongside the
-screening counts rather than by significance testing
+screening counts, not by significance testing
 \citep{campbell2012, senn1994}.
 
 \subsection{Sample size}
@@ -307,11 +307,11 @@ the cluster-level baseline correlations separately, is available and gives a
 slightly smaller requirement when the cluster-level correlation is high
 \citep{teerenstra2012}. Our version is therefore mildly conservative. Second,
 the intra-cluster correlation is assumed, not known. The calculation is
-reported across a range of values rather than at a single one, which is what
+reported across a range of values, which is what
 sensitivity to this assumption requires \citep{hemming2023}.
 
 Three features of the current design should be stated plainly
-rather than buried. First, with 13 practices the between-cluster component of
+plainly. First, with 13 practices the between-cluster component of
 the variance rests on 13 numbers, and the relevant reference distribution has
 roughly 11 degrees of freedom. Power is correspondingly lower than the design
 effect alone suggests. Holding the analysed sample at 200 participants and
@@ -342,7 +342,7 @@ and 90\% with 9 per arm at $\rho = 0.01$ (Table~\ref{tab:power}). That is a much
 better return than adding patients to the practices already enrolled, because
 increasing cluster size at a fixed number of clusters has strongly diminishing
 returns \citep{hemming2017}. If additional practices are recruited, they must
-be randomised as a batch rather than assigned to the intervention arm, so that
+be randomised as a batch, not simply assigned to the intervention arm, so that
 the new wave contains its own randomised contrast
 \citep{ivers2012, moulton2004}.
 
@@ -371,8 +371,8 @@ the null hypothesis is that the intervention does \emph{not} exceed usual
 physiotherapy by more than 2 RMDQ points, tested one-sided at
 $\alpha = 0.05$ \citep{protocol2025}. This plan instead tests the conventional
 null of no difference, with 2 points as the \emph{target} difference the trial
-is powered to detect. The change is deliberate and is recorded here rather than
-made silently.
+is powered to detect. The change is deliberate, and recording it here is the
+opposite of making it silently.
 
 The reason is that the two framings imply very different trials. Under the
 margin formulation the quantity that drives power is the amount by which the
@@ -391,8 +391,8 @@ If the trial is instead read as a conventional superiority trial targeting a
 2-point difference, 110 participants per arm is close to right
 (section~\ref{sec:samplesize}). The protocol's intent is to detect a clinically
 meaningful difference of at least 2 points. We interpret that intent in the
-conventional way, and treat the margin wording as an infelicity rather than a
-design choice. \open{this requires the sponsor's agreement and, if the wording
+conventional way, and treat the margin wording as an infelicity, not a design
+choice. \open{this requires the sponsor's agreement and, if the wording
 in the registered protocol is to change, a protocol amendment; the alternative
 is to keep the margin formulation and state openly that the trial is
 underpowered for it}
@@ -413,7 +413,7 @@ allocated, regardless of the treatment actually delivered (intention to treat).
 \item All treatment effects will be reported as point estimates with 95\%
 confidence intervals. Two-sided tests at a nominal $\alpha$ of 0.05 accompany
 the primary and secondary analyses, but the interpretation will rest on the
-estimate and its interval rather than on whether a threshold was crossed
+estimate and its interval, not on whether a threshold was crossed
 \citep{wasserstein2019, amrhein2019}.
 \item Confidence intervals and $p$ values will not be adjusted for
 multiplicity. There is one primary outcome at one time point. Secondary
@@ -502,8 +502,8 @@ weighting. When cluster size is informative (that is, when outcomes or
 treatment effects vary systematically with practice size), such a model
 targets neither estimand cleanly \citep{kahan2023}. The cluster-level analyses
 specified in section~\ref{sec:smallk} recover each estimand explicitly through
-their weighting, which is a second reason to report them rather than treating
-them as a mere robustness check. We will report the distribution of practice
+their weighting, which is a second reason to report them and not to file them
+as a mere robustness check. We will report the distribution of practice
 sizes so that readers can judge how much this matters here.
 
 \subsubsection{Primary model}
@@ -527,8 +527,8 @@ stops measuring what it should, because the omission imposes a constraint
 that is in general false \citep{westfall2020}. Here the omitted
 term is the between-arm difference at baseline. The baseline is measured
 before any study treatment, and randomisation gives both arms the same
-expected baseline mean, so the constraint reflects the design rather than a
-claim about the observed data. One qualification belongs to a cluster
+expected baseline mean, so the constraint reflects the design, not a claim
+about the observed data. One qualification belongs to a cluster
 randomised trial: patients enter after their practice has been allocated, so
 differential recruitment could shift the observed baseline means. The
 unconstrained model among the sensitivity analyses is prespecified for that
@@ -582,7 +582,7 @@ defensible primary analysis for the RMDQ, and it is what the current guidance
 for cluster trials with fewer than about 40 clusters recommends
 \citep{hemming2023, billot2024}. It is nonetheless an asymptotic argument
 resting on 13 numbers, so we prespecify two further analyses of the primary
-outcome, reported alongside the model-based result rather than instead of it.
+outcome, reported alongside the model-based result, not instead of it.
 Cluster-level analyses, by contrast, need no such correction at all, which is
 why they are the natural companion when the number of clusters is very small
 \citep{billot2024}.
@@ -621,7 +621,7 @@ clusters.
 We will report the estimated intra-cluster correlation for the primary outcome,
 $\hat\rho = \hat\tau^2 / (\hat\tau^2 + \hat\sigma^2)$, with a 95\% confidence
 interval obtained by profile likelihood, and, if the interval is very wide, we
-will say so rather than presenting the point estimate alone. Reporting the
+will say so and will not present the point estimate alone. Reporting the
 observed intra-cluster correlation is a CONSORT requirement for cluster trials
 and is what makes the next trial in this field easier to design
 \citep{campbell2012, adams2004}.
@@ -658,9 +658,9 @@ be built from the individual participant data of the Australian trial, which
 the investigators hold under a data sharing agreement. The analogue of the
 primary model will be fitted to those data. The resulting posterior for the
 treatment effect, downweighted because the Australian comparator was a sham
-rather than usual physiotherapy, will serve as the informative prior. The RMDQ at 18 weeks piles up near zero rather than
-spreading symmetrically, and access to the raw data allows the outcome
-distribution to be modelled directly instead of assumed normal. A sceptical
+and not usual physiotherapy, will serve as the informative prior. The RMDQ at
+18 weeks piles up near zero, and access to the raw data allows this skewed
+outcome distribution to be modelled directly instead of assumed normal. A sceptical
 prior centred at zero will be reported alongside the informative one.
 
 With 13 practices the posterior for the between-practice variance is
@@ -695,7 +695,7 @@ does.
 \item \textbf{Therapist effects.} A third level for therapist within practice.
 This is the more faithful description of the data hierarchy, but variance
 components at three levels are poorly identified with 13 practices, so it is a
-sensitivity analysis rather than the primary model.
+sensitivity analysis, not the primary model.
 \item \textbf{Unconstrained model.} Model \eqref{eq:primary} with a main
 effect of treatment added, which frees the baseline means and shows what the
 constraint contributes.
@@ -731,7 +731,7 @@ instrumental variable regression with allocation as the instrument
 intention-to-treat effect, as in the Australian trial \citep{bagg2022}. With 13
 clusters this analysis is imprecise, and it is prespecified as exploratory.
 
-Contamination is limited by design rather than only measured: the five-day
+Contamination is limited by design, not only measured: the five-day
 RESOLVE training is unavailable to control therapists, and the German-language
 RESOLVE materials exist only inside a secured web application accessible to
 intervention therapists and participants. Treatment fidelity is monitored
