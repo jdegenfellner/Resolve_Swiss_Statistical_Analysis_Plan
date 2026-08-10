@@ -236,9 +236,12 @@ Two points follow for the analysis. First, the allocation used neither
 stratification nor covariate constraints, so no design variables need to be
 carried in the model \citep{kahan2012, hemming2023}. Second, if
 practices were recruited in waves and later waves were allocated non-randomly,
-wave and treatment arm would be confounded. Recruitment wave will therefore be
-recorded for every practice and, if practices entered in distinct waves,
-carried in the model as a covariate.
+wave and treatment arm would be confounded. Any newly recruited practices
+will therefore be randomised as a batch \citep{ivers2012, moulton2004}, which
+makes the wave a stratum of the randomisation, and variables that structure
+the randomisation belong in the analysis \citep{kahan2012}. Recruitment wave
+will be recorded for every practice and, if practices entered in distinct
+waves, carried in the model as a covariate.
 
 Participants cannot be blinded, since the intervention includes a substantial
 home training component. The three physical assessments (two-point
