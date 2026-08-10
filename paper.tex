@@ -32,6 +32,7 @@
 \usepackage{xcolor}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,positioning,calc}
+\usepackage{soul}
 \usepackage[numbers,sort&compress]{natbib}
 \usepackage[hidelinks]{hyperref}
 \usepackage[mathlines]{lineno}
@@ -45,6 +46,9 @@
 
 % open items that still need input from the trial team
 \newcommand{\open}[1]{\textcolor{red}{[\textsc{open}: #1]}}
+% green highlighter for passages JD wants to revisit
+\definecolor{jdgruen}{rgb}{0.75,0.95,0.75}
+\sethlcolor{jdgruen}
 
 \doublespacing
 \pagestyle{plain}
@@ -306,13 +310,14 @@ therefore aims for 100 analysed participants per arm, which corresponds to 110
 recruited per arm allowing 10\% loss to follow-up (Table~\ref{tab:ss}). This
 covers an intra-cluster correlation up to about 0.02.
 
-Two approximations in this calculation should be named. The variance reduction
-from the baseline measurement is applied as the individual-level factor $1-r^2$ and
-the clustering inflation as \eqref{eq:de}. A formula that handles baseline
-adjustment inside a cluster randomised design, using the individual-level and
-the cluster-level baseline correlations separately, is available and gives a
-slightly smaller requirement when the cluster-level correlation is high
-\citep{teerenstra2012}. Our version is therefore mildly conservative. Second,
+Two approximations in this calculation should be named. \hl{The variance
+reduction from the baseline measurement is applied as the individual-level
+factor} $1-r^2$ \hl{and the clustering inflation as} \eqref{eq:de}. \hl{A
+formula that handles baseline adjustment inside a cluster randomised design,
+using the individual-level and the cluster-level baseline correlations
+separately, is available and gives a slightly smaller requirement when the
+cluster-level correlation is high} \citep{teerenstra2012}. \hl{Our version is
+therefore mildly conservative.} Second,
 the intra-cluster correlation is assumed, not known. The calculation is
 therefore reported across a range of values \citep{hemming2023}.
 
