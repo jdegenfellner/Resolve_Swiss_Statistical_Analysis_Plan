@@ -65,7 +65,7 @@ design_effect <- function(m_bar, rho, cv = 0, k = Inf) {
 }
 
 rho_grid <- c(0, 0.01, 0.02, 0.03, 0.05)
-m_bar    <- 14        # analysed participants per practice at ~200 total / 14 practices
+m_bar    <- 200 / 13  # analysed participants per practice at ~200 total / 13 practices
 # Eldridge et al. (2006) report that unequal cluster size can be ignored when
 # cv < 0.23, and that for trials randomising UK general practices cv is
 # typically around 0.65. Physiotherapy practices are the closest analogue we
@@ -73,9 +73,9 @@ m_bar    <- 14        # analysed participants per practice at ~200 total / 14 pr
 cv_grid  <- c(0, 0.4, 0.65)
 
 de_tab <- outer(rho_grid, cv_grid,
-                Vectorize(function(rho, cv) design_effect(m_bar, rho, cv, k = 14)))
+                Vectorize(function(rho, cv) design_effect(m_bar, rho, cv, k = 13)))
 dimnames(de_tab) <- list(paste0("ICC=", rho_grid), paste0("cv=", cv_grid))
-out("\nDesign effects (m_bar = ", m_bar, ", k = 14):")
+out("\nDesign effects (m_bar = ", round(m_bar, 1), ", k = 13):")
 print(round(de_tab, 3))
 
 out("\nRequired n per arm = ANCOVA benchmark x design effect:")
@@ -104,12 +104,11 @@ power_crt <- function(k1, k2, m, sigma, delta, rho, alpha = 0.05,
 }
 
 scenarios <- expand.grid(
-  k_int  = c(5, 6, 7, 8, 9),
+  k_int  = c(4, 5, 6),
   rho    = c(0.01, 0.03, 0.05),
   KEEP.OUT.ATTRS = FALSE
 )
-scenarios$k_ctrl <- ifelse(scenarios$k_int <= 5, 9, 14 - scenarios$k_int)
-scenarios$k_ctrl <- pmax(scenarios$k_ctrl, 5)
+scenarios$k_ctrl <- 13 - scenarios$k_int
 
 # Hold the total analysed sample at 200 (100 per arm) and let the number
 # of participants per practice absorb the change in cluster numbers.
@@ -122,17 +121,17 @@ scenarios$power <- mapply(power_crt,
 out("\nPower at total analysed N = 200, ANCOVA, cv = 0.65:")
 print(transform(scenarios, power = round(power, 3)))
 
-# Balanced comparison: same 14 clusters, split 7/7 instead of 5/9
+# Balanced comparison: same 13 clusters, split 6/7 instead of 4/9
 bal <- sapply(c(0.01, 0.03, 0.05), function(rho)
-  power_crt(7, 7, m = 14, sigma = sigma, delta = delta, rho = rho,
+  power_crt(6, 7, m = 15, sigma = sigma, delta = delta, rho = rho,
             ancova_r = r, cv = 0.65))
 unb <- sapply(c(0.01, 0.03, 0.05), function(rho)
-  power_crt(5, 9, m = 14, sigma = sigma, delta = delta, rho = rho,
+  power_crt(4, 9, m = 15, sigma = sigma, delta = delta, rho = rho,
             ancova_r = r, cv = 0.65))
-out("\n14 clusters, 200 participants — cost of the unbalanced split:")
+out("\n13 clusters, ~200 participants — cost of the unbalanced split:")
 print(data.frame(ICC = c(0.01, 0.03, 0.05),
-                 power_5_9 = round(unb, 3),
-                 power_7_7 = round(bal, 3)))
+                 power_4_9 = round(unb, 3),
+                 power_6_7 = round(bal, 3)))
 
 # ---------------------------------------------------------------------
 # 5. Recruiting additional practices, holding practice size at m = 14
@@ -150,12 +149,12 @@ add$power <- mapply(power_crt, k1 = add$k_per_arm, k2 = add$k_per_arm,
 out("\nBalanced designs with 14 participants per practice:")
 print(transform(add, power = round(power, 3)))
 
-# Number of distinct allocations of k_int of 14 practices to the
+# Number of distinct allocations of k_int of 13 practices to the
 # intervention arm; this is the size of the exact randomisation
 # distribution used for the permutation test.
-out("\nDistinct allocations, 5 of 14 practices: ", choose(14, 5))
-out("Smallest attainable two-sided p value:  ", signif(2 / choose(14, 5), 3))
-out("Distinct allocations, 7 of 14 practices: ", choose(14, 7))
+out("\nDistinct allocations, 4 of 13 practices: ", choose(13, 4))
+out("Smallest attainable two-sided p value:  ", signif(2 / choose(13, 4), 3))
+out("Distinct allocations, 6 of 13 practices: ", choose(13, 6))
 
 # ---------------------------------------------------------------------
 # 6. Session information

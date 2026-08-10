@@ -164,7 +164,7 @@ self-reported questionnaires, including the primary outcome, are collected
 again at 26 and 52 weeks after the baseline measurement.
 
 The protocol plans 20 physiotherapy institutions across Switzerland. At the time
-of writing \open{confirm} 5 practices are allocated to the intervention arm and
+of writing \open{confirm} 4 practices are allocated to the intervention arm and
 9 to the control arm, a deviation from the planned number and from the 1:1
 ratio. The consequences of that split, and of any change to it, are quantified
 in section~\ref{sec:samplesize}. The deviation has to be reported under
@@ -292,12 +292,12 @@ for primary care outcomes are usually small, with a median near 0.01
 but for trials randomising general practices $\mathrm{cv}$ is typically around
 0.65 \citep{eldridge2006}. Physiotherapy practices are the closest analogue we
 have, so we plan on $\mathrm{cv} = 0.65$ and report the more optimistic 0.4 as
-well. With $\bar m = 14$, $k = 14$ and $\mathrm{cv} = 0.65$, the design effect
-is 1.19 at $\rho = 0.01$, 1.56 at $\rho = 0.03$ and 1.93 at $\rho = 0.05$, so
-the requirement is 82, 107 and 133 participants per arm respectively. The trial
+well. With $\bar m = 15.4$, $k = 13$ and $\mathrm{cv} = 0.65$, the design effect
+is 1.20 at $\rho = 0.01$, 1.61 at $\rho = 0.03$ and 2.02 at $\rho = 0.05$, so
+the requirement is 83, 111 and 139 participants per arm respectively. The trial
 therefore aims for 100 analysed participants per arm, which corresponds to 110
 recruited per arm allowing 10\% loss to follow-up (Table~\ref{tab:ss}). This
-covers an intra-cluster correlation up to about 0.03.
+covers an intra-cluster correlation up to about 0.02.
 
 Two approximations in this calculation should be named. The variance reduction
 from the baseline measurement is applied as the individual-level factor $1-r^2$ and
@@ -311,25 +311,25 @@ reported across a range of values rather than at a single one, which is what
 sensitivity to this assumption requires \citep{hemming2023}.
 
 Three features of the current design should be stated plainly
-rather than buried. First, with 14 practices the between-cluster component of
-the variance rests on 14 numbers, and the relevant reference distribution has
-roughly 12 degrees of freedom. Power is correspondingly lower than the design
+rather than buried. First, with 13 practices the between-cluster component of
+the variance rests on 13 numbers, and the relevant reference distribution has
+roughly 11 degrees of freedom. Power is correspondingly lower than the design
 effect alone suggests. Holding the analysed sample at 200 participants and
 using a $t$ reference distribution on $k_1 + k_2 - 2$ degrees of freedom, the
-power to detect a 2-point difference is 77\% at $\rho = 0.01$, 65\% at
-$\rho = 0.03$ and 56\% at $\rho = 0.05$.
+power to detect a 2-point difference is 72\% at $\rho = 0.01$, 60\% at
+$\rho = 0.03$ and 51\% at $\rho = 0.05$.
 
-Second, rebalancing the existing practices from 5 versus 9 to 7 versus 7
-recovers only about 3 percentage points of power at every intra-cluster
+Second, rebalancing the existing practices from 4 versus 9 to 6 versus 7
+recovers about 6 percentage points of power at every intra-cluster
 correlation considered, because the total analysed sample is what it is. Equal
 allocation of clusters is the efficient choice when the intra-cluster
 correlation and the total variance are the same in both arms, and a deliberate
 imbalance is justified only when they are not \citep{copas2021}. We have no
-reason to expect them to differ here, so 7 versus 7 is preferable, but the
-efficiency argument for changing the split is weak.
+reason to expect them to differ here, so a balanced split is preferable, but
+rebalancing alone does not restore the planned power.
 
 Third, and this is the binding constraint: \emph{the number of practices
-is too small}. Five clusters in one arm sits at the bottom of the range in
+is too small}. Four clusters in one arm sits at the bottom of the range in
 which the recommended analyses have been evaluated \citep{leyrat2018}, and a
 minimum of about ten clusters per arm has been recommended for cluster
 randomised trials generally, with the practical rule of adding two to three
@@ -551,8 +551,8 @@ Covariate adjustment in a cluster randomised trial is not automatically
 beneficial, unlike in an individually randomised one: each cluster-level
 covariate costs a degree of freedom, so that the degrees of freedom available
 for the treatment effect are approximately the number of practices minus two
-minus the number of cluster-level covariates \citep{hemming2025}. With 14
-practices the budget is 12. The baseline enters the model through the outcome
+minus the number of cluster-level covariates \citep{hemming2025}. With 13
+practices the budget is 11. The baseline enters the model through the outcome
 vector and consumes no cluster-level degrees of freedom, and no further
 covariates are carried except the variables used to stratify or constrain the
 randomisation, which must be adjusted for or the type I error rate is not
@@ -581,7 +581,7 @@ Model \eqref{eq:primary} with Kenward--Roger degrees of freedom is therefore a
 defensible primary analysis for the RMDQ, and it is what the current guidance
 for cluster trials with fewer than about 40 clusters recommends
 \citep{hemming2023, billot2024}. It is nonetheless an asymptotic argument
-resting on 14 numbers, so we prespecify two further analyses of the primary
+resting on 13 numbers, so we prespecify two further analyses of the primary
 outcome, reported alongside the model-based result rather than instead of it.
 Cluster-level analyses, by contrast, need no such correction at all, which is
 why they are the natural companion when the number of clusters is very small
@@ -589,24 +589,24 @@ why they are the natural companion when the number of clusters is very small
 
 \emph{Cluster-level analysis.} We will regress $y_{ij}$ on $y_{ij}^{0}$ within
 practices, take the practice-level mean residual as a single summary per
-practice, and compare the 14 summaries between arms with a two-sample $t$ test
-on $k_1 + k_2 - 2 = 12$ degrees of freedom, weighting practices by their
+practice, and compare the 13 summaries between arms with a two-sample $t$ test
+on $k_1 + k_2 - 2 = 11$ degrees of freedom, weighting practices by their
 analysed size for the participant-average estimand and unweighted for the
 cluster-average estimand \citep{hayes2017, kahan2023}. This two-stage analysis
 gives up some efficiency but its type I error rate is correct by construction
 with any number of clusters.
 
 \emph{Exact randomisation test.} Because randomisation acts on practices, the
-set of allocations that could have occurred is finite and small: with 5 of 14
+set of allocations that could have occurred is finite and small: with 4 of 13
 practices allocated to the intervention there are exactly
-$\binom{14}{5} = 2002$ of them, and with a 7 versus 7 split, 3432. We will
+$\binom{13}{4} = 715$ of them, and with a 6 versus 7 split, 1716. We will
 therefore enumerate the full set, recompute the cluster-level test statistic
 under each allocation, and take the proportion of allocations giving a
 statistic at least as extreme as the observed one as an exact $p$ value. This
 test makes no distributional assumption and is valid however few clusters there
 are \citep{gail1996, leyrat2018}. Its resolution is limited by the design: the
-smallest attainable two-sided $p$ value with a 5 versus 9 split is
-$2/2002 \approx 0.001$. If randomisation was covariate-constrained, the
+smallest attainable two-sided $p$ value with a 4 versus 9 split is
+$2/715 \approx 0.003$. If randomisation was covariate-constrained, the
 enumeration will be restricted to the allocations that satisfy the same
 constraints, since only those could have been selected \citep{li2016}.
 
@@ -663,7 +663,7 @@ spreading symmetrically, and access to the raw data allows the outcome
 distribution to be modelled directly instead of assumed normal. A sceptical
 prior centred at zero will be reported alongside the informative one.
 
-With 14 practices the posterior for the between-practice variance is
+With 13 practices the posterior for the between-practice variance is
 sensitive to its prior, which is the known weakness of Bayesian analysis of
 cluster randomised trials with few clusters \citep{spiegelhalter2001}. We
 will therefore report a sensitivity analysis over the between-practice
@@ -688,13 +688,13 @@ The following are prespecified and will be reported whether or not they change
 the conclusion.
 
 \begin{enumerate}[leftmargin=1.4em, itemsep=2pt]
-\item \textbf{Leave-one-practice-out.} The primary model refitted 14 times,
+\item \textbf{Leave-one-practice-out.} The primary model refitted 13 times,
 each time omitting one practice. With few clusters a single atypical practice
 can carry the result, and the spread of the 14 estimates shows how much it
 does.
 \item \textbf{Therapist effects.} A third level for therapist within practice.
 This is the more faithful description of the data hierarchy, but variance
-components at three levels are poorly identified with 14 practices, so it is a
+components at three levels are poorly identified with 13 practices, so it is a
 sensitivity analysis rather than the primary model.
 \item \textbf{Unconstrained model.} Model \eqref{eq:primary} with a main
 effect of treatment added, which frees the baseline means and shows what the
@@ -728,7 +728,7 @@ effect in the principal stratum of participants who would adhere regardless of
 allocation, the complier average causal effect, will be estimated by
 instrumental variable regression with allocation as the instrument
 \citep{angrist1996}. The estimate will be reported alongside the
-intention-to-treat effect, as in the Australian trial \citep{bagg2022}. With 14
+intention-to-treat effect, as in the Australian trial \citep{bagg2022}. With 13
 clusters this analysis is imprecise, and it is prespecified as exploratory.
 
 Contamination is limited by design rather than only measured: the five-day
@@ -798,7 +798,7 @@ the trial will be published together with the trial results.
 \caption{Sample size per arm required to detect a 2-point difference in RMDQ at
 18 weeks with 80\% power and two-sided $\alpha = 0.05$, by intra-cluster
 correlation. Based on a pooled SD of 5.2 points, adjustment for the baseline
-score (assumed correlation 0.6), 14 analysed participants per practice and a
+score (assumed correlation 0.6), an average of 15.4 analysed participants per practice and a
 coefficient of variation of practice size of 0.65.}
 \label{tab:ss}
 \begin{tabular}{lcccc}
@@ -807,9 +807,9 @@ coefficient of variation of practice size of 0.65.}
 \cmidrule(l){2-5}
 & 0 & 0.01 & 0.03 & 0.05\\
 \midrule
-Design effect (eq.~\ref{eq:de}) & 1.00 & 1.19 & 1.56 & 1.93\\
-Analysed participants per arm   & 69   & 82   & 107  & 133\\
-Recruited per arm (10\% attrition) & 76 & 91 & 119 & 148\\
+Design effect (eq.~\ref{eq:de}) & 1.00 & 1.20 & 1.61 & 2.02\\
+Analysed participants per arm   & 69   & 83   & 111  & 139\\
+Recruited per arm (10\% attrition) & 77 & 92 & 123 & 154\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -818,7 +818,7 @@ Recruited per arm (10\% attrition) & 76 & 91 & 119 & 148\\
 \centering\small
 \caption{Power to detect a 2-point difference in RMDQ at 18 weeks, two-sided
 $\alpha = 0.05$, with a $t$ reference distribution on $k_1+k_2-2$ degrees of
-freedom. Upper panel: the existing 14 practices with 200 analysed participants
+freedom. Upper panel: the existing 13 practices with 200 analysed participants
 in total. Lower panel: balanced designs with 14 analysed participants per
 practice, so that the total sample grows with the number of practices.}
 \label{tab:power}
@@ -828,10 +828,10 @@ practice, so that the total sample grows with the number of practices.}
 \cmidrule(l){3-5}
 Practices (int./ctrl.) & Analysed $N$ & 0.01 & 0.03 & 0.05\\
 \midrule
-\multicolumn{5}{l}{\emph{14 practices, $N$ fixed at 200}}\\
-5 / 9  & 200 & 0.77 & 0.65 & 0.56\\
-6 / 8  & 200 & 0.80 & 0.68 & 0.59\\
-7 / 7  & 200 & 0.80 & 0.69 & 0.60\\
+\multicolumn{5}{l}{\emph{13 practices, $N$ fixed at 200}}\\
+4 / 9  & 200 & 0.72 & 0.60 & 0.51\\
+5 / 8  & 200 & 0.77 & 0.64 & 0.55\\
+6 / 7  & 200 & 0.79 & 0.67 & 0.57\\
 \midrule
 \multicolumn{5}{l}{\emph{Balanced, 14 participants per practice}}\\
 5 / 5   & 140 & 0.62 & 0.51 & 0.43\\
