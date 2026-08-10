@@ -27,3 +27,6 @@ DATA*/
 *.rds
 *.sav
 *.dta
+
+# Literatur-PDFs (Copyright) — nie committen
+literature/
