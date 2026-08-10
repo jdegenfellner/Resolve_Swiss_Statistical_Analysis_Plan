@@ -222,15 +222,18 @@ pragmatic trial the comparator is itself part of the finding.
 \subsection{Randomisation and allocation}
 
 Practices are allocated 1:1 by the central trial coordinator at ZHAW, before
-the intervention therapists are trained. The allocation sequence is concealed
-from everyone involved in recruitment and enrolment, and the randomisation
-table is password protected. The protocol specifies neither stratification nor
-covariate-constrained allocation \open{confirm that allocation was simple}.
+the intervention therapists are trained \citep{protocol2025}. The allocation
+was carried out live, by drawing lots from a bag, which fixed the complete
+allocation at once, before therapist training and before any patient was
+recruited. This is simple randomisation in its most transparent form. No
+ongoing allocation sequence exists that would need concealment, and the
+selection risk that concealment guards against in individually randomised
+trials arises in a cluster trial at patient recruitment instead
+(section~\ref{sec:recruitment}).
 
-Two points follow for the analysis. First, if any variable was in fact used to
-stratify or constrain the allocation, it must be adjusted for in the analysis,
-otherwise the standard errors are wrong \citep{kahan2012, hemming2023}. If
-allocation was simple, no such adjustment is required and the randomisation
+Two points follow for the analysis. First, the allocation used neither
+stratification nor covariate constraints, so no design variables need to be
+carried in the model \citep{kahan2012, hemming2023}, and the randomisation
 test of section~\ref{sec:smallk} may enumerate all allocations. Second, if
 practices were recruited in waves and later waves were allocated non-randomly,
 wave and treatment arm would be confounded. Recruitment wave will therefore be
@@ -246,6 +249,7 @@ influence. \open{confirm that the statistician will be blinded to arm labels
 until the primary analysis is complete}
 
 \subsection{Recruitment of participants after cluster allocation}
+\label{sec:recruitment}
 
 Because practices are randomised before their patients are recruited, and
 because the recruiting therapists know which arm their practice is in, patient
