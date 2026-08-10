@@ -73,20 +73,22 @@ Teerenstra et al. (2012) give a formula that handles both together (ours is mild
 conservative); and the ICC is assumed, not known, so everything is tabulated across a
 range.
 
-## What the power tables say about 5 vs 9 practices
+## What the power tables say about 4 vs 9 practices
 
 Two findings worth taking to the project meeting:
 
-1. **Rebalancing 5/9 to 7/7 buys almost nothing** — about 3 percentage points of power at
-   every ICC considered, because the total analysed sample is what it is. Copas & Hooper
-   (2021) show equal cluster allocation is optimal exactly when the ICC and total
-   variance match across arms, so 7/7 is still the right default; the efficiency argument
-   for changing it is just weak.
+1. **Rebalancing 4/9 to 6/7 recovers about 6 percentage points** at every ICC
+   considered, but no rebalancing restores the planned 80 % because the total analysed
+   sample is what it is. Copas & Hooper (2021) show equal cluster allocation is optimal
+   exactly when the ICC and total variance match across arms, so a balanced split remains
+   the right default.
 2. **The number of practices is the problem.** At 14 participants per practice, going
    from 5+5 to 7+7 practices lifts power from 62 % to 80 % (ICC 0.01), and 9+9 reaches
    90 %. van Breukelen & Candel (2018) recommend at least 10 clusters per arm and, as a
    rule of thumb, adding two to three clusters per arm to any normal-approximation
-   sample size. This agrees with the July 2026 interim note in the project folder.
+   sample size. This agrees with the July 2026 interim note in the project folder and
+   with the recruitment-repair scenarios discussed in August 2026 (five new practices
+   randomised as a batch bring power back above 80 % for ICC up to about 0.03).
 
 ## The protocol conflict that needs a decision
 
