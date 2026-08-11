@@ -85,8 +85,15 @@ dimnames(de_tab) <- list(paste0("ICC=", rho_grid), paste0("cv=", cv_grid))
 out("\nDesign effects (m_bar = ", round(m_bar, 1), ", k = 13):")
 print(round(de_tab, 3))
 
-out("\nRequired n per arm = ANCOVA benchmark x design effect:")
-print(round(n_ancova * de_tab, 0))
+# Requirements are minima, so round up. Use the unrounded benchmark
+# (68.8, before its own ceiling) times the design effect, then ceiling.
+n_exact <- 2 * (qnorm(1 - alpha / 2) + qnorm(power_t))^2 *
+  sigma^2 * (1 - r^2) / delta^2
+req_tab <- ceiling(n_exact * de_tab)
+out("\nRequired n per arm = ANCOVA benchmark x design effect (rounded up):")
+print(req_tab)
+out("\nRecruited per arm at 10% loss to follow-up (rounded up):")
+print(ceiling(req_tab / 0.9))
 
 # ---------------------------------------------------------------------
 # 4. Power of the design as it currently stands
@@ -127,7 +134,9 @@ scenarios$k_ctrl <- 13 - scenarios$k_int
 
 # Hold the total analysed sample at 200 (100 per arm) and let the number
 # of participants per practice absorb the change in cluster numbers.
-scenarios$m <- round(200 / (scenarios$k_int + scenarios$k_ctrl))
+# m is the average practice size and may be fractional; the variance
+# formula only uses m through the design effect and the arm totals m*k.
+scenarios$m <- 200 / (scenarios$k_int + scenarios$k_ctrl)
 scenarios$power <- mapply(power_crt,
                           k1 = scenarios$k_int, k2 = scenarios$k_ctrl,
                           m = scenarios$m, rho = scenarios$rho,

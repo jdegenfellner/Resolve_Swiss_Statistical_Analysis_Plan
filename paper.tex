@@ -149,7 +149,8 @@ arm from the start. Communication between practices is possible too, but it
 is far less direct, so allocation at the level of the practice keeps
 contamination to a minimum \citep{hemming2021, campbell2012}. The trial's
 scientific advisory board recommended the cluster design for exactly this
-reason.
+reason. \open{the protocol documents the advisory board's recommendation only
+for the interim analysis; confirm this attribution}
 
 This analysis plan is written before the analysis of outcome data and
 follows the recommendations for the content of statistical analysis plans in
@@ -306,12 +307,14 @@ for primary care outcomes are usually small, with a median near 0.01
 \citep{adams2004}. Unequal cluster size can be ignored when $\mathrm{cv} < 0.23$,
 but for trials randomising general practices $\mathrm{cv}$ is typically around
 0.65 \citep{eldridge2006}. Physiotherapy practices are the closest analogue we
-have, so we plan on $\mathrm{cv} = 0.65$ and report the more optimistic 0.4 as
-well. With $\bar m = 15.4$, $k = 13$ and $\mathrm{cv} = 0.65$, the design effect
+have, so we plan on $\mathrm{cv} = 0.65$. With the more optimistic
+$\mathrm{cv} = 0.4$ the requirements below fall to 81, 104 and 127 per arm. With $\bar m = 15.4$, $k = 13$ and $\mathrm{cv} = 0.65$, the design effect
 is 1.20 at $\rho = 0.01$, 1.61 at $\rho = 0.03$ and 2.02 at $\rho = 0.05$, so
 the requirement is 83, 111 and 139 participants per arm respectively. The trial
-therefore aims for 100 analysed participants per arm, which corresponds to 110
-recruited per arm allowing 10\% loss to follow-up (Table~\ref{tab:ss}). This
+therefore aims for 100 analysed participants per arm, and recruitment
+continues until 200 complete primary-outcome datasets are available
+\citep{protocol2025}. The protocol's recruitment target of 110 per arm
+includes a buffer of about 10\% for loss to follow-up (Table~\ref{tab:ss}). This
 covers an intra-cluster correlation up to about 0.02.
 
 \begin{table}[ht]
@@ -330,7 +333,7 @@ coefficient of variation of practice size of 0.65.}
 \midrule
 Design effect (eq.~\ref{eq:de}) & 1.00 & 1.20 & 1.61 & 2.02\\
 Analysed participants per arm   & 69   & 83   & 111  & 139\\
-Recruited per arm (10\% attrition) & 77 & 92 & 123 & 154\\
+Recruited per arm (10\% attrition, rounded up) & 77 & 93 & 124 & 155\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -352,7 +355,7 @@ between-practice variance must be estimated from few units, and inference runs
 on a $t$ distribution with roughly $k_1 + k_2 - 2 = 11$ degrees of freedom
 \citep[chapter 7]{hayes2017}.
 Power is therefore lower than the design effect alone suggests: the committed
-200 analysed participants give 72\% at $\rho = 0.01$, falling to 51\% at
+200 analysed participants give 73\% at $\rho = 0.01$, falling to 51\% at
 $\rho = 0.05$ (Table~\ref{tab:power}). Adding patients to the existing
 practices would not repair this, since increasing cluster size at a fixed
 number of clusters has strongly diminishing returns \citep{hemming2017}, and
@@ -381,7 +384,7 @@ practice, so that the total sample grows with the number of practices.}
 Practices (int./ctrl.) & Analysed $N$ & 0.01 & 0.03 & 0.05\\
 \midrule
 \multicolumn{5}{l}{\emph{13 practices, $N$ fixed at 200}}\\
-4 / 9  & 200 & 0.72 & 0.60 & 0.51\\
+4 / 9  & 200 & 0.73 & 0.61 & 0.51\\
 \midrule
 \multicolumn{5}{l}{\emph{Balanced, 14 participants per practice}}\\
 5 / 5   & 140 & 0.62 & 0.51 & 0.43\\
@@ -389,7 +392,7 @@ Practices (int./ctrl.) & Analysed $N$ & 0.01 & 0.03 & 0.05\\
 7 / 7   & 196 & 0.80 & 0.69 & 0.60\\
 8 / 8   & 224 & 0.86 & 0.76 & 0.66\\
 9 / 9   & 252 & 0.90 & 0.81 & 0.72\\
-10 / 10 & 280 & 0.93 & 0.86 & 0.77\\
+10 / 10 & 280 & 0.93 & 0.85 & 0.77\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -432,7 +435,8 @@ previous studies \citep{waelti2015, bagg2022}. It measures uncertainty about the
 true effect. The quantity the formula requires is the between-participant
 standard deviation of the RMDQ, which is about 5.2 points. Recomputed with 5.2,
 a margin-based design powered to detect an excess of 0.4 points over a 2-point
-null would require several thousand participants per arm. It is not attainable
+null would require well over a thousand participants per arm even with
+baseline adjustment. It is not attainable
 and was never what the trial was resourced for.
 
 If the trial is instead read as a conventional superiority trial targeting a
@@ -494,16 +498,20 @@ here by the analysis they receive.
 Activity Impairment; Neurophysiology of Pain Questionnaire; Back Pain Attitudes
 Questionnaire; Pain Self-Efficacy Questionnaire; Depression Anxiety and Stress
 Scale; Tampa Scale of Kinesiophobia; EQ-5D-5L; Insomnia Severity Index;
-Fremantle Back Awareness Questionnaire; Goal Attainment Scale; the
-epistemic-beliefs questionnaire; and the treatment expectation, perceived
-improvement and satisfaction items.
+Fremantle Back Awareness Questionnaire; the epistemic-beliefs questionnaire;
+and the treatment expectation and perceived improvement items.
 
 \emph{Physical, continuous, at 18 weeks only.} Two-point discrimination and the
 point-to-point test of tactile acuity, and lumbar movement control, each rated
 from video by a blinded assessor.
 
-\emph{Counts and other.} Medication intake, treatment adherence, and adverse
-events.
+\emph{Recorded once.} The Goal Attainment Scale is set at baseline and scored
+with the therapist at 18 weeks, and the satisfaction item is collected at 18
+weeks only \citep{protocol2025}. Both are reported descriptively.
+
+\emph{Counts and other.} Medication intake and treatment adherence. Adverse
+events are safety outcomes, not endpoints, and will be summarised
+descriptively by arm.
 
 Cost-effectiveness (quality-adjusted life years and incremental
 cost-effectiveness ratios) and the fMRI substudy are reported separately and
@@ -695,7 +703,9 @@ Intra-cluster correlation (95\% CI) & \multicolumn{4}{l}{xx (xx to xx)}\\
 \subsubsection{Intra-cluster correlation}
 
 We will report the estimated intra-cluster correlation for the primary outcome,
-$\hat\rho = \hat\tau^2 / (\hat\tau^2 + \hat\sigma^2)$, with a 95\% confidence
+$\hat\rho = \hat\tau^2 / (\hat\tau^2 + \hat\nu^2 + \hat\sigma^2)$, the share of the
+total cross-sectional variance in model \eqref{eq:primary} that sits between
+practices, with a 95\% confidence
 interval obtained by profile likelihood, and, if the interval is very wide, we
 will say so and will not present the point estimate alone. Reporting the
 observed intra-cluster correlation is a CONSORT requirement for cluster trials
@@ -781,9 +791,9 @@ Outcome and time point & Intervention & Control & Effect (95\% CI) & $p$\\
 \quad 18 / 26 / 52 weeks & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
 \multicolumn{5}{l}{\emph{Psychological measures (DASS, TSK)}}\\
 \quad 18 / 26 / 52 weeks & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
-\multicolumn{5}{l}{\emph{Sleep (ISI), body awareness (FreBAQ), goal attainment (GAS)}}\\
+\multicolumn{5}{l}{\emph{Sleep (ISI), body awareness (FreBAQ)}}\\
 \quad 18 / 26 / 52 weeks & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
-\multicolumn{5}{l}{\emph{Work absence (WPAI), medication intake, adverse events}}\\
+\multicolumn{5}{l}{\emph{Work absence (WPAI), medication intake}}\\
 \quad 18 / 26 / 52 weeks & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
 \bottomrule
 \end{tabularx}
@@ -797,7 +807,7 @@ the conclusion.
 \begin{enumerate}[leftmargin=1.4em, itemsep=2pt]
 \item \textbf{Leave-one-practice-out.} The primary model refitted 13 times,
 each time omitting one practice. With few clusters a single atypical practice
-can carry the result, and the spread of the 14 estimates shows how much it
+can carry the result, and the spread of the 13 estimates shows how much it
 does.
 \item \textbf{Therapist effects.} A third level for therapist within practice.
 This is the more faithful description of the data hierarchy, but variance
@@ -824,7 +834,14 @@ characteristics of participants with and without an 18-week outcome. As a
 sensitivity analysis we will use multiple imputation by chained equations with
 the practice included in the imputation model, so that the imputation respects
 the clustering \citep{bell2020}. If an entire practice is lost, that will be
-reported separately and not imputed.
+reported separately and not imputed. This is a deliberate deviation from the
+protocol, which proposes nearest-neighbour imputation compared with a complete
+case analysis when more than 3\% of the data are missing
+\citep{protocol2025}. Nearest-neighbour imputation is single imputation and
+understates uncertainty, and a complete case comparison assumes the data are
+missing completely at random. The mixed model under missingness at random,
+with multiple imputation as the sensitivity analysis, makes weaker
+assumptions.
 
 \subsection{Non-adherence and contamination}
 
