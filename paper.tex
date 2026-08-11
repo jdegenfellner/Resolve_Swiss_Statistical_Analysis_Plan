@@ -745,12 +745,16 @@ arm \citep{bell2020}.
 \label{sec:bayes}
 
 The primary model \eqref{eq:primary} will also be fitted in a Bayesian
-formulation with the same structure. The prior for the treatment effect will
-be built from the individual participant data of the Australian trial, which
-the investigators hold under a data sharing agreement. The analogue of the
-primary model will be fitted to those data. The resulting posterior for the
-treatment effect, downweighted because the Australian comparator was a sham
-and not usual physiotherapy, will serve as the informative prior. The RMDQ at
+formulation with the same structure. The informative priors come from the
+individual participant data of the Australian trial, which the investigators
+hold under a data sharing agreement, and specifically from the distributions
+of the RMDQ at baseline and at 18 weeks in each arm. The analogue of the
+primary model, fitted to those two occasions, yields a posterior for the
+treatment effect, and that posterior, downweighted because the Australian
+comparator was a sham and not usual physiotherapy, serves as the prior for
+$\beta_2$. The same two distributions inform the priors for the remaining
+parameters: the common baseline mean, the participant-level and residual
+variances, and the baseline-to-follow-up correlation. The RMDQ at
 18 weeks piles up near zero, and access to the raw data allows this skewed
 outcome distribution to be modelled directly instead of assumed normal. A sceptical
 prior centred at zero will be reported alongside the informative one.

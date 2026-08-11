@@ -77,7 +77,34 @@ cat(sprintf("(group main effect, i.e. baseline difference: %.2f;\n the pure grou
             co["groupIntervention:time26 wk"],
             co["groupIntervention:time52 wk"]))
 
-# ---- 3. Figure 2B-style boxplots ------------------------------------
+# ---- 3. the RESOLVE Swiss primary model on the same data ------------
+# Constrained longitudinal model as in our SAP (baseline and 18 weeks in
+# the outcome vector, no group main effect, so both arms share one
+# baseline mean; Liang & Zeger 2000). The Australian trial randomised
+# individuals, so there is no practice level here; the random intercept
+# per participant remains. The treatment effect is the time-by-group
+# interaction. It should agree with the baseline-adjusted (ANCOVA)
+# estimate and be a touch more precise than the unconstrained model.
+long2 <- droplevels(long[long$time %in% c("Baseline", "18 wk"), ])
+mc <- lmer(rmdq ~ time + time:group + (1 | ID), data = long2, REML = TRUE)
+coc <- fixef(mc); Vc <- as.matrix(vcov(mc))
+k <- "time18 wk:groupIntervention"
+cat("\n== RESOLVE Swiss constrained model on the Australian data ==\n")
+cat(sprintf("18 wk effect (constrained): %.2f (%.2f to %.2f)\n",
+            coc[k], coc[k] - 1.96 * sqrt(Vc[k, k]), coc[k] + 1.96 * sqrt(Vc[k, k])))
+
+# ANCOVA on the same participants, for the Liang-Zeger equivalence
+w <- merge(data.frame(ID = d$ID, bl = d$rmdq.t1, fu = d$rmdq.t5,
+                      group = factor(d$allocn, 0:1, c("Control", "Intervention"))),
+           data.frame(ID = d$ID))
+w <- w[complete.cases(w), ]
+ma <- lm(fu ~ bl + group, data = w)
+ca <- coef(summary(ma))["groupIntervention", ]
+cat(sprintf("18 wk effect (ANCOVA):      %.2f (%.2f to %.2f)\n",
+            ca["Estimate"], ca["Estimate"] - 1.96 * ca["Std. Error"],
+            ca["Estimate"] + 1.96 * ca["Std. Error"]))
+
+# ---- 4. Figure 2B-style boxplots ------------------------------------
 # JAMA legend: box = IQR, whiskers = most extreme value within 1.5 IQR,
 # marker = observed mean. No individual points are drawn.
 fig <- ggplot(long, aes(time, rmdq, fill = group)) +
