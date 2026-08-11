@@ -311,6 +311,27 @@ therefore aims for 100 analysed participants per arm, which corresponds to 110
 recruited per arm allowing 10\% loss to follow-up (Table~\ref{tab:ss}). This
 covers an intra-cluster correlation up to about 0.02.
 
+\begin{table}[ht]
+\centering\small
+\caption{Sample size per arm required to detect a 2-point difference in RMDQ at
+18 weeks with 80\% power and two-sided $\alpha = 0.05$, by intra-cluster
+correlation. Based on a pooled SD of 5.2 points, adjustment for the baseline
+score (assumed correlation 0.6), an average of 15.4 analysed participants per practice and a
+coefficient of variation of practice size of 0.65.}
+\label{tab:ss}
+\begin{tabular}{lcccc}
+\toprule
+& \multicolumn{4}{c}{Intra-cluster correlation}\\
+\cmidrule(l){2-5}
+& 0 & 0.01 & 0.03 & 0.05\\
+\midrule
+Design effect (eq.~\ref{eq:de}) & 1.00 & 1.20 & 1.61 & 2.02\\
+Analysed participants per arm   & 69   & 83   & 111  & 139\\
+Recruited per arm (10\% attrition) & 77 & 92 & 123 & 154\\
+\bottomrule
+\end{tabular}
+\end{table}
+
 Two approximations in this calculation should be named. \hl{The variance
 reduction from the baseline measurement is applied as the individual-level
 factor} $1-r^2$ \hl{and the clustering inflation as} \eqref{eq:de}. \hl{A
@@ -340,6 +361,34 @@ chosen to move the overall allocation towards balance \citep{copas2021}, and
 the recruitment wave will enter the model as described in
 section~\ref{sec:randomisation}. \open{confirm number and split of the
 additional practices once the team has decided}
+
+\begin{table}[ht]
+\centering\small
+\caption{Power to detect a 2-point difference in RMDQ at 18 weeks, two-sided
+$\alpha = 0.05$, with a $t$ reference distribution on $k_1+k_2-2$ degrees of
+freedom. First row: the existing 13 practices with 200 analysed participants
+in total. Lower panel: balanced designs with 14 analysed participants per
+practice, so that the total sample grows with the number of practices.}
+\label{tab:power}
+\begin{tabular}{llccc}
+\toprule
+& & \multicolumn{3}{c}{Intra-cluster correlation}\\
+\cmidrule(l){3-5}
+Practices (int./ctrl.) & Analysed $N$ & 0.01 & 0.03 & 0.05\\
+\midrule
+\multicolumn{5}{l}{\emph{13 practices, $N$ fixed at 200}}\\
+4 / 9  & 200 & 0.72 & 0.60 & 0.51\\
+\midrule
+\multicolumn{5}{l}{\emph{Balanced, 14 participants per practice}}\\
+5 / 5   & 140 & 0.62 & 0.51 & 0.43\\
+6 / 6   & 168 & 0.73 & 0.61 & 0.52\\
+7 / 7   & 196 & 0.80 & 0.69 & 0.60\\
+8 / 8   & 224 & 0.86 & 0.76 & 0.66\\
+9 / 9   & 252 & 0.90 & 0.81 & 0.72\\
+10 / 10 & 280 & 0.93 & 0.86 & 0.77\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 All sample size and power computations are reproducible from the script
 \texttt{R/sample\_size.R} that accompanies this paper.
@@ -477,6 +526,37 @@ is asking \citep{altman1985, senn1994}. Testing anyway is known as the
 Table 1 fallacy, and it remains widespread in physiotherapy trials
 \citep{degenfellner2026table1}.
 
+\begin{table}[ht]
+\centering\small
+\caption{Baseline characteristics (shell). Panel A describes the clusters,
+panel B the participants.}
+\label{tab:base}
+\begin{tabularx}{\textwidth}{Xccc}
+\toprule
+Characteristic & Intervention & Control & All\\
+\midrule
+\multicolumn{4}{l}{\emph{Panel A: practices}}\\
+Number of practices & xx & xx & xx\\
+Therapists per practice, median (IQR) & xx (xx to xx) & xx (xx to xx) & xx (xx to xx)\\
+Participants per practice, median (IQR) & xx (xx to xx) & xx (xx to xx) & xx (xx to xx)\\
+Urban setting, n (\%) & xx (xx) & xx (xx) & xx (xx)\\
+\midrule
+\multicolumn{4}{l}{\emph{Panel B: participants}}\\
+Number of participants & xx & xx & xx\\
+Age, mean (SD) & xx (xx) & xx (xx) & xx (xx)\\
+Female, n (\%) & xx (xx) & xx (xx) & xx (xx)\\
+Duration of current episode, median (IQR) & xx (xx to xx) & xx (xx to xx) & xx (xx to xx)\\
+RMDQ, mean (SD) & xx (xx) & xx (xx) & xx (xx)\\
+Pain intensity (NRS), mean (SD) & xx (xx) & xx (xx) & xx (xx)\\
+EQ-5D-5L index, mean (SD) & xx (xx) & xx (xx) & xx (xx)\\
+Pain Self-Efficacy Questionnaire, mean (SD) & xx (xx) & xx (xx) & xx (xx)\\
+Tampa Scale of Kinesiophobia, mean (SD) & xx (xx) & xx (xx) & xx (xx)\\
+In paid work, n (\%) & xx (xx) & xx (xx) & xx (xx)\\
+Highest education level, n (\%) & xx (xx) & xx (xx) & xx (xx)\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
 \subsection{Primary outcome}
 
 \subsubsection{Estimand}
@@ -585,7 +665,28 @@ cluster randomisation adds.
 Practice-level summaries, weighted by analysed practice size for the
 participant-average estimand and unweighted for the cluster-average estimand,
 will be reported as descriptive estimates alongside the model result
-\citep{hayes2017, kahan2023}. No hypothesis test is attached to them.
+(Table~\ref{tab:prim}) \citep{hayes2017, kahan2023}. No hypothesis test is attached to them.
+
+\begin{table}[ht]
+\centering\small
+\caption{Analysis of the primary outcome (shell). The mixed model provides the
+estimate and the hypothesis test. Practice-level summaries are descriptive,
+size-weighted for the participant-average and unweighted for the
+cluster-average effect.}
+\label{tab:prim}
+\begin{tabularx}{\textwidth}{Xcccc}
+\toprule
+Analysis & Intervention & Control & Difference (95\% CI) & $p$\\
+& mean (SD) & mean (SD) & &\\
+\midrule
+Mixed model, Kenward--Roger (primary) & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
+Practice-level summary, size-weighted & --- & --- & xx (xx to xx) & ---\\
+Cluster-average effect (unweighted) & --- & --- & xx (xx to xx) & ---\\
+\midrule
+Intra-cluster correlation (95\% CI) & \multicolumn{4}{l}{xx (xx to xx)}\\
+\bottomrule
+\end{tabularx}
+\end{table}
 
 \subsubsection{Intra-cluster correlation}
 
@@ -652,6 +753,37 @@ outcome, always including a random intercept for practice and always using the
 same small-sample correction. Effects will be reported as point estimates with
 95\% confidence intervals (Table~\ref{tab:sec}). No formal claim of efficacy
 will be based on a secondary outcome.
+
+\begin{table}[ht]
+\centering\small
+\caption{Analysis of secondary outcomes (shell).}
+\label{tab:sec}
+\begin{tabularx}{\textwidth}{Xcccc}
+\toprule
+Outcome and time point & Intervention & Control & Effect (95\% CI) & $p$\\
+& mean (SD) & mean (SD) & &\\
+\midrule
+\multicolumn{5}{l}{\emph{Pain intensity (NRS)}}\\
+\quad 18 / 26 / 52 weeks & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
+\multicolumn{5}{l}{\emph{Patient Specific Functional Scale}}\\
+\quad 18 / 26 / 52 weeks & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
+\multicolumn{5}{l}{\emph{Tactile acuity: two-point discrimination, point-to-point}}\\
+\quad 18 weeks & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
+\multicolumn{5}{l}{\emph{Lumbar movement control}}\\
+\quad 18 weeks & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
+\multicolumn{5}{l}{\emph{Quality of life (EQ-5D-5L)}}\\
+\quad 18 / 26 / 52 weeks & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
+\multicolumn{5}{l}{\emph{Pain knowledge and attitudes (NPQ, Back-PAQ, PSEQ)}}\\
+\quad 18 / 26 / 52 weeks & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
+\multicolumn{5}{l}{\emph{Psychological measures (DASS, TSK)}}\\
+\quad 18 / 26 / 52 weeks & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
+\multicolumn{5}{l}{\emph{Sleep (ISI), body awareness (FreBAQ), goal attainment (GAS)}}\\
+\quad 18 / 26 / 52 weeks & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
+\multicolumn{5}{l}{\emph{Work absence (WPAI), medication intake, adverse events}}\\
+\quad 18 / 26 / 52 weeks & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
+\bottomrule
+\end{tabularx}
+\end{table}
 
 \subsection{Sensitivity analyses}
 
@@ -734,167 +866,6 @@ require the intra-cluster correlation to be reported, with an indication of its
 uncertainty, at the design stage and for each primary outcome. Item 13a requires
 the flow diagram to give the number of clusters as well as the number of
 individuals at every stage \citep{campbell2012}.
-
-The guideline for the content of statistical analysis plans that this document
-follows \citep{gamble2017} contains no items specific to clustering. An
-extension for cluster randomised trials is under development but not yet
-published \citep{hemming2025sap}. We have therefore added the cluster-specific
-items ourselves: the estimand and its weighting, the small-sample correction,
-the intra-cluster correlation, and the two-level description of the sample.
-
-% ============================================================
-\section*{Declarations}
-
-\textbf{Funding.} \open{funder and grant number}
-
-\textbf{Conflicts of interest.} \open{to be completed by all authors}
-
-\textbf{Ethics.} Cantonal Ethics Committee of Zurich, lead committee, BASEC
-2025-00784. Approval with conditions on 20 January 2026, fulfilment of
-conditions confirmed on 10 April 2026.
-
-\textbf{Data and code availability.} The code that reproduces the sample size
-and power calculations reported here accompanies this paper. Analysis code for
-the trial will be published together with the trial results.
-\open{repository URL}
-
-\textbf{Author contributions.} \open{CRediT statement}
-
-% ============================================================
-\clearpage
-\section*{Tables and figures}
-
-\begin{table}[ht]
-\centering\small
-\caption{Sample size per arm required to detect a 2-point difference in RMDQ at
-18 weeks with 80\% power and two-sided $\alpha = 0.05$, by intra-cluster
-correlation. Based on a pooled SD of 5.2 points, adjustment for the baseline
-score (assumed correlation 0.6), an average of 15.4 analysed participants per practice and a
-coefficient of variation of practice size of 0.65.}
-\label{tab:ss}
-\begin{tabular}{lcccc}
-\toprule
-& \multicolumn{4}{c}{Intra-cluster correlation}\\
-\cmidrule(l){2-5}
-& 0 & 0.01 & 0.03 & 0.05\\
-\midrule
-Design effect (eq.~\ref{eq:de}) & 1.00 & 1.20 & 1.61 & 2.02\\
-Analysed participants per arm   & 69   & 83   & 111  & 139\\
-Recruited per arm (10\% attrition) & 77 & 92 & 123 & 154\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{table}[ht]
-\centering\small
-\caption{Power to detect a 2-point difference in RMDQ at 18 weeks, two-sided
-$\alpha = 0.05$, with a $t$ reference distribution on $k_1+k_2-2$ degrees of
-freedom. First row: the existing 13 practices with 200 analysed participants
-in total. Lower panel: balanced designs with 14 analysed participants per
-practice, so that the total sample grows with the number of practices.}
-\label{tab:power}
-\begin{tabular}{llccc}
-\toprule
-& & \multicolumn{3}{c}{Intra-cluster correlation}\\
-\cmidrule(l){3-5}
-Practices (int./ctrl.) & Analysed $N$ & 0.01 & 0.03 & 0.05\\
-\midrule
-\multicolumn{5}{l}{\emph{13 practices, $N$ fixed at 200}}\\
-4 / 9  & 200 & 0.72 & 0.60 & 0.51\\
-\midrule
-\multicolumn{5}{l}{\emph{Balanced, 14 participants per practice}}\\
-5 / 5   & 140 & 0.62 & 0.51 & 0.43\\
-6 / 6   & 168 & 0.73 & 0.61 & 0.52\\
-7 / 7   & 196 & 0.80 & 0.69 & 0.60\\
-8 / 8   & 224 & 0.86 & 0.76 & 0.66\\
-9 / 9   & 252 & 0.90 & 0.81 & 0.72\\
-10 / 10 & 280 & 0.93 & 0.86 & 0.77\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{table}[ht]
-\centering\small
-\caption{Baseline characteristics (shell). Panel A describes the clusters,
-panel B the participants.}
-\label{tab:base}
-\begin{tabularx}{\textwidth}{Xccc}
-\toprule
-Characteristic & Intervention & Control & All\\
-\midrule
-\multicolumn{4}{l}{\emph{Panel A: practices}}\\
-Number of practices & xx & xx & xx\\
-Therapists per practice, median (IQR) & xx (xx to xx) & xx (xx to xx) & xx (xx to xx)\\
-Participants per practice, median (IQR) & xx (xx to xx) & xx (xx to xx) & xx (xx to xx)\\
-Urban setting, n (\%) & xx (xx) & xx (xx) & xx (xx)\\
-\midrule
-\multicolumn{4}{l}{\emph{Panel B: participants}}\\
-Number of participants & xx & xx & xx\\
-Age, mean (SD) & xx (xx) & xx (xx) & xx (xx)\\
-Female, n (\%) & xx (xx) & xx (xx) & xx (xx)\\
-Duration of current episode, median (IQR) & xx (xx to xx) & xx (xx to xx) & xx (xx to xx)\\
-RMDQ, mean (SD) & xx (xx) & xx (xx) & xx (xx)\\
-Pain intensity (NRS), mean (SD) & xx (xx) & xx (xx) & xx (xx)\\
-EQ-5D-5L index, mean (SD) & xx (xx) & xx (xx) & xx (xx)\\
-Pain Self-Efficacy Questionnaire, mean (SD) & xx (xx) & xx (xx) & xx (xx)\\
-Tampa Scale of Kinesiophobia, mean (SD) & xx (xx) & xx (xx) & xx (xx)\\
-In paid work, n (\%) & xx (xx) & xx (xx) & xx (xx)\\
-Highest education level, n (\%) & xx (xx) & xx (xx) & xx (xx)\\
-\bottomrule
-\end{tabularx}
-\end{table}
-
-\begin{table}[ht]
-\centering\small
-\caption{Analysis of the primary outcome (shell). The mixed model provides the
-estimate and the hypothesis test. Practice-level summaries are descriptive,
-size-weighted for the participant-average and unweighted for the
-cluster-average effect.}
-\label{tab:prim}
-\begin{tabularx}{\textwidth}{Xcccc}
-\toprule
-Analysis & Intervention & Control & Difference (95\% CI) & $p$\\
-& mean (SD) & mean (SD) & &\\
-\midrule
-Mixed model, Kenward--Roger (primary) & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
-Practice-level summary, size-weighted & --- & --- & xx (xx to xx) & ---\\
-Cluster-average effect (unweighted) & --- & --- & xx (xx to xx) & ---\\
-\midrule
-Intra-cluster correlation (95\% CI) & \multicolumn{4}{l}{xx (xx to xx)}\\
-\bottomrule
-\end{tabularx}
-\end{table}
-
-\begin{table}[ht]
-\centering\small
-\caption{Analysis of secondary outcomes (shell).}
-\label{tab:sec}
-\begin{tabularx}{\textwidth}{Xcccc}
-\toprule
-Outcome and time point & Intervention & Control & Effect (95\% CI) & $p$\\
-& mean (SD) & mean (SD) & &\\
-\midrule
-\multicolumn{5}{l}{\emph{Pain intensity (NRS)}}\\
-\quad 18 / 26 / 52 weeks & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
-\multicolumn{5}{l}{\emph{Patient Specific Functional Scale}}\\
-\quad 18 / 26 / 52 weeks & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
-\multicolumn{5}{l}{\emph{Tactile acuity: two-point discrimination, point-to-point}}\\
-\quad 18 weeks & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
-\multicolumn{5}{l}{\emph{Lumbar movement control}}\\
-\quad 18 weeks & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
-\multicolumn{5}{l}{\emph{Quality of life (EQ-5D-5L)}}\\
-\quad 18 / 26 / 52 weeks & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
-\multicolumn{5}{l}{\emph{Pain knowledge and attitudes (NPQ, Back-PAQ, PSEQ)}}\\
-\quad 18 / 26 / 52 weeks & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
-\multicolumn{5}{l}{\emph{Psychological measures (DASS, TSK)}}\\
-\quad 18 / 26 / 52 weeks & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
-\multicolumn{5}{l}{\emph{Sleep (ISI), body awareness (FreBAQ), goal attainment (GAS)}}\\
-\quad 18 / 26 / 52 weeks & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
-\multicolumn{5}{l}{\emph{Work absence (WPAI), medication intake, adverse events}}\\
-\quad 18 / 26 / 52 weeks & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
-\bottomrule
-\end{tabularx}
-\end{table}
 
 \begin{figure}[p]
 \centering
@@ -986,6 +957,31 @@ tier are what allow recruitment bias to be judged, since practices know their
 allocation before they approach patients.}
 \label{fig:flow}
 \end{figure}
+
+The guideline for the content of statistical analysis plans that this document
+follows \citep{gamble2017} contains no items specific to clustering. An
+extension for cluster randomised trials is under development but not yet
+published \citep{hemming2025sap}. We have therefore added the cluster-specific
+items ourselves: the estimand and its weighting, the small-sample correction,
+the intra-cluster correlation, and the two-level description of the sample.
+
+% ============================================================
+\section*{Declarations}
+
+\textbf{Funding.} \open{funder and grant number}
+
+\textbf{Conflicts of interest.} \open{to be completed by all authors}
+
+\textbf{Ethics.} Cantonal Ethics Committee of Zurich, lead committee, BASEC
+2025-00784. Approval with conditions on 20 January 2026, fulfilment of
+conditions confirmed on 10 April 2026.
+
+\textbf{Data and code availability.} The code that reproduces the sample size
+and power calculations reported here accompanies this paper. Analysis code for
+the trial will be published together with the trial results.
+\open{repository URL}
+
+\textbf{Author contributions.} \open{CRediT statement}
 
 % ============================================================
 \clearpage
