@@ -755,9 +755,41 @@ comparator was a sham and not usual physiotherapy, serves as the prior for
 $\beta_2$. The same two distributions inform the priors for the remaining
 parameters: the common baseline mean, the participant-level and residual
 variances, and the baseline-to-follow-up correlation. The RMDQ at
-18 weeks piles up near zero, and access to the raw data allows this skewed
-outcome distribution to be modelled directly instead of assumed normal. A sceptical
-prior centred at zero will be reported alongside the informative one.
+18 weeks piles up near zero (Figure~\ref{fig:ausbox}), and access to the raw
+data allows this skewed outcome distribution to be modelled directly instead
+of assumed normal. The RMDQ is a count of 24 items, and in every
+arm-by-occasion subgroup of the Australian data the beta-binomial
+distribution with size 24 fits as well as or better than each continuous
+family we examined, while the normal fails badly at 18 weeks
+(Figure~\ref{fig:ausdist}). The supplementary analysis will therefore be
+reported twice, once with the normal likelihood of model \eqref{eq:primary}
+for direct comparability with the frequentist result, and once with a
+beta-binomial likelihood that respects the bounded count nature of the
+score. A sceptical prior centred at zero will be reported alongside the
+informative one.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.62\textwidth]{figures/aus_rmdq_box_sap.png}
+\caption{RMDQ in the Australian trial \citep{bagg2022} at baseline and 18
+weeks, by arm. Boxes give the interquartile range, whiskers extend to the
+most extreme value within 1.5 times that range, diamonds mark the means. The
+figure shows aggregate summaries of the individual participant data only.}
+\label{fig:ausbox}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{figures/aus_rmdq_dist_sap.png}
+\caption{Observed relative frequencies of the RMDQ in the four
+arm-by-occasion subgroups of the Australian trial, with maximum likelihood
+fits evaluated on the integer grid so that the families are directly
+comparable. The beta-binomial with size 24 is at or near the best fit in
+every subgroup. Fitted values (prob, $\theta$): intervention 0.40, 4.9 at
+baseline and 0.16, 3.0 at 18 weeks. Control 0.42, 6.3 at baseline and 0.26,
+2.7 at 18 weeks. Script \texttt{R/aus\_rmdq\_distributions.R}.}
+\label{fig:ausdist}
+\end{figure}
 
 With 13 practices the posterior for the between-practice variance is
 sensitive to its prior, which is the known weakness of Bayesian analysis of
