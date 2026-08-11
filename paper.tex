@@ -227,6 +227,7 @@ control practices actually deliver will be recorded and described, because in a
 pragmatic trial the comparator is itself part of the finding.
 
 \subsection{Randomisation and allocation}
+\label{sec:randomisation}
 
 Practices are allocated 1:1 by the central trial coordinator at ZHAW, before
 the intervention therapists are trained \citep{protocol2025}. The allocation
@@ -321,41 +322,24 @@ therefore mildly conservative.} Second,
 the intra-cluster correlation is assumed, not known. The calculation is
 therefore reported across a range of values \citep{hemming2023}.
 
-Three features of the current design shape what the trial can deliver.
-First, with 13 practices the between-cluster component of
-the variance rests on 13 numbers, and the relevant reference distribution has
-roughly 11 degrees of freedom. Power is correspondingly lower than the design
-effect alone suggests. Holding the analysed sample at 200 participants and
-using a $t$ reference distribution on $k_1 + k_2 - 2$ degrees of freedom, the
-power to detect a 2-point difference is 72\% at $\rho = 0.01$, 60\% at
-$\rho = 0.03$ and 51\% at $\rho = 0.05$.
-
-Second, the 4 versus 9 imbalance itself costs little. Even if the existing
-practices could be split 6 versus 7, which the completed randomisation does
-not permit, power would rise by only about 6 percentage points at every
-intra-cluster correlation considered, because the total analysed sample is
-unchanged. Equal allocation of clusters is the efficient choice when the
-intra-cluster correlation and the total variance are the same in both arms
-\citep{copas2021}, and we have no reason to expect them to differ here. The
-imbalance is a minor inefficiency, not the main problem.
-
-Third, and this is the binding constraint: \emph{the number of practices
-is too small}. Four clusters in one arm sits at the bottom of the range in
-which the recommended analyses have been evaluated \citep{leyrat2018}, and a
-minimum of about ten clusters per arm has been recommended for cluster
-randomised trials generally, with the practical rule of adding two to three
-clusters per arm to any sample size derived from a normal approximation
-\citep{vanbreukelen2018}. Few clusters also raise the probability of chance
-imbalance on practice characteristics and reduce the number of analyses
-available \citep{taljaard2016}. Adding practices while holding practice size at
-14 participants raises power from 62\% with 5 per arm to 80\% with 7 per arm
-and 90\% with 9 per arm at $\rho = 0.01$ (Table~\ref{tab:power}). That is a much
-better return than adding patients to the practices already enrolled, because
-increasing cluster size at a fixed number of clusters has strongly diminishing
-returns \citep{hemming2017}. If additional practices are recruited, they must
-be randomised as a batch, not simply assigned to the intervention arm, so that
-the new wave contains its own randomised contrast
-\citep{ivers2012, moulton2004}.
+The design effect corrects the required sample but not the degrees of freedom.
+With the 13 practices currently enrolled, 4 of them in the intervention arm, the
+between-practice variance must be estimated from few units, and inference runs
+on a $t$ distribution with roughly $k_1 + k_2 - 2 = 11$ degrees of freedom.
+Power is therefore lower than the design effect alone suggests: the committed
+200 analysed participants give 72\% at $\rho = 0.01$, falling to 51\% at
+$\rho = 0.05$ (Table~\ref{tab:power}). Adding patients to the existing
+practices would not repair this, since increasing cluster size at a fixed
+number of clusters has strongly diminishing returns \citep{hemming2017}, and
+about ten clusters per arm has been recommended as a general minimum
+\citep{vanbreukelen2018}. The trial team therefore plans to recruit additional
+practices. Table~\ref{tab:power} shows what they buy: at 14 analysed
+participants per practice, 7 practices per arm reach the planned 80\% power at
+$\rho = 0.01$. New practices will be randomised as a batch, with the split
+chosen to move the overall allocation towards balance \citep{copas2021}, and
+the recruitment wave will enter the model as described in
+section~\ref{sec:randomisation}. \open{confirm number and split of the
+additional practices once the team has decided}
 
 All sample size and power computations are reproducible from the script
 \texttt{R/sample\_size.R} that accompanies this paper.
@@ -805,7 +789,7 @@ Recruited per arm (10\% attrition) & 77 & 92 & 123 & 154\\
 \centering\small
 \caption{Power to detect a 2-point difference in RMDQ at 18 weeks, two-sided
 $\alpha = 0.05$, with a $t$ reference distribution on $k_1+k_2-2$ degrees of
-freedom. Upper panel: the existing 13 practices with 200 analysed participants
+freedom. First row: the existing 13 practices with 200 analysed participants
 in total. Lower panel: balanced designs with 14 analysed participants per
 practice, so that the total sample grows with the number of practices.}
 \label{tab:power}
@@ -817,8 +801,6 @@ Practices (int./ctrl.) & Analysed $N$ & 0.01 & 0.03 & 0.05\\
 \midrule
 \multicolumn{5}{l}{\emph{13 practices, $N$ fixed at 200}}\\
 4 / 9  & 200 & 0.72 & 0.60 & 0.51\\
-5 / 8  & 200 & 0.77 & 0.64 & 0.55\\
-6 / 7  & 200 & 0.79 & 0.67 & 0.57\\
 \midrule
 \multicolumn{5}{l}{\emph{Balanced, 14 participants per practice}}\\
 5 / 5   & 140 & 0.62 & 0.51 & 0.43\\
