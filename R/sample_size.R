@@ -185,3 +185,24 @@ out("Distinct allocations, 6 of 13 practices: ", choose(13, 6))
 # ---------------------------------------------------------------------
 out("\n")
 print(sessionInfo())
+
+# ---------------------------------------------------------------------
+# 6. How far off is the factorised approximation (1 - r^2) x DE?
+# ---------------------------------------------------------------------
+# Teerenstra et al. (2012), Stat Med 31:2169-2178, eq. (5) and (7):
+# the exact ANCOVA design effect for a cluster randomised trial is
+# (1 - r_comb^2) * [1 + (n - 1) * rho], where r_comb is a weighted
+# average of the cluster autocorrelation rho_c and the subject
+# autocorrelation rho_s:
+#   r_comb = w * rho_c + (1 - w) * rho_s,  w = n*rho / (1 + (n-1)*rho).
+# Our calculation uses rho_s alone (r = 0.6). The requirement ratio
+# Teerenstra / ours is therefore (1 - r_comb^2) / (1 - rho_s^2):
+# ratio 1 when rho_c = rho_s, ours conservative when rho_c > rho_s,
+# optimistic when rho_c < rho_s.
+
+out("\nRequirement ratio Teerenstra / factorised version (rho_s = 0.6):")
+teer <- expand.grid(rho = c(0.01, 0.03, 0.05), rho_c = c(0.2, 0.4, 0.6, 0.8))
+w <- m_bar * teer$rho / (1 + (m_bar - 1) * teer$rho)
+r_comb <- w * teer$rho_c + (1 - w) * r
+teer$ratio <- round((1 - r_comb^2) / (1 - r^2), 3)
+print(reshape(teer, idvar = "rho", timevar = "rho_c", direction = "wide"))

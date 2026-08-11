@@ -342,11 +342,14 @@ Recruited per arm (10\% attrition, rounded up) & 77 & 93 & 124 & 155\\
 Two approximations in this calculation should be named. \hl{The variance
 reduction from the baseline measurement is applied as the individual-level
 factor} $1-r^2$ \hl{and the clustering inflation as} \eqref{eq:de}. \hl{A
-formula that handles baseline adjustment inside a cluster randomised design,
-using the individual-level and the cluster-level baseline correlations
-separately, is available and gives a slightly smaller requirement when the
-cluster-level correlation is high} \citep{teerenstra2012}. \hl{Our version is
-therefore mildly conservative.} Second,
+formula that handles both together replaces} $r$ \hl{by a weighted average of
+the individual-level and the cluster-level baseline correlations}
+\citep{teerenstra2012}. \hl{Our version coincides with that formula when the
+cluster-level correlation equals the individual-level 0.6, is mildly
+conservative when practice means are more stable over time than that, and
+optimistic when they are less stable. Across cluster-level correlations of
+0.4 to 0.8 the required sample shifts by less than 20\% (section 6 of the
+script).} Second,
 the intra-cluster correlation is assumed, not known. The calculation is
 therefore reported across a range of values \citep{hemming2023}.
 
@@ -664,10 +667,12 @@ type I error rates when the number of clusters is small, and the inflation is
 substantial: in a review and reanalysis of published cluster randomised trials,
 a large share of trials with few or moderately many clusters had used methods
 that do not maintain the nominal error rate \citep{kahan2016, taljaard2016}. In
-a simulation across designs with 4 to 40 clusters, Leyrat and colleagues found
-that for continuous outcomes the Satterthwaite and Kenward--Roger corrections
-to a mixed model maintained the nominal rate, whereas uncorrected approaches
-did not \citep{leyrat2018}. Model \eqref{eq:primary} with Kenward--Roger
+a simulation across designs with 4 to 40 clusters, uncorrected approaches
+inflated the type I error rate throughout, the Kenward--Roger correction kept
+it at or below the nominal level, erring towards conservatism in the very
+smallest designs, and from about 10 clusters both Kenward--Roger and
+Satterthwaite held the nominal rate \citep{leyrat2018}. With 13 practices
+this trial sits in that safer range. Model \eqref{eq:primary} with Kenward--Roger
 degrees of freedom is therefore the single prespecified analysis of the
 primary outcome, in line with current guidance, which advises a correction of
 this kind below about 40 clusters \citep{hemming2023} or below about 30
@@ -824,6 +829,13 @@ the within-practice from the between-practice association with baseline
 disability.
 \item \textbf{Wave.} If practices entered in distinct recruitment waves, the
 primary model with wave as a fixed effect.
+\item \textbf{Practice-by-time interaction.} Model \eqref{eq:primary} with an
+additional random practice-by-time effect, which allows the correlation
+between two participants of the same practice to be weaker across occasions
+than within one occasion. A constrained baseline analysis without this
+flexibility can overstate precision \citep{hooper2018}, and the
+time-constant practice intercept of the primary model is the less flexible
+variant.
 \end{enumerate}
 
 \subsection{Missing data}
