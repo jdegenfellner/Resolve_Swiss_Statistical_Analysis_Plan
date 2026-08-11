@@ -289,8 +289,9 @@ participant standard deviation of the RMDQ at 18 weeks is taken from the
 Australian trial (intervention 3.6, SD 4.6; control 6.4, SD 5.8
 \citep{bagg2022}), giving a pooled SD of 5.2 points. With a two-sided
 $\alpha = 0.05$ and 80\% power, an individually randomised trial would need
-108 participants per arm. Using the baseline measurement, with an assumed
-baseline-to-follow-up correlation of 0.6, reduces this to 69 per arm.
+108 participants per arm \citep[section 3.2.1]{chow2018}. Using the baseline
+measurement, with an assumed baseline-to-follow-up correlation $r = 0.6$,
+reduces this by the factor $1-r^2$ to 69 per arm \citep{borm2007}.
 
 Clustering inflates this requirement by the design effect. Allowing for unequal
 practice sizes \citep{eldridge2006},
@@ -348,7 +349,8 @@ therefore reported across a range of values \citep{hemming2023}.
 The design effect corrects the required sample but not the degrees of freedom.
 With the 13 practices currently enrolled, 4 of them in the intervention arm, the
 between-practice variance must be estimated from few units, and inference runs
-on a $t$ distribution with roughly $k_1 + k_2 - 2 = 11$ degrees of freedom.
+on a $t$ distribution with roughly $k_1 + k_2 - 2 = 11$ degrees of freedom
+\citep[chapter 7]{hayes2017}.
 Power is therefore lower than the design effect alone suggests: the committed
 200 analysed participants give 72\% at $\rho = 0.01$, falling to 51\% at
 $\rho = 0.05$ (Table~\ref{tab:power}). Adding patients to the existing

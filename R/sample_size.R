@@ -38,6 +38,13 @@ out("Pooled SD of RMDQ at 18 weeks: ", round(sigma, 2))
 # ---------------------------------------------------------------------
 # 2. Individually randomised benchmark (per arm)
 # ---------------------------------------------------------------------
+# Two-sample test for equality, equal allocation: Chow, Shao, Wang &
+# Lokhnygina (2018), Sample Size Calculations in Clinical Research,
+# 3rd ed., section 3.2.1, eq. (3.11) with kappa = 1:
+#   n = (z_{1-alpha/2} + z_{1-beta})^2 * 2 * sigma^2 / delta^2
+# ANCOVA design factor (1 - r^2): Borm, Fransen & Lemmens (2007),
+# J Clin Epidemiol 60:1234-1238 (ANCOVA with (1 - r^2) * n subjects has
+# the same power as the unadjusted comparison with n).
 n_per_arm <- function(sigma, delta, alpha = 0.05, power = 0.80,
                       ancova_r = 0) {
   z_a <- qnorm(1 - alpha / 2)
@@ -87,9 +94,17 @@ print(round(n_ancova * de_tab, 0))
 # Variance of the difference of two arm means in a cluster randomised
 # trial with k_j clusters of average size m in arm j:
 #   Var = sigma^2 * [1 + (m - 1) * rho] * (1/(m*k_1) + 1/(m*k_2))
-# Power uses a t reference distribution with k_1 + k_2 - 2 degrees of
-# freedom, which is the relevant approximation when the number of
-# clusters is small (Hayes & Moulton 2017, ch. 7).
+# This is Hayes & Moulton (2017), Cluster Randomised Trials, 2nd ed.,
+# eq. (7.12) rearranged (their c = 1 + (z_{a/2}+z_b)^2 (s0^2+s1^2)
+# [1+(m-1)rho] / (m d^2), the "+1" being their allowance for the t-test),
+# with the per-arm terms added separately for unequal numbers of
+# clusters as in their section 7.6.2. The unequal-cluster-size inflation
+# (cv^2+1)*m below is Eldridge et al. (2006), eq. (2), a slight
+# overestimate of the design effect and hence conservative.
+# Instead of adding one cluster per arm we evaluate power exactly from
+# the noncentral t distribution (Chow et al. 2018, section 3.2.1) with
+# k_1 + k_2 - 2 degrees of freedom, the df of the cluster-level t test
+# (Hayes & Moulton 2017, eq. (5.1): df = 2(c-1) for equal arms).
 
 power_crt <- function(k1, k2, m, sigma, delta, rho, alpha = 0.05,
                       ancova_r = 0, cv = 0) {
