@@ -364,23 +364,19 @@ and ignoring the size variation between practices altogether
 degrees of freedom, and matters most.
 
 The design effect corrects the required sample but not the degrees of freedom.
-With the 13 practices currently enrolled, 4 of them in the intervention arm, the
-between-practice variance must be estimated from few units, and inference runs
-on a $t$ distribution with roughly $k_1 + k_2 - 2 = 11$ degrees of freedom
-\citep[section 10.3.1]{hayes2017}.
-Power is therefore lower than the design effect alone suggests: the committed
-200 analysed participants give 73\% at $\rho = 0.01$, falling to 51\% at
-$\rho = 0.05$ (Table~\ref{tab:power}). Adding patients to the existing
-practices would not repair this, since increasing cluster size at a fixed
-number of clusters has strongly diminishing returns \citep{hemming2017}, and
-about ten clusters per arm has been recommended as a general minimum
-\citep{vanbreukelen2018}. The trial team therefore plans to recruit additional
-practices. Table~\ref{tab:power} shows what they buy: at 14 analysed
-participants per practice, 7 practices per arm reach the planned 80\% power at
-$\rho = 0.01$. New practices will be randomised as a batch, with the split
-chosen to move the overall allocation towards balance \citep{copas2021}, and
-the recruitment wave will enter the model as described in
-section~\ref{sec:randomisation}. \open{confirm number and split of the
+With 13 practices, inference runs on a $t$ distribution with roughly
+$k_1 + k_2 - 2 = 11$ degrees of freedom \citep[section 10.3.1]{hayes2017},
+and power falls short of the planned 80\% (Table~\ref{tab:power}, whose
+first row is the current 4 versus 9 allocation). The analysis itself needs no
+modification for unequal arms. The repair is more practices: adding patients
+to the practices already enrolled has strongly diminishing returns
+\citep{hemming2017}, about ten practices per arm has been recommended as a
+general minimum \citep{vanbreukelen2018}, and with 14 analysed participants
+per practice, 7 practices per arm reach the planned power at $\rho = 0.01$
+(Table~\ref{tab:power}). Any new practices will be randomised as a batch,
+with the split chosen to move the overall allocation towards balance
+\citep{copas2021}, and the recruitment wave will enter the model as described
+in section~\ref{sec:randomisation}. \open{confirm number and split of the
 additional practices once the team has decided}
 
 \begin{table}[ht]
