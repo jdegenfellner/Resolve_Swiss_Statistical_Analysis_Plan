@@ -33,3 +33,4 @@ literature/
 figures/aus_*
 !figures/aus_rmdq_box_sap.png
 !figures/aus_rmdq_dist_sap.png
+figures/*.html
