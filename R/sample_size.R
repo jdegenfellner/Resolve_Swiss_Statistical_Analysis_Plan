@@ -120,7 +120,9 @@ out("With cv = 0 instead of 0.65, ICC 0.01, r = 0.6:  ",
 # Instead of adding one cluster per arm we evaluate power exactly from
 # the noncentral t distribution (Chow et al. 2018, section 3.2.1) with
 # k_1 + k_2 - 2 degrees of freedom, the df of the cluster-level t test
-# (Hayes & Moulton 2017, eq. (5.1): df = 2(c-1) for equal arms).
+# (Hayes & Moulton 2017, section 10.3.1, eqs. (10.2)-(10.3): compared
+# with the t distribution with c_1 + c_0 - 2 df; ch. 5, eq. (5.1) gives
+# the equal-arm special case 2(c-1)).
 
 power_crt <- function(k1, k2, m, sigma, delta, rho, alpha = 0.05,
                       ancova_r = 0, cv = 0) {
