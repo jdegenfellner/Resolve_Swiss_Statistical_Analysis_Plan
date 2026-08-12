@@ -348,19 +348,13 @@ Recruited per arm (10\% attrition, rounded up) & 77 & 93 & 124 & 155\\
 \end{tabular}
 \end{table}
 
-Two approximations in this calculation should be named. \hl{The variance
-reduction from the baseline measurement is applied as the individual-level
-factor} $1-r^2$ \hl{and the clustering inflation as} \eqref{eq:de}. \hl{A
-formula that handles both together replaces} $r$ \hl{by a weighted average of
-the individual-level and the cluster-level baseline correlations}
-\citep{teerenstra2012}. \hl{Our version coincides with that formula when the
-cluster-level correlation equals the individual-level 0.6, is mildly
-conservative when practice means are more stable over time than that, and
-optimistic when they are less stable. Across cluster-level correlations of
-0.4 to 0.8 the required sample shifts by less than 20\% (section 6 of the
-script).} Second,
-the intra-cluster correlation is assumed, not known. The calculation is
-therefore reported across a range of values \citep{hemming2023}.
+Two caveats should be named. The baseline gain and the clustering inflation
+are applied as separate factors. An exact formula that combines them exists,
+and across plausible cluster-level baseline correlations the required sample
+shifts by less than 20\% (section 6 of the accompanying script)
+\citep{teerenstra2012}. And the intra-cluster correlation is assumed, not
+known, so the calculation is reported across a range of values
+\citep{hemming2023}.
 
 The design effect corrects the required sample but not the degrees of freedom.
 With the 13 practices currently enrolled, 4 of them in the intervention arm, the
