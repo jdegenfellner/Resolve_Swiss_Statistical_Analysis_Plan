@@ -95,6 +95,15 @@ print(req_tab)
 out("\nRecruited per arm at 10% loss to follow-up (rounded up):")
 print(ceiling(req_tab / 0.9))
 
+# sensitivity of the inputs, quoted in the manuscript: baseline
+# correlation 0.5 instead of 0.6 at ICC 0.03, and cv 0 instead of 0.65
+n_r05 <- 2 * (qnorm(1 - alpha / 2) + qnorm(power_t))^2 *
+  sigma^2 * (1 - 0.5^2) / delta^2
+out("\nWith r = 0.5 instead of 0.6, ICC 0.03, cv 0.65: ",
+    ceiling(n_r05 * design_effect(m_bar, 0.03, 0.65, k = 13)), " per arm")
+out("With cv = 0 instead of 0.65, ICC 0.03, r = 0.6:  ",
+    ceiling(n_exact * design_effect(m_bar, 0.03, 0, k = 13)), " per arm")
+
 # ---------------------------------------------------------------------
 # 4. Power of the design as it currently stands
 # ---------------------------------------------------------------------
