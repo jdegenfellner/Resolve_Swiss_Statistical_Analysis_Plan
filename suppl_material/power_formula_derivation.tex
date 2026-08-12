@@ -1,0 +1,150 @@
+% ============================================================
+% RESOLVE Swiss — supplementary material
+% Internal note, not for publication. Derivation of the power formula
+% (equation (2) of the SAP). Build: pdflatex, bibtex, pdflatex x2.
+% ============================================================
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[english]{babel}
+\usepackage{microtype}
+\usepackage[a4paper,margin=2.6cm]{geometry}
+\usepackage{amsmath}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[hidelinks]{hyperref}
+
+\setlength{\parskip}{0.4em}
+\setlength{\parindent}{0pt}
+
+\title{\large\bfseries Supplementary material to the RESOLVE Swiss
+statistical analysis plan:\\ derivation of the power formula}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+The statistical analysis plan evaluates power with
+\begin{equation}
+\label{eq:power}
+\mathrm{power} = 1 - T_{\nu,\lambda}\!\left(t_{1-\alpha/2,\,\nu}\right)
+               + T_{\nu,\lambda}\!\left(-t_{1-\alpha/2,\,\nu}\right),
+\qquad
+\lambda = \frac{\delta}{\sqrt{\sigma^2 (1-r^2)\,\mathrm{DE}
+\left(\frac{1}{\bar m k_1}+\frac{1}{\bar m k_2}\right)}},
+\end{equation}
+where $\delta$ is the target difference, $\sigma$ the between-participant
+standard deviation of the outcome, $r$ the baseline-to-follow-up
+correlation, $\mathrm{DE}$ the design effect, $\bar m$ the mean number of
+analysed participants per practice, $k_1$ and $k_2$ the numbers of practices
+per arm, $\nu = k_1 + k_2 - 2$, and $T_{\nu,\lambda}$ the distribution
+function of the noncentral $t$ distribution with $\nu$ degrees of freedom
+and noncentrality $\lambda$. This note derives the formula in five
+elementary steps. Each step is standard, and the formula is their
+composition.
+
+\subsection*{Step 1: the estimator and its variance}
+
+The planning test compares the two arm means, $\bar y_1 - \bar y_0$. In one
+arm with $k$ practices of average size $\bar m$, clustering inflates the
+variance of the arm mean by the design effect,
+\begin{equation}
+\operatorname{Var}(\bar y) = \frac{\sigma^2\,\mathrm{DE}}{\bar m k},
+\qquad
+\mathrm{DE} = 1 + \left[ \left( \mathrm{cv}^2\,\tfrac{k-1}{k} + 1 \right)
+\bar m - 1 \right] \rho ,
+\end{equation}
+with $\rho$ the intra-cluster correlation and $\mathrm{cv}$ the coefficient
+of variation of practice size \citep[eq.~1]{eldridge2006}. The two arms are
+independent, so their variances add:
+\begin{equation}
+\label{eq:vardiff}
+\operatorname{Var}(\bar y_1 - \bar y_0)
+= \sigma^2\,\mathrm{DE} \left( \frac{1}{\bar m k_1} + \frac{1}{\bar m k_2}
+\right).
+\end{equation}
+This is the variance behind the sample size formula of
+\citet[eq.~7.12]{hayes2017}, with the per-arm terms added separately for
+unequal numbers of clusters as in their section~7.6.2.
+
+\subsection*{Step 2: the baseline}
+
+The analysis uses the baseline measurement of the outcome, which multiplies
+the relevant residual variance by the factor $1-r^2$ \citep{borm2007}. The
+true standard error of the comparison is therefore
+\begin{equation}
+\label{eq:se}
+\mathrm{SE} = \sqrt{\sigma^2 (1-r^2)\,\mathrm{DE}
+\left( \frac{1}{\bar m k_1} + \frac{1}{\bar m k_2} \right)},
+\end{equation}
+the expression under the root in the noncentrality parameter of
+eq.~\eqref{eq:power}.
+
+\subsection*{Step 3: if the standard error were known}
+
+With known $\mathrm{SE}$ the statistic $T = (\bar y_1 - \bar
+y_0)/\mathrm{SE}$ would be standard normal under the null hypothesis and
+normal with mean $\lambda = \delta/\mathrm{SE}$ and unit variance under a
+true difference of $\delta$. Power would be $\Phi(\lambda - z_{1-\alpha/2})$.
+This is the normal approximation, and it is the basis of the requirement
+table in the analysis plan.
+
+\subsection*{Step 4: the standard error is estimated from few practices}
+
+In a cluster randomised trial the scarce ingredient of
+$\widehat{\mathrm{SE}}$ is the between-practice variance. It is estimated
+from the $k_1 + k_2$ practice-level summaries, and their pooled variance
+carries $\nu = k_1 + k_2 - 2$ degrees of freedom
+\citep[section~10.3.1]{hayes2017}, so that $s^2 \sim \sigma^2_{\mathrm{SE}}
+\chi^2_\nu / \nu$ independently of the numerator. A ratio of the form
+\begin{equation}
+T = \frac{Z + \lambda}{\sqrt{\chi^2_\nu / \nu}},
+\qquad Z \sim N(0,1) \text{ independent of } \chi^2_\nu,
+\end{equation}
+is by definition noncentral $t$ with $\nu$ degrees of freedom and
+noncentrality $\lambda$. The test statistic has exactly this structure: the
+numerator is the estimate, which in units of $\mathrm{SE}$ is a standard
+normal shifted by $\lambda$, and the denominator is the estimated standard
+error divided by the true one. Under the null hypothesis $\lambda = 0$, the
+distribution is central $t_\nu$, and the test rejects when $|T| >
+t_{1-\alpha/2,\,\nu}$.
+
+\subsection*{Step 5: power is the rejection probability under $\lambda$}
+
+\begin{equation}
+\mathrm{power}
+= P\!\left(|T| > t_{1-\alpha/2,\,\nu}\right)
+= 1 - T_{\nu,\lambda}\!\left(t_{1-\alpha/2,\,\nu}\right)
+    + T_{\nu,\lambda}\!\left(-t_{1-\alpha/2,\,\nu}\right),
+\end{equation}
+which is eq.~\eqref{eq:power}. This last step is the two-sample power
+computation of \citet[section~3.2.1]{chow2018}, applied at the practice
+level: their degrees of freedom $n_1 + n_2 - 2$ for individuals become
+$k_1 + k_2 - 2$ for practices, and their standard error becomes
+eq.~\eqref{eq:se}.
+
+\subsection*{Assumptions}
+
+Three approximations are inherited and are declared in the analysis plan.
+The practice-level summaries are treated as normally distributed with a
+common variance, which is the assumption of the underlying $t$ comparison
+\citep[section~10.3.1]{hayes2017}. The design effect with unequal practice
+sizes is the approximation of \citet[eq.~1]{eldridge2006}, exact for the
+size-weighted comparison of practice means and conservative for
+individual-level analyses. The baseline factor $1-r^2$ is applied at the
+individual level, where a formula carrying the individual-level and the
+cluster-level baseline correlations separately exists
+\citep{teerenstra2012}. Evaluating power on the $t$ scale rather than the
+normal scale builds the small-sample correction into the planning, as
+current guidance recommends \citep{leyrat2018, vanbreukelen2018}.
+
+The script \texttt{R/sample\_size.R} in the repository implements
+eq.~\eqref{eq:power} line by line, and the simulations in
+\texttt{R/simulations/} confirm it empirically.
+
+\bibliographystyle{unsrtnat}
+\bibliography{../references}
+
+\end{document}
