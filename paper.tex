@@ -364,10 +364,14 @@ and ignoring the size variation between practices altogether
 degrees of freedom, and matters most.
 
 The design effect corrects the required sample but not the degrees of freedom.
-With 13 practices, inference runs on a $t$ distribution with roughly
-$k_1 + k_2 - 2 = 11$ degrees of freedom \citep[section 10.3.1]{hayes2017},
-and power falls short of the planned 80\% (Table~\ref{tab:power}, whose
-first row is the current 4 versus 9 allocation). The analysis itself needs no
+For power we approximate the mixed-model analysis by the classical comparison
+of practice-level means, whose test statistic is referred to a $t$
+distribution with $k_1 + k_2 - 2 = 11$ degrees of freedom
+\citep[section 10.3.1]{hayes2017}; the Kenward--Roger degrees of freedom of
+the fitted model land in the same neighbourhood. The between-practice
+variance rests on 13 practices whichever model is fitted, and power falls
+short of the planned 80\% (Table~\ref{tab:power}, whose first row is the
+current 4 versus 9 allocation). The analysis itself needs no
 modification for unequal arms. The repair is more practices: adding patients
 to the practices already enrolled has strongly diminishing returns
 \citep{hemming2017}, about ten practices per arm has been recommended as a
