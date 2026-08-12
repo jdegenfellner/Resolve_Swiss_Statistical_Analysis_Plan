@@ -369,22 +369,32 @@ and ignoring the size variation between practices altogether
 degrees of freedom, and matters most.
 
 The third item, the degrees of freedom, is the one the design effect does
-not correct. The requirement above comes from the cluster-level framework: the design
-effect of eq.~\eqref{eq:de} is derived for the size-weighted comparison of
-practice-level means, and it is a conservative estimate for individual-level
-analyses such as the mixed model we will fit \citep{eldridge2006}. We
-evaluate power in the same framework. The comparison of practice-level means
-refers its test statistic to a $t$ distribution with $k_1 + k_2 - 2 = 11$
-degrees of freedom \citep[section 10.3.1]{hayes2017}, so the small-sample
-correction enters at the planning stage, as current guidance recommends
-\citep{leyrat2018}. Van Breukelen and Candel turn this into a simple recipe:
-a sample size derived from the normal approximation, as in
+not correct. The between-practice variance must be estimated from the
+practices themselves, so the treatment effect is judged against a $t$
+distribution with $k_1 + k_2 - 2 = 11$ degrees of freedom instead of a
+normal \citep[section 10.3.1]{hayes2017}, and this correction belongs in
+the planning \citep{leyrat2018}. Van Breukelen and Candel turn it into a
+simple recipe: a sample size derived from the normal approximation, as in
 Table~\ref{tab:ss}, needs two to three further practices per arm at a
-two-sided $\alpha$ of 0.05, three when fewer than eight practices per arm are
-planned \citep{vanbreukelen2018}. Table~\ref{tab:power} applies the same
-correction exactly, through the noncentral $t$ distribution at the given
-number of practices. With 13 practices, power falls short of the planned
-80\% (its first row is the current 4 versus 9 allocation). The analysis itself needs no
+two-sided $\alpha$ of 0.05, three when fewer than eight practices per arm
+are planned \citep{vanbreukelen2018}. Table~\ref{tab:power} applies the
+correction exactly. Power is evaluated from the noncentral $t$ distribution,
+\begin{equation}
+\label{eq:power}
+\mathrm{power} = 1 - T_{\nu,\lambda}\!\left(t_{1-\alpha/2,\,\nu}\right)
+                 + T_{\nu,\lambda}\!\left(-t_{1-\alpha/2,\,\nu}\right),
+\qquad
+\lambda = \frac{\delta}{\sqrt{\sigma^2 (1-r^2)\,\mathrm{DE}
+\left(\frac{1}{\bar m k_1}+\frac{1}{\bar m k_2}\right)}},
+\end{equation}
+where $\delta$ is the target difference, $\sigma$, $r$ and $\mathrm{DE}$
+are as above, $\nu = k_1 + k_2 - 2$, and $T_{\nu,\lambda}$ is the
+distribution function of the noncentral $t$ with noncentrality $\lambda$
+\citep[section 3.2.1]{chow2018}. The variance under the root is the
+variance of the difference in arm means \citep[eq. 7.12 and section
+7.6.2]{hayes2017}. With 13 practices, power falls short of the planned
+80\% (Table~\ref{tab:power}, whose first row is the current 4 versus 9
+allocation). The analysis itself needs no
 modification for unequal arms. The repair is more practices: adding patients
 to the practices already enrolled has strongly diminishing returns
 \citep{hemming2017}, about ten practices per arm has been recommended as a
