@@ -348,7 +348,7 @@ Recruited per arm (10\% attrition, rounded up) & 77 & 93 & 124 & 155\\
 \end{tabular}
 \end{table}
 
-Two caveats should be named. The baseline gain and the clustering inflation
+The calculation cuts two corners. The baseline gain and the clustering inflation
 are applied as separate factors. An exact formula that combines them exists,
 and across plausible cluster-level baseline correlations the required sample
 shifts by less than 20\% (section 6 of the accompanying script)
@@ -361,7 +361,7 @@ considered the requirement runs from 83 to 139 per arm, an assumed baseline
 correlation of 0.5 instead of 0.6 turns the 83 at $\rho = 0.01$ into 98,
 and ignoring the size variation between practices altogether
 ($\mathrm{cv} = 0$) would lower the 83 to 79. The number of practices acts separately, through the
-degrees of freedom, and matters most of all.
+degrees of freedom, and matters most.
 
 The design effect corrects the required sample but not the degrees of freedom.
 With the 13 practices currently enrolled, 4 of them in the intervention arm, the
@@ -436,10 +436,9 @@ the null hypothesis is that the intervention does \emph{not} exceed usual
 physiotherapy by more than 2 RMDQ points, tested one-sided at
 $\alpha = 0.05$ \citep{protocol2025}. This plan instead tests the conventional
 null of no difference, with 2 points as the \emph{target} difference the trial
-is powered to detect. The change is deliberate, and recording it here is the
-opposite of making it silently.
+is powered to detect.
 
-The reason is that the two framings imply very different trials. Under the
+The two framings imply very different trials. Under the
 margin formulation the quantity that drives power is the amount by which the
 true effect exceeds 2 points, not the effect itself. The sample size of 110 per
 arm was obtained under that formulation with an assumed true effect of about
@@ -465,8 +464,9 @@ underpowered for it}
 
 The protocol also specifies a one-sided test for the primary outcome and
 two-sided tests for the secondary outcomes. A one-sided test at $\alpha = 0.05$
-is equivalent to a two-sided test at 0.10 in the direction of interest and is
-generally discouraged in trial reports. We prespecify two-sided tests
+is equivalent to a two-sided test at 0.10 in the direction of interest, and
+regulatory practice prefers two-sided tests for efficacy endpoints
+\citep[section 2.2]{chow2018}. We prespecify two-sided tests
 throughout and report the estimate with its two-sided 95\% confidence interval,
 which is the more conservative choice and does not affect the direction of any
 conclusion. \open{sponsor to confirm}
@@ -599,16 +599,14 @@ addendum to cluster randomised trials requires \citep{kahan2026}. We prespecify
 the participant-average effect and report the cluster-average effect alongside
 it.
 
-One consequence deserves stating because it constrains how the primary model
-below may be read. A mixed model with a random intercept weights clusters by
+One consequence constrains how the primary model below may be read. A mixed model with a random intercept weights clusters by
 their inverse variance, which is neither participant-average nor cluster-average
 weighting. When cluster size is informative (that is, when outcomes or
 treatment effects vary systematically with practice size), such a model
 targets neither estimand cleanly \citep{kahan2023}. The practice-level summaries
 specified in section~\ref{sec:smallk} recover each estimand explicitly through
-their weighting, which is a second reason to report them and not to file them
-as a mere robustness check. We will report the distribution of practice
-sizes so that readers can judge how much this matters here.
+their weighting. We will report the distribution of practice sizes so that
+readers can judge how much this matters here.
 
 \subsubsection{Primary model}
 
@@ -737,10 +735,10 @@ on which the RMDQ is collected (baseline, 18, 26 and 52 weeks), with time as
 a categorical variable, the same random intercepts, and again no main effect
 of treatment. We fit this four-occasion model to obtain the effects at 26 and
 52 weeks, which are secondary. Its arm-by-time contrast at 18 weeks also
-serves as a check on the primary result.
+doubles as a check on the primary result.
 
-Two differences from the protocol's model statement \citep{protocol2025} are
-worth recording, and both are deliberate. The protocol carries a main effect
+This model differs from the protocol's model statement in two ways
+\citep{protocol2025}. The protocol carries a main effect
 of treatment alongside the interaction, which frees the baseline means of the
 two arms. We constrain them to be equal, which holds in expectation under
 randomisation and recovers
@@ -763,7 +761,7 @@ hold under a data sharing agreement, and specifically from the distributions
 of the RMDQ at baseline and at 18 weeks in each arm. The analogue of the
 primary model, fitted to those two occasions, yields a posterior for the
 treatment effect, and that posterior, downweighted because the Australian
-comparator was a sham and not usual physiotherapy, serves as the prior for
+comparator was a sham and not usual physiotherapy, becomes the prior for
 $\beta_2$. The same two distributions inform the priors for the remaining
 parameters: the common baseline mean, the participant-level and residual
 variances, and the baseline-to-follow-up correlation. The RMDQ at
@@ -918,7 +916,7 @@ instrumental variable regression with allocation as the instrument
 intention-to-treat effect, as in the Australian trial \citep{bagg2022}. With 13
 clusters this analysis is imprecise, and it is prespecified as exploratory.
 
-Contamination is limited by design, not only measured: the five-day
+The design itself limits contamination: the five-day
 RESOLVE training is unavailable to control therapists, and the German-language
 RESOLVE materials exist only inside a secured web application accessible to
 intervention therapists and participants. Treatment fidelity is monitored
