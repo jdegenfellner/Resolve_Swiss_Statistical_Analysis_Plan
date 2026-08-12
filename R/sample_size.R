@@ -87,6 +87,9 @@ print(round(de_tab, 3))
 
 # Requirements are minima, so round up. Use the unrounded benchmark
 # (68.8, before its own ceiling) times the design effect, then ceiling.
+# These are normal-approximation numbers; van Breukelen & Candel (2018)
+# add 2-3 practices per arm for the z-to-t power loss, and section 4
+# below applies that correction exactly via the noncentral t.
 n_exact <- 2 * (qnorm(1 - alpha / 2) + qnorm(power_t))^2 *
   sigma^2 * (1 - r^2) / delta^2
 req_tab <- ceiling(n_exact * de_tab)

@@ -333,7 +333,9 @@ covers an intra-cluster correlation up to about 0.02.
 18 weeks with 80\% power and two-sided $\alpha = 0.05$, by intra-cluster
 correlation. Based on a pooled SD of 5.2 points, adjustment for the baseline
 score (assumed correlation 0.6), an average of 15.4 analysed participants per practice and a
-coefficient of variation of practice size of 0.65.}
+coefficient of variation of practice size of 0.65. The requirements use the
+normal approximation; the degrees-of-freedom correction for the number of
+practices follows in the text and in Table~\ref{tab:power}.}
 \label{tab:ss}
 \begin{tabular}{lcccc}
 \toprule
@@ -372,15 +374,20 @@ evaluate power in the same framework. The comparison of practice-level means
 refers its test statistic to a $t$ distribution with $k_1 + k_2 - 2 = 11$
 degrees of freedom \citep[section 10.3.1]{hayes2017}, so the small-sample
 correction enters at the planning stage, as current guidance recommends
-\citep{leyrat2018}. With 13 practices, power falls short of the planned
-80\% (Table~\ref{tab:power}, whose first row is the current 4 versus 9
-allocation). The analysis itself needs no
+\citep{leyrat2018}. Van Breukelen and Candel turn this into a simple recipe:
+a sample size derived from the normal approximation, as in
+Table~\ref{tab:ss}, needs two to three further practices per arm at a
+two-sided $\alpha$ of 0.05, three when fewer than eight practices per arm are
+planned \citep{vanbreukelen2018}. Table~\ref{tab:power} applies the same
+correction exactly, through the noncentral $t$ distribution at the given
+number of practices. With 13 practices, power falls short of the planned
+80\% (its first row is the current 4 versus 9 allocation). The analysis itself needs no
 modification for unequal arms. The repair is more practices: adding patients
 to the practices already enrolled has strongly diminishing returns
 \citep{hemming2017}, about ten practices per arm has been recommended as a
-general minimum \citep{vanbreukelen2018}, and with 14 analysed participants
-per practice, 7 practices per arm reach the planned power at $\rho = 0.01$
-(Table~\ref{tab:power}). Any new practices will be randomised as a batch,
+general minimum for valid inference \citep{vanbreukelen2018}, and with 14
+analysed participants per practice, 7 practices per arm reach the planned
+power at $\rho = 0.01$ (Table~\ref{tab:power}). Any new practices will be randomised as a batch,
 with the split chosen to move the overall allocation towards balance
 \citep{copas2021}, and the recruitment wave will enter the model as described
 in section~\ref{sec:randomisation}. \open{confirm number and split of the
