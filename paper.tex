@@ -293,17 +293,20 @@ $\alpha = 0.05$ and 80\% power, an individually randomised trial would need
 measurement, with an assumed baseline-to-follow-up correlation $r = 0.6$,
 reduces this by the factor $1-r^2$ to 69 per arm \citep{borm2007}.
 
-Clustering inflates this requirement by the design effect. Allowing for unequal
-practice sizes \citep{eldridge2006},
+Beyond this individually randomised benchmark, a cluster randomised design
+must account for three things: the inflation from the intra-cluster
+correlation, the variation in practice sizes, and the degrees of freedom left
+for estimating the treatment effect \citep{vanbreukelen2018}. We take them
+in that order. The first two enter through the design effect
+\citep{eldridge2006},
 \begin{equation}
 \label{eq:de}
 \mathrm{DE} = 1 + \left[ \left( \mathrm{cv}^2\,\frac{k-1}{k} + 1 \right) \bar m - 1 \right]\rho ,
 \end{equation}
 where $\bar m$ is the mean number of analysed participants per practice, $k$ the
 number of practices, $\rho$ the intra-cluster correlation and $\mathrm{cv}$ the
-coefficient of variation of practice size. Intra-cluster correlations reported
-for primary care outcomes are usually small, with a median near 0.01
-\citep{adams2004}. For patient-reported pain and disability outcomes the
+coefficient of variation of practice size. For the intra-cluster correlation, the values reported for primary care
+outcomes are usually small, with a median near 0.01 \citep{adams2004}. For patient-reported pain and disability outcomes the
 observed values sit at the low end of that distribution. The one published
 clinic-level estimate of $\rho$ for the RMDQ is 0 (95\% confidence interval
 0 to 0.10), and it comes from a trial that ran in seven physiotherapy
@@ -313,8 +316,8 @@ correlations smaller than it had projected \citep{ukbeam2004}. Measures of
 the care process show systematically larger intra-cluster correlations than
 clinical outcomes \citep{campbell2005}, and the RMDQ is a clinical outcome.
 We therefore read 0.01 as a plausible value and the larger values as
-caution. Unequal cluster size can be ignored when $\mathrm{cv} < 0.23$,
-but for trials randomising general practices $\mathrm{cv}$ is typically around
+caution. For the size variation, unequal practice sizes can be ignored when
+$\mathrm{cv} < 0.23$, but for trials randomising general practices $\mathrm{cv}$ is typically around
 0.65 \citep{eldridge2006}. Physiotherapy practices are the closest analogue we
 have, so we plan on $\mathrm{cv} = 0.65$. With the more optimistic
 $\mathrm{cv} = 0.4$ the requirements below fall to 81, 104 and 127 per arm. With $\bar m = 15.4$, $k = 13$ and $\mathrm{cv} = 0.65$, the design effect
@@ -365,8 +368,8 @@ and ignoring the size variation between practices altogether
 ($\mathrm{cv} = 0$) would lower the 83 to 79. The number of practices acts separately, through the
 degrees of freedom, and matters most.
 
-The design effect corrects the required sample but not the degrees of freedom.
-The requirement above comes from the cluster-level framework: the design
+The third item, the degrees of freedom, is the one the design effect does
+not correct. The requirement above comes from the cluster-level framework: the design
 effect of eq.~\eqref{eq:de} is derived for the size-weighted comparison of
 practice-level means, and it is a conservative estimate for individual-level
 analyses such as the mixed model we will fit \citep{eldridge2006}. We
