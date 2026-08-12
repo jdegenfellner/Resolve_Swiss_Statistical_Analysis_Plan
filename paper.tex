@@ -52,6 +52,9 @@
 % green highlighter for passages JD wants to revisit
 \definecolor{jdgruen}{rgb}{0.75,0.95,0.75}
 \sethlcolor{jdgruen}
+% orange highlighter for wording JD is unsure about
+\definecolor{jdorange}{rgb}{1.0,0.85,0.6}
+\newcommand{\hlo}[1]{{\sethlcolor{jdorange}\hl{#1}}}
 
 \doublespacing
 \pagestyle{plain}
@@ -406,8 +409,8 @@ distribution function of the noncentral $t$ with noncentrality $\lambda$
 variance of the difference in arm means \citep[eq. 7.12 and section
 7.6.2]{hayes2017}. With 13 practices, power falls short of the planned
 80\% (Table~\ref{tab:power}, whose first row is the current 4 versus 9
-split). The analysis itself needs no
-modification for unequal arms. The repair is more practices: adding patients
+split). \hlo{The analysis itself needs no
+modification for unequal arms. The repair is more practices:} adding patients
 to the practices already enrolled has strongly diminishing returns
 \citep{hemming2017}, about ten practices per arm has been recommended as a
 general minimum for valid inference \citep{vanbreukelen2018}, and with 14
