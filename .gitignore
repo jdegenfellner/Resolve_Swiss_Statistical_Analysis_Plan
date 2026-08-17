@@ -35,3 +35,5 @@ figures/aus_*
 !figures/aus_rmdq_dist_sap.png
 figures/*.html
 !figures/sample_size_surface.html
+!figures/prior_beta2.png
+!figures/prior_predictive.png
