@@ -18,12 +18,22 @@ NSIM <- 2000          # prior draws
 K1 <- 4; K2 <- 9      # practices per arm
 M  <- 200 / 13        # mean practice size
 
-# priors of eq. (4)
+# priors of eq. (4), points scale (R/aus_prior_values.R)
 m0 <- 9.5;  s0 <- 2
 m1 <- -3.5; s1 <- 2
 delta_hat <- -2.4; se_delta <- 0.56
 C <- 2                # discount factor, currently open in the plan
 s_tau <- 2; s_nu <- 4; s_sigma <- 4
+
+# priors for the beta-binomial version, logit scale. The coefficients
+# there are log-odds, so the point-scale values above do not transfer.
+# Centres come from beta-binomial fits to the four Australian
+# arm-by-occasion subgroups (R/aus_rmdq_distributions.R).
+lm0 <- -0.40; ls0 <- 0.4
+lm1 <- -0.69; ls1 <- 0.4
+ldelta <- -0.53; lse <- 0.20
+THETA <- 4.3
+l_tau <- 0.3; l_nu <- 0.8
 
 half_normal <- function(n, s) abs(rnorm(n, 0, s))
 
@@ -41,20 +51,25 @@ draw_trial <- function(beta_binomial = FALSE) {
   u <- rnorm(k, 0, tau)[pr]
   w <- rnorm(length(pr), 0, nu)
 
-  eta_bl <- b0 + u + w
-  eta_fu <- b0 + b1 + b2 * arm + u + w
   if (!beta_binomial) {
+    eta_bl <- b0 + u + w
+    eta_fu <- b0 + b1 + b2 * arm + u + w
     bl <- eta_bl + rnorm(length(pr), 0, sig)
     fu <- eta_fu + rnorm(length(pr), 0, sig)
   } else {
-    # same linear predictor on the logit scale, beta-binomial with size 24
-    theta <- 3
-    p_bl <- plogis((eta_bl - 12) / 6); p_fu <- plogis((eta_fu - 12) / 6)
-    rbb <- function(p) rbinom(length(p), 24, rbeta(length(p), p * theta,
-                                                   (1 - p) * theta))
+    # own priors on the logit scale
+    a0 <- rnorm(1, lm0, ls0); a1 <- rnorm(1, lm1, ls1)
+    a2 <- rnorm(1, ldelta, C * lse)
+    ul <- rnorm(k, 0, abs(rnorm(1, 0, l_tau)))[pr]
+    wl <- rnorm(length(pr), 0, abs(rnorm(1, 0, l_nu)))
+    p_bl <- plogis(a0 + ul + wl)
+    p_fu <- plogis(a0 + a1 + a2 * arm + ul + wl)
+    rbb <- function(p) rbinom(length(p), 24,
+                              rbeta(length(p), p * THETA, (1 - p) * THETA))
     bl <- rbb(p_bl); fu <- rbb(p_fu)
   }
-  c(mean_bl = mean(bl), mean_fu = mean(fu),
+  c(mean_bl = mean(bl),
+    mean_fu_int = mean(fu[arm == 1]), mean_fu_ctl = mean(fu[arm == 0]),
     out_of_range = mean(bl < 0 | bl > 24 | fu < 0 | fu > 24),
     effect = b2)
 }
@@ -66,9 +81,12 @@ r <- t(replicate(NSIM, draw_trial(FALSE)))
 cat(sprintf("implied baseline mean : %.1f  (2.5%%-97.5%%: %.1f to %.1f)\n",
             mean(r[, "mean_bl"]), quantile(r[, "mean_bl"], .025),
             quantile(r[, "mean_bl"], .975)))
-cat(sprintf("implied 18-week mean  : %.1f  (%.1f to %.1f)\n",
-            mean(r[, "mean_fu"]), quantile(r[, "mean_fu"], .025),
-            quantile(r[, "mean_fu"], .975)))
+cat(sprintf("implied 18-week mean, intervention: %.1f  (%.1f to %.1f)\n",
+            mean(r[, "mean_fu_int"]), quantile(r[, "mean_fu_int"], .025),
+            quantile(r[, "mean_fu_int"], .975)))
+cat(sprintf("implied 18-week mean, control     : %.1f  (%.1f to %.1f)\n",
+            mean(r[, "mean_fu_ctl"]), quantile(r[, "mean_fu_ctl"], .025),
+            quantile(r[, "mean_fu_ctl"], .975)))
 cat(sprintf("implied effect        : %.1f  (%.1f to %.1f)\n",
             mean(r[, "effect"]), quantile(r[, "effect"], .025),
             quantile(r[, "effect"], .975)))
@@ -80,21 +98,26 @@ rb <- t(replicate(NSIM, draw_trial(TRUE)))
 cat(sprintf("implied baseline mean : %.1f  (%.1f to %.1f)\n",
             mean(rb[, "mean_bl"]), quantile(rb[, "mean_bl"], .025),
             quantile(rb[, "mean_bl"], .975)))
-cat(sprintf("implied 18-week mean  : %.1f  (%.1f to %.1f)\n",
-            mean(rb[, "mean_fu"]), quantile(rb[, "mean_fu"], .025),
-            quantile(rb[, "mean_fu"], .975)))
+cat(sprintf("implied 18-week mean, intervention: %.1f  (%.1f to %.1f)\n",
+            mean(rb[, "mean_fu_int"]), quantile(rb[, "mean_fu_int"], .025),
+            quantile(rb[, "mean_fu_int"], .975)))
+cat(sprintf("implied 18-week mean, control     : %.1f  (%.1f to %.1f)\n",
+            mean(rb[, "mean_fu_ctl"]), quantile(rb[, "mean_fu_ctl"], .025),
+            quantile(rb[, "mean_fu_ctl"], .975)))
 cat(sprintf("share outside 0 to 24 : %.1f%% (zero by construction)\n",
             100 * mean(rb[, "out_of_range"])))
 
 cat("\nObserved in the Australian trial: baseline 9.6, 18 weeks 3.6 and 6.4.\n")
 
 # ---- figure ---------------------------------------------------------
-pd <- rbind(
-  data.frame(value = r[, "mean_bl"],  what = "baseline",  model = "normal"),
-  data.frame(value = r[, "mean_fu"],  what = "18 weeks",  model = "normal"),
-  data.frame(value = rb[, "mean_bl"], what = "baseline",  model = "beta-binomial"),
-  data.frame(value = rb[, "mean_fu"], what = "18 weeks",  model = "beta-binomial"))
-obs <- data.frame(what = c("baseline", "18 weeks"), value = c(9.6, 5.0))
+mk <- function(m, lab) rbind(
+  data.frame(value = m[, "mean_bl"],     what = "baseline",             model = lab),
+  data.frame(value = m[, "mean_fu_int"], what = "18 weeks, intervention", model = lab),
+  data.frame(value = m[, "mean_fu_ctl"], what = "18 weeks, control",      model = lab))
+pd <- rbind(mk(r, "normal"), mk(rb, "beta-binomial"))
+lev <- c("baseline", "18 weeks, intervention", "18 weeks, control")
+pd$what <- factor(pd$what, lev)
+obs <- data.frame(what = factor(lev, lev), value = c(9.8, 3.6, 6.4))
 fig <- ggplot(pd, aes(value, fill = model)) +
   geom_density(alpha = 0.45, colour = NA) +
   geom_vline(data = obs, aes(xintercept = value), linetype = 2) +
