@@ -722,8 +722,14 @@ cluster randomisation adds.
 Two practice-level summaries are reported beside the model result
 (Table~\ref{tab:prim}) \citep{hayes2017, kahan2023}. Weighted by analysed
 practice size, the summary estimates the participant-average effect by
-construction. Unweighted, it estimates the cluster-average effect. Both carry
-confidence intervals, neither carries a hypothesis test.
+construction, and it is numerically identical to the independence estimating
+equations that \citet{kahan2023} recommend for that estimand. Its confidence
+interval comes from a cluster-robust variance with the bias reduction and the
+Satterthwaite degrees of freedom of \citet{bell2002}, because the uncorrected
+version understates the uncertainty badly when the number of practices is
+small. Unweighted, the summary estimates the cluster-average effect, with an
+interval from the $t$ distribution on $k_1 + k_2 - 2$ degrees of freedom.
+Neither carries a hypothesis test.
 
 \begin{table}[ht]
 \centering\small
