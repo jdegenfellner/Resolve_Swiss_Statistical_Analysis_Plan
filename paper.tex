@@ -623,11 +623,11 @@ consensus extension of the ICH E9(R1) estimand addendum to cluster randomised
 trials \citep{kahan2026}.
 
 A mixed model with a random intercept
-weights practices by their inverse variance, which is neither
-participant-average nor cluster-average weighting, and when cluster size is
-informative, that is when outcomes or treatment effects vary systematically
-with practice size, such a model targets neither estimand cleanly
-\citep{kahan2023}. Table~\ref{tab:prim} therefore includes three numbers. The
+weights practices by their inverse variance, which matches neither weighting
+exactly. Where cluster size is not informative this makes no difference and
+the model is unbiased for the participant-average effect. Where outcomes or
+treatment effects vary systematically with practice size, the estimate may
+depart from both estimands \citep{kahan2023}. Table~\ref{tab:prim} therefore includes three numbers. The
 estimate from model \eqref{eq:primary} with its confidence interval is the
 result of the trial, and the only one with a hypothesis test attached.
 Beside it stand two estimates that target the two estimands explicitly
