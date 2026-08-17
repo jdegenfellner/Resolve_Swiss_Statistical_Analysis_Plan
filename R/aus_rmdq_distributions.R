@@ -131,16 +131,29 @@ bx <- rbind(
   data.frame(group = d$group, time = "18 weeks", rmdq = d$rmdq.t5))
 bx <- bx[!is.na(bx$rmdq), ]
 bx$time <- factor(bx$time, c("Baseline", "18 weeks"))
-figb <- ggplot(bx, aes(time, rmdq, fill = group)) +
-  geom_boxplot(position = position_dodge(width = 0.7), width = 0.55,
-               outlier.shape = NA, coef = 1.5, alpha = 0.9,
-               colour = "grey25", linewidth = 0.35) +
-  stat_summary(fun = mean, geom = "point", shape = 18, size = 2.6,
-               colour = "black", position = position_dodge(width = 0.7)) +
-  scale_fill_manual(values = c(Control = "#9ecae1", Intervention = "#fdae6b")) +
-  scale_y_continuous(limits = c(0, 24), breaks = seq(0, 24, 4)) +
+dodge <- position_dodge(width = 0.72)
+figb <- ggplot(bx, aes(time, rmdq, fill = group, colour = group)) +
+  geom_point(position = position_jitterdodge(jitter.width = 0.28,
+                                             jitter.height = 0.22,
+                                             dodge.width = 0.72),
+             alpha = 0.30, size = 0.7, stroke = 0, show.legend = FALSE) +
+  geom_boxplot(position = dodge, width = 0.5, outlier.shape = NA,
+               coef = 1.5, alpha = 0.55, colour = "grey20",
+               linewidth = 0.35) +
+  stat_summary(aes(group = group), fun = mean, geom = "point",
+               shape = 23, size = 2.2, fill = "white", colour = "grey20",
+               stroke = 0.5, position = dodge, show.legend = FALSE) +
+  scale_fill_manual(values = c(Control = "#4C7FB0", Intervention = "#D9722B")) +
+  scale_colour_manual(values = c(Control = "#4C7FB0", Intervention = "#D9722B")) +
+  scale_y_continuous(limits = c(-0.5, 24.5), breaks = seq(0, 24, 4),
+                     expand = expansion(mult = c(0.01, 0.02))) +
   labs(x = NULL, y = "RMDQ score (0\u201324)", fill = NULL) +
   theme_minimal(base_size = 10) +
-  theme(legend.position = "top", panel.grid.minor = element_blank())
-ggsave("figures/aus_rmdq_box_sap.png", figb, width = 5.4, height = 4.0, dpi = 300)
+  theme(legend.position = "top",
+        legend.key.size = unit(0.9, "lines"),
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor = element_blank(),
+        axis.text = element_text(colour = "grey25"),
+        axis.title.y = element_text(colour = "grey25", margin = margin(r = 6)))
+ggsave("figures/aus_rmdq_box_sap.png", figb, width = 5.6, height = 4.2, dpi = 300)
 cat("\nFiguren geschrieben: figures/aus_rmdq_dist_sap.png, figures/aus_rmdq_box_sap.png\n")
