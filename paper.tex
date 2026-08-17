@@ -784,9 +784,22 @@ The hyperparameters come from the Australian data. Here $m_0$ and $s_0$
 describe the baseline RMDQ distribution, $m_1$ and $s_1$ the change from
 baseline to 18 weeks in the control arm, and $\hat\delta$ with its standard
 error the treatment effect from the analogue of model \eqref{eq:primary}
-fitted to those two occasions. The factor $c > 1$ discounts that effect
-\open{fix the discount factor}, because the Australian comparator was a sham
-and usual physiotherapy should leave less to be gained. The Australian data give $m_0 = 9.5$,
+fitted to those two occasions. The factor $c > 1$ widens that prior. Widening
+it in this way is the power prior of \citet{ibrahim2000}, in which the
+likelihood of the previous study is raised to a power $a_0$ between 0 and 1.
+For a normal likelihood that multiplies the precision by $a_0$, so
+$c = 1 / \sqrt{a_0}$, and $a_0$ reads as those authors intend it, a relative
+precision parameter saying what fraction of the historical study is borrowed.
+They recommend such control where the previous and the current study differ,
+which here they do on three counts. The Australian comparator was a sham
+rather than usual physiotherapy, the setting was Australian rather than Swiss,
+and that trial randomised individuals rather than practices. We set
+$a_0 = 1/9$, so that $c = 3$ and the prior standard deviation is 1.7 points.
+The Swiss data are expected to give a standard error near 0.65, so the prior
+then supplies about an eighth of the precision of the posterior. No single
+value of $a_0$ follows from the data, so the analysis is repeated with
+$a_0 = 1/4$ and $a_0 = 1/16$, and all three are reported.
+The Australian data give $m_0 = 9.5$,
 $m_1 = -3.5$ and $\hat\delta = -2.4$ with a standard error of $0.56$, and
 participant-level and residual standard deviations of $3.7$ and $3.6$, so that
 $s_\nu = s_\sigma = 4$. We set $s_0 = s_1 = 2$, several times the
@@ -813,8 +826,13 @@ which respects the bounded count nature of the score. In that version the
 coefficients act on the logit scale, so the priors are re-derived there by
 fitting the same beta-binomial model to the Australian data, and the values
 above do not transfer. Each version is also fitted with a sceptical prior for
-$\beta_2$ centred at zero \open{fix its scale on each of the two scales} in
-place of the informative one.
+$\beta_2$ in place of the informative one. Following \citet{spiegelhalter1994},
+that prior is normal with mean zero and a standard deviation set so that the
+probability of a benefit beyond the alternative hypothesis is 0.05. A target
+difference of 2 RMDQ points therefore gives a standard deviation of
+$2 / 1.645 = 1.22$ points. On the logit scale the same 2 points, measured down
+from the Australian control mean of 6.4 at 18 weeks, amount to a difference of
+0.48, so the standard deviation there is 0.29.
 
 \begin{figure}[ht]
 \centering
