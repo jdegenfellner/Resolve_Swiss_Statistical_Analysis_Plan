@@ -618,20 +618,24 @@ every patient meeting the eligibility criteria of
 section~\ref{sec:eligibility} in these practices received one treatment rather
 than the other, with each patient counting equally. With unequally sized practices it may differ from the
 cluster-average effect, in which each practice counts equally
-\citep{kahan2023}. We specify the participant-average effect as the estimand and report the
-cluster-average effect alongside it, following the consensus extension of the
-ICH E9(R1) estimand addendum to cluster randomised trials \citep{kahan2026}.
+\citep{kahan2023}. We specify the participant-average effect as the estimand, following the
+consensus extension of the ICH E9(R1) estimand addendum to cluster randomised
+trials \citep{kahan2026}.
 
-One consequence constrains how the primary model below may be read. A mixed model with a random intercept weights clusters by
-their inverse variance, which is neither participant-average nor cluster-average
-weighting. When cluster size is informative (that is, when outcomes or
-treatment effects vary systematically with practice size), such a model
-targets neither estimand cleanly \citep{kahan2023}. The practice-level summaries
-specified in section~\ref{sec:smallk} recover each estimand explicitly through
-their weighting. The result we will report as the effect of the trial is the
-mixed model estimate with its confidence interval. The two summaries stand
-beside it, and their agreement with it is what shows whether the weighting
-matters here. We will also report the distribution of practice sizes.
+Estimating it takes one further step. A mixed model with a random intercept
+weights practices by their inverse variance, which is neither
+participant-average nor cluster-average weighting, and when cluster size is
+informative, that is when outcomes or treatment effects vary systematically
+with practice size, such a model targets neither estimand cleanly
+\citep{kahan2023}. Table~\ref{tab:prim} therefore carries three numbers. The
+estimate from model \eqref{eq:primary} with its confidence interval is the
+result of the trial. Beside it stand two practice-level summaries: weighted by
+practice size, which estimates the participant-average effect by construction,
+and unweighted, which estimates the cluster-average effect. Agreement between
+the three means the weighting question does not arise here. Divergence would
+mean that practice size is informative, and that the size-weighted summary is
+the number answering the question as posed. The distribution of practice sizes
+will be reported so that readers can judge this.
 
 \subsubsection{Primary model}
 
