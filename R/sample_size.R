@@ -189,6 +189,22 @@ add$m <- round(add$m, 1)
 out("\nBalanced designs, analysed N held at 200:")
 print(transform(add, power = round(power, 3)))
 
+# Imbalanced: the intervention arm capped at 7 practices while control
+# practices are added. The arm with fewer practices dominates 1/k1 + 1/k2,
+# so the extra control practices buy little.
+imb <- expand.grid(k_ctrl = 7:12, rho = c(0.01, 0.03, 0.05))
+imb$k_int <- 7
+imb$m <- 200 / (imb$k_int + imb$k_ctrl)
+imb$power <- mapply(power_crt, k1 = imb$k_int, k2 = imb$k_ctrl,
+                    m = imb$m, rho = imb$rho,
+                    MoreArgs = list(sigma = sigma, delta = delta,
+                                    ancova_r = r, cv = 0.65))
+imb$m <- round(imb$m, 1)
+out("\nIntervention arm capped at 7 practices, analysed N held at 200:")
+print(transform(imb[c("k_int", "k_ctrl", "rho", "m", "power")],
+                power = round(power, 3)))
+
+
 # Number of distinct allocations of k_int of 13 practices to the
 # intervention arm; this is the size of the exact randomisation
 # distribution used for the permutation test.
