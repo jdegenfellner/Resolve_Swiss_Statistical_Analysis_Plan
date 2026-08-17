@@ -999,10 +999,10 @@ individuals at every stage \citep{campbell2012}.
 % ---- trunk: practices --------------------------------------------------
 \node[bx=50mm, anchor=north] (elig) at (0,0)
   {\textbf{Practices assessed for eligibility}\\ ($n=$ xx)};
-\node[bx=50mm, anchor=north] (rand) at ([yshift=-26mm]elig.south)
-  {\textbf{Practices randomised} ($n=$ xx)};
+\node[bx=58mm, anchor=north] (rand) at ([yshift=-26mm]elig.south)
+  {\textbf{Practices randomised} ($n=20$, allocated 10 to 10)};
 \coordinate (excbranch) at ($(elig.south)!0.5!(rand.north)$);
-\node[bx=40mm, anchor=west] (exc) at ([xshift=30mm]excbranch)
+\node[bx=40mm, anchor=west] (exc) at ([xshift=34mm]excbranch)
   {Practices excluded ($n=$ xx)\\
    \quad Not eligible ($n=$ xx)\\
    \quad Declined ($n=$ xx)\\
@@ -1014,13 +1014,15 @@ individuals at every stage \citep{campbell2012}.
 % ---- allocation --------------------------------------------------------
 \node[bx=64mm, anchor=north] (allocI) at ([xshift=-35mm,yshift=-12mm]rand.south)
   {\textbf{Allocated to RESOLVE}\\
-   Practices ($n=$ xx), therapists trained ($n=$ xx)\\
+   Practices allocated ($n=10$), withdrawn ($n=6$)\\
+   Practices recruiting ($n=4$), therapists ($n=$ xx)\\
    Participants screened ($n=$ xx)\\
    \quad Not eligible ($n=$ xx), declined ($n=$ xx)\\
    \textbf{Participants enrolled} ($n=$ xx)};
 \node[bx=64mm, anchor=north] (allocC) at ([xshift=35mm,yshift=-12mm]rand.south)
   {\textbf{Allocated to usual physiotherapy}\\
-   Practices ($n=$ xx), therapists ($n=$ xx)\\
+   Practices allocated ($n=10$), withdrawn ($n=1$)\\
+   Practices recruiting ($n=9$), therapists ($n=$ xx)\\
    Participants screened ($n=$ xx)\\
    \quad Not eligible ($n=$ xx), declined ($n=$ xx)\\
    \textbf{Participants enrolled} ($n=$ xx)};
@@ -1031,13 +1033,13 @@ individuals at every stage \citep{campbell2012}.
 % ---- 18 weeks ----------------------------------------------------------
 \node[bx=64mm, anchor=north] (fuI) at ([yshift=-8mm]allocI.south)
   {\textbf{18 weeks (primary endpoint)}\\
-   Practices withdrawn ($n=$ xx)\\
+   Practices lost during follow-up ($n=$ xx)\\
    Participants assessed ($n=$ xx)\\
    \quad Lost to follow-up ($n=$ xx)\\
    \quad Withdrew consent ($n=$ xx), other ($n=$ xx)};
-\node[bx=64mm, anchor=north] (fuC) at ([yshift=-8mm]allocC.south)
+\node[bx=64mm, anchor=north] (fuC) at (fuI.north -| allocC)
   {\textbf{18 weeks (primary endpoint)}\\
-   Practices withdrawn ($n=$ xx)\\
+   Practices lost during follow-up ($n=$ xx)\\
    Participants assessed ($n=$ xx)\\
    \quad Lost to follow-up ($n=$ xx)\\
    \quad Withdrew consent ($n=$ xx), other ($n=$ xx)};
@@ -1050,7 +1052,7 @@ individuals at every stage \citep{campbell2012}.
   {\textbf{26 and 52 weeks}\\
    Assessed at 26 weeks ($n=$ xx)\\
    Assessed at 52 weeks ($n=$ xx)};
-\node[bx=64mm, anchor=north] (lateC) at ([yshift=-8mm]fuC.south)
+\node[bx=64mm, anchor=north] (lateC) at (lateI.north -| allocC)
   {\textbf{26 and 52 weeks}\\
    Assessed at 26 weeks ($n=$ xx)\\
    Assessed at 52 weeks ($n=$ xx)};
@@ -1063,7 +1065,7 @@ individuals at every stage \citep{campbell2012}.
   {\textbf{Analysed (intention to treat)}\\
    Practices ($n=$ xx), participants ($n=$ xx)\\
    Excluded ($n=$ xx), reasons: xx};
-\node[bx=64mm, anchor=north] (anaC) at ([yshift=-8mm]lateC.south)
+\node[bx=64mm, anchor=north] (anaC) at (anaI.north -| allocC)
   {\textbf{Analysed (intention to treat)}\\
    Practices ($n=$ xx), participants ($n=$ xx)\\
    Excluded ($n=$ xx), reasons: xx};
