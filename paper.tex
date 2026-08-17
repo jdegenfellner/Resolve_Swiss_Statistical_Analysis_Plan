@@ -764,13 +764,14 @@ The primary model \eqref{eq:primary} will also be fitted in a Bayesian
 formulation with the same structure. The informative priors come from the
 individual participant data of the Australian RESOLVE trial
 \citep{bagg2022}, which the investigators hold under a data sharing agreement, and specifically from the distributions
-of the RMDQ at baseline and at 18 weeks in each arm. The analogue of the
-primary model, fitted to those two occasions, yields a posterior for the
-treatment effect, and that posterior, downweighted because the Australian
-comparator was a sham and not usual physiotherapy, becomes the prior for
-$\beta_2$. The same two distributions inform the priors for the remaining
-parameters: the common baseline mean, the participant-level and residual
-variances, and the baseline-to-follow-up correlation. The RMDQ at
+of the RMDQ at baseline and at 18 weeks in each arm. Fitting the analogue of the primary model to
+those two occasions gives an estimate of the treatment effect and its
+standard error. The prior for $\beta_2$ is normal, centred on that estimate,
+with the standard error inflated by a discount factor \open{fix the discount
+factor}, because the Australian comparator was a sham and usual physiotherapy
+should leave less to be gained. The same two distributions supply the priors
+for the remaining parameters: the common baseline mean, the participant-level
+and residual variances, and the baseline-to-follow-up correlation. The RMDQ at
 18 weeks piles up near zero (Figure~\ref{fig:ausbox}), and access to the raw
 data allows this skewed outcome distribution to be modelled directly instead
 of assumed normal. The RMDQ is a count of 24 items, and in every
