@@ -999,16 +999,17 @@ individuals at every stage \citep{campbell2012}.
 % ---- trunk: practices --------------------------------------------------
 \node[bx=50mm, anchor=north] (elig) at (0,0)
   {\textbf{Practices assessed for eligibility}\\ ($n=$ xx)};
-\node[bx=50mm, anchor=north] (exc) at ([xshift=57mm]elig.north)
+\node[bx=50mm, anchor=north] (rand) at ([yshift=-26mm]elig.south)
+  {\textbf{Practices randomised} ($n=$ xx)};
+\coordinate (excbranch) at ($(elig.south)!0.5!(rand.north)$);
+\node[bx=40mm, anchor=west] (exc) at ([xshift=30mm]excbranch)
   {Practices excluded ($n=$ xx)\\
    \quad Not eligible ($n=$ xx)\\
    \quad Declined ($n=$ xx)\\
    \quad Other ($n=$ xx)};
-\node[bx=50mm, anchor=north] (rand) at ([yshift=-14mm]elig.south)
-  {\textbf{Practices randomised} ($n=$ xx)};
 
 \draw[arr] (elig.south) -- (rand.north);
-\draw[arr] ($(elig.south)!0.5!(rand.north)$) -- ++(0,0) -| ($(exc.south)+(0,0)$);
+\draw[arr] (excbranch) -- (exc.west);
 
 % ---- allocation --------------------------------------------------------
 \node[bx=64mm, anchor=north] (allocI) at ([xshift=-35mm,yshift=-12mm]rand.south)
