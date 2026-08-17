@@ -654,23 +654,18 @@ with a random intercept $u_j \sim N(0,\tau^2)$ for practice, a random
 intercept $w_{ij} \sim N(0,\nu^2)$ for participant within practice, and
 residual $\varepsilon_{ijt} \sim N(0,\sigma^2)$. The treatment effect at 18
 weeks is $\beta_2$. The model deliberately contains no main effect of
-treatment. Keeping an interaction while dropping its main effect usually
-violates the variable inclusion principle. The interaction coefficient then
-stops measuring what it should, because the omission imposes a constraint
-that is in general false \citep{westfall2020}. Here the omitted
-term is the between-arm difference at baseline. The baseline is measured
-before any study treatment, and randomisation gives both arms the same
-expected baseline mean, so the constraint reflects the design. One qualification belongs to a cluster
-randomised trial: patients enter after their practice has been allocated, so
-differential recruitment could shift the observed baseline means. The
-unconstrained model among the sensitivity analyses is prespecified for that
-case. Under the design as intended, $\beta_2$ estimates exactly the 18-week
-treatment effect, and imposing the constraint is how the baseline
-information enters the analysis. This constrained longitudinal formulation
+treatment, so the two arms share a single baseline mean. Dropping a main
+effect while keeping its interaction would ordinarily violate the variable
+inclusion principle and leave the interaction coefficient measuring something
+else \citep{westfall2020}. Here the omitted term is the between-arm
+difference at baseline, which randomisation makes zero in expectation. One
+caveat is specific to cluster randomisation: patients enter after their
+practice has been allocated, so differential recruitment could shift the
+observed baseline means, and the unconstrained model is prespecified as a
+sensitivity analysis for that case. This constrained longitudinal formulation
 \citep{liang2000} matches the precision of adjusting the 18-week score for
-its baseline value, and one of the two is the recommended way to use a
-baseline measurement of the outcome in a cluster randomised trial
-\citep{hooper2018}.
+its baseline value, and either is a recommended way to use a baseline
+measurement of the outcome in a cluster randomised trial \citep{hooper2018}.
 
 The baseline score is part of the response, not a covariate. The model
 includes no covariates except any used to stratify or constrain the
