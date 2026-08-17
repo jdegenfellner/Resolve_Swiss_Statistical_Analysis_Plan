@@ -1027,25 +1027,18 @@ individuals at every stage \citep{campbell2012}.
    \quad Declined ($n=$ xx)\\
    \quad Other ($n=$ xx)};
 
-\coordinate (wavejunc) at ([yshift=-8mm]rand.south);
-\node[bx=46mm, anchor=east] (wave2) at ([xshift=-34mm]wavejunc)
-  {Second wave: further practices\\
-   randomised as a batch\\
-   ($n=$ \open{number and split})};
-
 \draw[arr] (elig.south) -- (rand.north);
 \draw[arr] (excbranch) -- (exc.west);
-\draw[arr] (wave2.east) -- (wavejunc);
 
 % ---- allocation --------------------------------------------------------
-\node[bx=64mm, anchor=north] (allocI) at ([xshift=-35mm,yshift=-18mm]rand.south)
+\node[bx=64mm, anchor=north] (allocI) at ([xshift=-35mm,yshift=-12mm]rand.south)
   {\textbf{Allocated to RESOLVE}\\
    Practices allocated ($n=10$), withdrawn ($n=6$)\\
    Practices recruiting ($n=4$), therapists ($n=$ xx)\\
    Participants screened ($n=$ xx)\\
    \quad Not eligible ($n=$ xx), declined ($n=$ xx)\\
    \textbf{Participants enrolled} ($n=$ xx)};
-\node[bx=64mm, anchor=north] (allocC) at ([xshift=35mm,yshift=-18mm]rand.south)
+\node[bx=64mm, anchor=north] (allocC) at ([xshift=35mm,yshift=-12mm]rand.south)
   {\textbf{Allocated to usual physiotherapy}\\
    Practices allocated ($n=10$), withdrawn ($n=1$)\\
    Practices recruiting ($n=9$), therapists ($n=$ xx)\\
@@ -1053,11 +1046,11 @@ individuals at every stage \citep{campbell2012}.
    \quad Not eligible ($n=$ xx), declined ($n=$ xx)\\
    \textbf{Participants enrolled} ($n=$ xx)};
 
-\draw[arr] (rand.south) -- ++(0,-8mm) -| (allocI.north);
-\draw[arr] (rand.south) -- ++(0,-8mm) -| (allocC.north);
+\draw[arr] (rand.south) -- ++(0,-6mm) -| (allocI.north);
+\draw[arr] (rand.south) -- ++(0,-6mm) -| (allocC.north);
 
 % ---- 18 weeks ----------------------------------------------------------
-\node[bx=64mm, anchor=north] (fuI) at ([yshift=-8mm]allocI.south)
+\node[bx=64mm, anchor=north] (fuI) at ([yshift=-18mm]allocI.south)
   {\textbf{18 weeks (primary endpoint)}\\
    Practices lost during follow-up ($n=$ xx)\\
    Participants assessed ($n=$ xx)\\
@@ -1070,8 +1063,15 @@ individuals at every stage \citep{campbell2012}.
    \quad Lost to follow-up ($n=$ xx)\\
    \quad Withdrew consent ($n=$ xx), other ($n=$ xx)};
 
+\node[bx=46mm] (wave2) at ([yshift=-9mm]$(allocI.south)!0.5!(allocC.south)$)
+  {Second wave: further practices\\
+   randomised as a batch\\
+   ($n=$ \open{number and split})};
+
 \draw[arr] (allocI.south) -- (fuI.north);
 \draw[arr] (allocC.south) -- (fuC.north);
+\draw[arr] (wave2.west) -- (allocI.south |- wave2.west);
+\draw[arr] (wave2.east) -- (allocC.south |- wave2.east);
 
 % ---- 26 and 52 weeks ---------------------------------------------------
 \node[bx=64mm, anchor=north] (lateI) at ([yshift=-8mm]fuI.south)
