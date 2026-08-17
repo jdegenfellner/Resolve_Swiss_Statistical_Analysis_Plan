@@ -719,24 +719,29 @@ likewise rested its primary conclusion on one mixed model and its confidence
 interval \citep{bagg2021}. The small-sample correction is the adaptation that
 cluster randomisation adds.
 
-Two practice-level summaries are reported beside the model result
-(Table~\ref{tab:prim}) \citep{hayes2017, kahan2023}. Weighted by analysed
-practice size, the summary estimates the participant-average effect by
-construction, and it is numerically identical to the independence estimating
-equations that \citet{kahan2023} recommend for that estimand. Its confidence
-interval comes from a cluster-robust variance with the bias reduction and the
-Satterthwaite degrees of freedom of \citet{bell2002}, because the uncorrected
-version understates the uncertainty badly when the number of practices is
-small. Unweighted, the summary estimates the cluster-average effect, with an
-interval from the $t$ distribution on $k_1 + k_2 - 2$ degrees of freedom.
-Neither carries a hypothesis test.
+Two further estimates are reported beside the model result
+(Table~\ref{tab:prim}), each targeting one of the two estimands by its
+weighting \citep{hayes2017, kahan2023}.
+
+For the participant-average effect we fit the 18-week score on the baseline
+score and the arm by ordinary least squares, so that every participant
+carries equal weight. This is the independence estimating equation that
+\citet{kahan2023} recommend for this estimand, and it remains unbiased when
+practice size is informative. Its confidence interval uses a cluster-robust
+variance with the bias reduction and the Satterthwaite degrees of freedom of
+\citet{bell2002}, because the uncorrected version understates the uncertainty
+badly when the number of practices is small.
+
+For the cluster-average effect we compare the unweighted means of the
+practice-level changes from baseline, with an interval from the $t$
+distribution on $k_1 + k_2 - 2$ degrees of freedom \citep[section
+10.3.1]{hayes2017}. Neither estimate carries a hypothesis test.
 
 \begin{table}[ht]
 \centering\small
 \caption{Analysis of the primary outcome (shell). The mixed model provides the
-estimate and the hypothesis test. Practice-level summaries are descriptive,
-size-weighted for the participant-average and unweighted for the
-cluster-average effect.}
+estimate and the hypothesis test. The other two rows estimate the two
+estimands explicitly and carry no test.}
 \label{tab:prim}
 \begin{tabularx}{\textwidth}{Xcccc}
 \toprule
@@ -744,8 +749,8 @@ Analysis & Intervention & Control & Difference (95\% CI) & $p$\\
 & mean (SD) & mean (SD) & &\\
 \midrule
 Mixed model, Kenward--Roger (primary) & xx (xx) & xx (xx) & xx (xx to xx) & .xx\\
-Practice-level summary, size-weighted & --- & --- & xx (xx to xx) & ---\\
-Cluster-average effect (unweighted) & --- & --- & xx (xx to xx) & ---\\
+Participant-average (independence estimating equation) & --- & --- & xx (xx to xx) & ---\\
+Cluster-average (unweighted practice means) & --- & --- & xx (xx to xx) & ---\\
 \midrule
 Intra-cluster correlation (95\% CI) & \multicolumn{4}{l}{xx (xx to xx)}\\
 \bottomrule
