@@ -161,8 +161,9 @@ follows the recommendations for the content of statistical analysis plans in
 clinical trials \citep{gamble2017}, together with the CONSORT extension for
 cluster randomised trials \citep{campbell2012}. It reports the planned
 frequentist analysis of the primary and secondary outcomes, a comparative
-Bayesian analysis of the primary outcome, and a summary of the Bayesian
-interim analysis that the protocol specifies.
+Bayesian analysis of the primary outcome, and a summary of the planned
+Bayesian interim analysis. \open{cite the published study protocol once it
+is available}
 
 % ============================================================
 \section{Methods}
@@ -171,13 +172,13 @@ interim analysis that the protocol specifies.
 
 RESOLVE Swiss is a two-arm, parallel-group, cluster randomised, investigator
 blinded, multicentre trial with 1:1 intended allocation at the level of the
-physiotherapy practice \citep{protocol2025}. Practices and institutions are the
+physiotherapy practice. Practices and institutions are the
 clusters. Patients treated within a practice are the units of observation and of
 analysis. Physical outcomes are assessed at baseline and at 18 weeks. All
 self-reported questionnaires, including the primary outcome, are collected
 again at 26 and 52 weeks after the baseline measurement.
 
-The protocol plans 20 physiotherapy institutions across Switzerland, and all
+The trial planned 20 physiotherapy institutions across Switzerland, and all
 20 were randomised 1:1 (section~\ref{sec:randomisation}). Since the
 allocation, six intervention practices and one control practice have
 withdrawn \open{confirm numbers, timing and reasons}, leaving 4 practices in
@@ -241,7 +242,7 @@ pragmatic trial the comparator is itself part of the finding.
 \label{sec:randomisation}
 
 Practices are allocated 1:1 by the central trial coordinator at ZHAW, before
-the intervention therapists are trained \citep{protocol2025}. The allocation
+the intervention therapists are trained. The allocation
 took place live, by drawing balls of two colours from a bag, one colour
 per arm, which fixed the complete allocation at once, before therapist
 training and before any patient was recruited. Concealment of an ongoing
@@ -297,10 +298,7 @@ baseline table, and read the arm comparison with this asymmetry in mind.
 
 The target difference is 2 points on the Roland--Morris Disability
 Questionnaire (RMDQ, range 0--24), the smallest between-group difference the
-investigators consider clinically worthwhile in this population
-\citep{protocol2025}. The calculation below is a rederivation of the protocol's
-sample size under the hypothesis framing set out in
-section~\ref{sec:hypothesis}. The between
+investigators consider clinically worthwhile in this population. The between
 participant standard deviation of the RMDQ at 18 weeks is taken from the
 Australian trial (intervention 3.6, SD 4.6; control 6.4, SD 5.8
 \citep{bagg2022}), giving a pooled SD of 5.2 points (the computations use
@@ -341,9 +339,8 @@ $\mathrm{cv} = 0.4$ the requirements below fall to 81, 104 and 127 per arm. With
 is 1.20 at $\rho = 0.01$, 1.61 at $\rho = 0.03$ and 2.02 at $\rho = 0.05$, so
 the requirement is 83, 111 and 139 participants per arm respectively. The trial
 therefore aims for 100 analysed participants per arm, and recruitment
-continues until \hl{200} complete primary-outcome datasets are available
-\citep{protocol2025}. \open{should we not recruit 220 anyway, as the
-registration commits? that would also give us a buffer} The protocol's recruitment target of 110 per arm
+continues until \hl{200} complete primary-outcome datasets are available. \open{should we not recruit 220 anyway, as the
+registration commits? that would also give us a buffer} The recruitment target of 110 per arm
 includes a buffer of about 10\% for loss to follow-up (Table~\ref{tab:ss}). This
 covers an intra-cluster correlation up to about 0.02.
 
@@ -475,32 +472,6 @@ records before the analysis begins, and the cleaned data set will be locked
 before any comparison between arms is made. We will report the amount and the
 pattern of missing outcome data by arm and by practice.
 
-\subsection{\texorpdfstring{\textcolor{jdorangetext}{Hypothesis framing: a
-clarification of the protocol}}{Hypothesis framing: a clarification of the
-protocol}}
-\label{sec:hypothesis}
-
-The protocol states the primary hypothesis as a superiority-by-a-margin test:
-the null hypothesis is that the intervention does \emph{not} exceed usual
-physiotherapy by more than 2 RMDQ points, tested one-sided at
-$\alpha = 0.05$ \citep{protocol2025}. This plan instead tests the conventional
-null of no difference, with 2 points as the \emph{target} difference the trial
-is powered to detect.
-
-The two framings imply very different trials. Under the
-margin formulation the quantity that drives power is the amount by which the
-true effect exceeds 2 points, not the effect itself. The sample size of 110 per
-arm was obtained under that formulation with an assumed true effect of about
-2.4 points and a standard deviation of about 0.9. That 0.9, however, is the
-precision-weighted spread of the pooled treatment-effect estimates from the two
-previous studies \citep{waelti2015, bagg2022}. It measures uncertainty about the
-true effect. The quantity the formula requires is the between-participant
-standard deviation of the RMDQ, which is about 5.2 points. Recomputed with 5.2,
-a margin-based design powered to detect an excess of 0.4 points over a 2-point
-null would require well over a thousand participants per arm even with
-baseline adjustment. It is not attainable
-and was never what the trial was resourced for.
-
 \subsection{Analytic principles}
 
 \begin{itemize}[leftmargin=1.4em, itemsep=2pt]
@@ -532,7 +503,7 @@ Questionnaire, a 24-item instrument scored from 0 (no disability) to 24
 
 \subsubsection{Secondary outcomes}
 
-The protocol specifies a large number of secondary endpoints, which we group
+The trial collects a large number of secondary endpoints, which we group
 here by the analysis they receive.
 
 The patient-reported continuous outcomes, collected at 18, 26 and 52 weeks,
@@ -550,7 +521,7 @@ each rated from video by a blinded assessor.
 
 Two measures are recorded once. The Goal Attainment Scale is set at baseline
 and scored with the therapist at 18 weeks, and the satisfaction item is
-collected at 18 weeks only \citep{protocol2025}. Both are reported
+collected at 18 weeks only. Both are reported
 descriptively.
 
 Medication intake and treatment adherence are reported as counts. Adverse
@@ -747,20 +718,6 @@ a categorical variable, the same random intercepts, and again no main effect
 of treatment. We fit this four-occasion model to obtain the effects at 26 and
 52 weeks, which are secondary.
 
-\hlo{This model differs from the protocol's model statement in two ways}
-\citep{protocol2025}. \hlo{The protocol specifies a main effect
-of treatment alongside the interaction, which frees the baseline means of the
-two arms. We constrain them to be equal, which holds in expectation under
-randomisation and recovers
-the precision that the sample size calculation assumes} \citep{hooper2018,
-liang2000}. \hlo{And the protocol's statement does not mention a random effect for
-the practice. Omitting it would treat patients from the same practice as
-independent and understate the standard error, so a practice random effect appears
-in every model in this plan. Mixed models for repeated measures
-behave acceptably in cluster randomised trials with continuous outcomes
-missing at random, including in simulations with as few as five clusters per
-arm} \citep{bell2020}.
-
 \subsection{Comparative Bayesian analysis}
 \label{sec:bayes}
 
@@ -886,7 +843,7 @@ will be based on a secondary outcome.
 \begin{tabularx}{\textwidth}{Xccc}
 \toprule
 Outcome and time point & Intervention & Control & Effect (95\% CI)\\
-& mean (SD) & mean (SD) & &\\
+& mean (SD) & mean (SD) &\\
 \midrule
 \multicolumn{4}{l}{\emph{Pain intensity (NRS)}}\\
 \quad 18 / 26 / 52 weeks & xx (xx) & xx (xx) & xx (xx to xx)\\
@@ -952,14 +909,7 @@ sensitivity analysis we will use multiple imputation by chained equations
 with the practice structure represented in the imputation model, since imputation
 that ignores the clustering understates the uncertainty of the imputed values
 \citep{andridge2011}. If an entire practice is lost, that will be
-reported separately and not imputed. \hlo{This is a deliberate deviation from the
-protocol, which proposes nearest-neighbour imputation compared with a complete
-case analysis when more than 3\% of the data are missing}
-\citep{protocol2025}. Nearest-neighbour imputation is single imputation and
-understates uncertainty, and a complete case comparison assumes the data are
-missing completely at random. The mixed model under missingness at random,
-with multiple imputation as the sensitivity analysis, makes weaker
-assumptions.
+reported separately and not imputed.
 
 \subsection{Non-adherence and contamination}
 
@@ -984,15 +934,13 @@ it biases the estimated effect towards the null \citep{hemming2021}.
 \subsection{Interim analysis}
 \label{sec:interim}
 
-The protocol specifies a single Bayesian interim analysis for futility after
-100 participants have been recruited \citep{protocol2025}. The trial is
+A single Bayesian interim analysis for futility is planned after
+100 participants have been recruited. The trial is
 declared futile if the posterior probability that the between-group
-difference is smaller than 1 RMDQ point reaches 95\%, with the prior for the
-treatment effect built by precision-weighting the between-group differences
-of the previous trials. No sample size adjustment follows from the interim
-result. The comparative Bayesian analysis of section~\ref{sec:bayes} uses
-the same machinery and the same data sources, so the interim and final
-analyses are consistent.
+difference is smaller than 1 RMDQ point reaches 95\%. The analysis uses
+model \eqref{eq:bayes} with the priors of section~\ref{sec:bayes}, so the
+interim and final analyses are consistent. No sample size adjustment follows
+from the interim result.
 
 % ============================================================
 \section{Reporting}
