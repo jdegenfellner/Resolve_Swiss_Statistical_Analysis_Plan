@@ -629,8 +629,10 @@ weighting. When cluster size is informative (that is, when outcomes or
 treatment effects vary systematically with practice size), such a model
 targets neither estimand cleanly \citep{kahan2023}. The practice-level summaries
 specified in section~\ref{sec:smallk} recover each estimand explicitly through
-their weighting. We will report the distribution of practice sizes so that
-readers can judge how much this matters here.
+their weighting. The result we will report as the effect of the trial is the
+mixed model estimate with its confidence interval. The two summaries stand
+beside it, and their agreement with it is what shows whether the weighting
+matters here. We will also report the distribution of practice sizes.
 
 \subsubsection{Primary model}
 
@@ -714,10 +716,11 @@ likewise rested its primary conclusion on one mixed model and its confidence
 interval \citep{bagg2021}. The small-sample correction is the adaptation that
 cluster randomisation adds.
 
-Practice-level summaries, weighted by analysed practice size for the
-participant-average estimand and unweighted for the cluster-average estimand,
-will be reported as descriptive estimates alongside the model result
-(Table~\ref{tab:prim}) \citep{hayes2017, kahan2023}. No hypothesis test is attached to them.
+Two practice-level summaries are reported beside the model result
+(Table~\ref{tab:prim}) \citep{hayes2017, kahan2023}. Weighted by analysed
+practice size, the summary estimates the participant-average effect by
+construction. Unweighted, it estimates the cluster-average effect. Both carry
+confidence intervals, neither carries a hypothesis test.
 
 \begin{table}[ht]
 \centering\small
