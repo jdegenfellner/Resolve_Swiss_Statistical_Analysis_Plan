@@ -764,14 +764,31 @@ The primary model \eqref{eq:primary} will also be fitted in a Bayesian
 formulation with the same structure. The informative priors come from the
 individual participant data of the Australian RESOLVE trial
 \citep{bagg2022}, which the investigators hold under a data sharing agreement, and specifically from the distributions
-of the RMDQ at baseline and at 18 weeks in each arm. Fitting the analogue of the primary model to
-those two occasions gives an estimate of the treatment effect and its
-standard error. The prior for $\beta_2$ is normal, centred on that estimate,
-with the standard error inflated by a discount factor \open{fix the discount
-factor}, because the Australian comparator was a sham and usual physiotherapy
-should leave less to be gained. The same two distributions supply the priors
-for the remaining parameters: the common baseline mean, the participant-level
-and residual variances, and the baseline-to-follow-up correlation. The RMDQ at
+of the RMDQ at baseline and at 18 weeks in each arm. Written out with its priors, the model is
+\begin{align}
+\label{eq:bayes}
+y_{ijt} &\sim \mathrm{Normal}(\mu_{ijt},\ \sigma), \nonumber\\
+\mu_{ijt} &= \beta_0 + \beta_1 s_t + \beta_2\, s_t x_j + u_j + w_{ij},
+  \nonumber\\
+u_j &\sim \mathrm{Normal}(0,\ \tau), \qquad
+  w_{ij} \sim \mathrm{Normal}(0,\ \nu), \nonumber\\
+\beta_0 &\sim \mathrm{Normal}(m_0,\ s_0), \qquad
+  \beta_1 \sim \mathrm{Normal}(m_1,\ s_1), \\
+\beta_2 &\sim \mathrm{Normal}\bigl(\hat\delta,\ c \cdot \mathrm{se}(\hat\delta)\bigr),
+  \nonumber\\
+\tau &\sim \mathrm{Half\text{-}Normal}(s_\tau), \qquad
+  \nu \sim \mathrm{Half\text{-}Normal}(s_\nu), \qquad
+  \sigma \sim \mathrm{Half\text{-}Normal}(s_\sigma). \nonumber
+\end{align}
+The hyperparameters come from the Australian data. Here $m_0$ and $s_0$
+describe the baseline RMDQ distribution, $m_1$ and $s_1$ the change from
+baseline to 18 weeks in the control arm, and $\hat\delta$ with its standard
+error the treatment effect from the analogue of model \eqref{eq:primary}
+fitted to those two occasions. The factor $c > 1$ discounts that effect
+\open{fix the discount factor}, because the Australian comparator was a sham
+and usual physiotherapy should leave less to be gained. The scales
+$s_\tau$, $s_\nu$ and $s_\sigma$ follow the variance decomposition of the
+Australian data. The RMDQ at
 18 weeks piles up near zero (Figure~\ref{fig:ausbox}), and access to the raw
 data allows this skewed outcome distribution to be modelled directly instead
 of assumed normal. The RMDQ is a count of 24 items, and in every
@@ -779,11 +796,16 @@ arm-by-occasion subgroup of the Australian data the beta-binomial
 distribution with size 24 fits as well as or better than each continuous
 family we examined, while the normal fails badly at 18 weeks
 (Figure~\ref{fig:ausdist}). The supplementary analysis will therefore be
-reported twice, once with the normal likelihood of model \eqref{eq:primary}
-for direct comparability with the frequentist result, and once with a
-beta-binomial likelihood that respects the bounded count nature of the
-score. A sceptical prior centred at zero will be reported alongside the
-informative one.
+reported twice, once with the normal likelihood of \eqref{eq:bayes} for
+direct comparability with the frequentist result, and once with the first two
+lines replaced by
+\begin{equation*}
+y_{ijt} \sim \mathrm{BetaBinomial}(24,\ p_{ijt},\ \theta), \qquad
+\mathrm{logit}(p_{ijt}) = \beta_0 + \beta_1 s_t + \beta_2\, s_t x_j + u_j + w_{ij},
+\end{equation*}
+which respects the bounded count nature of the score. Each version is also
+fitted with a sceptical prior, $\beta_2 \sim \mathrm{Normal}(0,\ s)$
+\open{fix $s$}, in place of the informative one.
 
 \begin{figure}[ht]
 \centering
