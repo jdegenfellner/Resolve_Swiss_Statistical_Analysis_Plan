@@ -22,6 +22,7 @@ Monte Carlo standard error and writes a figure to
 | Naive inference understates uncertainty at 13 practices (Small clusters) | 0.05 nominal | `05_small_sample_inference.R` |
 | **Finding, not a claim:** with a time-varying practice effect (ρc < 1) the rigid primary model inflates the type I error and KR does not repair it; the practice-by-time random effect (sensitivity analysis 6) restores the level with df near 11 | see script output | `05_small_sample_inference.R` |
 | ICC formula τ²/(τ²+ν²+σ²) is the right one for model (2) (Intra-cluster correlation) | unbiased | `06_icc_and_change_penalty.R` |
+| **Internal question, no paper claim:** how far can the three numbers of Table 4 diverge? With a constant treatment effect all three agree to within Monte Carlo error at any practice-size variation and ICC. They separate only when the effect varies with practice size; the unweighted summary then tracks the cluster-average and the other two the participant-average | see script output | `07_estimand_divergence.R` |
 | Constrained model matches baseline-adjusted precision (The model) | SE ratio | `06_icc_and_change_penalty.R` and `R/equivalence_constrained_vs_ancova.R` |
 
 Data-based statements (the Australian SDs, the correlation r ≈ 0.5, the
