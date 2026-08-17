@@ -809,9 +809,12 @@ lines replaced by
 y_{ijt} \sim \mathrm{BetaBinomial}(24,\ p_{ijt},\ \theta), \qquad
 \mathrm{logit}(p_{ijt}) = \beta_0 + \beta_1 s_t + \beta_2\, s_t x_j + u_j + w_{ij},
 \end{equation*}
-which respects the bounded count nature of the score. Each version is also
-fitted with a sceptical prior, $\beta_2 \sim \mathrm{Normal}(0,\ s)$
-\open{fix $s$}, in place of the informative one.
+which respects the bounded count nature of the score. In that version the
+coefficients act on the logit scale, so the priors are re-derived there by
+fitting the same beta-binomial model to the Australian data, and the values
+above do not transfer. Each version is also fitted with a sceptical prior for
+$\beta_2$ centred at zero \open{fix its scale on each of the two scales} in
+place of the informative one.
 
 \begin{figure}[ht]
 \centering
