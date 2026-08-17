@@ -33,7 +33,13 @@ lm0 <- -0.40; ls0 <- 0.4
 lm1 <- -0.69; ls1 <- 0.4
 ldelta <- -0.53; lse <- 0.20
 THETA <- 4.3
-l_tau <- 0.3; l_nu <- 0.8
+# theta already carries the variation between participants, so the
+# participant effect on the logit scale is kept small here. It stands
+# only for the part shared by a person's two occasions; adding the full
+# person variation on top of theta would count it twice and, because the
+# logistic curve is convex below one half, would pull the implied means
+# upwards.
+l_tau <- 0.3; l_nu <- 0.2
 
 half_normal <- function(n, s) abs(rnorm(n, 0, s))
 
