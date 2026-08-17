@@ -3,8 +3,8 @@
 #  (a) "the committed 200 analysed participants give 73% at rho = 0.01,
 #      falling to 51% at rho = 0.05" with 4 vs 9 practices (Table 2,
 #      first row: 0.73 / 0.61 / 0.51), t reference with k1+k2-2 = 11 df
-#  (b) Table 2, balanced designs with 14 per practice: 5/5 -> 0.62 and
-#      7/7 -> 0.80 at rho = 0.01, 10/10 -> 0.85 at rho = 0.03
+#  (b) Table 2, balanced designs at the same analysed N of 200:
+#      5/5 -> 0.75 and 7/7 -> 0.81 at rho = 0.01, 10/10 -> 0.77 at rho = 0.03
 # Analysis in the simulation: the trial's actual primary analysis, the
 # constrained model of eq. (2) with Kenward-Roger degrees of freedom.
 # The formula behind Table 2 is a cluster-level t approximation, so
@@ -46,10 +46,10 @@ banner("(a') dieselben Zeilen in der Modell-(2)-Welt (rho_c = 1)")
 invisible(c(run(4, 9, sz49, 0.03, "rho 0.03:", 0.61, rho_c = 1),
             run(4, 9, sz49, 0.05, "rho 0.05:", 0.51, rho_c = 1)))
 
-banner("(b) balancierte Designs, 14 pro Praxis")
-emp2 <- c(run(5, 5,  make_sizes(10, 140, 0.65), 0.01, "5/5,  rho 0.01:", 0.62),
-          run(7, 7,  make_sizes(14, 196, 0.65), 0.01, "7/7,  rho 0.01:", 0.80),
-          run(10, 10, make_sizes(20, 280, 0.65), 0.03, "10/10, rho 0.03:", 0.85))
+banner("(b) balancierte Designs, analysierte N bei 200 gehalten")
+emp2 <- c(run(5, 5,  make_sizes(10, 200, 0.65), 0.01, "5/5,  rho 0.01:", 0.75),
+          run(7, 7,  make_sizes(14, 200, 0.65), 0.01, "7/7,  rho 0.01:", 0.81),
+          run(10, 10, make_sizes(20, 200, 0.65), 0.03, "10/10, rho 0.03:", 0.77))
 
 # ---- figure ---------------------------------------------------------
 pd <- data.frame(
@@ -58,7 +58,7 @@ pd <- data.frame(
                     levels = c("4/9\nrho .01", "4/9\nrho .03", "4/9\nrho .05",
                                "5/5\nrho .01", "7/7\nrho .01", "10/10\nrho .03")),
   simulated = c(emp, emp2),
-  formula   = c(0.73, 0.61, 0.51, 0.62, 0.80, 0.85))
+  formula   = c(0.73, 0.61, 0.51, 0.75, 0.81, 0.77))
 pd_l <- reshape(pd, direction = "long", varying = c("simulated", "formula"),
                 v.names = "power", timevar = "what",
                 times = c("simulated (KR model)", "formula (Table 2)"))

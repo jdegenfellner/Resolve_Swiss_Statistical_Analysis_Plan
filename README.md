@@ -86,13 +86,14 @@ Two findings worth taking to the project meeting:
    sample is what it is. Copas & Hooper (2021) show equal cluster allocation is optimal
    exactly when the ICC and total variance match across arms, so a balanced split remains
    the right default.
-2. **The number of practices is the problem.** At 14 participants per practice, going
-   from 5+5 to 7+7 practices lifts power from 62 % to 80 % (ICC 0.01), and 9+9 reaches
-   90 %. van Breukelen & Candel (2018) recommend at least 10 clusters per arm and, as a
-   rule of thumb, adding two to three clusters per arm to any normal-approximation
-   sample size. This agrees with the July 2026 interim note in the project folder and
-   with the recruitment-repair scenarios discussed in August 2026 (five new practices
-   randomised as a batch bring power back above 80 % for ICC up to about 0.03).
+2. **The number of practices is the problem.** Holding the analysed sample at the
+   committed 200, spreading it over more practices still raises power, because the
+   design effect falls with practice size and the degrees of freedom rise: 5+5 gives
+   75 %, 7+7 gives 81 %, 10+10 gives 85 % at ICC 0.01. At ICC 0.03 even 10+10 reaches
+   only 77 %, so with 200 analysed participants the planned power holds only for small
+   intra-cluster correlations. van Breukelen & Candel (2018) recommend at least 10
+   clusters per arm and, as a rule of thumb, adding two to three clusters per arm to
+   any normal-approximation sample size.
 
 ## The protocol conflict that needs a decision
 

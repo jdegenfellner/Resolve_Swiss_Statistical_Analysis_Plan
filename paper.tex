@@ -414,9 +414,9 @@ split). \hlo{The analysis itself needs no
 modification for unequal arms. The repair is more practices:} adding patients
 to the practices already enrolled has strongly diminishing returns
 \citep{hemming2017}, about ten practices per arm has been recommended as a
-general minimum for valid inference \citep{vanbreukelen2018}, and with 14
-analysed participants per practice, 7 practices per arm reach the planned
-power at $\rho = 0.01$ (Table~\ref{tab:power}). Any new practices will be randomised as a batch,
+general minimum for valid inference \citep{vanbreukelen2018}, and spreading
+the same 200 analysed participants over 7 practices per arm reaches the
+planned power at $\rho = 0.01$ (Table~\ref{tab:power}). Any new practices will be randomised as a batch,
 with the split chosen to move the overall allocation towards balance
 \citep{copas2021}, and the recruitment wave will enter the model as described
 in section~\ref{sec:randomisation}. \open{confirm number and split of the
@@ -426,26 +426,24 @@ additional practices once the team has decided}
 \centering\small
 \caption{Power to detect a 2-point difference in RMDQ at 18 weeks, two-sided
 $\alpha = 0.05$, with a $t$ reference distribution on $k_1+k_2-2$ degrees of
-freedom. First row: the existing 13 practices with 200 analysed participants
-in total. Lower panel: balanced designs with 14 analysed participants per
-practice, so that the total sample grows with the number of practices.}
+freedom. Every row holds the analysed sample at 200 participants, so the
+average practice size falls as practices are added. The first row is the
+current allocation, the rest are balanced.}
 \label{tab:power}
-\begin{tabular}{llccc}
+\begin{tabular}{lcccc}
 \toprule
 & & \multicolumn{3}{c}{Intra-cluster correlation}\\
 \cmidrule(l){3-5}
-Practices (int./ctrl.) & Analysed $N$ & 0.01 & 0.03 & 0.05\\
+Practices (int./ctrl.) & Mean practice size & 0.01 & 0.03 & 0.05\\
 \midrule
-\multicolumn{5}{l}{\emph{13 practices, $N$ fixed at 200}}\\
-4 / 9  & 200 & 0.73 & 0.61 & 0.51\\
+4 / 9   & 15.4 & 0.73 & 0.61 & 0.51\\
 \midrule
-\multicolumn{5}{l}{\emph{Balanced, 14 participants per practice}}\\
-5 / 5   & 140 & 0.62 & 0.51 & 0.43\\
-6 / 6   & 168 & 0.73 & 0.61 & 0.52\\
-7 / 7   & 196 & \textbf{0.80} & 0.69 & 0.60\\
-8 / 8   & 224 & 0.86 & 0.76 & 0.66\\
-9 / 9   & 252 & 0.90 & 0.81 & 0.72\\
-10 / 10 & 280 & 0.93 & 0.85 & 0.77\\
+5 / 5   & 20.0 & 0.75 & 0.59 & 0.49\\
+6 / 6   & 16.7 & 0.78 & 0.65 & 0.55\\
+7 / 7   & 14.3 & \textbf{0.81} & 0.69 & 0.60\\
+8 / 8   & 12.5 & 0.83 & 0.73 & 0.64\\
+9 / 9   & 11.1 & 0.84 & 0.75 & 0.67\\
+10 / 10 & 10.0 & 0.85 & 0.77 & 0.70\\
 \bottomrule
 \end{tabular}
 \end{table}

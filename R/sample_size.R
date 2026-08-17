@@ -172,19 +172,21 @@ print(data.frame(ICC = c(0.01, 0.03, 0.05),
                  power_6_7 = round(bal, 3)))
 
 # ---------------------------------------------------------------------
-# 5. Recruiting additional practices, holding practice size at m = 14
+# 5. Recruiting additional practices, holding the analysed sample at 200
 # ---------------------------------------------------------------------
-# Here the total sample grows with the number of practices. This is the
-# comparison that matters for the decision "recruit more practices" vs
-# "recruit more patients in the practices we have".
+# The trial is committed to 200 analysed participants, so the relevant
+# question is not "more patients or more practices" but how the same
+# participants are best distributed. Spreading them over more practices
+# lowers the design effect (smaller m) and raises the degrees of freedom.
 
 add <- expand.grid(k_per_arm = 5:10, rho = c(0.01, 0.03, 0.05))
-add$N_total <- 2 * add$k_per_arm * 14
+add$m <- 100 / add$k_per_arm
 add$power <- mapply(power_crt, k1 = add$k_per_arm, k2 = add$k_per_arm,
-                    rho = add$rho,
-                    MoreArgs = list(m = 14, sigma = sigma, delta = delta,
+                    m = add$m, rho = add$rho,
+                    MoreArgs = list(sigma = sigma, delta = delta,
                                     ancova_r = r, cv = 0.65))
-out("\nBalanced designs with 14 participants per practice:")
+add$m <- round(add$m, 1)
+out("\nBalanced designs, analysed N held at 200:")
 print(transform(add, power = round(power, 3)))
 
 # Number of distinct allocations of k_int of 13 practices to the
