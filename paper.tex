@@ -242,7 +242,7 @@ pragmatic trial the comparator is itself part of the finding.
 
 Practices are allocated 1:1 by the central trial coordinator at ZHAW, before
 the intervention therapists are trained \citep{protocol2025}. The allocation
-was carried out live, by drawing balls of two colours from a bag, one colour
+took place live, by drawing balls of two colours from a bag, one colour
 per arm, which fixed the complete allocation at once, before therapist
 training and before any patient was recruited. Concealment of an ongoing
 allocation sequence therefore does not arise. The corresponding selection
@@ -250,14 +250,14 @@ risk sits at patient recruitment (section~\ref{sec:recruitment}).
 
 Two points follow for the analysis. First, the allocation used neither
 stratification nor covariate constraints, so no design variables need to be
-carried in the model \citep{kahan2012, hemming2023}. Second, if
+included in the model \citep{kahan2012, hemming2023}. Second, if
 practices were recruited in waves and later waves were allocated non-randomly,
 wave and treatment arm would be confounded. Any newly recruited practices
 will therefore be randomised as a batch \citep{ivers2012, moulton2004}, which
 makes the wave a stratum of the randomisation, and variables that structure
 the randomisation belong in the analysis \citep{kahan2012}. Recruitment wave
 will be recorded for every practice and, if practices entered in distinct
-waves, carried in the model as a covariate.
+waves, entered in the model as a covariate.
 
 Participants cannot be blinded, since the intervention includes a substantial
 home training component. The three physical assessments (two-point
@@ -575,7 +575,7 @@ standard deviations for approximately normally distributed continuous
 variables, medians and interquartile ranges otherwise, and counts with
 percentages for categorical variables \citep{lang2015}. Baseline characteristics will not be
 tested for statistical significance between arms, and Table~\ref{tab:base}
-carries no $p$ values, avoiding the Table 1 fallacy
+shows no $p$ values, avoiding the Table 1 fallacy
 \citep{senn1994, altman1985}.
 
 \begin{table}[ht]
@@ -673,7 +673,7 @@ baseline measurement of the outcome in a cluster randomised trial
 \citep{hooper2018}.
 
 The baseline score is part of the response, not a covariate. The model
-carries no covariates except any used to stratify or constrain the
+includes no covariates except any used to stratify or constrain the
 randomisation, which must be adjusted for \citep{kahan2012, hemming2023}.
 Each further cluster-level covariate would consume one of the eleven degrees
 of freedom available for the treatment effect \citep{hemming2025}.
@@ -714,7 +714,7 @@ weighting \citep{hayes2017, kahan2023}.
 
 For the participant-average effect we fit the 18-week score on the baseline
 score and the arm by ordinary least squares, so that every participant
-carries equal weight. This is the independence estimating equation that
+counts equally. This is the independence estimating equation that
 \citet{kahan2023} recommend for this estimand, and it remains unbiased when
 practice size is informative. Its confidence interval uses a cluster-robust
 variance with the bias reduction and the Satterthwaite degrees of freedom of
@@ -730,7 +730,7 @@ distribution on $k_1 + k_2 - 2$ degrees of freedom \citep[section
 \centering\small
 \caption{Analysis of the primary outcome (shell). The mixed model provides the
 estimate and the hypothesis test. The other two rows estimate the two
-estimands explicitly and carry no test.}
+estimands explicitly and are not tested.}
 \label{tab:prim}
 \begin{tabularx}{\textwidth}{Xcccc}
 \toprule
@@ -768,15 +768,15 @@ of treatment. We fit this four-occasion model to obtain the effects at 26 and
 doubles as a check on the primary result.
 
 This model differs from the protocol's model statement in two ways
-\citep{protocol2025}. The protocol carries a main effect
+\citep{protocol2025}. The protocol specifies a main effect
 of treatment alongside the interaction, which frees the baseline means of the
 two arms. We constrain them to be equal, which holds in expectation under
 randomisation and recovers
 the precision that the sample size calculation assumes \citep{hooper2018,
 liang2000}. And the protocol's statement does not mention a random effect for
 the practice. Omitting it would treat patients from the same practice as
-independent and understate the standard error, so a practice random effect is
-carried in every model in this plan. Mixed models for repeated measures
+independent and understate the standard error, so a practice random effect appears
+in every model in this plan. Mixed models for repeated measures
 behave acceptably in cluster randomised trials with continuous outcomes
 missing at random, including in simulations with as few as five clusters per
 arm \citep{bell2020}.
@@ -889,7 +889,7 @@ the conclusion.
 \begin{enumerate}[leftmargin=1.4em, itemsep=2pt]
 \item \textbf{Leave-one-practice-out.} The primary model refitted 13 times,
 each time omitting one practice. With few clusters a single atypical practice
-can carry the result, and the spread of the 13 estimates shows how much it
+can drive the result, and the spread of the 13 estimates shows how much it
 does.
 \item \textbf{Therapist effects.} A third level for therapist within practice.
 This is the more faithful description of the data hierarchy, but variance
@@ -922,7 +922,7 @@ missing-at-random assumption conditional on the observed measurements
 missing outcomes by arm and by practice, and compare the baseline
 characteristics of participants with and without an 18-week outcome. As a
 sensitivity analysis we will use multiple imputation by chained equations
-with the practice structure carried in the imputation model, since imputation
+with the practice structure represented in the imputation model, since imputation
 that ignores the clustering understates the uncertainty of the imputed values
 \citep{andridge2011}. If an entire practice is lost, that will be
 reported separately and not imputed. This is a deliberate deviation from the
