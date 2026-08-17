@@ -124,16 +124,23 @@ pd <- rbind(mk(r, "normal"), mk(rb, "beta-binomial"))
 lev <- c("baseline", "18 weeks, intervention", "18 weeks, control")
 pd$what <- factor(pd$what, lev)
 obs <- data.frame(what = factor(lev, lev), value = c(9.8, 3.6, 6.4))
+mu <- aggregate(value ~ what + model, pd, mean)
 fig <- ggplot(pd, aes(value, fill = model)) +
   geom_density(alpha = 0.45, colour = NA) +
+  geom_vline(data = mu, aes(xintercept = value, colour = model),
+             linewidth = 0.6, show.legend = FALSE) +
   geom_vline(data = obs, aes(xintercept = value), linetype = 2) +
   facet_wrap(~ what, scales = "free") +
   scale_fill_manual(values = c("normal" = "#7570b3",
                                "beta-binomial" = "#d95f02")) +
+  scale_colour_manual(values = c("normal" = "#7570b3",
+                                 "beta-binomial" = "#d95f02")) +
   labs(x = "implied arm mean RMDQ", y = NULL, fill = NULL,
        title = "Prior predictive distribution of the arm means",
-       subtitle = "Dashed lines mark the Australian observations. Scores are bounded at 0 and 24.") +
-  theme_minimal(base_size = 10) + theme(legend.position = "top")
+       subtitle = "Solid lines are the prior predictive means, dashed lines the Australian observations. The beta-binomial distribution is right skewed, so its mean sits well right of its peak.") +
+  theme_minimal(base_size = 10) +
+  theme(legend.position = "top",
+        plot.subtitle = element_text(size = 7.5, colour = "grey35"))
 dir.create("figures", showWarnings = FALSE)
 ggsave("figures/prior_predictive.png", fig, width = 7.5, height = 3.8, dpi = 300)
 
