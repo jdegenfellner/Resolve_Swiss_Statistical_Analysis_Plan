@@ -105,7 +105,7 @@ and participant. The model constrains the two arms to a common baseline
 mean, which is how the baseline information enters, and the treatment effect
 is estimated with Kenward--Roger degrees of freedom, the small-sample
 correction that guards against anti-conservative mixed-model inference when
-the number of practices is small. A supplementary Bayesian analysis with
+the number of practices is small. A comparative Bayesian analysis with
 prespecified priors, informed by the individual participant data of the
 Australian trial, accompanies the frequentist results. We report the intra-cluster correlation with its
 uncertainty, the analyses of secondary outcomes, the handling of missing data,
@@ -160,7 +160,7 @@ This analysis plan is written before the analysis of outcome data and
 follows the recommendations for the content of statistical analysis plans in
 clinical trials \citep{gamble2017}, together with the CONSORT extension for
 cluster randomised trials \citep{campbell2012}. It reports the planned
-frequentist analysis of the primary and secondary outcomes, a supplementary
+frequentist analysis of the primary and secondary outcomes, a comparative
 Bayesian analysis of the primary outcome, and a summary of the Bayesian
 interim analysis that the protocol specifies.
 
@@ -757,7 +757,7 @@ behave acceptably in cluster randomised trials with continuous outcomes
 missing at random, including in simulations with as few as five clusters per
 arm} \citep{bell2020}.
 
-\subsection{Supplementary Bayesian analysis}
+\subsection{Comparative Bayesian analysis}
 \label{sec:bayes}
 
 The primary model \eqref{eq:primary} will also be fitted in a Bayesian
@@ -815,7 +815,7 @@ of assumed normal. The RMDQ is a count of 24 items, and in every
 arm-by-occasion subgroup of the Australian data the beta-binomial
 distribution with size 24 fits as well as or better than each continuous
 family we examined, while the normal fails badly at 18 weeks
-(Figure~\ref{fig:ausdist}). The supplementary analysis will therefore be
+(Figure~\ref{fig:ausdist}). The Bayesian analysis will therefore be
 reported twice, once with the normal likelihood of \eqref{eq:bayes} for
 direct comparability with the frequentist result, and once with the first two
 lines replaced by
@@ -990,7 +990,7 @@ declared futile if the posterior probability that the between-group
 difference is smaller than 1 RMDQ point reaches 95\%, with the prior for the
 treatment effect built by precision-weighting the between-group differences
 of the previous trials. No sample size adjustment follows from the interim
-result. The supplementary Bayesian analysis of section~\ref{sec:bayes} uses
+result. The comparative Bayesian analysis of section~\ref{sec:bayes} uses
 the same machinery and the same data sources, so the interim and final
 analyses are consistent.
 
