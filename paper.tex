@@ -786,9 +786,15 @@ baseline to 18 weeks in the control arm, and $\hat\delta$ with its standard
 error the treatment effect from the analogue of model \eqref{eq:primary}
 fitted to those two occasions. The factor $c > 1$ discounts that effect
 \open{fix the discount factor}, because the Australian comparator was a sham
-and usual physiotherapy should leave less to be gained. The scales
-$s_\tau$, $s_\nu$ and $s_\sigma$ follow the variance decomposition of the
-Australian data. The RMDQ at
+and usual physiotherapy should leave less to be gained. The Australian data give $m_0 = 9.5$,
+$m_1 = -3.5$ and $\hat\delta = -2.4$ with a standard error of $0.56$, and
+participant-level and residual standard deviations of $3.7$ and $3.6$, so that
+$s_\nu = s_\sigma = 4$. We set $s_0 = s_1 = 2$, several times the
+corresponding standard errors, so that the Swiss data dominate those two
+priors. That trial randomised individuals and has no practice level, so
+$s_\tau$ rests on the intra-cluster correlation instead: values between 0.01
+and 0.05 imply $\tau$ between 0.5 and 1.2, and $s_\tau = 2$ covers that
+range. The RMDQ at
 18 weeks piles up near zero (Figure~\ref{fig:ausbox}), and access to the raw
 data allows this skewed outcome distribution to be modelled directly instead
 of assumed normal. The RMDQ is a count of 24 items, and in every
