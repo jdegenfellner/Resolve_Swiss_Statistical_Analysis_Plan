@@ -18,7 +18,7 @@ Monte Carlo standard error and writes a figure to
 | Table 1 chain: requirement = 69 × DE → 83/111/139 | variance identity | `02_design_effect.R` |
 | Table 2, row 4/9: power 0.73 / 0.61 / 0.51 at N = 200 | KR analysis | `03_power_current_design.R` |
 | Table 2, balanced at N = 200: 5/5 → 0.75, 7/7 → 0.81 (ICC .01), 10/10 → 0.77 (ICC .03) | KR analysis | `03_power_current_design.R` |
-| Green passage: factorisation neutral at ρc = 0.6, within 20% for ρc 0.4–0.8 (Sample size) | requirement ratio | `04_teerenstra_factorisation.R` |
+| Green passage: factorisation neutral at ρc = 0.6, within 20% for ρc 0.4–0.8 (claim moved out of the paper 18 Aug 2026, lives in R/sample_size.R section 6) | requirement ratio | `04_teerenstra_factorisation.R` |
 | Naive inference understates uncertainty at 13 practices (Small clusters) | 0.05 nominal | `05_small_sample_inference.R` |
 | **Finding, not a claim:** with a time-varying practice effect (ρc < 1) the rigid primary model inflates the type I error and KR does not repair it; the practice-by-time random effect (sensitivity analysis 6) restores the level with df near 11 | see script output | `05_small_sample_inference.R` |
 | ICC formula τ²/(τ²+ν²+σ²) is the right one for model (2) (Intra-cluster correlation) | unbiased | `06_icc_and_change_penalty.R` |
