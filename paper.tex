@@ -892,9 +892,10 @@ this trial will have, so it is a sensitivity analysis, not the primary model.
 effect of treatment added, which frees the baseline means and shows what the
 constraint contributes.
 \item \textbf{Cluster-mean baseline.} Model \eqref{eq:primary} with the
-practice mean baseline score added as a further fixed effect, which separates
-the within-practice from the between-practice association with baseline
-disability.
+practice mean baseline score added as a further fixed effect. The baseline
+cluster mean captures differences between practices that the individual
+scores do not, and adjusting for it is recommended for cluster randomised
+trials \citep{hooper2018}.
 \item \textbf{Practice-by-time interaction.} Model \eqref{eq:primary} with an
 additional random practice-by-time effect, which allows the correlation
 between two participants of the same practice to be weaker across occasions
