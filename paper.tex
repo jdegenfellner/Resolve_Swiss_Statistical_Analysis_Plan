@@ -826,7 +826,7 @@ baseline and 0.16, 3.0 at 18 weeks. Control 0.42, 6.3 at baseline and 0.26,
 \label{fig:ausdist}
 \end{figure}
 
-With 13 practices the posterior for the between-practice variance is
+With few practices the posterior for the between-practice variance is
 sensitive to its prior \citep{spiegelhalter2001}. We
 will therefore report a sensitivity analysis over the between-practice
 variance prior. For the treatment effect we will report the full posterior
@@ -880,14 +880,14 @@ The following are prespecified and will be reported whether or not they change
 the conclusion.
 
 \begin{enumerate}[leftmargin=1.4em, itemsep=2pt]
-\item \textbf{Leave-one-practice-out.} The primary model refitted 13 times,
-each time omitting one practice. With few clusters a single atypical practice
-can drive the result, and the spread of the 13 estimates shows how much it
-does.
+\item \textbf{Leave-one-practice-out.} The primary model refitted once per
+practice, each time omitting that practice. With few clusters a single
+atypical practice can drive the result, and the spread of these estimates
+shows how much it does.
 \item \textbf{Therapist effects.} A third level for therapist within practice.
 This is the more faithful description of the data hierarchy, but variance
-components at three levels are poorly identified with 13 practices, so it is a
-sensitivity analysis, not the primary model.
+components at three levels are poorly identified with as few practices as
+this trial will have, so it is a sensitivity analysis, not the primary model.
 \item \textbf{Unconstrained model.} Model \eqref{eq:primary} with a main
 effect of treatment added, which frees the baseline means and shows what the
 constraint contributes.
@@ -927,8 +927,8 @@ effect in the principal stratum of participants who would adhere regardless of
 allocation, the complier average causal effect, will be estimated by
 instrumental variable regression with allocation as the instrument
 \citep{angrist1996}. The estimate will be reported alongside the
-intention-to-treat effect, as in the Australian trial \citep{bagg2022}. With 13
-clusters this analysis is imprecise, and it is prespecified as exploratory.
+intention-to-treat effect, as in the Australian trial \citep{bagg2022}. With
+few clusters this analysis is imprecise, and it is prespecified as exploratory.
 
 The design itself limits contamination: the five-day
 RESOLVE training is unavailable to control therapists, and the German-language
