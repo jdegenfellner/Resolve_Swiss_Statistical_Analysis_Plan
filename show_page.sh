@@ -26,7 +26,9 @@ PAGE="$1"
 case "$PAGE" in
   ''|*[!0-9]*)
     PAGE=$(pdftotext "$PDF" - 2>/dev/null |
-           awk -v pat="$1" 'BEGIN{RS="\f"} index($0,pat){print NR; exit}')
+           awk -v pat="$1" 'BEGIN{RS="\f"}
+                {hay=$0; gsub(/[ \t\n]+/," ",hay); gsub(/[ \t\n]+/," ",pat)}
+                index(hay,pat){print NR; exit}')
     ;;
 esac
 [ -z "$PAGE" ] && PAGE=1
