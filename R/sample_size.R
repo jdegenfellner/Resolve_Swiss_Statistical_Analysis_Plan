@@ -213,12 +213,6 @@ out("Smallest attainable two-sided p value:  ", signif(2 / choose(13, 4), 3))
 out("Distinct allocations, 6 of 13 practices: ", choose(13, 6))
 
 # ---------------------------------------------------------------------
-# 6. Session information
-# ---------------------------------------------------------------------
-out("\n")
-print(sessionInfo())
-
-# ---------------------------------------------------------------------
 # 6. How far off is the factorised approximation (1 - r^2) x DE?
 # ---------------------------------------------------------------------
 # Teerenstra et al. (2012), Stat Med 31:2169-2178, eq. (5) and (7):
@@ -238,3 +232,9 @@ w <- m_bar * teer$rho / (1 + (m_bar - 1) * teer$rho)
 r_comb <- w * teer$rho_c + (1 - w) * r
 teer$ratio <- round((1 - r_comb^2) / (1 - r^2), 3)
 print(reshape(teer, idvar = "rho", timevar = "rho_c", direction = "wide"))
+
+# ---------------------------------------------------------------------
+# 7. Session information
+# ---------------------------------------------------------------------
+out("\n")
+print(sessionInfo())
