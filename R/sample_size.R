@@ -205,6 +205,14 @@ print(transform(imb[c("k_int", "k_ctrl", "rho", "m", "power")],
                 power = round(power, 3)))
 
 
+# Recruiting seven further practices per arm from the current 4/9,
+# analysed sample still 200: 11 vs 16 practices.
+p1116 <- sapply(c(0.01, 0.02, 0.03, 0.05), function(rho)
+  power_crt(11, 16, m = 200 / 27, sigma = sigma, delta = delta, rho = rho,
+            ancova_r = r, cv = 0.65))
+out("\nSeven further practices per arm (11 vs 16), analysed N = 200:")
+print(data.frame(ICC = c(0.01, 0.02, 0.03, 0.05), power = round(p1116, 3)))
+
 # Number of distinct allocations of k_int of 13 practices to the
 # intervention arm; this is the size of the exact randomisation
 # distribution used for the permutation test.
