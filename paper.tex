@@ -782,8 +782,8 @@ data allows this skewed outcome distribution to be modelled directly instead
 of assumed normal. The RMDQ is a count of 24 items, and the beta-binomial distribution with
 size 24 is the only family we examined whose support matches that score. In
 every arm-by-occasion subgroup of the Australian data it stays within four
-AIC points of the best-fitting family, while the normal fails badly at 18
-weeks (Figure~\ref{fig:ausdist}). The Bayesian analysis will therefore be
+AIC points of the best-fitting continuous family, while the normal fails
+badly at 18 weeks (Figure~\ref{fig:ausdist}). The Bayesian analysis will therefore be
 reported twice, once with the normal likelihood of \eqref{eq:bayes} for
 direct comparability with the frequentist result, and once with the first two
 lines replaced by
@@ -820,7 +820,7 @@ repeated integer scores remain visible.}
 arm-by-occasion subgroups of the Australian trial, with maximum likelihood
 fits evaluated on the integer grid so that the families are directly
 comparable. The beta-binomial with size 24 stays within four AIC points of
-the best-fitting family in every subgroup. Fitted values (prob, $\theta$): intervention 0.40, 4.9 at
+the best-fitting continuous family in every subgroup. Fitted values (prob, $\theta$): intervention 0.40, 4.9 at
 baseline and 0.16, 3.0 at 18 weeks. Control 0.42, 6.3 at baseline and 0.26,
 2.7 at 18 weeks. Script \texttt{R/aus\_rmdq\_distributions.R}.}
 \label{fig:ausdist}
