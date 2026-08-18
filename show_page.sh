@@ -25,10 +25,18 @@ STATE=".show_page_last"
 PAGE="$1"
 case "$PAGE" in
   ''|*[!0-9]*)
-    PAGE=$(pdftotext "$PDF" - 2>/dev/null |
-           awk -v pat="$1" 'BEGIN{RS="\f"}
-                {hay=$0; gsub(/-\n/,"",hay); gsub(/[ \t\n]+/," ",hay); gsub(/[ \t\n]+/," ",pat)}
-                index(hay,pat){print NR; exit}')
+    PAGE=$(pdftotext "$PDF" - 2>/dev/null | python3 -c "
+import sys, re
+pat = re.sub(r'\s+', ' ', sys.argv[1])
+for i, page in enumerate(sys.stdin.read().split('\f')):
+    # lineno margin numbers appear as digit-only lines; drop them, then
+    # undo hyphenation and collapse whitespace
+    txt = '\n'.join(l for l in page.split('\n') if not l.strip().isdigit())
+    txt = re.sub(r'-\n', '', txt)
+    txt = re.sub(r'\s+', ' ', txt)
+    if pat in txt:
+        print(i + 1); break
+" "$1")
     ;;
 esac
 [ -z "$PAGE" ] && PAGE=1
