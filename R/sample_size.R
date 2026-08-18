@@ -141,7 +141,7 @@ power_crt <- function(k1, k2, m, sigma, delta, rho, alpha = 0.05,
 
 scenarios <- expand.grid(
   k_int  = c(4, 5, 6),
-  rho    = c(0.01, 0.03, 0.05),
+  rho    = c(0.01, 0.02, 0.03, 0.05),
   KEEP.OUT.ATTRS = FALSE
 )
 scenarios$k_ctrl <- 13 - scenarios$k_int
@@ -160,14 +160,14 @@ out("\nPower at total analysed N = 200, ANCOVA, cv = 0.65:")
 print(transform(scenarios, power = round(power, 3)))
 
 # Balanced comparison: same 13 clusters, split 6/7 instead of 4/9
-bal <- sapply(c(0.01, 0.03, 0.05), function(rho)
+bal <- sapply(c(0.01, 0.02, 0.03, 0.05), function(rho)
   power_crt(6, 7, m = 15, sigma = sigma, delta = delta, rho = rho,
             ancova_r = r, cv = 0.65))
-unb <- sapply(c(0.01, 0.03, 0.05), function(rho)
+unb <- sapply(c(0.01, 0.02, 0.03, 0.05), function(rho)
   power_crt(4, 9, m = 15, sigma = sigma, delta = delta, rho = rho,
             ancova_r = r, cv = 0.65))
 out("\n13 clusters, ~200 participants — cost of the unbalanced split:")
-print(data.frame(ICC = c(0.01, 0.03, 0.05),
+print(data.frame(ICC = c(0.01, 0.02, 0.03, 0.05),
                  power_4_9 = round(unb, 3),
                  power_6_7 = round(bal, 3)))
 
@@ -179,7 +179,7 @@ print(data.frame(ICC = c(0.01, 0.03, 0.05),
 # participants are best distributed. Spreading them over more practices
 # lowers the design effect (smaller m) and raises the degrees of freedom.
 
-add <- expand.grid(k_per_arm = 5:10, rho = c(0.01, 0.03, 0.05))
+add <- expand.grid(k_per_arm = 5:10, rho = c(0.01, 0.02, 0.03, 0.05))
 add$m <- 100 / add$k_per_arm
 add$power <- mapply(power_crt, k1 = add$k_per_arm, k2 = add$k_per_arm,
                     m = add$m, rho = add$rho,
@@ -192,7 +192,7 @@ print(transform(add, power = round(power, 3)))
 # Imbalanced: the intervention arm capped at 7 practices while control
 # practices are added. The arm with fewer practices dominates 1/k1 + 1/k2,
 # so the extra control practices buy little.
-imb <- expand.grid(k_ctrl = 7:12, rho = c(0.01, 0.03, 0.05))
+imb <- expand.grid(k_ctrl = 7:12, rho = c(0.01, 0.02, 0.03, 0.05))
 imb$k_int <- 7
 imb$m <- 200 / (imb$k_int + imb$k_ctrl)
 imb$power <- mapply(power_crt, k1 = imb$k_int, k2 = imb$k_ctrl,
