@@ -4,6 +4,7 @@
 #
 #   ./show_page.sh 13                 page number
 #   ./show_page.sh "Kenward"          first page containing that text
+#   FORCE=1 ./show_page.sh 13         full pass even if the page is unchanged
 #
 # The document is closed first, because Preview restores the previous
 # scroll position when it reopens a file that is already open, which
@@ -11,9 +12,15 @@
 # keyboard shortcut, which turned out to be the unreliable part, and the
 # page jump comes last, because changing view mode or zoom scrolls back
 # to the top.
+#
+# Preview restores the last-viewed spot per file, so when the requested
+# page is the same as last time, the window dance and the page jump are
+# redundant. The script remembers the last target in .show_page_last and
+# then only closes and reopens the document.
 set -e
 cd "$(dirname "$0")"
 PDF="$(pwd)/paper.pdf"
+STATE=".show_page_last"
 
 PAGE="$1"
 case "$PAGE" in
@@ -23,6 +30,27 @@ case "$PAGE" in
     ;;
 esac
 [ -z "$PAGE" ] && PAGE=1
+
+LAST=""
+[ -f "$STATE" ] && LAST=$(cat "$STATE")
+
+if [ "$PAGE" = "$LAST" ] && [ -z "$FORCE" ]; then
+  # same target as last time: reopen only, Preview restores the spot
+  osascript <<EOF >/dev/null
+tell application "Preview"
+  try
+    close (every document whose name is "paper.pdf") saving no
+  end try
+end tell
+delay 0.4
+tell application "Preview"
+  open POSIX file "$PDF"
+  activate
+end tell
+EOF
+  echo "paper.pdf, Seite $PAGE (Position wiederhergestellt)"
+  exit 0
+fi
 
 # window width as a fraction of the screen, and extra zoom steps beyond
 # "Zoom to Fit" (0 keeps the page at window width)
@@ -69,4 +97,5 @@ tell application "System Events" to tell process "Preview"
   keystroke return
 end tell
 EOF
+printf '%s' "$PAGE" > "$STATE"
 echo "paper.pdf, Seite $PAGE"
