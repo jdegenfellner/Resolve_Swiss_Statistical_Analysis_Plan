@@ -644,7 +644,7 @@ $j$ was allocated to the intervention and $0$ otherwise. The primary analysis
 is the linear mixed model
 \begin{equation}
 \label{eq:primary}
-y_{ijt} = \beta_0 + \beta_1 s_t + \beta_2\, s_t x_j + u_j + w_{ij} + \varepsilon_{ijt},
+y_{ijt} = \beta_0 + \beta_1 s_t + \boldsymbol{\beta_2}\, s_t x_j + u_j + w_{ij} + \varepsilon_{ijt},
 \end{equation}
 with a random intercept $u_j \sim N(0,\tau^2)$ for practice, a random
 intercept $w_{ij} \sim N(0,\nu^2)$ for participant within practice, and
@@ -754,13 +754,13 @@ of the RMDQ at baseline and at 18 weeks in each arm. Written out with its priors
 \begin{align}
 \label{eq:bayes}
 y_{ijt} &\sim \mathrm{Normal}(\mu_{ijt},\ \sigma), \nonumber\\
-\mu_{ijt} &= \beta_0 + \beta_1 s_t + \beta_2\, s_t x_j + u_j + w_{ij},
+\mu_{ijt} &= \beta_0 + \beta_1 s_t + \boldsymbol{\beta_2}\, s_t x_j + u_j + w_{ij},
   \nonumber\\
 u_j &\sim \mathrm{Normal}(0,\ \tau), \qquad
   w_{ij} \sim \mathrm{Normal}(0,\ \nu), \nonumber\\
 \beta_0 &\sim \mathrm{Normal}(m_0,\ s_0), \qquad
   \beta_1 \sim \mathrm{Normal}(m_1,\ s_1), \\
-\beta_2 &\sim \mathrm{Normal}\bigl(\hat\delta,\ c \cdot \mathrm{se}(\hat\delta)\bigr),
+\boldsymbol{\beta_2} &\sim \mathrm{Normal}\bigl(\hat\delta,\ c \cdot \mathrm{se}(\hat\delta)\bigr),
   \nonumber\\
 \tau &\sim \mathrm{Half\text{-}Normal}(s_\tau), \qquad
   \nu \sim \mathrm{Half\text{-}Normal}(s_\nu), \qquad
@@ -808,7 +808,7 @@ direct comparability with the frequentist result, and once with the first two
 lines replaced by
 \begin{equation*}
 y_{ijt} \sim \mathrm{BetaBinomial}(24,\ p_{ijt},\ \theta), \qquad
-\mathrm{logit}(p_{ijt}) = \beta_0 + \beta_1 s_t + \beta_2\, s_t x_j + u_j + w_{ij},
+\mathrm{logit}(p_{ijt}) = \beta_0 + \beta_1 s_t + \boldsymbol{\beta_2}\, s_t x_j + u_j + w_{ij},
 \end{equation*}
 which respects the bounded count nature of the score. In that version the
 coefficients act on the logit scale, so the priors are re-derived there by
