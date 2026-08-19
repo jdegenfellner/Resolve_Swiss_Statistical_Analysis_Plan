@@ -401,7 +401,23 @@ correction exactly. Power is evaluated from the noncentral $t$ distribution,
 where $\delta$ is the target difference, $\sigma$, $r$ and $\mathrm{DE}$
 are as above, $\nu = k_1 + k_2 - 2$, and $T_{\nu,\lambda}$ is the
 distribution function of the noncentral $t$ with noncentrality $\lambda$
-\citep[section 3.2.1]{chow2018}. The variance under the root is the
+\citep[section 3.2.1]{chow2018}. Figure~\ref{fig:powert} shows the
+calculation for the current allocation at $\rho = 0.01$.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.9\textwidth]{figures/power_noncentral_t.png}
+\caption{Power of the current 7 versus 9 allocation at an intra-cluster
+correlation of 0.01, from equation \eqref{eq:power}. The blue curve is the
+distribution of the test statistic when there is no treatment effect, a
+central $t$ with 14 degrees of freedom, with the two-sided 5\% bounds as
+dashed lines. The green curve is the same statistic when the true difference
+is 2 points, a noncentral $t$ shifted by $\lambda = 2/0.645 = 3.10$
+standard-error units. The shaded area beyond the bound is the power of 0.82,
+the first entry of Table~\ref{tab:power}. Script
+\texttt{R/power\_figure.R}.}
+\label{fig:powert}
+\end{figure} The variance under the root is the
 variance of the difference in arm means \citep[eq. 7.12 and section
 7.6.2]{hayes2017}. With 16 practices, power reaches the planned 80\% only
 at the most optimistic intra-cluster correlation (Table~\ref{tab:power},
