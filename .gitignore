@@ -38,3 +38,6 @@ figures/*.html
 !figures/prior_beta2.png
 !figures/prior_predictive.png
 .show_page_last
+
+# Persoenliche Erklaer-Notizen — nicht publizieren
+explainer_notes/
