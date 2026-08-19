@@ -766,11 +766,11 @@ u_j &\sim \mathrm{Normal}(0,\ \tau), \qquad
   \nu \sim \mathrm{Half\text{-}Normal}(s_\nu), \qquad
   \sigma \sim \mathrm{Half\text{-}Normal}(s_\sigma). \nonumber
 \end{align}
-The hyperparameters come from the Australian data: $m_0$ and $s_0$
-describe the baseline RMDQ distribution, $m_1$ and $s_1$ the change from
-baseline to 18 weeks in the control arm, and $\hat\delta$ with its standard
-error the treatment effect from the analogue of model \eqref{eq:primary}
-fitted to those two occasions. The factor $c > 1$ widens that prior. Widening
+The hyperparameters come from the Australian data: $m_0 = 9.5$ describes
+the baseline RMDQ mean, $m_1 = -3.5$ the change from baseline to 18 weeks in
+the control arm, and $\hat\delta = -2.4$ with its standard error of 0.56
+the treatment effect from the analogue of model \eqref{eq:primary} fitted
+to those two occasions. The factor $c > 1$ widens that prior. Widening
 it in this way is the power prior of \citet{ibrahim2000}, in which the
 likelihood of the previous study is raised to a power $a_0$ between 0 and 1.
 For a normal likelihood that multiplies the precision by $a_0$, so
@@ -787,12 +787,10 @@ the prior then supplies between an eighth and a seventh of the precision of
 the posterior. No single
 value of $a_0$ follows from the data, so the analysis is repeated with
 $a_0 = 1/4$ and $a_0 = 1/16$, and all three are reported.
-The Australian data give $m_0 = 9.5$,
-$m_1 = -3.5$ and $\hat\delta = -2.4$ with a standard error of $0.56$, and
-participant-level and residual standard deviations of $3.7$ and $3.6$, so that
-$s_\nu = s_\sigma = 4$. We set $s_0 = s_1 = 2$, several times the
-corresponding standard errors, so that the Swiss data dominate those two
-priors. That trial randomised individuals and has no practice level, so
+The Australian participant-level and residual standard deviations are 3.7
+and 3.6, so that $s_\nu = s_\sigma = 4$. We set $s_0 = s_1 = 2$, several
+times the corresponding standard errors, so that the Swiss data dominate
+those two priors. That trial randomised individuals and has no practice level, so
 $s_\tau$ rests on the intra-cluster correlation instead: values between 0.01
 and 0.05 imply $\tau$ between 0.5 and 1.2, and $s_\tau = 2$ covers that
 range. The RMDQ at
