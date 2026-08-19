@@ -205,13 +205,15 @@ print(transform(imb[c("k_int", "k_ctrl", "rho", "m", "power")],
                 power = round(power, 3)))
 
 
-# Recruiting seven further practices per arm from the current 7/9,
-# analysed sample still 200: 14 vs 16 practices.
-p1416 <- sapply(c(0.01, 0.02, 0.03, 0.05), function(rho)
-  power_crt(14, 16, m = 200 / 30, sigma = sigma, delta = delta, rho = rho,
-            ancova_r = r, cv = 0.65))
-out("\nSeven further practices per arm (14 vs 16), analysed N = 200:")
-print(data.frame(ICC = c(0.01, 0.02, 0.03, 0.05), power = round(p1416, 3)))
+# Recruitment options from the current 7/9 that balance the arms,
+# analysed sample still 200: add 3/1 (10/10) or 4/2 (11/11).
+for (cfg in list(c(10, 10), c(11, 11))) {
+  p <- sapply(c(0.01, 0.02, 0.03, 0.05), function(rho)
+    power_crt(cfg[1], cfg[2], m = 200 / sum(cfg), sigma = sigma,
+              delta = delta, rho = rho, ancova_r = r, cv = 0.65))
+  out("\nRecruitment to ", cfg[1], "/", cfg[2], ", analysed N = 200:")
+  print(data.frame(ICC = c(0.01, 0.02, 0.03, 0.05), power = round(p, 3)))
+}
 
 # Number of distinct allocations of k_int of 13 practices to the
 # intervention arm; this is the size of the exact randomisation
