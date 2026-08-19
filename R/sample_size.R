@@ -72,7 +72,7 @@ design_effect <- function(m_bar, rho, cv = 0, k = Inf) {
 }
 
 rho_grid <- c(0, 0.01, 0.02, 0.03, 0.05)
-m_bar    <- 200 / 13  # analysed participants per practice at ~200 total / 13 practices
+m_bar    <- 200 / 15  # analysed participants per practice at ~200 total / 15 practices
 # Eldridge et al. (2006) report that unequal cluster size can be ignored when
 # cv < 0.23, and that for trials randomising UK general practices cv is
 # typically around 0.65. Physiotherapy practices are the closest analogue we
@@ -80,9 +80,9 @@ m_bar    <- 200 / 13  # analysed participants per practice at ~200 total / 13 pr
 cv_grid  <- c(0, 0.4, 0.65)
 
 de_tab <- outer(rho_grid, cv_grid,
-                Vectorize(function(rho, cv) design_effect(m_bar, rho, cv, k = 13)))
+                Vectorize(function(rho, cv) design_effect(m_bar, rho, cv, k = 15)))
 dimnames(de_tab) <- list(paste0("ICC=", rho_grid), paste0("cv=", cv_grid))
-out("\nDesign effects (m_bar = ", round(m_bar, 1), ", k = 13):")
+out("\nDesign effects (m_bar = ", round(m_bar, 1), ", k = 15):")
 print(round(de_tab, 3))
 
 # Requirements are minima, so round up. Use the unrounded benchmark
@@ -103,9 +103,9 @@ print(ceiling(req_tab / 0.9))
 n_r05 <- 2 * (qnorm(1 - alpha / 2) + qnorm(power_t))^2 *
   sigma^2 * (1 - 0.5^2) / delta^2
 out("\nWith r = 0.5 instead of 0.6, ICC 0.01, cv 0.65: ",
-    ceiling(n_r05 * design_effect(m_bar, 0.01, 0.65, k = 13)), " per arm")
+    ceiling(n_r05 * design_effect(m_bar, 0.01, 0.65, k = 15)), " per arm")
 out("With cv = 0 instead of 0.65, ICC 0.01, r = 0.6:  ",
-    ceiling(n_exact * design_effect(m_bar, 0.01, 0, k = 13)), " per arm")
+    ceiling(n_exact * design_effect(m_bar, 0.01, 0, k = 15)), " per arm")
 
 # ---------------------------------------------------------------------
 # 4. Power of the design as it currently stands
@@ -144,7 +144,7 @@ scenarios <- expand.grid(
   rho    = c(0.01, 0.02, 0.03, 0.05),
   KEEP.OUT.ATTRS = FALSE
 )
-scenarios$k_ctrl <- 13 - scenarios$k_int
+scenarios$k_ctrl <- 15 - scenarios$k_int
 
 # Hold the total analysed sample at 200 (100 per arm) and let the number
 # of participants per practice absorb the change in cluster numbers.
@@ -159,17 +159,17 @@ scenarios$power <- mapply(power_crt,
 out("\nPower at total analysed N = 200, ANCOVA, cv = 0.65:")
 print(transform(scenarios, power = round(power, 3)))
 
-# Balanced comparison: same 13 clusters, split 6/7 instead of 4/9
+# Balanced comparison: same 15 clusters, split 7/8 instead of 6/9
 bal <- sapply(c(0.01, 0.02, 0.03, 0.05), function(rho)
-  power_crt(6, 7, m = 15, sigma = sigma, delta = delta, rho = rho,
+  power_crt(7, 8, m = 200 / 15, sigma = sigma, delta = delta, rho = rho,
             ancova_r = r, cv = 0.65))
 unb <- sapply(c(0.01, 0.02, 0.03, 0.05), function(rho)
-  power_crt(4, 9, m = 15, sigma = sigma, delta = delta, rho = rho,
+  power_crt(6, 9, m = 200 / 15, sigma = sigma, delta = delta, rho = rho,
             ancova_r = r, cv = 0.65))
-out("\n13 clusters, ~200 participants — cost of the unbalanced split:")
+out("\n15 clusters, ~200 participants — cost of the unbalanced split:")
 print(data.frame(ICC = c(0.01, 0.02, 0.03, 0.05),
-                 power_4_9 = round(unb, 3),
-                 power_6_7 = round(bal, 3)))
+                 power_6_9 = round(unb, 3),
+                 power_7_8 = round(bal, 3)))
 
 # ---------------------------------------------------------------------
 # 5. Recruiting additional practices, holding the analysed sample at 200
@@ -205,20 +205,20 @@ print(transform(imb[c("k_int", "k_ctrl", "rho", "m", "power")],
                 power = round(power, 3)))
 
 
-# Recruiting seven further practices per arm from the current 4/9,
-# analysed sample still 200: 11 vs 16 practices.
-p1116 <- sapply(c(0.01, 0.02, 0.03, 0.05), function(rho)
-  power_crt(11, 16, m = 200 / 27, sigma = sigma, delta = delta, rho = rho,
+# Recruiting seven further practices per arm from the current 6/9,
+# analysed sample still 200: 13 vs 16 practices.
+p1316 <- sapply(c(0.01, 0.02, 0.03, 0.05), function(rho)
+  power_crt(13, 16, m = 200 / 29, sigma = sigma, delta = delta, rho = rho,
             ancova_r = r, cv = 0.65))
-out("\nSeven further practices per arm (11 vs 16), analysed N = 200:")
-print(data.frame(ICC = c(0.01, 0.02, 0.03, 0.05), power = round(p1116, 3)))
+out("\nSeven further practices per arm (13 vs 16), analysed N = 200:")
+print(data.frame(ICC = c(0.01, 0.02, 0.03, 0.05), power = round(p1316, 3)))
 
 # Number of distinct allocations of k_int of 13 practices to the
 # intervention arm; this is the size of the exact randomisation
 # distribution used for the permutation test.
-out("\nDistinct allocations, 4 of 13 practices: ", choose(13, 4))
-out("Smallest attainable two-sided p value:  ", signif(2 / choose(13, 4), 3))
-out("Distinct allocations, 6 of 13 practices: ", choose(13, 6))
+out("\nDistinct allocations, 6 of 15 practices: ", choose(15, 6))
+out("Smallest attainable two-sided p value:  ", signif(2 / choose(15, 6), 3))
+out("Distinct allocations, 7 of 15 practices: ", choose(15, 7))
 
 # ---------------------------------------------------------------------
 # 6. How far off is the factorised approximation (1 - r^2) x DE?

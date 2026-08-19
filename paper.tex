@@ -180,9 +180,11 @@ again at 26 and 52 weeks after the baseline measurement.
 
 The trial planned 20 physiotherapy institutions across Switzerland, and all
 20 were randomised 1:1 (section~\ref{sec:randomisation}). Since the
-allocation, six intervention practices and one control practice have
-withdrawn \open{confirm numbers, timing and reasons}, leaving 4 practices in
-the intervention arm and 9 in the control arm at the time of writing. The
+allocation, practices have withdrawn from both arms and one has since
+rejoined the intervention arm \open{confirm numbers, timing and reasons},
+leaving 6 practices in the intervention arm, one of which has paused
+recruitment until December 2026, and 9 in the control arm at the time of
+writing. The
 consequences of that split, and of any change to it, are quantified in
 section~\ref{sec:samplesize}. The flow of practices, with reasons for
 withdrawal, has to be reported under the CONSORT cluster extension
@@ -253,8 +255,9 @@ Two points follow for the analysis. First, the allocation of the 20
 practices used neither stratification nor covariate constraints, so it
 brings no design variables into the model \citep{kahan2012, hemming2023}.
 Second, further
-practices will be recruited, since four intervention practices leave the
-power below its target (section~\ref{sec:samplesize}). If the later wave
+practices will be recruited, since the power of the current split stays
+below its target for intra-cluster correlations above 0.01
+(section~\ref{sec:samplesize}). If the later wave
 were allocated non-randomly, wave and treatment arm would be confounded. The
 new practices will therefore be randomised as a batch \citep{ivers2012,
 moulton2004}, which makes the wave a stratum of the randomisation, and
@@ -280,7 +283,7 @@ a threat characteristic of cluster randomised trials
 therefore report, by arm and by practice, the number of patients screened,
 found eligible, approached, and consenting. Visible baseline
 imbalance is not by itself evidence of bias. The expected difference between
-arms is zero under randomisation, but with 13 practices the chance variation
+arms is zero under randomisation, but with 15 practices the chance variation
 around zero is wide, so some imbalance is to be anticipated. Imbalance is,
 however, also the main signal that recruitment differed between arms, and it
 will be read alongside the screening counts, not tested for ``significance''
@@ -288,7 +291,7 @@ will be read alongside the screening counts, not tested for ``significance''
 
 Selection can also operate at the practice level. The 20 practices were
 randomised 10 to 10, and the withdrawals since then have been unbalanced,
-six from the intervention arm and one from the control arm, plausibly
+falling mostly on the intervention arm, plausibly
 because the intervention asks more of a practice than usual care does. The
 practices that remain in the intervention arm are therefore a self-selected
 subset. We will report the withdrawals with their timing and stated reasons
@@ -338,9 +341,9 @@ $\mathrm{cv} < 0.23$, but for trials randomising general practices $\mathrm{cv}$
 0.65 \citep{eldridge2006}. No comparable figure exists for physiotherapy
 practices, and general practices are their closest analogue, so we plan on
 $\mathrm{cv} = 0.65$. With the more optimistic
-$\mathrm{cv} = 0.4$ the requirements below fall to 81, 104 and 127 per arm. With $\bar m = 15.4$, $k = 13$ and $\mathrm{cv} = 0.65$, the design effect
-is 1.20 at $\rho = 0.01$, 1.61 at $\rho = 0.03$ and 2.02 at $\rho = 0.05$, so
-the requirement is 83, 111 and 139 participants per arm respectively. The trial
+$\mathrm{cv} = 0.4$ the requirements below fall to 79, 99 and 119 per arm. With $\bar m = 13.3$, $k = 15$ and $\mathrm{cv} = 0.65$, the design effect
+is 1.18 at $\rho = 0.01$, 1.53 at $\rho = 0.03$ and 1.88 at $\rho = 0.05$, so
+the requirement is 81, 106 and 130 participants per arm respectively. The trial
 therefore aims for 100 analysed participants per arm, where analysed means
 that both the baseline and the 18-week RMDQ are recorded. Since attrition is
 expected, 220 participants will be recruited at baseline, 110 per arm, as
@@ -353,7 +356,7 @@ requirement for intra-cluster correlations up to about 0.02.
 \caption{Sample size per arm required to detect a 2-point difference in RMDQ at
 18 weeks with 80\% power and two-sided $\alpha = 0.05$, by intra-cluster
 correlation. Based on a pooled SD of 5.2 points, adjustment for the baseline
-score (assumed correlation 0.6), an average of 15.4 analysed participants per practice and a
+score (assumed correlation 0.6), an average of 13.3 analysed participants per practice and a
 coefficient of variation of practice size of 0.65. The requirements use the
 normal approximation; the degrees-of-freedom correction for the number of
 practices follows in the text and in Table~\ref{tab:power}.}
@@ -364,9 +367,9 @@ practices follows in the text and in Table~\ref{tab:power}.}
 \cmidrule(l){2-6}
 & 0 & 0.01 & 0.02 & 0.03 & 0.05\\
 \midrule
-Design effect (eq.~\ref{eq:de}) & 1.00 & 1.20 & 1.41 & 1.61 & 2.02\\
-Analysed participants per arm   & 69   & 83   & 97   & 111  & 139\\
-Recruited per arm (10\% attrition, rounded up) & 77 & 93 & 108 & 124 & 155\\
+Design effect (eq.~\ref{eq:de}) & 1.00 & 1.18 & 1.35 & 1.53 & 1.88\\
+Analysed participants per arm   & 69   & 81   & 94   & 106  & 130\\
+Recruited per arm (10\% attrition, rounded up) & 77 & 90 & 105 & 118 & 145\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -375,16 +378,16 @@ The intra-cluster correlation is assumed, not known, so the calculation is
 reported across a range of values \citep{hemming2023}.
 
 The inputs do not weigh equally. Across the intra-cluster correlations
-considered the requirement runs from 83 to 139 per arm, an assumed baseline
-correlation of 0.5 instead of 0.6 turns the 83 at $\rho = 0.01$ into 98,
+considered the requirement runs from 81 to 130 per arm, an assumed baseline
+correlation of 0.5 instead of 0.6 turns the 81 at $\rho = 0.01$ into 95,
 and ignoring the size variation between practices altogether
-($\mathrm{cv} = 0$) would lower the 83 to 79. The number of practices acts separately, through the
+($\mathrm{cv} = 0$) would lower the 81 to 78. The number of practices acts separately, through the
 degrees of freedom, and matters most.
 
 The third item, the degrees of freedom, is the one the design effect does
 not correct. The between-practice variance must be estimated from the
 practices themselves, so the treatment effect is judged against a $t$
-distribution with $k_1 + k_2 - 2 = 11$ degrees of freedom instead of a
+distribution with $k_1 + k_2 - 2 = 13$ degrees of freedom instead of a
 normal \citep[section 10.3.1]{hayes2017}, and this correction belongs in
 the planning \citep{leyrat2018}. Van Breukelen and Candel turn it into a
 simple recipe: a sample size derived from the normal approximation, as in
@@ -405,9 +408,9 @@ are as above, $\nu = k_1 + k_2 - 2$, and $T_{\nu,\lambda}$ is the
 distribution function of the noncentral $t$ with noncentrality $\lambda$
 \citep[section 3.2.1]{chow2018}. The variance under the root is the
 variance of the difference in arm means \citep[eq. 7.12 and section
-7.6.2]{hayes2017}. With 13 practices, power falls short of the planned
-80\% (Table~\ref{tab:power}, whose first row is the current 4 versus 9
-split). The analysis itself needs no
+7.6.2]{hayes2017}. With 15 practices, power reaches the planned 80\% only
+at the most optimistic intra-cluster correlation (Table~\ref{tab:power},
+whose first row is the current 6 versus 9 split). The analysis itself needs no
 modification for unequal arms. The repair is more practices: adding patients
 to the practices already enrolled has strongly diminishing returns
 \citep{hemming2017}, about ten practices per arm has been recommended as a
@@ -443,8 +446,8 @@ intra-cluster correlation of 0.01 and of 0.02.}
 \cmidrule(l){3-6}
 Practices (int./ctrl.) & Mean practice size & 0.01 & 0.02 & 0.03 & 0.05\\
 \midrule
-4 / 9   & 15.4 & 0.73 & 0.66 & 0.61 & 0.51\\
-11 / 16 & 7.4  & \textbf{0.86} & \textbf{0.83} & \textbf{0.80} & 0.75\\
+6 / 9   & 13.3 & 0.80 & 0.75 & 0.69 & 0.60\\
+13 / 16 & 6.9  & \textbf{0.87} & \textbf{0.85} & \textbf{0.82} & 0.77\\
 \midrule
 5 / 5   & 20.0 & 0.75 & 0.66 & 0.59 & 0.49\\
 6 / 6   & 16.7 & 0.78 & 0.71 & 0.65 & 0.55\\
@@ -668,7 +671,7 @@ the nominal rate at the number of practices available here
 \citep{leyrat2018}. Model \eqref{eq:primary} with Kenward--Roger
 degrees of freedom is therefore the single prespecified analysis of the
 primary outcome. Recommended thresholds for such a correction lie at about
-30 \citep{billot2024} to 40 \citep{hemming2023} clusters, far above the 13
+30 \citep{billot2024} to 40 \citep{hemming2023} clusters, far above the 15
 practices currently enrolled.
 
 Two further estimates are reported beside the model result
@@ -763,8 +766,8 @@ rather than usual physiotherapy, (ii) the setting was Australian rather than
 Swiss, and (iii) that trial randomised individuals rather than practices. We set
 $a_0 = 1/9$, so that $c = 3$ and the prior standard deviation is 1.7 points.
 For intra-cluster correlations up to 0.02, the designs of
-Table~\ref{tab:power} imply a Swiss standard error between 0.63 and 0.76, so
-the prior then supplies between an eighth and a sixth of the precision of
+Table~\ref{tab:power} imply a Swiss standard error between 0.62 and 0.71, so
+the prior then supplies between an eighth and a seventh of the precision of
 the posterior. No single
 value of $a_0$ follows from the data, so the analysis is repeated with
 $a_0 = 1/4$ and $a_0 = 1/16$, and all three are reported.
@@ -986,8 +989,8 @@ that tracks both practices and participants (Figure~\ref{fig:flow}).
 % ---- allocation --------------------------------------------------------
 \node[bx=64mm, anchor=north] (allocI) at ([xshift=-35mm,yshift=-12mm]rand.south)
   {\textbf{Allocated to RESOLVE}\\
-   Practices allocated ($n=10$), withdrawn ($n=6$)\\
-   Practices recruiting ($n=4$), therapists ($n=$ xx)\\
+   Practices allocated ($n=10$), withdrawn ($n=$xx)\\
+   Practices recruiting ($n=6$), therapists ($n=$ xx)\\
    Participants screened ($n=$ xx)\\
    \quad Not eligible ($n=$ xx), declined ($n=$ xx)\\
    \textbf{Participants enrolled} ($n=$ xx)};
