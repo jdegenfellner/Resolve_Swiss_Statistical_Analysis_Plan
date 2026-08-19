@@ -395,7 +395,8 @@ correction exactly. Power is evaluated from the noncentral $t$ distribution,
 \mathrm{power} = 1 - T_{\nu,\lambda}\!\left(t_{1-\alpha/2,\,\nu}\right)
                  + T_{\nu,\lambda}\!\left(-t_{1-\alpha/2,\,\nu}\right),
 \qquad
-\lambda = \frac{\delta}{\sqrt{\sigma^2 (1-r^2)\,\mathrm{DE}
+\lambda = \frac{\delta}{\mathrm{SE}(\hat\delta)}
+= \frac{\delta}{\sqrt{\sigma^2 (1-r^2)\,\mathrm{DE}
 \left(\frac{1}{\bar m k_1}+\frac{1}{\bar m k_2}\right)}},
 \end{equation}
 where $\delta$ is the target difference, $\sigma$, $r$ and $\mathrm{DE}$
