@@ -180,11 +180,10 @@ again at 26 and 52 weeks after the baseline measurement.
 
 The trial planned 20 physiotherapy institutions across Switzerland, and all
 20 were randomised 1:1 (section~\ref{sec:randomisation}). Since the
-allocation, five intervention practices and one control practice have
-withdrawn, one further intervention practice has paused recruitment until
-December 2026, and one practice has since joined the intervention arm
+allocation, four intervention practices and one control practice have
+withdrawn, and one practice has since joined the intervention arm
 \open{confirm numbers, timing and reasons, and how the joining practice was
-allocated}, leaving 6 practices in the intervention arm and 9 in the control
+allocated}, leaving 7 practices in the intervention arm and 9 in the control
 arm at the time of writing. The
 consequences of that split, and of any change to it, are quantified in
 section~\ref{sec:samplesize}. The flow of practices, with reasons for
@@ -284,7 +283,7 @@ a threat characteristic of cluster randomised trials
 therefore report, by arm and by practice, the number of patients screened,
 found eligible, approached, and consenting. Visible baseline
 imbalance is not by itself evidence of bias. The expected difference between
-arms is zero under randomisation, but with 15 practices the chance variation
+arms is zero under randomisation, but with 16 practices the chance variation
 around zero is wide, so some imbalance is to be anticipated. Imbalance is,
 however, also the main signal that recruitment differed between arms, and it
 will be read alongside the screening counts, not tested for ``significance''
@@ -342,22 +341,22 @@ $\mathrm{cv} < 0.23$, but for trials randomising general practices $\mathrm{cv}$
 0.65 \citep{eldridge2006}. No comparable figure exists for physiotherapy
 practices, and general practices are their closest analogue, so we plan on
 $\mathrm{cv} = 0.65$. With the more optimistic
-$\mathrm{cv} = 0.4$ the requirements below fall to 79, 99 and 119 per arm. With $\bar m = 13.3$, $k = 15$ and $\mathrm{cv} = 0.65$, the design effect
-is 1.18 at $\rho = 0.01$, 1.53 at $\rho = 0.03$ and 1.88 at $\rho = 0.05$, so
-the requirement is 81, 106 and 130 participants per arm respectively. The trial
+$\mathrm{cv} = 0.4$ the requirements below fall to 79, 97 and 115 per arm. With $\bar m = 12.5$, $k = 16$ and $\mathrm{cv} = 0.65$, the design effect
+is 1.16 at $\rho = 0.01$, 1.49 at $\rho = 0.03$ and 1.82 at $\rho = 0.05$, so
+the requirement is 81, 103 and 126 participants per arm respectively. The trial
 therefore aims for 100 analysed participants per arm, where analysed means
 that both the baseline and the 18-week RMDQ are recorded. Since attrition is
 expected, 220 participants will be recruited at baseline, 110 per arm, as
 registered. The buffer of about 10\% matches the loss to follow-up assumed in
 Table~\ref{tab:ss}, and 100 analysed participants per arm meet the
-requirement for intra-cluster correlations up to about 0.02.
+requirement for intra-cluster correlations up to about 0.025.
 
 \begin{table}[ht]
 \centering\small
 \caption{Sample size per arm required to detect a 2-point difference in RMDQ at
 18 weeks with 80\% power and two-sided $\alpha = 0.05$, by intra-cluster
 correlation. Based on a pooled SD of 5.2 points, adjustment for the baseline
-score (assumed correlation 0.6), an average of 13.3 analysed participants per practice and a
+score (assumed correlation 0.6), an average of 12.5 analysed participants per practice and a
 coefficient of variation of practice size of 0.65. The requirements use the
 normal approximation; the degrees-of-freedom correction for the number of
 practices follows in the text and in Table~\ref{tab:power}.}
@@ -368,9 +367,9 @@ practices follows in the text and in Table~\ref{tab:power}.}
 \cmidrule(l){2-6}
 & 0 & 0.01 & 0.02 & 0.03 & 0.05\\
 \midrule
-Design effect (eq.~\ref{eq:de}) & 1.00 & 1.18 & 1.35 & 1.53 & 1.88\\
-Analysed participants per arm   & 69   & 81   & 94   & 106  & 130\\
-Recruited per arm (10\% attrition, rounded up) & 77 & 90 & 105 & 118 & 145\\
+Design effect (eq.~\ref{eq:de}) & 1.00 & 1.16 & 1.33 & 1.49 & 1.82\\
+Analysed participants per arm   & 69   & 81   & 92   & 103  & 126\\
+Recruited per arm (10\% attrition, rounded up) & 77 & 90 & 103 & 115 & 140\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -379,16 +378,16 @@ The intra-cluster correlation is assumed, not known, so the calculation is
 reported across a range of values \citep{hemming2023}.
 
 The inputs do not weigh equally. Across the intra-cluster correlations
-considered the requirement runs from 81 to 130 per arm, an assumed baseline
-correlation of 0.5 instead of 0.6 turns the 81 at $\rho = 0.01$ into 95,
+considered the requirement runs from 81 to 126 per arm, an assumed baseline
+correlation of 0.5 instead of 0.6 turns the 81 at $\rho = 0.01$ into 94,
 and ignoring the size variation between practices altogether
-($\mathrm{cv} = 0$) would lower the 81 to 78. The number of practices acts separately, through the
+($\mathrm{cv} = 0$) would lower the 81 to 77. The number of practices acts separately, through the
 degrees of freedom, and matters most.
 
 The third item, the degrees of freedom, is the one the design effect does
 not correct. The between-practice variance must be estimated from the
 practices themselves, so the treatment effect is judged against a $t$
-distribution with $k_1 + k_2 - 2 = 13$ degrees of freedom instead of a
+distribution with $k_1 + k_2 - 2 = 14$ degrees of freedom instead of a
 normal \citep[section 10.3.1]{hayes2017}, and this correction belongs in
 the planning \citep{leyrat2018}. Van Breukelen and Candel turn it into a
 simple recipe: a sample size derived from the normal approximation, as in
@@ -409,9 +408,9 @@ are as above, $\nu = k_1 + k_2 - 2$, and $T_{\nu,\lambda}$ is the
 distribution function of the noncentral $t$ with noncentrality $\lambda$
 \citep[section 3.2.1]{chow2018}. The variance under the root is the
 variance of the difference in arm means \citep[eq. 7.12 and section
-7.6.2]{hayes2017}. With 15 practices, power reaches the planned 80\% only
+7.6.2]{hayes2017}. With 16 practices, power reaches the planned 80\% only
 at the most optimistic intra-cluster correlation (Table~\ref{tab:power},
-whose first row is the current 6 versus 9 split). The analysis itself needs no
+whose first row is the current 7 versus 9 split). The analysis itself needs no
 modification for unequal arms. The repair is more practices: adding patients
 to the practices already enrolled has strongly diminishing returns
 \citep{hemming2017}, about ten practices per arm has been recommended as a
@@ -437,9 +436,9 @@ average practice size falls as practices are added. The first block shows the
 current allocation and the design after recruiting seven further practices
 per arm, the middle block is balanced, and the last block holds the
 intervention arm at 7 practices while control practices are added. Bold marks
-power at or above 0.80: in the recruitment scenario the values that reach it,
-and in the balanced block the smallest design that does so at an
-intra-cluster correlation of 0.01 and of 0.02.}
+power at or above 0.80: in the first block the values that reach it, and in
+the balanced block the smallest design that does so at an intra-cluster
+correlation of 0.01 and of 0.02.}
 \label{tab:power}
 \begin{tabular}{lccccc}
 \toprule
@@ -447,8 +446,8 @@ intra-cluster correlation of 0.01 and of 0.02.}
 \cmidrule(l){3-6}
 Practices (int./ctrl.) & Mean practice size & 0.01 & 0.02 & 0.03 & 0.05\\
 \midrule
-6 / 9   & 13.3 & 0.80 & 0.75 & 0.69 & 0.60\\
-13 / 16 & 6.9  & \textbf{0.87} & \textbf{0.85} & \textbf{0.82} & 0.77\\
+7 / 9   & 12.5 & \textbf{0.82} & 0.77 & 0.72 & 0.63\\
+14 / 16 & 6.7  & \textbf{0.88} & \textbf{0.85} & \textbf{0.83} & 0.78\\
 \midrule
 5 / 5   & 20.0 & 0.75 & 0.66 & 0.59 & 0.49\\
 6 / 6   & 16.7 & 0.78 & 0.71 & 0.65 & 0.55\\
@@ -672,7 +671,7 @@ the nominal rate at the number of practices available here
 \citep{leyrat2018}. Model \eqref{eq:primary} with Kenward--Roger
 degrees of freedom is therefore the single prespecified analysis of the
 primary outcome. Recommended thresholds for such a correction lie at about
-30 \citep{billot2024} to 40 \citep{hemming2023} clusters, far above the 15
+30 \citep{billot2024} to 40 \citep{hemming2023} clusters, far above the 16
 practices currently enrolled.
 
 Two further estimates are reported beside the model result
@@ -767,7 +766,7 @@ rather than usual physiotherapy, (ii) the setting was Australian rather than
 Swiss, and (iii) that trial randomised individuals rather than practices. We set
 $a_0 = 1/9$, so that $c = 3$ and the prior standard deviation is 1.7 points.
 For intra-cluster correlations up to 0.02, the designs of
-Table~\ref{tab:power} imply a Swiss standard error between 0.62 and 0.71, so
+Table~\ref{tab:power} imply a Swiss standard error between 0.62 and 0.70, so
 the prior then supplies between an eighth and a seventh of the precision of
 the posterior. No single
 value of $a_0$ follows from the data, so the analysis is repeated with
@@ -990,8 +989,8 @@ that tracks both practices and participants (Figure~\ref{fig:flow}).
 % ---- allocation --------------------------------------------------------
 \node[bx=64mm, anchor=north] (allocI) at ([xshift=-35mm,yshift=-12mm]rand.south)
   {\textbf{Allocated to RESOLVE}\\
-   Practices allocated ($n=10$), withdrawn ($n=5$)\\
-   Practices recruiting ($n=6$), therapists ($n=$ xx)\\
+   Practices allocated ($n=10$), withdrawn ($n=4$)\\
+   Practices recruiting ($n=7$), therapists ($n=$ xx)\\
    Participants screened ($n=$ xx)\\
    \quad Not eligible ($n=$ xx), declined ($n=$ xx)\\
    \textbf{Participants enrolled} ($n=$ xx)};
