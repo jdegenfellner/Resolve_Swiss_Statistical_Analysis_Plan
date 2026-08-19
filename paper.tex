@@ -609,7 +609,12 @@ every patient meeting the eligibility criteria of
 section~\ref{sec:eligibility} in these practices received one treatment rather
 than the other, with each patient counting equally. With unequally sized practices it may differ from the
 \emph{cluster-average} effect, in which each practice counts equally
-\citep{kahan2023}. We specify the participant-average effect as the estimand, following the
+\citep{kahan2023}. Intercurrent events, that is non-adherence and the use
+of additional care, are handled by a treatment-policy strategy: they count
+as part of the compared treatment conditions, and every patient is analysed
+in the allocated arm. The complier average causal effect of
+section~\ref{sec:adherence} is a supplementary principal-stratum estimand.
+We specify the participant-average effect as the estimand, following the
 consensus extension of the ICH E9(R1) estimand addendum \citep{ich2019} to
 cluster randomised trials \citep{kahan2026}.
 
@@ -936,6 +941,7 @@ uncertainty of the imputed values and cluster fixed effects overstate it
 reported separately and not imputed.
 
 \subsection{Non-adherence and contamination}
+\label{sec:adherence}
 
 The full distribution of the number of the 12 sessions attended will be
 reported descriptively by arm. A participant counts as adherent when they
