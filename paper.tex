@@ -62,7 +62,8 @@
 
 \title{\Large\bfseries The RESOLVE Swiss trial for people with chronic low back pain:\\
 statistical analysis plan for a cluster randomised controlled trial}
-\author{Jürgen Degenfellner$^{1}$, Fabian Pfeiffer$^{1}$, Andrea Stehrenberger$^{1}$}
+\author{Jürgen Degenfellner$^{1}$, Fabian Pfeiffer$^{1}$, Andrea Stehrenberger$^{1}$,\\
+Silvia Careddu$^{1}$, Thomas Benz$^{1}$}
 \date{}
 
 \begin{document}
@@ -93,7 +94,7 @@ education against usual physiotherapy for people with chronic low back pain.
 
 \textbf{Design and analysis.} RESOLVE Swiss is a two-arm parallel-group
 \emph{cluster} randomised controlled trial in Swiss physiotherapy practices.
-The practice is the unit of randomisation and the patient is the unit of
+The practice is the unit of randomisation and the participant is the unit of
 analysis. The primary outcome is back-specific disability, measured with the
 Roland--Morris Disability Questionnaire at 18 weeks after the baseline
 measurement. The
@@ -104,7 +105,7 @@ and participant. The model constrains the two arms to a common baseline
 mean, which is how the baseline information enters, and the treatment effect
 is estimated with Kenward--Roger degrees of freedom, the small-sample
 correction that guards against anti-conservative mixed-model inference when
-the number of practices is small. A comparative Bayesian analysis with
+the number of practices is small. A complementary Bayesian analysis with
 prespecified priors, informed by the individual participant data of the
 Australian RESOLVE trial, accompanies the frequentist results. We report the intra-cluster correlation with its
 uncertainty, the analyses of secondary outcomes, the handling of missing data,
@@ -129,7 +130,8 @@ Statistical analysis plan; Mixed models; Physical therapy.
 
 Chronic low back pain is among the largest contributors to years lived with
 disability worldwide, and the effects of the treatments physiotherapists
-currently offer are, on average, modest. The Australian RESOLVE trial tested
+currently offer are, on average, modest \open{reference to be supplied by
+FP}. The Australian RESOLVE trial tested
 whether a treatment aimed at the central nervous system representation of the
 back (graded sensorimotor precision training preceded by pain neuroscience
 education) reduces pain more than a sham intervention. It reported a modest
@@ -140,26 +142,29 @@ smaller Swiss pilot compared a related programme with usual physiotherapy and
 pointed in the same direction without being able to resolve the question
 \citep{waelti2015}.
 
-Two things are unresolved. First, RESOLVE compared the intervention with a
-sham. The clinically relevant comparison for Swiss practice is against usual
-physiotherapy as it is actually delivered. Second, the intervention has so far
-been delivered in a trial setting by trial therapists. RESOLVE Swiss therefore
-delivers it in ordinary physiotherapy practices, by the therapists who work
-there. That choice makes the trial pragmatic, and it forces the design to be a
-\emph{cluster} randomised trial. People within a practice communicate
-directly. Therapists work side by side and share what they learn.
-Randomising patients within practices would therefore contaminate the control
-arm from the start. Communication between practices is possible too, but it
-is far less direct, so allocation at the level of the practice keeps
-contamination to a minimum \citep{hemming2021, campbell2012}. The trial's
-scientific advisory board recommended the cluster design for this
-reason.
+Two things are unresolved. First, RESOLVE tested the intervention against a
+sham, which is a question of efficacy. The clinically relevant question for
+Swiss practice is effectiveness against usual physiotherapy as it is actually
+delivered. Second, the intervention has so far been delivered in a trial
+setting by trial therapists, so its effect under ordinary conditions of care
+is unknown.
+
+RESOLVE Swiss therefore delivers the intervention in ordinary physiotherapy
+practices, by the therapists who work there. That choice makes the trial
+pragmatic, and it forces the design to be a \emph{cluster} randomised trial.
+Randomisation at the individual participant level within practices would create
+substantial potential for contamination, because therapists within the same
+practice exchange knowledge, clinical strategies and treatment approaches.
+Communication between practices is far less direct, so allocation at the
+level of the practice keeps contamination to a minimum
+\citep{hemming2021, campbell2012}. The trial's scientific advisory board
+recommended the cluster design for this reason.
 
 This analysis plan is written before the analysis of outcome data and
 follows the recommendations for the content of statistical analysis plans in
 clinical trials \citep{gamble2017}, together with the CONSORT extension for
 cluster randomised trials \citep{campbell2012}. It reports the planned
-frequentist analysis of the primary and secondary outcomes, a comparative
+frequentist analysis of the primary and secondary outcomes, a complementary
 Bayesian analysis of the primary outcome, and a summary of the planned
 Bayesian interim analysis. \open{cite the published study protocol once it
 is available}
@@ -172,8 +177,8 @@ is available}
 RESOLVE Swiss is a two-arm, parallel-group, cluster randomised, investigator
 blinded, multicentre trial with 1:1 intended allocation at the level of the
 physiotherapy practice. Practices and institutions are the
-clusters. Patients treated within a practice are the units of observation and of
-analysis. Physical outcomes are assessed at baseline and at 18 weeks. All
+clusters. Participants treated within a practice are the units of observation and of
+analysis. All outcomes are assessed at baseline and at 18 weeks. The
 self-reported questionnaires, including the primary outcome, are collected
 again at 26 and 52 weeks after the baseline measurement.
 
@@ -192,8 +197,7 @@ own right (section~\ref{sec:recruitment}).
 
 The trial is a Category A study under the Swiss Ordinance on Clinical Trials
 (ClinO Art.~61). Ethical approval was granted by the Cantonal Ethics
-Committee of Zurich as lead committee (BASEC 2025-00784, decision of 20
-January 2026, fulfilment of conditions confirmed on 10 April 2026). The trial is
+Committee of Zurich as lead committee (BASEC 2025-00784). The trial is
 registered in the German Clinical Trials Register (DRKS00039237) and with
 Human Research Switzerland (HumRes67737).
 
@@ -205,7 +209,7 @@ Eligibility operates at two levels, the practice and the patient
 
 \emph{Practices.} Swiss outpatient physiotherapy practices and institutions
 are eligible if they are willing to be allocated to either arm. Therapists in practices allocated to the
-intervention must complete a five-day RESOLVE training course and have their
+intervention must complete a 50-hour RESOLVE training course and have their
 skills assessed before delivering any study treatment
 \open{confirm any further practice-level criteria, e.g. minimum patient volume}.
 
@@ -232,7 +236,7 @@ physiotherapist over 16 weeks. The first two sessions may last an hour and the
 remaining ten about 30 minutes, weekly at first and then every two weeks. The
 intervention is the RESOLVE programme (pain science education, graded sensory
 retraining, and graded motor relearning and loading), delivered by therapists
-who have completed the five-day training. The comparator is usual
+who have completed the 50-hour training. The comparator is usual
 physiotherapy, delivered by therapists who have not.
 
 Usual physiotherapy is expected to be heterogeneous between practices. What
@@ -269,7 +273,9 @@ home training component. The three physical assessments (two-point
 discrimination, the point-to-point test and lumbar movement control) are
 video-recorded and rated by a blinded assessor. The remaining outcomes are
 self-reported and completed at home through REDCap, which removes interviewer
-influence. The trial statistician is not blinded.
+influence. The trial statistician is not blinded, because the analysis
+requires access to the full dataset, including which practice belongs to
+which arm.
 
 \subsection{Recruitment of participants after cluster allocation}
 \label{sec:recruitment}
@@ -301,8 +307,17 @@ baseline table, and read the arm comparison with this asymmetry in mind.
 \label{sec:samplesize}
 
 The target difference is 2 points on the Roland--Morris Disability
-Questionnaire (RMDQ, range 0--24), the smallest between-group difference the
-investigators consider clinically worthwhile in this population. The between
+Questionnaire (RMDQ, range 0--24). This is not a minimal important difference
+taken from the literature. It is the difference the investigators consider
+worth detecting, and it was chosen conservatively against what comparable
+trials of usual care have reported. RESTORE found 4.6 points for cognitive
+functional therapy against usual care in 492 participants \citep{kent2023},
+and a nonrandomised trial of an enhanced transtheoretical model intervention
+found 2.7 points against usual physiotherapy in 220 participants
+\citep{benami2017}. Two points lie
+57\% and 26\% below those estimates, which leaves room for the dilution
+expected when an intervention leaves the trial setting for ordinary practice.
+The between
 participant standard deviation of the RMDQ at 18 weeks is taken from the
 Australian RESOLVE trial (intervention 3.6, SD 4.6; control 6.4, SD 5.8
 \citep{bagg2022}), giving a pooled SD of 5.2 points (the computations use
@@ -421,7 +436,7 @@ variance of the difference in arm means \citep[eq. 7.12 and section
 7.6.2]{hayes2017}. With 16 practices, power reaches the planned 80\% only
 at the most optimistic intra-cluster correlation (Table~\ref{tab:power},
 whose first row is the current 7 versus 9 split). The analysis itself needs no
-modification for unequal arms. The repair is more practices: adding patients
+modification for unequal arms. The repair is more practices: adding participants
 to the practices already enrolled has strongly diminishing returns
 \citep{hemming2017}, about ten practices per arm has been recommended as a
 general minimum for valid inference \citep{vanbreukelen2018}, and spreading
@@ -523,20 +538,32 @@ Questionnaire, a 24-item instrument scored from 0 (no disability) to 24
 The trial collects a large number of secondary endpoints, which we group
 here by the analysis they receive.
 
-The patient-reported continuous outcomes, collected at 18, 26 and 52 weeks,
-are pain intensity (numeric rating scale); the Patient Specific Functional
-Scale; Work Productivity and Activity Impairment; the Neurophysiology of
-Pain Questionnaire; the Back Pain Attitudes Questionnaire; the Pain
-Self-Efficacy Questionnaire; the Depression Anxiety and Stress Scale; the
-Tampa Scale of Kinesiophobia; the EQ-5D-5L; the Insomnia Severity Index; the
-Fremantle Back Awareness Questionnaire; the epistemic-beliefs questionnaire;
-and the treatment expectation and perceived improvement items.
+The patient-reported continuous outcomes, collected at baseline and at 18,
+26 and 52 weeks, are pain intensity (numeric rating scale)
+\citep{hawker2011}; the Patient Specific Functional Scale
+\citep{heldmann2015}; Work Productivity and Activity Impairment
+\citep{reilly1993}; the Neurophysiology of Pain Questionnaire
+\citep{richter2019}; the Back Pain Attitudes Questionnaire
+\citep{darlow2014}; the Pain Self-Efficacy Questionnaire \citep{mangels2009};
+the Depression Anxiety and Stress Scale \citep{nilges2015}; the Tampa Scale
+of Kinesiophobia \citep{rusu2014}; the EQ-5D-5L \citep{herdman2011}; the
+Insomnia Severity Index \citep{dieck2018}; the Fremantle Back Awareness
+Questionnaire \citep{ehrenbrusthoff2018}; the epistemic-beliefs questionnaire
+\open{no source for the OLEQ in the study protocol}; and the treatment
+expectation item \citep{barth2019}.
 
-The physical outcomes, taken at 18 weeks only, are two-point discrimination
-and the point-to-point test of tactile acuity, and lumbar movement control,
-each rated from video by a blinded assessor.
+The perceived improvement item is collected at 18, 26 and 52 weeks and has no
+baseline value, so it is compared between the arms at each time point without
+a baseline term in the model.
 
-Two measures are recorded once. The Goal Attainment Scale is set at baseline
+The physical outcomes, taken at baseline and at 18 weeks, are two-point
+discrimination \citep{catley2013} and the point-to-point test of tactile
+acuity \citep{adamczyk2016}, and lumbar movement control
+\citep{luomajoki2007, luomajoki2008}, each rated from video by a blinded
+assessor.
+
+Two measures are recorded once. The Goal Attainment Scale
+\citep{turnerstokes2009} is set at baseline
 and scored with the therapist at 18 weeks, and the satisfaction item is
 collected at 18 weeks only. Both are reported
 descriptively.
@@ -603,13 +630,13 @@ Highest education level, n (\%) & xx (xx) & xx (xx) & xx (xx)\\
 
 The quantity of interest is the \emph{participant-average} difference in mean
 RMDQ at 18 weeks between the two arms: the difference that would be seen if
-every patient meeting the eligibility criteria of
+every participant meeting the eligibility criteria of
 section~\ref{sec:eligibility} in these practices received one treatment rather
-than the other, with each patient counting equally. With unequally sized practices it may differ from the
+than the other, with each participant counting equally. With unequally sized practices it may differ from the
 \emph{cluster-average} effect, in which each practice counts equally
 \citep{kahan2023}. Intercurrent events, that is non-adherence and the use
 of additional care, are handled by a treatment-policy strategy: they count
-as part of the compared treatment conditions, and every patient is analysed
+as part of the compared treatment conditions, and every participant is analysed
 in the allocated arm. The complier average causal effect of
 section~\ref{sec:adherence} is a supplementary principal-stratum estimand.
 We specify the participant-average effect as the estimand, following the
@@ -949,7 +976,7 @@ instrumental variable regression with allocation as the instrument
 intention-to-treat effect. Because this analysis is imprecise with few
 clusters, it is prespecified as exploratory.
 
-The design itself limits contamination: the five-day
+The design itself limits contamination: the 50-hour
 RESOLVE training is unavailable to control therapists, and the German-language
 RESOLVE materials exist only inside a secured web application accessible to
 intervention therapists and participants. Treatment fidelity is monitored
@@ -1108,8 +1135,10 @@ wording, the ethics approval and the sponsor's position}
 
 \textbf{Author contributions.} JD: conceptualization, data curation, formal
 analysis, investigation, methodology, software, validation, visualization,
-writing -- original draft, writing -- review \& editing. FP, AS: writing --
-review \& editing. All authors read and approved the final manuscript.
+writing -- original draft, writing -- review \& editing. FP, AS, SC:
+writing -- review \& editing. TB: funding acquisition, resources,
+writing -- review \& editing. All authors read and approved the final
+manuscript.
 
 % ============================================================
 \clearpage
