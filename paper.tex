@@ -337,13 +337,12 @@ where $\bar m$ is the mean number of analysed participants per practice
 $\rho_s$, close to $\rho_s$ when practices are small or $\rho$ is small and
 close to $\rho_c$ otherwise.
 
-From there the requirement follows in one multiplication. An individually
-randomised trial that adjusts the 18-week score for its baseline needs 70
-participants per arm at the planned $r = 0.6$, and the design effect carries
-that figure over to a trial randomising practices, so the requirement per arm
-is $70 \times \mathrm{DE}$ \citep[section 2.3]{teerenstra2012}. A different
-$r$ moves the 70 in proportion to $1 - r^2$, which is how
-Table~\ref{tab:rhoc} is obtained. Unequal
+From there the requirement follows in two multiplications from the sample
+size of a $t$ test on the 18-week scores alone, which is 109 participants per
+arm \citep[section 2.3]{teerenstra2012}. The design effect accounts for
+the clustering and the factor $1 - r^2$ for the baseline adjustment. The
+requirement per arm is $109 \times \mathrm{DE} \times (1 - r^2)$ with $r$
+from equation~\eqref{eq:rcomb}. Unequal
 practice sizes are the one ingredient the framework leaves out, since it
 assumes a common practice size. We follow \citet{eldridge2006} and inflate
 $\bar m$ inside the design effect,
