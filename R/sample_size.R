@@ -112,6 +112,10 @@ n_ind <- n_ttest(sigma, delta, alpha, power_t)
 out("\nt-Test, individuell randomisiert, ohne Baseline: ", n_ind, " pro Arm")
 out("(Normalapproximation zum Vergleich: ",
     ceiling(2 * (qnorm(1 - alpha/2) + qnorm(power_t))^2 * sigma^2 / delta^2), ")")
+# Das ist die Zahl, bei der das Paper die Kette beginnen laesst: individuell
+# randomisiert und auf die Baseline adjustiert. Mal DE ergibt sie die Tabelle.
+out("davon mit Baseline-Adjustierung (r = ", rho_s, "): ",
+    ceiling(n_ind * (1 - rho_s^2)), " pro Arm")
 
 # ---------------------------------------------------------------------
 # 4. Fallzahl über die angenommene ICC
