@@ -16,11 +16,16 @@ STAMP = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 # (Ankertext im Absatz, Autor, Antworttext)
 ANSWERS = [
     ("on average, modest", "JD",
-     "Fabian, zu deinem 'REF needed': du hast recht, die Aussage steht "
-     "unbelegt da. Faendest du eine passende Quelle dafuer, dass die Effekte "
-     "der ueblichen physiotherapeutischen Behandlungen im Mittel bescheiden "
-     "sind? Du bist da naeher an der Literatur als ich. Bis dahin steht im "
-     "Text ein roter Marker."),
+     "Fabian, zu deinem 'REF needed': du hattest recht, die Aussage stand "
+     "unbelegt da. Die Quelle fand sich in unserem eigenen Studienprotokoll, "
+     "Referenz 31, Wand und O'Connell 2008 in BMC Musculoskeletal Disorders. "
+     "Dort steht, klinische Studien zeigten fuer die meisten gaengigen "
+     "Interventionen bei chronisch unspezifischem Kreuzschmerz nur begrenzte "
+     "Wirksamkeit. Weil sie allgemein von den gaengigen Interventionen "
+     "sprechen und nicht speziell von Physiotherapie, heisst es im Text jetzt "
+     "'the treatments commonly offered for it' statt 'the treatments "
+     "physiotherapists currently offer'. Falls du etwas Neueres und "
+     "Physiotherapie-Spezifisches hast, tausche ich es gern aus."),
     ("Two things are unresolved", "JD",
      "Fabian: Abschnitt umgebaut nach deiner Gliederung, erst die "
      "Forschungsluecke, dann die pragmatische Umsetzung, dann die Begruendung "
@@ -76,9 +81,12 @@ ANSWERS = [
      "n=220)."),
     ("Their model splits the practice effect", "JD",
      "Fabian, zur Detailtiefe: die bleibt, aber der Abschnitt ist inzwischen "
-     "umgebaut. Er folgt jetzt durchgehend einer einzigen Quelle, Teerenstra "
+     "umgebaut. Er folgt jetzt weitgehend einer einzigen Quelle, Teerenstra "
      "et al. 2012, statt eine Normalapproximation zu nehmen und sie danach zu "
-     "korrigieren. Das ist kuerzer zu zitieren und leichter nachzuvollziehen. "
+     "korrigieren. Einzige Abweichung ist der Design-Effekt, denn Teerenstra "
+     "nimmt gleich grosse Praxen an; fuer die Streuung der Praxisgroessen "
+     "folgen wir Eldridge et al. 2006. Das ist kuerzer zu zitieren und "
+     "leichter nachzuvollziehen. "
      "Die Detailtiefe selbst verlangt Gamble et al. 2017, die Leitlinie fuer "
      "SAP-Publikationen."),
     ("The trial nevertheless keeps its 15 practices", "JD",
