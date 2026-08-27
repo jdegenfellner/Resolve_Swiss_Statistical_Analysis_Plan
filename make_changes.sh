@@ -25,8 +25,21 @@ latexdiff --encoding=utf8 \
   .baseline.tex paper.tex > paper_changes.tex 2>/dev/null
 
 python3 - <<'PY'
+import re
 p = 'paper_changes.tex'
 s = open(p, encoding='utf-8').read()
+# Geloeschtes ganz herausschneiden. \renewcommand{\DIFdel}[1]{} allein genuegt
+# nicht: enthielt der geloeschte Text eine Leerzeile, blieb ein leerer Absatz
+# stehen, den lineno mitzaehlt. Nur der Textkoerper wird angefasst, denn in der
+# Praeambel zerschneidet dieselbe Ersetzung die \usepackage-Zeilen.
+head, sep, body = s.partition(r'\begin{document}')
+assert sep, 'kein \\begin{document} gefunden'
+for b, e in (('DIFdelbegin', 'DIFdelend'), ('DIFdelbeginFL', 'DIFdelendFL')):
+    body, n = re.subn(r'\\%s\b.*?\\%s\b' % (b, e), '', body, flags=re.S)
+    print(f'{n} {b}-Bloecke entfernt')
+if body.count('{') != body.count('}'):
+    raise SystemExit(f"Klammern unbalanciert: {body.count('{')} vs {body.count('}')}")
+s = head + sep + body
 patch = r"""
 %DIF ---- gruene Markierung der Aenderungen ----
 \definecolor{jdchg}{rgb}{0.00,0.45,0.16}
