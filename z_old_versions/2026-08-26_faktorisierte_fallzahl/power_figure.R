@@ -1,27 +1,25 @@
 # =====================================================================
 # RESOLVE Swiss — statistical analysis plan
-# Figure: how the power of the current allocation arises, following
-# Teerenstra et al. (2012), section 2.4: the reference distribution is a
-# central t with nu df, shifted by lambda = delta / SE under the
-# alternative.
+# Figure: how the power of the current allocation arises from the
+# noncentral t distribution (eq. 2 of the manuscript).
 #
-# Inputs match R/sample_size.R (Teerenstra-Fassung): current split 6/9, ICC 0.01, which
-# gives SE = 0.655 and lambda = 2 / 0.655 = 3.05 at nu = 13 df.
-# Output: figures/power_reference_t.png
+# Inputs match R/sample_size.R: current split 6/9, ICC 0.01, which
+# gives SE = 0.656 and lambda = 2 / 0.656 = 3.05 at nu = 13 df.
+# Output: figures/power_noncentral_t.png
 # =====================================================================
 
 suppressMessages(library(ggplot2))
 
 nu  <- 13                 # k1 + k2 - 2 for 6 + 9 practices
-se  <- 0.655              # SE des Behandlungseffekts, 6/9, ICC 0.01, rho_c 0.6
-lam <- 2 / se             # shift: target difference / SE
+se  <- 0.656              # SE of the treatment effect, 6/9, ICC 0.01
+lam <- 2 / se             # noncentrality: target difference / SE
 tc  <- qt(0.975, nu)
 
 x <- seq(-4.5, 8, length.out = 1200)
 d <- rbind(
   data.frame(x, dens = dt(x, nu),            was = "no treatment effect: central t"),
-  data.frame(x, dens = dt(x - lam, nu), was = "true difference of 2 points: t shifted by lambda"))
-pow   <- pt(lam - tc, nu)
+  data.frame(x, dens = dt(x, nu, ncp = lam), was = "true difference of 2 points: noncentral t"))
+pow   <- 1 - pt(tc, nu, lam) + pt(-tc, nu, lam)
 shade <- subset(d, was != "no treatment effect: central t" & x >= tc)
 
 p <- ggplot(d, aes(x, dens, colour = was, fill = was)) +
@@ -43,5 +41,5 @@ p <- ggplot(d, aes(x, dens, colour = was, fill = was)) +
   theme(legend.position = "top", panel.grid.minor = element_blank())
 
 dir.create("figures", showWarnings = FALSE)
-ggsave("figures/power_reference_t.png", p, width = 8.0, height = 4.4, dpi = 300)
-cat(sprintf("Power: %.4f — figures/power_reference_t.png geschrieben\n", pow))
+ggsave("figures/power_noncentral_t.png", p, width = 8.0, height = 4.4, dpi = 300)
+cat(sprintf("Power: %.4f — figures/power_noncentral_t.png geschrieben\n", pow))

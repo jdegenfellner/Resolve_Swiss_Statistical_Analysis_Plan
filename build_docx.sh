@@ -27,4 +27,5 @@ pandoc .paper_docx.tex --citeproc --bibliography=references.bib \
   --number-sections -M link-citations=true \
   -o paper_for_annotation.docx
 rm -f .paper_docx.tex
+python3 redden_markers.py paper_for_annotation.docx
 echo "paper_for_annotation.docx written"

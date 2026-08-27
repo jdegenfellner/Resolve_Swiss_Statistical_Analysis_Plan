@@ -1,10 +1,12 @@
 #!/bin/sh
-# Opens paper.pdf in Preview at a given page, on the left of the screen,
+# Opens paper.pdf in Preview at a given page, on the left of the screen
+# (ALIGN=right puts it on the right),
 # zoomed so the text is comfortable to read.
 #
 #   ./show_page.sh 13                 page number
 #   ./show_page.sh "Kenward"          first page containing that text
 #   FORCE=1 ./show_page.sh 13         full pass even if the page is unchanged
+#   ALIGN=right ./show_page.sh 13     window on the right half of the screen
 #
 # The document is closed first, because Preview restores the previous
 # scroll position when it reopens a file that is already open, which
@@ -66,6 +68,7 @@ fi
 # "Zoom to Fit" (0 keeps the page at window width)
 WIDTH_FRACTION=${WIDTH_FRACTION:-0.55}
 ZOOM_STEPS=${ZOOM_STEPS:-0}
+ALIGN=${ALIGN:-left}
 
 osascript <<EOF >/dev/null
 tell application "Preview"
@@ -84,9 +87,11 @@ tell application "Finder" to set screenSize to bounds of window of desktop
 set screenW to item 3 of screenSize
 set screenH to item 4 of screenSize
 set winW to (screenW * $WIDTH_FRACTION) as integer
+set winX to 0
+if "$ALIGN" is "right" then set winX to screenW - winW
 
 tell application "System Events" to tell process "Preview"
-  set position of window 1 to {0, 25}
+  set position of window 1 to {winX, 25}
   set size of window 1 to {winW, screenH - 25}
   delay 0.5
   click menu item "Continuous Scroll" of menu 1 of menu bar item "View" of menu bar 1

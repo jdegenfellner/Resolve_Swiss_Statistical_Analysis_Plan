@@ -72,17 +72,18 @@ design_effect <- function(m_bar, rho, cv = 0, k = Inf) {
 }
 
 rho_grid <- c(0, 0.01, 0.02, 0.03, 0.05)
-m_bar    <- 200 / 16  # analysed participants per practice at ~200 total / 16 practices
+m_bar    <- 200 / 15  # analysed participants per practice at ~200 total / 15 practices
 # Eldridge et al. (2006) report that unequal cluster size can be ignored when
 # cv < 0.23, and that for trials randomising UK general practices cv is
-# typically around 0.65. Physiotherapy practices are the closest analogue we
-# have, so 0.65 is the primary planning value and 0.4 a more optimistic one.
+# typically around 0.65. No comparable figure is published for physiotherapy
+# practices, so 0.65 is used as an approximation and 0.4 as a more
+# optimistic alternative.
 cv_grid  <- c(0, 0.4, 0.65)
 
 de_tab <- outer(rho_grid, cv_grid,
-                Vectorize(function(rho, cv) design_effect(m_bar, rho, cv, k = 16)))
+                Vectorize(function(rho, cv) design_effect(m_bar, rho, cv, k = 15)))
 dimnames(de_tab) <- list(paste0("ICC=", rho_grid), paste0("cv=", cv_grid))
-out("\nDesign effects (m_bar = ", round(m_bar, 1), ", k = 16):")
+out("\nDesign effects (m_bar = ", round(m_bar, 1), ", k = 15):")
 print(round(de_tab, 3))
 
 # Requirements are minima, so round up. Use the unrounded benchmark
@@ -103,9 +104,9 @@ print(ceiling(req_tab / 0.9))
 n_r05 <- 2 * (qnorm(1 - alpha / 2) + qnorm(power_t))^2 *
   sigma^2 * (1 - 0.5^2) / delta^2
 out("\nWith r = 0.5 instead of 0.6, ICC 0.01, cv 0.65: ",
-    ceiling(n_r05 * design_effect(m_bar, 0.01, 0.65, k = 16)), " per arm")
+    ceiling(n_r05 * design_effect(m_bar, 0.01, 0.65, k = 15)), " per arm")
 out("With cv = 0 instead of 0.65, ICC 0.01, r = 0.6:  ",
-    ceiling(n_exact * design_effect(m_bar, 0.01, 0, k = 16)), " per arm")
+    ceiling(n_exact * design_effect(m_bar, 0.01, 0, k = 15)), " per arm")
 
 # ---------------------------------------------------------------------
 # 4. Power of the design as it currently stands
@@ -144,7 +145,7 @@ scenarios <- expand.grid(
   rho    = c(0.01, 0.02, 0.03, 0.05),
   KEEP.OUT.ATTRS = FALSE
 )
-scenarios$k_ctrl <- 16 - scenarios$k_int
+scenarios$k_ctrl <- 15 - scenarios$k_int
 
 # Hold the total analysed sample at 200 (100 per arm) and let the number
 # of participants per practice absorb the change in cluster numbers.
@@ -159,17 +160,17 @@ scenarios$power <- mapply(power_crt,
 out("\nPower at total analysed N = 200, ANCOVA, cv = 0.65:")
 print(transform(scenarios, power = round(power, 3)))
 
-# Balanced comparison: same 16 clusters, split 8/8 instead of 7/9
+# Balanced comparison: same 15 clusters, split 7/8 instead of 6/9
 bal <- sapply(c(0.01, 0.02, 0.03, 0.05), function(rho)
-  power_crt(8, 8, m = 200 / 16, sigma = sigma, delta = delta, rho = rho,
+  power_crt(7, 8, m = 200 / 15, sigma = sigma, delta = delta, rho = rho,
             ancova_r = r, cv = 0.65))
 unb <- sapply(c(0.01, 0.02, 0.03, 0.05), function(rho)
-  power_crt(7, 9, m = 200 / 16, sigma = sigma, delta = delta, rho = rho,
+  power_crt(6, 9, m = 200 / 15, sigma = sigma, delta = delta, rho = rho,
             ancova_r = r, cv = 0.65))
-out("\n16 clusters, ~200 participants — cost of the unbalanced split:")
+out("\n15 clusters, ~200 participants — cost of the unbalanced split:")
 print(data.frame(ICC = c(0.01, 0.02, 0.03, 0.05),
-                 power_7_9 = round(unb, 3),
-                 power_8_8 = round(bal, 3)))
+                 power_6_9 = round(unb, 3),
+                 power_7_8 = round(bal, 3)))
 
 # ---------------------------------------------------------------------
 # 5. Recruiting additional practices, holding the analysed sample at 200
@@ -189,24 +190,24 @@ add$m <- round(add$m, 1)
 out("\nBalanced designs, analysed N held at 200:")
 print(transform(add, power = round(power, 3)))
 
-# Imbalanced: the intervention arm capped at 7 practices while control
+# Imbalanced: the intervention arm capped at 6 practices while control
 # practices are added. The arm with fewer practices dominates 1/k1 + 1/k2,
 # so the extra control practices buy little.
-imb <- expand.grid(k_ctrl = 7:12, rho = c(0.01, 0.02, 0.03, 0.05))
-imb$k_int <- 7
+imb <- expand.grid(k_ctrl = 9:12, rho = c(0.01, 0.02, 0.03, 0.05))
+imb$k_int <- 6
 imb$m <- 200 / (imb$k_int + imb$k_ctrl)
 imb$power <- mapply(power_crt, k1 = imb$k_int, k2 = imb$k_ctrl,
                     m = imb$m, rho = imb$rho,
                     MoreArgs = list(sigma = sigma, delta = delta,
                                     ancova_r = r, cv = 0.65))
 imb$m <- round(imb$m, 1)
-out("\nIntervention arm capped at 7 practices, analysed N held at 200:")
+out("\nIntervention arm capped at 6 practices, analysed N held at 200:")
 print(transform(imb[c("k_int", "k_ctrl", "rho", "m", "power")],
                 power = round(power, 3)))
 
 
-# Recruitment options from the current 7/9 that balance the arms,
-# analysed sample still 200: add 3/1 (10/10) or 4/2 (11/11).
+# Recruitment options from the current 6/9 that balance the arms,
+# analysed sample still 200: add 4/1 (10/10) or 5/2 (11/11).
 for (cfg in list(c(10, 10), c(11, 11))) {
   p <- sapply(c(0.01, 0.02, 0.03, 0.05), function(rho)
     power_crt(cfg[1], cfg[2], m = 200 / sum(cfg), sigma = sigma,
@@ -218,9 +219,9 @@ for (cfg in list(c(10, 10), c(11, 11))) {
 # Number of distinct allocations of k_int of 13 practices to the
 # intervention arm; this is the size of the exact randomisation
 # distribution used for the permutation test.
-out("\nDistinct allocations, 7 of 16 practices: ", choose(16, 7))
-out("Smallest attainable two-sided p value:  ", signif(2 / choose(16, 7), 3))
-out("Distinct allocations, 8 of 16 practices: ", choose(16, 8))
+out("\nDistinct allocations, 6 of 15 practices: ", choose(15, 6))
+out("Smallest attainable two-sided p value:  ", signif(2 / choose(15, 6), 3))
+out("Distinct allocations, 7 of 15 practices: ", choose(15, 7))
 
 # ---------------------------------------------------------------------
 # 6. How far off is the factorised approximation (1 - r^2) x DE?
@@ -235,6 +236,23 @@ out("Distinct allocations, 8 of 16 practices: ", choose(16, 8))
 # Teerenstra / ours is therefore (1 - r_comb^2) / (1 - rho_s^2):
 # ratio 1 when rho_c = rho_s, ours conservative when rho_c > rho_s,
 # optimistic when rho_c < rho_s.
+
+# The factorised version is not an approximation with an error term: it is
+# Teerenstra's exact result evaluated at rho_c = rho_s. Setting the cluster
+# autocorrelation equal to the subject autocorrelation makes r_comb collapse
+# to rho_s, which is the 0.6 the calculation above uses. The grid below makes
+# that assumption visible instead of leaving it implicit.
+out("\nRequired analysed participants per arm, Teerenstra eq. (5), by rho_c:")
+rc_grid  <- c(0.2, 0.4, 0.6, 0.8, 1.0)
+req_grid <- outer(rho_grid[rho_grid > 0], rc_grid, Vectorize(function(rho, rc) {
+  w      <- m_bar * rho / (1 + (m_bar - 1) * rho)
+  r_comb <- w * rc + (1 - w) * r
+  ceiling(n_exact / (1 - r^2) * (1 - r_comb^2) * design_effect(m_bar, rho, 0.65, k = 15))
+}))
+dimnames(req_grid) <- list(paste0("ICC=", rho_grid[rho_grid > 0]),
+                           paste0("rho_c=", rc_grid))
+print(req_grid)
+out("The rho_c = 0.6 column reproduces the table in the manuscript exactly.")
 
 out("\nRequirement ratio Teerenstra / factorised version (rho_s = 0.6):")
 teer <- expand.grid(rho = c(0.01, 0.03, 0.05), rho_c = c(0.2, 0.4, 0.6, 0.8))

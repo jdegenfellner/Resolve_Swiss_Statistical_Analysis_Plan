@@ -42,3 +42,12 @@ figures/*.html
 
 # Persoenliche Erklaer-Notizen — nicht publizieren
 explainer_notes/
+
+# Aenderungsfassung (aus make_changes.sh, jederzeit neu baubar)
+paper_changes.tex
+paper_changes.pdf
+paper_changes.docx
+paper_changes.cb
+paper_changes.cb2
+.baseline.tex
+~$*

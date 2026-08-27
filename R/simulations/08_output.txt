@@ -1,0 +1,70 @@
+
+--- (1) Eigenschaften der erzeugten Daten, rho = 0.01 ---
+Groesse                realisiert (MC-Fehler)   Sollwert
+Differenz Woche 18       1.9804 (0.0443)          2.0000
+Differenz Baseline       0.0246 (0.0438)          0.0000
+SD Woche 18              5.2249 (0.0114)          5.2345
+ICC Woche 18             0.0119 (0.0016)          0.0100
+Korr. Baseline/W18       0.5968 (0.0021)          0.6000
+ICC der Differenz        0.0013 (0.0014)          siehe unten
+cv Praxisgroessen        0.6317                   0.6500
+
+Die ersten fuenf Zeilen treffen ihre Sollwerte. Die sechste ist der Punkt,
+auf den es ankommt: in der Differenz Woche 18 minus Baseline faellt der
+Praxiseffekt u_j exakt heraus, weil er ueber beide Zeitpunkte derselbe ist.
+Die Differenz traegt deshalb keine Intra-Cluster-Korrelation mehr. Genau
+diese Groesse schaetzt das Modell, denn time:group ist eine Differenz von
+Differenzen.
+
+Die Fallzahlformel des Papers ist Julious (2023), Gleichung (5.15):
+  IF = [1 + ((cv^2+1)*m - 1)*ICC] * (1 - r^2)
+Sie ist damit korrekt uebernommen. Sie multipliziert aber die volle
+Clusterinflation mit der individuellen Baseline-Korrektur, als seien die
+beiden unabhaengig. Ist der Praxiseffekt ueber die Zeit konstant, nimmt die
+Baseline-Korrektur den Clustereffekt bereits mit heraus, und die Inflation
+wird ein zweites Mal berechnet. Julious behandelt in (5.14) nur den anderen
+Fall, in dem die Baseline auf Clusterebene erhoben wird. Der exakte Weg fuer
+beide Faelle steht bei Teerenstra et al. (2012), siehe Skript 04.
+
+--- (2) Signifikanzniveau bei wahrem Effekt 0, nominal 0.05 ---
+rho 0.01:  Niveau 0.050 (MC-SE 0.015) | mittlere KR-df 161
+rho 0.03:  Niveau 0.055 (MC-SE 0.016) | mittlere KR-df 176
+rho 0.05:  Niveau 0.070 (MC-SE 0.018) | mittlere KR-df 185
+Warning messages:
+1: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
+  Model failed to converge with max|grad| = 0.00356862 (tol = 0.002, component 1)
+  See ?lme4::convergence and ?lme4::troubleshooting.
+2: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
+  Model failed to converge with max|grad| = 0.00205001 (tol = 0.002, component 1)
+  See ?lme4::convergence and ?lme4::troubleshooting.
+3: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
+  Model failed to converge with max|grad| = 0.00349254 (tol = 0.002, component 1)
+  See ?lme4::convergence and ?lme4::troubleshooting.
+
+Das Niveau wird gehalten. Der Test ist gueltig, er ist nur informativer,
+als die Fallzahlformel annimmt: die Freiheitsgrade liegen weit ueber den
+k1+k2-2 = 13, mit denen Tabelle 2 rechnet.
+
+--- (3) Empirische Power gegen Gleichung (2) und Tabelle 2 ---
+ICC        empirisch (MC-SE)    Gl. (2)   Teerenstra  Teer. + KR-df SE Modell/wahr/Teer.
+rho 0.01   0.884 (MC-SE 0.014)  0.80      0.84        0.89          0.644 / 0.629 / 0.628
+rho 0.02   0.868 (MC-SE 0.015)  0.75      0.82        0.87          0.647 / 0.651 / 0.647
+rho 0.03   0.862 (MC-SE 0.015)  0.69      0.80        0.85          0.651 / 0.646 / 0.662
+rho 0.05   0.850 (MC-SE 0.016)  0.60      0.77        0.83          0.650 / 0.644 / 0.685
+Warning messages:
+1: Model failed to converge with 1 negative eigenvalue: -6.8e-01 
+2: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
+  Model failed to converge with max|grad| = 0.00658577 (tol = 0.002, component 1)
+  See ?lme4::convergence and ?lme4::troubleshooting.
+
+Die drei Standardfehler sind: vom Modell gemeldet, tatsaechliche Streuung
+der Schaetzer, und nach Teerenstra berechnet. Die Luecke zwischen Gl. (2)
+und der Simulation zerfaellt damit in zwei Teile:
+  Standardfehler: Gl. (2) setzt (1-r^2) an, exakt gehoert (1-r_comb^2) hin.
+                  Teerenstra trifft die tatsaechliche Streuung.
+  Freiheitsgrade: beide Formeln rechnen mit k1+k2-2 = 13. Weil der
+                  Praxiseffekt aus dem Kontrast herausfaellt, liefert
+                  Kenward-Roger aber rund 160 bis 190.
+Die Spalte Teer. + KR-df setzt beide Korrekturen zusammen.
+
+Figur: R/simulations/figures/08_dgp_and_power_validation.png
