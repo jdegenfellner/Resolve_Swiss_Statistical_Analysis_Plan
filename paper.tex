@@ -104,7 +104,7 @@ primary analysis is a linear mixed model over the baseline and 18-week
 measurements. It carries fixed effects for time and the treatment-by-time
 interaction, no main effect of treatment, random intercepts for practice, and
 random intercepts for participant. The model constrains the two arms to a common baseline
-mean, which is how the baseline information enters, and the treatment effect
+mean, and the treatment effect
 is estimated with Kenward--Roger degrees of freedom, the small-sample
 correction that guards against anti-conservative mixed-model inference when
 the number of practices is small. A complementary Bayesian analysis with
@@ -114,8 +114,7 @@ uncertainty, the analyses of secondary outcomes, the handling of missing data,
 non-adherence and contamination, and the planned reporting.
 
 \textbf{Conclusion.} Prespecifying the analysis reduces the scope for bias in
-the results of RESOLVE Swiss and makes explicit how the small number of
-clusters is dealt with.
+the results of RESOLVE Swiss.
 
 \textbf{Trial registration.} German Clinical Trials Register DRKS00039237,
 registered 4 February 2026. Swiss BASEC number 2025-00784, Human Research
@@ -316,7 +315,7 @@ participant standard deviation of the RMDQ at 18 weeks is taken from the
 Australian RESOLVE trial (intervention 3.6, SD 4.6; control 6.4, SD 5.8
 \citep{bagg2022}), giving a pooled SD of 5.2 points. 
 
-The sample size and power calculations follow \citet{teerenstra2012} throughout. Their
+The sample size and power calculations largely follow \citet{teerenstra2012}. Their
 model splits the practice effect and the participant effect each into a part
 that is the same at baseline and at 18 weeks and a part that is not, which
 leaves three correlations to name. The intra-cluster correlation $\rho$ is
@@ -335,15 +334,13 @@ r = \frac{\bar m \rho}{1 + (\bar m - 1)\rho}\,\rho_c
   + \frac{1 - \rho}{1 + (\bar m - 1)\rho}\,\rho_s ,
 \end{equation}
 where $\bar m$ is the mean number of analysed participants per practice
-\citep[eq.~5]{teerenstra2012}. The adjusted estimator subtracts $r$ times the
-baseline mean from the 18-week mean in each arm, which is the choice that
-makes it most precise, and its variance then carries the factor $1 - r^2$. This $r$ always lies between $\rho_c$ and
+\citep[eq.~5]{teerenstra2012}. This $r$ always lies between $\rho_c$ and
 $\rho_s$, close to $\rho_s$ when practices are small or $\rho$ is small and
 close to $\rho_c$ otherwise.
 
 From there the requirement follows in two multiplications from the sample
 size of a $t$ test on the 18-week scores alone, which is 109 participants per
-arm here \citep[section 2.3]{teerenstra2012}. The design effect accounts for
+arm \citep[section 2.3]{teerenstra2012}. The design effect accounts for
 the clustering and the factor $1 - r^2$ for the baseline adjustment, so the
 requirement per arm is $109 \times \mathrm{DE} \times (1 - r^2)$ with $r$
 from equation~\eqref{eq:rcomb}. Unequal
@@ -365,9 +362,11 @@ observed values sit at the low end of that distribution. The one published
 clinic-level estimate of $\rho$ for the RMDQ comes from the SOLAS
 feasibility trial, which ran in seven physiotherapy clinics per arm against
 usual physiotherapy, and it is 0 (95\% CI 0 to 0.10)
-\citep{hurley2020, king2023}. The UK BEAM trial, which randomised 181
-general practices with the RMDQ as its primary outcome, found the cluster
-correlations smaller than it had projected \citep{ukbeam2004}. Measures of
+\citep{hurley2020, king2023}. The UK BEAM trial ran in 181 general practices
+with the RMDQ as its primary outcome. It allowed for an intra-cluster
+correlation of 0.04 at the level of the treating therapist, the largest of
+the three clusterings it faced \citep{ukbeam2003}, and reported the
+correlations it observed as smaller than that \citep{ukbeam2004}. Measures of
 the care process show systematically larger intra-cluster correlations than
 clinical outcomes \citep{campbell2005}, and the RMDQ is a clinical outcome.
 We therefore read 0.01 as a plausible value and the larger values as
