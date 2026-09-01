@@ -141,6 +141,12 @@ ANSWERS = [
      "'initial' dann eine Fortsetzung suggeriert."),
 ]
 
+# Die Antworttexte oben gehoeren zur Kommentarrunde vom August. Fuer eine
+# Aenderungsfassung gegen eine spaetere Basis waeren sie falsch, deshalb
+# laesst NO_ANSWERS=1 sie weg.
+if os.environ.get("NO_ANSWERS"):
+    ANSWERS = []
+
 W = "http://schemas.openxmlformats.org/wordprocessingml/2006/main"
 
 
