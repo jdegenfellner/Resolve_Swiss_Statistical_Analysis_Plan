@@ -128,46 +128,36 @@ Statistical analysis plan; Mixed models; Physical therapy.
 \section{Introduction}
 
 \subsection{Background and rationale}
+Chronic non-specific low back pain is a leading contributor to years lived
+with disability worldwide, while commonly used treatments typically provide
+only modest effects \citep{wand2008}. Given these limitations, interventions
+targeting mechanisms proposed to contribute to persistent pain have been
+developed. The Australian RESOLVE trial evaluated one such intervention,
+combining pain science education with graded sensorimotor precision training.
+Compared with a sham intervention, RESOLVE produced a modest reduction in pain
+at 18 weeks and improvements in disability persisting through 52 weeks
+\citep{bagg2022}. A smaller Swiss pilot study compared a related intervention
+with usual physiotherapy and reported similar findings \citep{waelti2015}.
+That is the basis for evaluating it in Switzerland on a larger scale.
 
-Chronic non-specific low back pain is among the largest contributors to years
-lived with
-disability worldwide, and the effects of the treatments commonly offered for
-it are, on average, modest \citep{wand2008}. The Australian RESOLVE trial tested
-whether a treatment aimed at the central nervous system representation of the
-back (graded sensorimotor precision training preceded by pain science
-education) reduces pain more than a sham intervention. It reported a modest
-benefit in pain at 18 weeks, consistent with a clinically meaningful
-between-group difference, and a benefit in disability that persisted through
-52 weeks \citep{bagg2022}. An earlier and much
-smaller Swiss pilot compared a related programme with usual physiotherapy and
-pointed in the same direction \citep{waelti2015}.
+Despite these findings, evidence remains limited in two respects. First,
+because the Australian RESOLVE trial used a sham comparator, its comparative
+effectiveness against usual physiotherapy has not been established. Second,
+the intervention has so far been evaluated under controlled trial conditions
+and delivered by therapists specifically trained for the study. Its
+effectiveness under routine conditions of care therefore remains unknown.
+RESOLVE Swiss addresses these limitations by comparing the intervention with
+usual physiotherapy under routine conditions of care.
 
-Two things are unresolved. First, RESOLVE tested the intervention against a
-sham, which is a question of efficacy. The clinically relevant question for
-Swiss practice is effectiveness against usual physiotherapy as it is actually
-delivered. Second, the intervention has so far been delivered in a trial
-setting by trial therapists. Its effect under ordinary conditions of care
-is unknown.
-
-RESOLVE Swiss therefore delivers the intervention in ordinary physiotherapy
-practices, by the therapists who work there. That choice makes the trial
-pragmatic, and it forces the design to be a \emph{cluster} randomised trial.
-Randomisation at the individual participant level within practices would create
-substantial potential for contamination, because therapists within the same
-practice may exchange knowledge, clinical strategies and treatment
-approaches.
-Communication between practices is far less direct, so allocation at the
-level of the practice keeps contamination to a minimum
-\citep{campbell2012}. The trial's scientific advisory board
-recommended the cluster design for this reason.
-
-This statistical analysis plan was developed prior to the analysis of outcome
-data and is informed by recommendations for statistical analysis plans in
-clinical trials \citep{gamble2017} and the CONSORT extension for cluster
-randomised trials \citep{campbell2012}. It reports the frequentist analysis
-of the primary and secondary outcomes, a complementary Bayesian analysis of
-the primary outcome, and a summary of the planned Bayesian interim analysis.
-It should be read alongside the trial protocol \citep{protocol2025}.
+This statistical analysis plan (SAP) prespecifies the main analyses for
+RESOLVE Swiss. It was developed before outcome data were analysed and follows
+recommendations for statistical analysis plans in clinical trials
+\citep{gamble2017}. It also follows the CONSORT extension for cluster
+randomised trials \citep{campbell2012}. It specifies the planned frequentist
+analyses of the primary and secondary outcomes, a complementary Bayesian
+analysis of the primary outcome. It also summarises the planned Bayesian
+interim analysis. It should be read alongside the trial protocol
+\citep{protocol2025}.
 
 % ============================================================
 \section{Methods}
@@ -175,21 +165,28 @@ It should be read alongside the trial protocol \citep{protocol2025}.
 \subsection{Trial design}
 
 RESOLVE Swiss is a two-arm, parallel-group, cluster randomised, investigator
-blinded, multicentre trial with 1:1 intended allocation at the level of the
-physiotherapy practice. Practices and institutions are the
-clusters. Participants treated within a practice are the units of observation and of
-analysis. All outcomes are assessed at baseline and at 18 weeks. The
-self-reported questionnaires, including the primary outcome, are collected
-again at 26 and 52 weeks after the baseline measurement.
+blinded, multicentre trial with intended 1:1 allocation at the cluster level.
+Participating physiotherapy practices and institutions constitute the
+clusters, while participants within each cluster are the units of observation
+and analysis. All outcomes are assessed at baseline and at 18 weeks.
+Self-reported questionnaires, including the primary outcome, are additionally
+assessed at 26 and 52 weeks after baseline (section~\ref{sec:outcomes}).
 
-The trial planned 20 physiotherapy institutions across Switzerland, and all
-20 were randomised 1:1 (section~\ref{sec:randomisation}). Withdrawals since
-then leave 6 practices in the intervention arm and 9 in the control arm at
-the time of writing. What that split
-costs in power is quantified in section~\ref{sec:samplesize}, and what the
-withdrawals may have done to the comparability of the arms is taken up in
-section~\ref{sec:recruitment}. The flow of practices, with reasons for
-withdrawal, has to be reported under the CONSORT cluster extension
+If participants within practices were individually randomised, contamination
+would be a risk. Therapists within the same practice may exchange knowledge,
+clinical strategies, and treatment approaches, potentially exposing control
+participants to intervention components. Practice-level randomisation was
+therefore chosen to minimise contamination between treatment groups
+\citep{campbell2012}.
+
+The trial initially randomised 20 physiotherapy institutions across
+Switzerland in a 1:1 ratio (section~\ref{sec:randomisation}). Following
+withdrawals, 6 clusters remain in the intervention arm and 9 in the control
+arm at the time of writing. The implications of this imbalance for statistical
+power are quantified in section~\ref{sec:samplesize}. The potential impact of
+cluster withdrawals on between-arm comparability is addressed in
+section~\ref{sec:recruitment}. Cluster flow and reasons for withdrawal will be
+reported in accordance with the CONSORT cluster extension
 \citep{campbell2012}.
 
 The trial is a Category A study under the Swiss Ordinance on Clinical Trials
@@ -201,55 +198,62 @@ Human Research Switzerland (HumRes67737).
 \subsection{Eligibility}
 \label{sec:eligibility}
 
-Eligibility operates at two levels, the practice and the patient
+Eligibility is assessed at two levels: the cluster and the participant
 \citep{campbell2012}.
 
 \emph{Practices.} Swiss outpatient physiotherapy practices and institutions
-are eligible if they are willing to be allocated to either arm. Therapists in practices allocated to the
-intervention must complete a 50-hour RESOLVE training course and have their
-skills assessed before delivering any study treatment
+are eligible if they are willing to be allocated to either trial arm.
+Therapists in clusters allocated to the intervention arm must complete 50
+hours of RESOLVE training before delivering the intervention. Their skills
+must also be assessed before treatment delivery
 \open{minimum practice size of 500 full-time-equivalent percent? trial team
 to confirm}.
 
-\emph{Participants.} Eligible participants are adults aged 18 to 75 referred
-to physiotherapy for low back pain, with non-specific low back pain persisting for at least three
-months, a baseline RMDQ of at least 7 points, sufficient German to follow the
-study procedures and complete the questionnaires, internet access and
-willingness to use a private device, and a person available to assist with home
-training. Participants are excluded for evidence of specific spinal pathology
-(malignancy, fracture, infection, inflammatory joint or bone disease),
-radiculopathy, pregnancy or being less than six months postpartum, a coexisting
-major medical disease contraindicating general exercise, spinal surgery within
-the preceding 12 months, an intra-articular or perineural lumbar steroid
-injection within the preceding three months, inability to follow the study
-procedures, or an open legal dispute with an insurer relating to back pain.
+\emph{Participants.} Eligible participants are adults aged 18 to 75 years
+referred for physiotherapy because of non-specific low back pain lasting at
+least three months. They must have a baseline RMDQ score of at least 7 points
+and sufficient German to complete study procedures and questionnaires.
+Participants must also have internet access, be willing to use a personal
+device, and have a person available to assist with home training.
 
-An fMRI substudy enrols 40 of the 220 participants. Its analysis is exploratory
-and is not covered by this plan.
+Participants are excluded if they have evidence of specific spinal pathology,
+including malignancy, fracture, infection, or inflammatory joint or bone
+disease. Further exclusion criteria are radiculopathy; pregnancy or less than
+six months postpartum; and major medical disease contraindicating general
+exercise. Spinal surgery within the preceding 12 months and lumbar
+intra-articular or perineural steroid injection within the preceding three
+months are also exclusionary. Participants are also excluded if they cannot
+follow study procedures or have an open legal dispute with an insurer related
+to back pain.
+
+An fMRI substudy will include 40 of the 220 participants. Its exploratory
+analyses are outside the scope of this SAP.
 
 \subsection{Interventions}
 
-Participants in both arms receive 12 one-to-one sessions with a qualified
-physiotherapist over 16 weeks. The first two sessions may last an hour and the
-remaining ten about 30 minutes, weekly at first and then every two weeks. The
-intervention is the RESOLVE programme (pain science education, graded sensory
-retraining, and graded motor relearning and loading), delivered by therapists
-who have completed the 50-hour training. The comparator is usual
-physiotherapy, delivered by therapists who have not.
+Participants in both arms receive 12 individual sessions with a qualified
+physiotherapist over 16 weeks. The first two sessions may last up to 60
+minutes, with the remaining ten lasting approximately 30 minutes. Sessions are
+initially delivered weekly and subsequently every two weeks. The intervention
+is the RESOLVE programme, comprising pain science education, graded sensory
+retraining, and graded motor relearning and loading. It is delivered by
+therapists who have completed the 50-hour RESOLVE training. The comparator is
+usual physiotherapy, delivered by therapists who have not completed this
+training.
 
-Usual physiotherapy is expected to be heterogeneous between practices. What
-control practices actually deliver will be recorded and described.
+Usual physiotherapy is expected to vary across practices. Treatment delivered
+in the control arm will be documented and described.
 
 \subsection{Randomisation and allocation}
 \label{sec:randomisation}
 
-Practices were allocated 1:1 by the central trial coordinator at ZHAW,
-before the intervention therapists were trained. The allocation
-took place live on 15 May 2025, by drawing balls of two colours from a bag,
-one colour per arm, which fixed the complete allocation at once, before
-therapist training and before any patient was recruited. Concealment of an ongoing
-allocation sequence therefore does not arise. The corresponding selection
-risk lies at patient recruitment (section~\ref{sec:recruitment}).
+Practices were allocated 1:1 by the central trial coordinator at ZHAW, before
+the intervention therapists were trained and before any patient was trained.
+The allocation took place live on 15 May 2025, by drawing balls of two colours
+from a bag, one colour per arm, which fixed the complete allocation at once.
+Concealment of an ongoing allocation sequence therefore does not arise. The
+corresponding selection risk lies at patient recruitment
+(section~\ref{sec:recruitment}).
 
 Two implications arise for the analysis. First, the allocation of the 20
 practices was performed without stratification or covariate constraints, so
@@ -278,15 +282,14 @@ Because practices are randomised before their patients are recruited, and
 because the recruiting therapists know which arm their practice is in, patient
 selection can differ between arms. This identification or recruitment bias is
 a threat characteristic of cluster randomised trials
-\citep{campbell2012, eldridge2009}. We will
-therefore report, by arm and by practice, the number of patients screened,
-found eligible, approached, and consenting. Visible baseline
-imbalance is not by itself evidence of bias. The expected difference between
-arms is zero under randomisation, but with 15 practices the chance variation
-around zero is wide and some imbalance is to be anticipated. Imbalance is,
-however, also the main signal that recruitment differed between arms, and it
-will be read alongside the screening counts but not tested for
-``significance'' \citep{campbell2012, senn1994}.
+\citep{campbell2012, eldridge2009}. We will therefore report, by arm and by
+practice, the number of patients screened, found eligible, approached, and
+consenting. Visible baseline imbalance is not by itself evidence of bias. The
+expected difference between arms is zero under randomisation, but with 15
+practices the chance variation around zero is wide and some imbalance is to be
+anticipated. Imbalance is, however, also the main signal that recruitment
+differed between arms, and it will be read alongside the screening counts but
+not tested for ``significance'' \citep{campbell2012, senn1994}.
 
 Selection can also operate at the practice level. The 20 practices were
 randomised 10 to 10, and the withdrawals since then have been unbalanced,
@@ -296,7 +299,6 @@ practices that remain in the intervention arm are therefore a self-selected
 subset. We will report the withdrawals with their timing and stated reasons
 in the flow diagram, describe the remaining practices at both levels of the
 baseline table, and read the arm comparison with this asymmetry in mind.
-
 \subsection{Sample size}
 \label{sec:samplesize}
 
@@ -571,6 +573,7 @@ the results, under the conditions set out in the data availability statement.
 \end{itemize}
 
 \subsection{Outcome definitions}
+\label{sec:outcomes}
 
 \subsubsection{Primary outcome}
 
