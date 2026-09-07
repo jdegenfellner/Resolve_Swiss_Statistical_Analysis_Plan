@@ -593,8 +593,8 @@ Questionnaire, a 24-item instrument scored from 0 (no disability) to 24
 \subsubsection{Secondary outcomes}
 \label{sec:secondary}
 
-The trial collects a large number of secondary endpoints, which we group
-here by the analysis they receive.
+The trial collects a large number of secondary endpoints, grouped below by
+the analysis they receive.
 
 The patient-reported continuous outcomes, collected at baseline and at 18,
 26 and 52 weeks, are pain intensity (numeric rating scale)
@@ -812,7 +812,7 @@ clusters is small \citep{leyrat2018, kahan2016}.
 Uncorrected mixed models and generalised estimating equations have inflated
 type I error rates when the number of clusters is small
 \citep{taljaard2016, kahan2016}, and degrees-of-freedom corrections restore
-the nominal rate at the number of practices available here
+the nominal rate at the 15 practices of this trial
 \citep{leyrat2018}. Model \eqref{eq:primary} with Kenward--Roger
 degrees of freedom is therefore the single prespecified analysis of the
 primary outcome. Recommended thresholds for such a correction lie at about
@@ -902,13 +902,13 @@ the treatment effect from the analogue of model \eqref{eq:primary} fitted
 to those two occasions. The factor $c > 1$ widens that prior. Widening
 it in this way is the power prior of \citet{ibrahim2000}, in which the
 likelihood of the previous study is raised to a power $a_0$ between 0 and 1.
-For a normal likelihood that multiplies the precision by $a_0$, so
+For a normal likelihood that multiplies the precision by $a_0$, which gives
 $c = 1 / \sqrt{a_0}$, where $a_0$ is the fraction of the historical study
 that is borrowed.
 The authors recommend such control where the previous and the current study differ,
-which in our case they do on three counts: (i) the Australian comparator was a sham
-rather than usual physiotherapy, (ii) the setting was Australian rather than
-Swiss, and (iii) that trial randomised individuals rather than practices. We set
+which in our case they do on three counts: (i) the Australian comparator was a
+sham and not usual physiotherapy, (ii) the setting was Australian, and (iii) that
+trial randomised individuals, not practices. We set
 $a_0 = 1/9$, so that $c = 3$ and the prior standard deviation is 1.7 points.
 For intra-cluster correlations up to 0.02, the designs of Table~\ref{tab:power} imply a Swiss standard error between 0.63 and 0.73. The prior then supplies between a ninth and a sixth of the precision of the posterior. No single
 value of $a_0$ follows from the data. The analysis is repeated with
@@ -916,8 +916,8 @@ $a_0 = 1/4$ and $a_0 = 1/16$, and all three are reported.
 The Australian participant-level and residual standard deviations are 3.7
 and 3.6, so that $s_\nu = s_\sigma = 4$. We set $s_0 = s_1 = 2$, several
 times the corresponding standard errors (0.32 and 0.47), so that the Swiss
-data dominate those two priors. That trial randomised individuals and has no practice level, so
-$s_\tau$ rests on the intra-cluster correlation instead. Values between 0.01
+data dominate those two priors. That trial randomised individuals and has no practice level. The prior
+$s_\tau$ therefore rests on the intra-cluster correlation instead. Values between 0.01
 and 0.03 imply $\tau$ between 0.5 and 0.9, a range that $s_\tau = 2$
 covers. The RMDQ at
 18 weeks piles up near zero (Figure~\ref{fig:ausbox}). Our access to the
@@ -934,8 +934,8 @@ y_{ijt} \sim \mathrm{BetaBinomial}(24,\ p_{ijt},\ \theta), \qquad
 \mathrm{logit}(p_{ijt}) = \beta_0 + \beta_1 s_t + \boldsymbol{\beta_2}\, s_t x_j + u_j + w_{ij},
 \end{equation*}
 which respects the bounded count nature of the score. In that version the
-coefficients act on the logit scale, so the priors are re-derived there by
-fitting the same beta-binomial model to the Australian data, and the values
+coefficients act on the logit scale. The priors are re-derived on that scale
+by fitting the same beta-binomial model to the Australian data, and the values
 above are not directly applicable. Each version is also fitted with a sceptical prior for
 $\beta_2$ in place of the informative one. Following \citet{spiegelhalter1994},
 that prior is normal with mean zero and a standard deviation set so that the
@@ -943,7 +943,7 @@ probability of a benefit beyond the alternative hypothesis is 0.05. A target
 difference of 2 RMDQ points therefore gives a standard deviation of
 $2 / 1.645 = 1.22$ points. On the logit scale the same 2 points, measured down
 from the Australian control mean of 6.4 at 18 weeks, amount to a difference of
-0.48, so the standard deviation there is 0.29.
+0.48 on the logit scale, where the standard deviation is 0.29.
 
 \begin{figure}[ht]
 \centering
@@ -1230,7 +1230,7 @@ Committee of Zurich as lead committee (BASEC 2025-00784) on 20 January 2026,
 with conditions whose fulfilment was confirmed on 10 April 2026.
 
 \textbf{Data and code availability.} The code that reproduces the sample size
-and power calculations reported here accompanies this paper at
+and power calculations accompanies this paper at
 \url{https://github.com/jdegenfellner/Resolve_Swiss_Statistical_Analysis_Plan},
 and the version of record will be archived with a DOI on Zenodo
 \open{make the repository public and mint the Zenodo DOI at submission}.
