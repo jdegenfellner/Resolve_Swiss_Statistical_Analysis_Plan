@@ -51,3 +51,11 @@ paper_changes.cb
 paper_changes.cb2
 .baseline.tex
 ~$*
+
+# Kommentarfassungen der Kollegen bleiben lokal. Sie enthalten Word-Kommentare
+# und nachverfolgte Aenderungen mit Namen und Zeitstempeln, also interne
+# Begutachtungskorrespondenz. Fuer Zenodo und GitHub gehoert das nicht dazu.
+z_Comments_from_colleagues/
+paper_changes*
+paper_for_annotation*
+*_Vorschlaege_*
