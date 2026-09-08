@@ -107,7 +107,7 @@ primary analysis is a linear mixed model over the baseline and 18-week
 measurements. It carries fixed effects for time and the treatment-by-time
 interaction, no main effect of treatment, random intercepts for practice, and
 random intercepts for participant. The model constrains the two arms to a common baseline
-mean, and the treatment effect
+mean. The treatment effect
 is estimated with Kenward--Roger degrees of freedom. A complementary Bayesian analysis with
 prespecified priors, informed by the individual participant data of the
 Australian RESOLVE trial, accompanies the frequentist results. We report the intra-cluster correlation with its
@@ -367,14 +367,14 @@ outcomes are usually small, with a median near 0.01 \citep{adams2004}. For patie
 observed values sit at the low end of that distribution. The one published
 clinic-level estimate of $\rho$ for the RMDQ comes from the SOLAS
 feasibility trial, which ran in seven physiotherapy clinics per arm against
-usual physiotherapy, and it is 0 (95\% CI 0 to 0.10)
+usual physiotherapy. That estimate is 0 (95\% CI 0 to 0.10)
 \citep{hurley2020, king2023}. The UK BEAM trial ran in 181 general practices
 with the RMDQ as its primary outcome. It allowed for an intra-cluster
 correlation of 0.04 at the level of the treating therapist
 \citep{ukbeam2003}, and reported the
 correlations it observed as smaller than that \citep{ukbeam2004}. Measures of
 the care process show systematically larger intra-cluster correlations than
-clinical outcomes \citep{campbell2005}, and the RMDQ is a clinical outcome.
+clinical outcomes \citep{campbell2005}. The RMDQ is a clinical outcome.
 We therefore read 0.01 as a plausible value and the larger values as
 caution. For the size variation, unequal practice sizes can be ignored when
 $\mathrm{cv} < 0.23$, but for trials randomising United Kingdom general practices $\mathrm{cv}$ is typically around
@@ -1082,8 +1082,7 @@ effect among participants who would adhere to the intervention if allocated
 to it, the complier average causal effect, will be estimated by
 instrumental variable regression with allocation as the instrument
 \citep{angrist1996}. The estimate will be reported alongside the
-intention-to-treat effect. Because this analysis is imprecise with few
-clusters, it is prespecified as exploratory.
+intention-to-treat effect and is prespecified as exploratory.
 
 A protocol deviation is any departure from the procedures of the trial
 protocol that affects a participant's eligibility, allocation or treatment.
