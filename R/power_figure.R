@@ -20,7 +20,7 @@ tc  <- qt(0.975, nu)
 x <- seq(-4.5, 8, length.out = 1200)
 d <- rbind(
   data.frame(x, dens = dt(x, nu),            was = "no treatment effect: central t"),
-  data.frame(x, dens = dt(x - lam, nu), was = "true difference of 2 points: t shifted by lambda"))
+  data.frame(x, dens = dt(x - lam, nu), was = "true difference of 2 points: shifted t"))
 pow   <- pt(lam - tc, nu)
 shade <- subset(d, was != "no treatment effect: central t" & x >= tc)
 
@@ -35,7 +35,7 @@ p <- ggplot(d, aes(x, dens, colour = was, fill = was)) +
   annotate("segment", x = 0, xend = lam, y = 0.435, yend = 0.435,
            arrow = arrow(length = unit(2.2, "mm")), colour = "grey25") +
   annotate("text", x = lam / 2, y = 0.455, size = 3.4, colour = "grey25",
-           label = sprintf("shift by lambda = 2 / %.3f = %.2f", se, lam)) +
+           label = sprintf("shift by 2 / %.3f = %.2f", se, lam)) +
   scale_colour_manual(values = c("#4C7FB0", "#3a7d3a")) +
   scale_fill_manual(values = c("#4C7FB0", "#3a7d3a")) +
   labs(x = "test statistic t", y = "density", colour = NULL, fill = NULL) +
