@@ -1,9 +1,11 @@
 # =====================================================================
 # Claims checked (paper, section "Sample size"):
-#  (a) "an individually randomised trial would need 108 participants
+#  (a) "an individually randomised trial would need 109 participants
 #      per arm" (two-sided alpha 0.05, power 80%, sigma 5.234, delta 2)
 #  (b) "using the baseline measurement ... reduces this by the factor
-#      1 - r^2 to 69 per arm" (r = 0.6)
+#      1 - r^2 to 70 per arm" (r = 0.6)
+#      Both are the exact values from the noncentral t, as computed in
+#      R/sample_size.R. The normal approximation gives 108 and 69.
 #  (c) analysing change scores is less precise than ANCOVA whenever
 #      baseline and follow-up are positively correlated; at r = 0.6 the
 #      theoretical SE ratio is sqrt(2/(1+r)) = 1.118
@@ -27,16 +29,16 @@ gen_ind <- function(n_per_arm, delta, r = R, sigma = SIGMA) {
   data.frame(gr, bl, fu)
 }
 
-banner("(a) t-test, n = 108 per arm")
+banner("(a) t-test, n = 109 per arm")
 rej <- replicate(NSIM, {
-  d <- gen_ind(108, DELTA)
+  d <- gen_ind(109, DELTA)
   t.test(fu ~ gr, d, var.equal = TRUE)$p.value < 0.05
 })
 cat("empirical power:", mc(rej, NSIM), "| claim: 0.80\n")
 
-banner("(b) ANCOVA, n = 69 per arm, r = 0.6")
+banner("(b) ANCOVA, n = 70 per arm, r = 0.6")
 p_anc <- function(d) summary(lm(fu ~ bl + gr, d))$coefficients["gr", 4]
-rej <- replicate(NSIM, p_anc(gen_ind(69, DELTA)) < 0.05)
+rej <- replicate(NSIM, p_anc(gen_ind(70, DELTA)) < 0.05)
 cat("empirical power:", mc(rej, NSIM), "| claim: 0.80\n")
 
 banner("(c) precision: change score vs ANCOVA at r = 0.6")
@@ -81,14 +83,14 @@ fig <- ggplot(pd, aes(n, power, colour = what)) +
   geom_line(linewidth = 0.7) +
   geom_point(data = emp, size = 2) +
   geom_hline(yintercept = 0.8, linetype = 3) +
-  geom_vline(xintercept = c(69, 108), linetype = 3) +
+  geom_vline(xintercept = c(70, 109), linetype = 3) +
   scale_colour_manual(values = c("unadjusted (formula)" = "#7570b3",
                                  "unadjusted (simulated)" = "#7570b3",
                                  "ANCOVA, r = 0.6 (formula)" = "#d95f02",
                                  "ANCOVA, r = 0.6 (simulated)" = "#d95f02")) +
   guides(colour = guide_legend(nrow = 2)) +
   labs(x = "n per arm", y = "power", colour = NULL,
-       title = "Claim 108 vs 69 per arm: formula lines, simulation points") +
+       title = "Claim 109 vs 70 per arm: formula lines, simulation points") +
   theme_minimal(base_size = 10) + theme(legend.position = "top")
 dir.create("R/simulations/figures", showWarnings = FALSE, recursive = TRUE)
 ggsave("R/simulations/figures/01_individual_sample_size.png", fig,

@@ -10,8 +10,8 @@ Monte Carlo standard error and writes a figure to
 
 | Paper claim (section) | Value in paper | Script |
 |---|---|---|
-| Individually randomised trial needs 108/arm (Sample size) | power 0.80 | `01_individual_sample_size.R` |
-| Baseline factor 1−r² reduces this to 69/arm (Sample size) | power 0.80 | `01_individual_sample_size.R` |
+| Individually randomised trial needs 109/arm (Sample size) | power 0.80 | `01_individual_sample_size.R` |
+| Baseline factor 1−r² reduces this to 70/arm (Sample size) | power 0.80 | `01_individual_sample_size.R` |
 | Change scores less precise than ANCOVA at r = 0.6 (The model) | SE ratio 1.118 | `01_individual_sample_size.R` |
 | Margin design needs well over a thousand per arm (section removed 17 Aug 2026 with the protocol references; kept as background for the sidedness discussion) | ~0.80 at n = 1355 | `01_individual_sample_size.R` |
 | Design effect eq. (1): 1.20 / 1.61 / 2.02 at ICC .01/.03/.05 (Sample size) | variance inflation | `02_design_effect.R` |
