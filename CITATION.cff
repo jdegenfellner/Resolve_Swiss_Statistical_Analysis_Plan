@@ -1,0 +1,61 @@
+cff-version: 1.2.0
+message: If you use this analysis plan or its code, please cite it as below.
+title: >-
+  The RESOLVE Swiss trial for people with chronic non-specific low back pain:
+  statistical analysis plan for a cluster randomised controlled trial
+type: software
+license: CC-BY-4.0
+repository-code: >-
+  https://github.com/jdegenfellner/Resolve_Swiss_Statistical_Analysis_Plan
+abstract: >-
+  Statistical analysis plan for the RESOLVE Swiss cluster randomised controlled
+  trial, together with the R code that reproduces every sample size, design
+  effect and power figure reported in it. The practice is the unit of
+  randomisation and the participant is the unit of analysis. The primary outcome
+  is back-specific disability, measured with the Roland-Morris Disability
+  Questionnaire at 18 weeks.
+keywords:
+  - Low back pain
+  - Cluster randomised trial
+  - Statistical analysis plan
+  - Mixed models
+  - Physical therapy
+authors:
+  - family-names: Degenfellner
+    given-names: Jürgen
+    affiliation: >-
+      Institute of Physiotherapy, ZHAW Zurich University of Applied Sciences,
+      Winterthur, Switzerland
+    email: degn@zhaw.ch
+  - family-names: Pfeiffer
+    given-names: Fabian
+    affiliation: >-
+      Institute of Physiotherapy, ZHAW Zurich University of Applied Sciences,
+      Winterthur, Switzerland
+  - family-names: Stehrenberger
+    given-names: Andrea
+    affiliation: >-
+      Institute of Physiotherapy, ZHAW Zurich University of Applied Sciences,
+      Winterthur, Switzerland
+  - family-names: Careddu
+    given-names: Silvia
+    affiliation: >-
+      Institute of Physiotherapy, ZHAW Zurich University of Applied Sciences,
+      Winterthur, Switzerland
+  - family-names: Sommer
+    given-names: Bettina
+    affiliation: >-
+      Institute of Physiotherapy, ZHAW Zurich University of Applied Sciences,
+      Winterthur, Switzerland
+  - family-names: Benz
+    given-names: Thomas
+    affiliation: >-
+      Institute of Physiotherapy, ZHAW Zurich University of Applied Sciences,
+      Winterthur, Switzerland
+identifiers:
+  - type: other
+    value: DRKS00039237
+    description: German Clinical Trials Register
+  - type: other
+    value: 2025-00784
+    description: Swiss BASEC number

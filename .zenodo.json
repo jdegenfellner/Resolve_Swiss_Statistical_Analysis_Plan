@@ -1,0 +1,44 @@
+{
+  "title": "The RESOLVE Swiss trial for people with chronic non-specific low back pain: statistical analysis plan for a cluster randomised controlled trial",
+  "description": "<p>Statistical analysis plan for the RESOLVE Swiss cluster randomised controlled trial, together with the R code that reproduces every sample size, design effect and power figure reported in it.</p><p>RESOLVE Swiss is a two-arm parallel-group cluster randomised trial in Swiss physiotherapy practices, comparing graded sensorimotor retraining combined with pain science education against usual physiotherapy. The practice is the unit of randomisation and the participant is the unit of analysis. The primary outcome is back-specific disability, measured with the Roland-Morris Disability Questionnaire at 18 weeks.</p><p>The repository holds the manuscript source, the sample size and power scripts, and a verification suite that reproduces each published number twice, once from the closed-form expressions of Teerenstra et al. (2012) and once from an independent simulation of the underlying data generating process.</p><p>Trial registration: German Clinical Trials Register DRKS00039237, registered 4 February 2026. Swiss BASEC number 2025-00784.</p>",
+  "upload_type": "publication",
+  "publication_type": "preprint",
+  "license": "cc-by-4.0",
+  "access_right": "open",
+  "language": "eng",
+  "creators": [
+    {
+      "name": "Degenfellner, Jürgen",
+      "affiliation": "Institute of Physiotherapy, ZHAW Zurich University of Applied Sciences, Winterthur, Switzerland"
+    },
+    {
+      "name": "Pfeiffer, Fabian",
+      "affiliation": "Institute of Physiotherapy, ZHAW Zurich University of Applied Sciences, Winterthur, Switzerland"
+    },
+    {
+      "name": "Stehrenberger, Andrea",
+      "affiliation": "Institute of Physiotherapy, ZHAW Zurich University of Applied Sciences, Winterthur, Switzerland"
+    },
+    {
+      "name": "Careddu, Silvia",
+      "affiliation": "Institute of Physiotherapy, ZHAW Zurich University of Applied Sciences, Winterthur, Switzerland"
+    },
+    {
+      "name": "Sommer, Bettina",
+      "affiliation": "Institute of Physiotherapy, ZHAW Zurich University of Applied Sciences, Winterthur, Switzerland"
+    },
+    {
+      "name": "Benz, Thomas",
+      "affiliation": "Institute of Physiotherapy, ZHAW Zurich University of Applied Sciences, Winterthur, Switzerland"
+    }
+  ],
+  "keywords": [
+    "Low back pain",
+    "Cluster randomised trial",
+    "Statistical analysis plan",
+    "Mixed models",
+    "Physical therapy",
+    "Sample size",
+    "Intra-cluster correlation"
+  ]
+}
