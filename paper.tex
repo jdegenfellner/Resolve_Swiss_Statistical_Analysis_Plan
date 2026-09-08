@@ -1041,8 +1041,11 @@ constraint contributes.
 \item \textbf{Cluster-mean baseline.} Model \eqref{eq:primary} with the
 practice mean baseline score added as a further fixed effect. The baseline
 cluster mean captures differences between practices that the individual
-scores do not, and adjusting for it is recommended for cluster randomised
-trials \citep{klar2004, hooper2018}.
+scores do not, and adjusting for it gives more precise estimates in cluster
+randomised trials \citep{klar2004, hooper2018}. It is not the primary
+analysis because participants enter after their practice has been allocated
+(section~\ref{sec:recruitment}). The practice mean is measured after
+randomisation and could itself reflect differential recruitment.
 \item \textbf{Practice-by-time interaction.} Model \eqref{eq:primary} with an
 additional random practice-by-time effect, which allows the correlation
 between two participants of the same practice to be weaker across occasions
