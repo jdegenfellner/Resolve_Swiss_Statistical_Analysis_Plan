@@ -7,6 +7,7 @@ type: software
 license: CC-BY-4.0
 repository-code: >-
   https://github.com/jdegenfellner/Resolve_Swiss_Statistical_Analysis_Plan
+doi: 10.5281/zenodo.22655090
 abstract: >-
   Statistical analysis plan for the RESOLVE Swiss cluster randomised controlled
   trial, together with the R code that reproduces every sample size, design

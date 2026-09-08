@@ -1,5 +1,7 @@
 # RESOLVE Swiss — statistical analysis plan
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22655090.svg)](https://doi.org/10.5281/zenodo.22655090)
+
 This repository holds the statistical analysis plan for the RESOLVE Swiss trial and the
 R code that reproduces every number reported in it.
 
